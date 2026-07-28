@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Evaluasi Literasi Energi STEAM</title>
+  <script src="https://cdn.tailwindcss.com"></script=""></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased pb-20">
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-sm font-semibold text-slate-600 hover:text-red-600 transition flex items-center gap-1">
+        ← Kembali ke Beranda
+      </a>
+      <span class="text-xs font-bold bg-red-100 text-red-600 px-3 py-1 rounded-full">
+        10 Soal Evaluasi
+      </span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 mt-8">
+    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 mb-8">
+      <h1 class="text-2xl font-black text-slate-900 mb-2">Evaluasi Literasi Energi STEAM</h1>
+      <p class="text-sm text-slate-600">
+        Jawablah pertanyaan berikut dengan teliti. Bacalah setiap narasi, tabel, atau gambar yang disajikan sebelum menentukan jawaban terbaikmu!
+      </p>
+    </div>
+
+    <form id="quizForm" class="space-y-8">
+
+      <!-- SOAL 1 (PG - GEOTHERMAL) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 1</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Indonesia dikenal sebagai negara yang memiliki cadangan energi geothermal (panas bumi) terbesar di dunia. Alasan geologis yang paling tepat mengapa energi geothermal sangat melimpah di perut bumi Indonesia adalah...
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q1" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Indonesia memiliki curah hujan yang sangat tinggi sepanjang tahun.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q1" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Indonesia dilalui garis khatulistiwa sehingga selalu panas.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q1" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Indonesia berada di zona cincin api (Ring of Fire) dengan banyak gunung api aktif.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q1" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Wilayah laut Indonesia jauh lebih luas daripada daratannya.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q1" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Indonesia hanya memiliki 2 musim, yakni musim kemarau dan musim hujan.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 2 (PG - KINCIR ANGIN) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 2</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Angin yang berhembus kencang di lapangan membuat bilah kincir berputar. Perputaran bilah kincir ini kemudian memutar poros generator hingga akhirnya lampu LED di pos proyek menyala. Urutan perubahan energi yang tepat pada peristiwa tersebut adalah...
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q2" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Energi kimia → Energi kinetik → Energi listrik</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q2" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Energi potensial → Energi mekanik → Energi kalor</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q2" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Energi kinetik → Energi mekanik → Energi listrik</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q2" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Energi cahaya → Energi listrik → Energi mekanik</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q2" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Energi cahaya → Energi mekanik → Energi listrik</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 3 (PG - RUMUS AIR) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 3</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Berdasarkan rumus daya air <strong>P = ρ · Q · g · h · η</strong>, jika kincir air dipindahkan ke selokan yang memiliki posisi ketinggian jatuh air (h) <strong>dua kali lebih tinggi</strong> dari semula sedangkan debit air (Q) tetap sama, maka daya listrik (P) yang dihasilkan akan menjadi...
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q3" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Tetap sama seperti semula</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q3" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Menjadi 2 kali lebih besar</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q3" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Menjadi 4 kali lebih besar</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q3" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Berkurang menjadi setengahnya</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q3" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Berkurang menjadi seperempatnya</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 4 (CHECKBOX - PILIH 2) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Soal 4 (Pilih 2 Jawaban Benar!)</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Pemerintah Indonesia saat ini sedang gencar mengampanyekan transisi energi dari fosil (batubara) ke energi terbarukan (air, angin, dan surya). Manakah pernyataan di bawah ini yang menjadi alasan tepat mengapa energi terbarukan lebih ramah bagi bumi kita?
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q4" value="A" class="mt-1 accent-amber-600">
+            <span class="text-sm">A. Energi terbarukan tidak akan pernah habis karena disuplai oleh siklus alam.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q4" value="B" class="mt-1 accent-amber-600">
+            <span class="text-sm">B. Pengoperasian panel surya tidak menghasilkan gas rumah kaca yang memicu pemanasan global.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q4" value="C" class="mt-1 accent-amber-600">
+            <span class="text-sm">C. Alat-alat energi terbarukan harganya jauh lebih murah dan tidak butuh perawatan sama sekali.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q4" value="D" class="mt-1 accent-amber-600">
+            <span class="text-sm">D. Energi terbarukan bisa menghasilkan daya listrik yang stabil tanpa dipengaruhi cuaca.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q4" value="E" class="mt-1 accent-amber-600">
+            <span class="text-sm">E. Tingkat resiko dan kegagalan energi terbarukan sangat rendah.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 5 (PG VISUAL - STIMULUS NTT) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 5</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Sebuah desa terpencil di NTT terletak di daerah perbukitan yang sangat kering, jarang ada sungai, namun mendapatkan sinar matahari yang sangat terik sepanjang tahun. Jika kamu menjadi penasihat energi di desa tersebut, proyek energi terbarukan apa yang paling cocok dibangun di sana?
+        </p>
+        
+        <!-- TEMPAT GAMBAR GAMBAR OPSI NTT (JIKA ADA) -->
+        <div class="grid grid-cols-2 gap-3 my-2">
+          <div class="p-2 border rounded-xl text-center text-xs">
+            <img src="https://i.postimg.cc/QtsjK2pJ/image-750x-5f0fd212ee854.jpg" alt="PLTBm" class="w-full h-24 object-cover rounded-lg mb-1">
+            <strong>Opsi A: PLTBm</strong>
+          </div>
+          <div class="p-2 border rounded-xl text-center text-xs">
+            <img src="https://i.postimg.cc/R0t0H129/PLTA-ilustrasi.jpg" alt="PLTA" class="w-full h-24 object-cover rounded-lg mb-1">
+            <strong>Opsi B: PLTA</strong>
+          </div>
+          <div class="p-2 border rounded-xl text-center text-xs">
+            <img src="https://i.postimg.cc/GtL3VWt8/antarafoto-pembangunan-pltb-sidrap-281117-abhe-1.jpg" alt="PLTB" class="w-full h-24 object-cover rounded-lg mb-1">
+            <strong>Opsi C: PLTB</strong>
+          </div>
+          <div class="p-2 border rounded-xl text-center text-xs">
+            <img src="https://i.postimg.cc/QMzpXq5P/images3.jpg" alt="PLTS" class="w-full h-24 object-cover rounded-lg mb-1">
+            <strong>Opsi D: PLTS</strong>
+          </div>
+          <div class="p-2 border rounded-xl text-center text-xs">
+            <img src="https://i.postimg.cc/RhCTb0BS/andreas-felske-oqeddimeilc-unsplash.jpg" alt="PLTU" class="w-full h-24 object-cover rounded-lg mb-1">
+            <strong>Opsi E: PLTU</strong>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q5" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. PLTBm</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q5" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. PLTA</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q5" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. PLTB</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q5" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. PLTS</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q5" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. PLTU</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 6 (PG - TABEL LAMPU) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 6</span>
+        </div>
+        <p class="font-medium text-slate-900">Perhatikan tabel perbandingan dua jenis lampu berikut:</p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border border-slate-200 rounded-lg">
+            <thead class="bg-slate-100 font-bold text-slate-700">
+              <tr>
+                <th class="p-2 border">Jenis Lampu</th>
+                <th class="p-2 border">Daya (Watt)</th>
+                <th class="p-2 border">Umur Pakai</th>
+                <th class="p-2 border">Emisi CO₂ / 1000 Jam</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2 border font-medium">Bohlam Pijar</td>
+                <td class="p-2 border">60 W</td>
+                <td class="p-2 border">1.000 Jam</td>
+                <td class="p-2 border">± 51 kg CO₂</td>
+              </tr>
+              <tr class="bg-emerald-50/50">
+                <td class="p-2 border font-medium text-emerald-700">Lampu LED</td>
+                <td class="p-2 border text-emerald-700">9 W</td>
+                <td class="p-2 border text-emerald-700">25.000 Jam</td>
+                <td class="p-2 border text-emerald-700">± 7,65 kg CO₂</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-sm text-slate-700">
+          Berdasarkan data di atas, alasan paling rasional mengapa penggantian lampu pijar menjadi lampu LED di seluruh ruang kelas sekolah merupakan tindakan yang berdampak besar adalah...
+        </p>
+
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q6" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Lampu LED menghasilkan energi panas jauh lebih tinggi dari lampu pijar.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q6" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Lampu LED menghemat listrik hingga >80% dan secara drastis menurunkan emisi karbon sekolah.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q6" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Lampu pijar membutuhkan daya rendah tetapi emisi karbonnya tinggi karena bahan filamen.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q6" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Lampu LED tidak menggunakan energi listrik melainkan energi kimia internal.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q6" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Penggantian lampu menjadi LED hanya bertujuan meningkatkan estetika ruang kelas dan tidak berpengaruh terhadap efisiensi penggunaan energi.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 7 (CHECKBOX - SOLUSI INTERMITENSI) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Soal 7 (Pilih 2 Jawaban Benar!)</span>
+        </div>
+        <p class="font-medium text-slate-900">
+          Sebuah desa mandiri energi memanfaatkan Pembangkit Listrik Tenaga Surya (PLTS) sebagai sumber utama. Namun, saat musim hujan dengan cuaca mendung tebal selama 3 hari berturut-turut, pasokan listrik warga mulai terganggu. Manakan dua langkah rekayasa dan manajemen energi yang paling tepat untuk mengatasi masalah tersebut agar pasokan listrik tetap terjaga?
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q7" value="A" class="mt-1 accent-amber-600">
+            <span class="text-sm">A. Menambah jumlah panel surya tanpa menambah kapasitas baterai penyimpanan.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q7" value="B" class="mt-1 accent-amber-600">
+            <span class="text-sm">B. Menambah energi menggunakan PLTB dan mengurangi jumlah panel surya.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q7" value="C" class="mt-1 accent-amber-600">
+            <span class="text-sm">C. Mematikan seluruh panel surya dan menggantinya kembali 100% dengan pembangkit listrik batubara.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q7" value="D" class="mt-1 accent-amber-600">
+            <span class="text-sm">D. Mengintegrasikan sistem penyimpanan baterai kapasitas besar (Battery Storage) untuk menyimpan kelebihan daya saat terik.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="checkbox" name="q7" value="E" class="mt-1 accent-amber-600">
+            <span class="text-sm">E. Menerapkan sistem hibrida dengan menggabungkan PLTS dan generator biogas dari limbah lokal.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 8 (PG - TEKS PEMBAKARAN FOSIL) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 8</span>
+        </div>
+        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-red-500 text-xs text-slate-700 italic">
+          "Pembakaran bahan bakar fosil pada kendaraan bermotor dan PLTU menghasilkan gas karbon dioksida (CO₂) dalam jumlah yang sangat besar ke atmosfer. Penumpukan gas ini di atmosfer perangkap panas matahari sehingga memicu terjadinya efek rumah kaca yang berlebihan dan pemanasan global."
+        </div>
+        <p class="font-medium text-slate-900">
+          Apa dampak jangka panjang yang paling signifikan dari fenomena tersebut terhadap ekosistem bumi?
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q8" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Penurunan permukaan air laut secara drastis akibat penguapan ekstrem.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q8" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Penurunan intensitas sinar matahari yang sampai ke permukaan bumi.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q8" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Meningkatnya kualitas udara di kawasan perkotaan.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q8" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Berkurangnya populasi tanaman hijau akibat kelebihan karbon dioksida.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q8" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Ketidakseimbangan iklim global yang menyebabkan cuaca ekstrem dan mencairnya es di kutub.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 9 (PG INFOGRAFIS - KENDARAAN LISTRIK) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md">Soal 9</span>
+        </div>
+        
+        <!-- TEMPAT GAMBAR INFOGRAFIS "TAHUKAH KAMU" EV -->
+        <div class="rounded-xl overflow-hidden border border-slate-200">
+          <img src="https://i.postimg.cc/bwFnTJZs/Energi-Terbarukan-20260720-095050-0000.png" alt="Infografis EV" class="w-full h-auto">
+        </div>
+        <div class="rounded-xl overflow-hidden border border-slate-200">
+          <img src="https://i.postimg.cc/vZSnzB4g/Energi-Terbarukan-20260720-095051-0001.png" alt="Infografis EV2" class="w-full h-auto">
+        </div>
+
+        <p class="font-medium text-slate-900">
+          Berdasarkan bacaan infografis di atas, mengapa kendaraan listrik dapat tetap menjadi ancaman bagi kelestarian energi di Indonesia jika tidak diimbangi dengan pemanfaatan Energi Baru Terbarukan (EBT)?
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q9" value="A" class="mt-1 accent-red-600">
+            <span class="text-sm">A. Karena pengisian daya listriknya sebagian besar masih bersumber dari pembangkit listrik berbahan bakar fosil.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q9" value="B" class="mt-1 accent-red-600">
+            <span class="text-sm">B. Karena kendaraan listrik tetap mengeluarkan asap hitam pekat dari knalpotnya saat melaju.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q9" value="C" class="mt-1 accent-red-600">
+            <span class="text-sm">C. Karena baterai kendaraan listrik dibuat menggunakan bahan baku minyak bumi.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q9" value="D" class="mt-1 accent-red-600">
+            <span class="text-sm">D. Karena biaya perawatan kendaraan listrik jauh lebih mahal daripada kendaraan BBM.</span>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="q9" value="E" class="mt-1 accent-red-600">
+            <span class="text-sm">E. Karena penggunaan kendaraan listrik secara otomatis menghilangkan seluruh emisi karbon tanpa memandang sumber listrik yang digunakan.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SOAL 10 (ESSAY SINGKAT - PANEL SURYA & BEHAVIOR) -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">Soal 10</span>
+        </div>
+        <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-100 text-xs text-slate-700">
+          <strong>Studi Kasus:</strong> Sekolah A telah berinvestasi mahal memasang panel surya di atap gedung. Namun, para siswa dan guru masih sering membiarkan lampu, AC, dan proyektor tetap menyala di kelas meskipun kelas dalam keadaan kosong.
+        </div>
+        <p class="font-medium text-slate-900">
+          Analisislah mengapa pemasangan panel surya di sekolah tersebut menjadi kurang efektif menurunkan emisi karbon jika perilaku pemborosan listrik oleh warga sekolah masih terus terjadi!
+        </p>
+        <textarea name="q10" rows="3" placeholder="Ketik jawaban singkatmu di sini..." class="w-full p-3 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+      </div>
+
+      <!-- TOMBOL SUBMIT -->
+      <button type="button" id="btnSubmit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl transition shadow-lg text-center cursor-pointer">
+        📤 Kirim Jawaban Evaluasi
+      </button>
+
+    </form>
+  </main>
+
+<!-- MODAL / POPUP HASIL SKOR -->
+  <div id="resultBox" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-center space-y-5">
+      <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto text-3xl font-black">
+        📊
+      </div>
+      <h2 class="text-2xl font-black text-slate-900">Hasil Evaluasi Kamu</h2>
+      
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Skor Pilihan Ganda & Checkbox</p>
+        <p id="scoreText" class="text-4xl font-black text-red-600">0 / 90</p>
+        <p class="text-xs text-slate-500 mt-1">*Soal 10 (Essay) dinilai berdasarkan kunci jawaban pembahasan.</p>
+      </div>
+
+      <p id="feedbackText" class="text-sm text-slate-600 italic">
+        Pesan evaluasi...
+      </p>
+
+      <button type="button" id="btnCloseResult" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition">
+        Lihat Pembahasan Jawaban 🔍
+      </button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC AMAN -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btnSubmit = document.getElementById('btnSubmit');
+      const btnCloseResult = document.getElementById('btnCloseResult');
+      const resultBox = document.getElementById('resultBox');
+
+      // KUNCI JAWABAN
+      const key = {
+        q1: "C",
+        q2: "C",
+        q3: "B",
+        q4: ["A", "B"],
+        q5: "D",
+        q6: "B",
+        q7: ["D", "E"],
+        q8: "E",
+        q9: "A"
+      };
+
+      // EVENT TOMBOL KIRIM JAWABAN
+      btnSubmit.addEventListener('click', function () {
+        let totalScore = 0;
+        const form = document.getElementById('quizForm');
+
+        // 1. HITUNG SOAL SINGLE (Q1, Q2, Q3, Q5, Q6, Q8, Q9)
+        const singleQuestions = ['q1', 'q2', 'q3', 'q5', 'q6', 'q8', 'q9'];
+        singleQuestions.forEach(function(q) {
+          const selected = form.querySelector('input[name="' + q + '"]:checked');
+          if (selected && selected.value === key[q]) {
+            totalScore += 10;
+          }
+        });
+
+        // 2. HITUNG SOAL CHECKBOX (Q4 & Q7)
+        const checkQuestions = ['q4', 'q7'];
+        checkQuestions.forEach(function(q) {
+          const checked = Array.from(form.querySelectorAll('input[name="' + q + '"]:checked')).map(function(cb) {
+            return cb.value;
+          });
+          const correct = key[q];
+          const isCorrect = checked.length === correct.length && checked.every(function(val) {
+            return correct.includes(val);
+          });
+          if (isCorrect) {
+            totalScore += 10;
+          }
+        });
+
+        // 3. TAMPILKAN HASIL
+        document.getElementById('scoreText').innerText = totalScore + " / 90";
+
+        const feedback = document.getElementById('feedbackText');
+        if (totalScore >= 80) {
+          feedback.innerText = "🎉 Luar biasa! Pemahaman literasi energimu sudah sangat matang!";
+        } else if (totalScore >= 50) {
+          feedback.innerText = "👍 Bagus! Kamu sudah memahami konsep dasar, ayo tingkatkan lagi!";
+        } else {
+          feedback.innerText = "💪 Jangan berkecil hati! Pelajari kembali materi dan coba kuis ini lagi ya.";
+        }
+
+        // TAMPILKAN MODAL POPUP
+        resultBox.classList.remove('hidden');
+      });
+
+      // EVENT TOMBOL TUTUP POPUP & PEMBAHASAN
+      btnCloseResult.addEventListener('click', function () {
+        resultBox.classList.add('hidden');
+
+        // MASUKKAN KUNCI JAWABAN ESSAY JIKA BELUM ADA
+        if (!document.getElementById('essayKey')) {
+          const container = document.getElementById('soal10Container');
+          const keyDiv = document.createElement('div');
+          keyDiv.id = 'essayKey';
+          keyDiv.className = 'mt-3 p-4 bg-emerald-100 border border-emerald-300 rounded-xl text-xs text-emerald-900 leading-relaxed';
+          keyDiv.innerHTML = '<strong>💡 Kunci Jawaban / Pembahasan Soal 10:</strong><br><em>"Penggunaan panel surya menjadi kurang efektif karena energi listrik terbarukan yang dihasilkan tetap terbuang sia-sia untuk peralatan yang tidak digunakan. Hal ini membuat sekolah masih harus menyedot pasokan listrik tambahan dari PLN (PLTU Batubara), sehingga emisi karbon tidak berkurang secara maksimal."</em>';
+          container.appendChild(keyDiv);
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

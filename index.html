@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-lit lab | Dilemma-STEAM Interactive Learning Environment</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- MathJax for LaTeX Equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+<!-- 1. HEADER / NAVBAR (Bar Merah + Alas Putih Kapsul di Kiri & Kanan) -->
+<nav class="fixed top-0 left-0 w-full bg-red-600 shadow-lg border-b border-red-700 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            
+            <!-- Pojok Kiri: 3 Logo Gambar dengan ALAS PUTIH KAPSUL -->
+            <div class="flex items-center gap-2 sm:gap-3 bg-white px-3 sm:px-4 py-1.5 rounded-full shadow-md">
+                <!-- Logo 1: Unesa -->
+                <img src="logounesa.png" alt="Logo Unesa" class="h-7 sm:h-9 w-auto object-contain">
+                <!-- Logo 2: Kemendikbud -->
+                <img src="kemendikbud.png" alt="Logo Kemendikbud" class="h-7 sm:h-9 w-auto object-contain">
+                <!-- Logo 3: Kurikulum Merdeka -->
+                <img src="kurmer.png" alt="Logo Kurikulum Merdeka" class="h-7 sm:h-9 w-auto object-contain">
+            </div>
+
+            <!-- Pojok Kanan: Nama Web dengan ALAS PUTIH KAPSUL + GLOW + EMOT -->
+            <div class="flex items-center gap-1 font-black text-lg sm:text-xl tracking-tight text-slate-900 bg-white px-4 py-1.5 rounded-full shadow-md">
+                <!-- Emot Kiri: Berkilau -->
+                <span class="inline-block animate-pulse text-base sm:text-lg">✨</span>
+                
+                <!-- Teks E-lit lab (Warna Merah Glowing) -->
+                <span>E-lit <span class="text-red-600 drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]">lab</span></span>
+                
+                <!-- Emot Kanan: Membal / Bounce -->
+                <span class="inline-block animate-bounce text-base sm:text-lg">⚡</span>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- 2. SECTION SAPAAN (BACKGROUND FOTO + TEXT GELAP OVERLAY) -->
+<section class="pt-28 pb-16 relative bg-cover bg-center bg-no-repeat" style="background-image: url('https://i.postimg.cc/BnfpKs5V/bg-energi2.jpg');">
+    
+    <!-- Pelapis Gelap (Overlay) biar tulisan putihnya tetap terbaca jelas di atas foto -->
+    <div class="absolute inset-0 bg-slate-900/60"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+        <!-- Sapaan Font Gede -->
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-3 drop-shadow-md">
+            Welcome to E-LIT LAB
+        </h1>
+        
+        <!-- Deskripsi Font Agak Kecil -->
+        <p class="text-xs sm:text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed drop-shadow">
+            Selamat datang di E-lit Lab! Ini adalah platform pembelajaran interaktif yang dirancang khusus untuk membantu kamu mengeksplorasi dunia Fisika Energi Terbarukan dengan cara yang seru, nyata, dan menyenangkan. Yuk, siapkan dirimu dan mulailah berpetualang menjadi generasi muda yang cerdas, bijak, dan peduli terhadap masa depan energi bumi!
+        </p>
+
+        <!-- TOMBOL MULAI BELAJAR -->
+        <div class="mt-6 sm:mt-8">
+            <a href="#tujuan pembelajaran" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 cursor-pointer">
+                <span>Mulai Belajar</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- 3. PEMBATAS (DIVIDER) WARNA HIJAU ESTETIK -->
+<div class="w-full h-2 bg-gradient-to-r from-red-500 via-teal-400 to-red-600"></div>
+          
+    <!-- 4. TUJUAN PEMBELAJARAN (4 Kotak Visual) -->
+    <section id="tujuan pembelajaran" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-10">Tujuan Pembelajaran</h2>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
+                <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">1</div>
+                <p class="text-xs text-slate-600 leading-relaxed">Mengklasifikasikan bentuk-bentuk energi dasar serta membedakan potensi sumber energi terbarukan dalam memenuhi kebutuhan energi masyarakat.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
+                <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">2</div>
+                <p class="text-xs text-slate-600 leading-relaxed">Menganalisis bentuk dan perubahan energi pada penerapannya dalam kehidupan sehari-hari beserta dampak penggunaannya terhadap lingkungan dan masyarakat.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
+                <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">3</div>
+                <p class="text-xs text-slate-600 leading-relaxed">Menemukan masalah ketersediaan energi dan dilema ekologi yang ada di lingkungan sekitar tempat tinggal maupun isu energi global.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
+                <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">4</div>
+                <p class="text-xs text-slate-600 leading-relaxed">Merancang dan mengevaluasi ide alat penghasil energi terbarukan sederhana berbasis pendekatan STEAM sebagai solusi atas masalah ketersediaan energi dengan bantuan AI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MASALAH AWAL (Video YouTube & Pertanyaan Pemantik Essay) -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="text-center mb-8">
+            <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Aktivitas 1</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Video Masalah Awal</h2>
+            <p class="text-xs text-slate-500 mt-1">Simak video pemicu masalah berikut ini sebelum memasuki kegiatan inti pembelajaran!</p>
+        </div>
+
+        <!-- Vid YouTube Embed (Sesuai Link dari Kamu) -->
+        <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-lg bg-black mb-8">
+            <div class="relative w-full pt-[56.25%]">
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dNHw5iKbp-Y?si=qLwjuY119U28J45g" title="Video Masalah Awal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- SECTION PERTANYAAN PEMANTIK -->
+        <section id="pertanyaan-pemantik" class="py-12 bg-slate-100">
+          <div class="max-w-4xl mx-auto px-4">
+        
+            <!-- Judul Section -->
+            <div class="text-center mb-8">
+               <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
+                   Pertanyaan Pemantik
+               </h2>
+               <p class="text-sm text-slate-600">
+                 Simak video di atas, isi identitasmu, lalu jawab pertanyaan di bawah ini untuk menguji pemahaman awalmu!
+               </p>
+            </div>
+
+            <!-- FORM UTAMA -->
+            <form id="formPemantik" onsubmit="prosesJawaban(event)" class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200 space-y-8">
+            
+              <!-- IDENTITAS SISWA -->
+              <div class="bg-red-50 p-4 rounded-xl border border-red-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap</label>
+                    <input type="text" id="namaSiswa" required placeholder="Ketik namamu..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kelas / Kelompok</label>
+                    <input type="text" id="kelasSiswa" required placeholder="Contoh: XI-Fisika / Kelompok 1" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white">
+                </div>
+              </div>
+
+              <!-- SOAL 1: ESSAY -->
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                    <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 1</span>
+                    <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
+                        Dari beberapa dampak buruk krisis energi tersebut, fasilitas atau aktivitas sehari-hari apa yang paling membuatmu panik jika tiba-tiba lumpuh? Berikan alasan singkat!
+                    </h3>
+                </div>
+                <textarea id="essay1" rows="3" required placeholder="Tuliskan jawaban dan alasanmu di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"></textarea>
+              </div>
+
+              <hr class="border-slate-200">
+
+              <!-- SOAL 2: PILIHAN GANDA (INTERAKTIF + PEMBETULAN LANGSUNG) -->
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                    <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 2</span>
+                    <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
+                        Mengapa ketergantungan manusia pada bahan bakar minyak bumi, gas, dan batu bara menjadi pemicu utama terjadinya krisis energi global?
+                    </h3>
+                </div>
+
+                <!-- Pilihan Jawaban -->
+                <div class="space-y-2 pl-2">
+                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="pilgan" value="A" class="mt-1 text-red-600 focus:ring-red-500">
+                        <span class="text-sm text-slate-700"><b>A.</b> Karena energi tersebut menghasilkan daya listrik yang terlalu kecil untuk menyalakan perangkat elektronik modern.</span>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="pilgan" value="B" class="mt-1 text-red-600 focus:ring-red-500">
+                        <span class="text-sm text-slate-700"><b>B.</b> Karena proses pembentukannya membutuhkan waktu jutaan tahun, sedangkan manusia menghabiskannya dengan sangat cepat.</span>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="pilgan" value="C" class="mt-1 text-red-600 focus:ring-red-500">
+                        <span class="text-sm text-slate-700"><b>C.</b> Karena sumber daya tersebut hanya bisa ditemukan di negara yang sedang berkonflik saja.</span>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="pilgan" value="D" class="mt-1 text-red-600 focus:ring-red-500">
+                        <span class="text-sm text-slate-700"><b>D.</b> Karena energi fosil sangat ramah lingkungan sehingga pemerintah sengaja membatasi penggunaannya.</span>
+                    </label>
+                </div>
+
+                <!-- KOTAK PEMBETULAN LANGSUNG (Muncul Otomatis Setelah Klik Cek/Submit) -->
+                <div id="feedbackPilgan" class="hidden p-4 rounded-xl text-sm leading-relaxed transition-all"></div>
+            </div>
+
+            <hr class="border-slate-200">
+
+            <!-- SOAL 3: ESSAY -->
+            <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                    <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 3</span>
+                    <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
+                        Ditegaskan bahwa 'langkah kecil dari setiap orang' sangat membantu. Menurut pendapatmu pribadi, mengapa tindakan kecil seperti mematikan lampu atau mencabut charger yang tidak dipakai sering disepelekan orang? Bagaimana cara mengubah kebiasaan itu?
+                    </h3>
+                </div>
+                <textarea id="essay2" rows="3" required placeholder="Tuliskan pendapatmu di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"></textarea>
+            </div>
+
+            <!-- TOMBOL SUBMIT -->
+            <div class="text-center pt-4">
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">
+                    🚀 Kirim Jawaban & Cek Hasil
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<!-- JAVASCRIPT LOGIK KOREKSI LANGSUNG -->
+<script>
+function prosesJawaban(e) {
+    e.preventDefault(); // Mencegah reload halaman
+
+    // Ambil Jawaban Pilgan
+    const pilihan = document.querySelector('input[name="pilgan"]:checked');
+    const feedbackBox = document.getElementById('feedbackPilgan');
+
+    if (!pilihan) {
+        alert("Pilih salah satu jawaban untuk Soal 2 (Pilihan Ganda) terlebih dahulu!");
+        return;
+    }
+
+    const jawabanBenar = "B";
+    const jawabanSiswa = pilihan.value;
+
+    // Tampilkan Kotak Pembetulan Langsung
+    feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'bg-red-50', 'border-emerald-300', 'border-red-300', 'text-emerald-900', 'text-red-900');
+
+    if (jawabanSiswa === jawabanBenar) {
+        // Jika Benar
+        feedbackBox.classList.add('bg-emerald-50', 'border', 'border-emerald-300', 'text-emerald-900');
+        feedbackBox.innerHTML = `
+            <div class="flex items-center gap-2 font-bold mb-1 text-emerald-700">
+                <span>🎉 JAWABANMU BENAR! (Opsi B)</span>
+            </div>
+            <p><b>Penjelasan:</b> Bahan bakar fosil merupakan sumber daya tak terbarukan yang membutuhkan waktu jutaan tahun untuk terbentuk kembali. Laju konsumsi manusia jauh lebih cepat dibandingkan kecepatan alam memproduksinya kembali.</p>
+        `;
+    } else {
+        // Jika Salah (Ada Pembetulan Langsung)
+        feedbackBox.classList.add('bg-red-50', 'border', 'border-red-300', 'text-red-900');
+        feedbackBox.innerHTML = `
+            <div class="flex items-center gap-2 font-bold mb-1 text-red-700">
+                <span>❌ JAWABANMU KURANG TEPAT (Kamu memilih ${jawabanSiswa})</span>
+            </div>
+            <p><b>Pembetulan:</b> Jawaban yang benar adalah <b>B. Karena proses pembentukannya membutuhkan waktu jutaan tahun, sedangkan manusia menghabiskannya dengan sangat cepat.</b></p>
+            <p class="mt-1 text-xs text-red-700"><i>Catatan: Bahan bakar fosil bukan berarti tidak ramah lingkungan atau hanya ada di negara konflik, melainkan jumlahnya terbatas dan sangat cepat habis jika dipakai terus-menerus!</i></p>
+        `;
+    }
+
+    // Beri info ke siswa bahwa jawaban telah direkam
+    alert("Jawabanmu berhasil direkam! Silakan cek pembetulan soal pilihan ganda di bawah soal No. 2.");
+}
+</script>
+
+
+<!-- 6. SECTION CASE STUDY: SMA ARTEMIS -->
+<section id="case-study" class="py-12 bg-white">
+    <div class="max-w-5xl mx-auto px-4 space-y-12">
+
+        <!-- 1. HEADER & INTRO STORY -->
+        <div class="text-center space-y-3">
+            <span class="bg-amber-100 text-amber-800 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full border border-amber-300">
+                🏫 Misi Studi Kasus
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-900">
+                Petualangan di SMA Artemis
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                Simak alur cerita di bawah ini untuk memahami krisis energi yang sedang terjadi di sekolah!
+            </p>
+        </div>
+
+        <!-- ALUR CERITA (KOMIK 1-3) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Komik 1 -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <img src="komik1.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                <div class="p-4">
+                    <p class="text-xs text-slate-600 font-medium">1. Krisis energi global melanda SMA Artemis...</p>
+                </div>
+            </div>
+            <!-- Komik 2 -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <img src="komik2.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                <div class="p-4">
+                    <p class="text-xs text-slate-600 font-medium">2. Pak Baskara mengumumkan pembatasan listrik sekolah.</p>
+                </div>
+            </div>
+            <!-- Komik 3 -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <img src="komik3.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                <div class="p-4">
+                    <p class="text-xs text-slate-600 font-medium">3. Sayembara Desain Eco-Gazebo Mandiri Energi dibuka!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. KARTU DILEMA 3 ZONA (KOMIK 4-6) -->
+        <div class="bg-amber-50/50 p-6 sm:p-8 rounded-3xl border border-amber-200 space-y-6">
+            <div class="text-center space-y-1">
+                <h3 class="text-xl sm:text-2xl font-black text-slate-900">
+                    ⚡ 3 Pilihan Zona & Dilema Teknis
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Setiap zona punya potensi energi, tapi juga punya tantangan tersendiri. Mana yang akan kamu selesaikan?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Zona 1: Matahari -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-amber-400 transition">
+                    <div class="space-y-3">
+                        <img src="komik4.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md">
+                            ☀️ Zona Matahari
+                        </span>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <b>Dilema:</b> Tertutup bayangan pohon beringin tua yang rindang. Haruskah memotong cabang pohon kesayangan warga sekolah?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Zona 2: Angin -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-blue-400 transition">
+                    <div class="space-y-3">
+                        <img src="komik5.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">
+                            🍃 Zona Angin
+                        </span>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <b>Dilema:</b> Angin kencang cocok untuk kincir, tapi lokasinya tepat di samping kelas X-2. Suara bising kincir bisa mengganggu belajar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Zona 3: Air -->
+                <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-cyan-400 transition">
+                    <div class="space-y-3">
+                        <img src="komik6.png" onclick="zoomGambar(this.src)" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition" alt="Komik">
+                        <span class="inline-block bg-cyan-100 text-cyan-800 text-xs font-bold px-2.5 py-1 rounded-md">
+                            🌊 Zona Air
+                        </span>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <b>Dilema:</b> Arus selokan deras untuk kincir air, tapi rawan mampet sampah plastik. Jika kincir macet, air bisa meluap dan banjir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. INSTRUKSI DISKUSI (KOMIK 7) -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-xl">
+            <div class="max-w-md mx-auto">
+                <img src="komik7.png" alt="Mana Yang Terbaik" class="w-full rounded-2xl shadow-md border border-slate-700">
+            </div>
+
+            <div class="space-y-2 max-w-2xl mx-auto">
+                <h3 class="text-xl sm:text-2xl font-bold text-amber-400">
+                    💬 Diskusi Kelompok di Padlet
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Diskusikan dengan kelompokmu: <b>Mana zona terbaik yang paling memungkinkan untuk diselamatkan?</b> Sampaikan argumen dan ide awal kelompokmu di papan Padlet bawah ini!
+                </p>
+            </div>
+
+            <!-- 4. EMBED PADLET BOARD -->
+            <div class="w-full bg-white rounded-2xl overflow-hidden shadow-inner border border-slate-700">
+                <!-- GANTI src DI BAWAH INI DENGAN LINK EMBED PADLET-MU -->
+                <iframe 
+                    src="https://padlet.com/echa23097/forum-diskusi-b33mmgrwdbcog6n7" 
+                    class="w-full h-[500px] border-0" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- 7. PUSAT LITERATUR (Semua Materi & Rumus Fisika) -->
+    <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Pusat Literatur Energi</h2>
+            <p class="text-xs text-slate-500 mt-1">Semua materi energi terbarukan & rumus fisika penunjang ada di sini</p>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            <!-- Materi Surya -->
+            <div class="border-b border-slate-100 pb-6">
+                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">☀️ 1. Energi Surya (Solar Energy)</h3>
+                <p class="text-xs text-slate-600 mb-3">Mengubah radiasi foton sinar matahari menjadi energi listrik DC melalui sel Photovoltaic (PV).</p>
+                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
+                    $$\text{Daya Surya }(P) = I \cdot A \cdot \eta$$
+                </div>
+            </div>
+
+            <!-- Materi Angin -->
+            <div class="border-b border-slate-100 pb-6">
+                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">🌀 2. Energi Angin (Wind Energy)</h3>
+                <p class="text-xs text-slate-600 mb-3">Memanfaatkan energi kinetik aliran udara untuk memutar bilah turbin yang menyambung ke rotor generator.</p>
+                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
+                    $$\text{Daya Angin }(P) = \frac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot \eta$$
+                </div>
+            </div>
+
+            <!-- Materi Air -->
+            <div>
+                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">💧 3. Energi Air (Mikrohidro)</h3>
+                <p class="text-xs text-slate-600 mb-3">Memanfaatkan energi potensial beda tinggi jatuh air (*head*) dan debit aliran fluida.</p>
+                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
+                    $$\text{Daya Air }(P) = \rho \cdot Q \cdot g \cdot h \cdot \eta$$
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 7. STUDIO INOVASI -->
+<section id="studio-inovasi" class="py-16 bg-slate-50 border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Judul Section -->
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full border border-red-100">
+        Ruang Kerja Siswa
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-3">
+        Studio Inovasi & Kolaborasi STEAM
+      </h2>
+      <p class="text-sm text-slate-600 mt-2 max-w-2xl mx-auto">
+        Akses Lembar Kerja, dinding kolaborasi digital, pemeriksaan proposal berbasis AI, serta kalkulator dampak emisi CO₂ dalam satu tempat.
+      </p>
+    </div>
+
+    <!-- Grid 4 Fitur (2 Kolom di Layar Besar) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- FITUR 1: LKPD DIGITAL (PDF PREVIEW + DOWNLOAD) -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold">
+              📄
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">LKPD Digital</h3>
+              <p class="text-xs text-slate-500">Lembar Kerja Peserta Didik STEAM</p>
+            </div>
+          </div>
+          
+          <!-- Frame Tampilan PDF -->
+          <div class="w-full h-80 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-4">
+            <iframe src="LKPD-STEAM.pdf" class="w-full h-full" frameborder="0"></iframe>
+          </div>
+        </div>
+
+        <!-- Tombol Unduh LKPD -->
+        <a href="LKPD-STEAM.pdf" download class="w-full text-center bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm flex items-center justify-center gap-2">
+          <span>📥 Unduh LKPD (.pdf)</span>
+        </a>
+      </div>
+
+      <!-- FITUR 2: MADING DIGITAL (PADLET EMBED) -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold">
+              📌
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">Mading Digital (Padlet)</h3>
+              <p class="text-xs text-slate-500">Dinding Diskusi & Pamer Hasil Karya</p>
+            </div>
+          </div>
+
+          <!-- Embed Padlet -->
+          <div class="w-full h-80 bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
+            <!-- Ganti URL src di bawah ini dengan link embed Padlet kamu -->
+            <iframe src="https://padlet.com/echa23097/mading-digital-eco-gazebo-gh7gu1xsiirtj66t" class="w-full h-full" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- FITUR 3: AI PEMERIKSAAN PROPOSAL -->
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+              🤖
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">AI Pemeriksaan Proposal</h3>
+              <p class="text-xs text-slate-500">Asisten Review Otomatis Proposal Proyek</p>
+            </div>
+          </div>
+
+          <!-- Embed AI Reviewer -->
+          <div class="w-full h-80 bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
+            <!-- Ganti URL src di bawah ini dengan link embed AI Proposal kamu -->
+            <iframe src="https://creator.voiceflow.com/share/6a62294039c254a1b6ba8e65/environment/main/draft" class="w-full h-full" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+
+<!-- FITUR 4: KALKULATOR DAMPAK CO2 (NATIVE JS) -->
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+  <div>
+    <!-- Header Kartu -->
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-lg">
+        🌱
+      </div>
+      <div>
+        <h3 class="font-bold text-slate-900 text-lg">Kalkulator Dampak CO₂</h3>
+        <p class="text-xs text-slate-500">Hitung Emisi Karbon yang Berhasil Dicegah</p>
+      </div>
+    </div>
+
+    <!-- Form & Kotak Kalkulasi -->
+    <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-100 space-y-3">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">
+          Daya Listrik Terbarukan Hasil Desain (Watt):
+        </label>
+        <input 
+          type="number" 
+          id="wattInput" 
+          placeholder="Contoh: 150" 
+          oninput="hitungDampakCO2()" 
+          class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none transition"
+        >
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">
+          Estimasi Durasi Nyala per Hari (Jam):
+        </label>
+        <input 
+          type="number" 
+          id="jamInput" 
+          placeholder="Contoh: 12" 
+          oninput="hitungDampakCO2()" 
+          class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none transition"
+        >
+      </div>
+
+      <!-- Kotak Hasil Real-time -->
+      <div class="bg-white p-3 rounded-xl border border-emerald-200 text-center space-y-1 shadow-sm mt-3">
+        <p class="text-xs text-slate-500 font-medium">Estimasi Pengurangan CO₂ / Bulan:</p>
+        <p id="hasilCO2" class="text-2xl font-black text-emerald-600">0 kg CO₂</p>
+        <p id="setaraPohon" class="text-[11px] text-slate-500 font-medium">🌱 Setara menanam 0 pohon/bulan</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT LOGIKA HITUNG KALKULATOR CO2 -->
+<script>
+function hitungDampakCO2() {
+  const watt = parseFloat(document.getElementById('wattInput').value) || 0;
+  const jam = parseFloat(document.getElementById('jamInput').value) || 0;
+
+  // Rumus Energi (kWh / bulan): E = (Watt * jam * 30 hari) / 1000
+  const kwhPerBulan = (watt * jam * 30) / 1000;
+
+  // Pengurangan CO2 = kWh * 0.85 kg
+  const co2Tercegah = (kwhPerBulan * 0.85).toFixed(2);
+
+  // Setara pohon (1 pohon rata-rata menyerap ~1.67 kg CO2 per bulan)
+  const setaraPohon = (co2Tercegah / 1.67).toFixed(1);
+
+  // Update tampilan di HTML
+  document.getElementById('hasilCO2').innerText = `${co2Tercegah} kg CO₂`;
+  document.getElementById('setaraPohon').innerText = `🌱 Setara menanam ±${setaraPohon} pohon/bulan`;
+}
+</script>
+
+  </div>
+</section>
+
+<!-- 9. KUIS EVALUASI LITERASI ENERGI -->
+<section id="kuis-evaluasi" class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+      <!-- Dekorasi Lingkaran -->
+      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+      
+      <div class="relative z-10 text-center space-y-4">
+        <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">
+          📝 Evaluasi Pembelajaran
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black">
+          Uji Pemahaman Literasi Energi STEAM
+        </h2>
+        <p class="text-sm sm:text-base text-red-50 max-w-2xl mx-auto leading-relaxed">
+          Uji kemampuan analisismu melalui 10 soal interaktif (Pilihan Ganda, Pilihan Majemuk, dan Essay Pendek) untuk mengukur sejauh mana kamu memahami materi Energi Terbarukan!
+        </p>
+        <div class="pt-4">
+          <a href="kuis.html" class="inline-flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-1">
+            <span>🚀 Mulai Kerjakan Kuis</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- 10. REFLEKSI (Open Ended Question) -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Refleksi Pembelajaran</h2>
+            <p class="text-xs text-slate-500 mt-1">Open-Ended Question</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <label class="block text-xs font-bold text-slate-800 mb-2">
+                Setelah melalui seluruh proses perancangan Eco-Gazebo dan mengatasi dilema ekologis di SMA Artemis, hal berharga apa yang kamu pelajari mengenai penerapan energi terbarukan di kehidupan nyata?
+            </label>
+            <textarea rows="4" placeholder="Tuliskan refleksi jujurmu di sini..." class="w-full p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+            <button class="mt-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-lg transition">Simpan Refleksi</button>
+        </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 text-center border-t border-slate-800">
+        <p>© 2026 E-lit lab — Echa Balqis Putri Ernowo.</p>
+        <p class="mt-1 text-[11px] text-slate-500">Dikembangkan untuk Media Pembelajaran Fisika SMA Berbasis AI-Assisted Dilemma-STEAM.</p>
+    </footer>
+
+<!-- A. CSS KUSTOM: WARNA MERAH & EFEK MENYALA (GLOW) -->
+<style>
+    /* Mengubah tombol lingkaran AI menjadi merah dan glowing */
+    .vfrc-launcher {
+        background-color: #dc2626 !important; /* Merah Khas Web */
+        /* Efek cahaya menyala awal */
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.7), 0 0 30px rgba(220, 38, 38, 0.4) !important;
+        /* Menjalankan animasi berdenyut */
+        animation: aiGlowPulse 2s infinite alternate !important;
+        transition: transform 0.3s ease-in-out !important;
+    }
+
+    /* Efek sedikit membesar saat kursor diarahkan (Hover) */
+    .vfrc-launcher:hover {
+        transform: scale(1.1) !important;
+    }
+
+    /* Animasi Cahaya Menyala Berdenyut (Pulse) */
+    @keyframes aiGlowPulse {
+        0% {
+            /* Cahaya redup */
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.5), 0 0 20px rgba(220, 38, 38, 0.2);
+        }
+        100% {
+            /* Cahaya terang menyala */
+            box-shadow: 0 0 25px rgba(220, 38, 38, 1), 0 0 50px rgba(220, 38, 38, 0.7);
+        }
+    }
+</style>
+
+<!-- B. SCRIPT VOICEFLOW AI KONSULTASI -->
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { 
+            // ⚠️ GANTI BAGIAN DI BAWAH INI DENGAN PROJECT ID KAMU ⚠️
+            projectID: 'https://creator.voiceflow.com/share/6a5e1cb56fc8a567f9537da7/environment/main/draft' 
+          },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          assistant: {
+            // Pengaturan tampilan jendela chat agar serasi berwarna merah
+            color: '#dc2626', // Warna header chat merah
+            title: 'AI Konsultasi Artemis',
+            description: 'Asisten Pembelajaran STEAM'
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+
+<!-- MODAL ZOOM GAMBAR -->
+<div id="modalZoom" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4" onclick="this.classList.add('hidden')">
+    <div class="relative max-w-4xl w-full flex flex-col items-center">
+        <span class="text-white text-xs mb-2 bg-slate-800 px-3 py-1 rounded-full">Klik di mana saja untuk menutup ✖</span>
+        <img id="imgZoomTarget" src="" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl object-contain">
+    </div>
+</div>
+
+<script>
+function zoomGambar(url) {
+    document.getElementById('imgZoomTarget').src = url;
+    document.getElementById('modalZoom').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>

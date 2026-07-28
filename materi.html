@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Lengkap Energi Terbarukan & Dilema 3 Zona</title>
+
+  <!-- Script MathJax untuk render rumus Matematika & Fisika LaTeX -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f7fafc;
+      color: #2d3748;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .materi-container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1a365d;
+      margin-bottom: 25px;
+    }
+
+    /* CSS Accordion (Dipencet Memanjang ke Bawah) */
+    details {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      padding: 16px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+
+    details[open] {
+      border-color: #3182ce;
+      box-shadow: 0 4px 10px rgba(49, 130, 206, 0.12);
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.15rem;
+      color: #2b6cb0;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    summary:hover {
+      color: #2c5282;
+    }
+
+    .detail-content {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    /* Format Box Rumus */
+    .box-rumus {
+      background-color: #ebf8ff;
+      border-left: 4px solid #3182ce;
+      padding: 12px 18px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+
+    /* Format Box Gambar Placeholder */
+    .gambar-container {
+      text-align: center;
+      margin: 20px 0;
+      background: #f8fafc;
+      padding: 10px;
+      border: 1px dashed #cbd5e0;
+      border-radius: 6px;
+    }
+
+    .gambar-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .gambar-container p {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 6px;
+    }
+
+    /* Blok Kodingan Python */
+    pre {
+      background-color: #1a202c;
+      color: #f7fafc;
+      padding: 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #cbd5e0;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #edf2f7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="materi-container">
+  <h1>Materi & Panduan Energi Terbarukan</h1>
+
+  <!-- ================= BAGIAN 1 ================= -->
+  <details>
+    <summary>📘 1. Konsep Dasar Usaha, Daya, & Efisiensi Energi</summary>
+    <div class="detail-content">
+      <h3>Penjelasan Teori</h3>
+      <p><strong>Usaha ($W$)</strong> adalah energi yang disalurkan oleh gaya untuk memindahkan suatu benda[cite: 3]. <strong>Daya ($P$)</strong> adalah laju perubahan atau kecepatan dalam melakukan usaha per satuan waktu[cite: 3, 5]. Sedangkan <strong>Efisiensi ($\eta$)</strong> menunjukkan seberapa banyak energi masukan yang berhasil diubah menjadi energi berguna[cite: 3, 5].</p>
+
+      <div class="box-rumus">
+        <h4>Rumus-Rumus Utama:</h4>
+        <ul>
+          <li><strong>Usaha:</strong> $$W = F \cdot \Delta s$$ <em>(W = Joule, F = N, s = meter)</em>[cite: 3, 5]</li>
+          <li><strong>Daya:</strong> $$P = \frac{W}{t}$$ <em>(P = Watt, t = sekon)</em>[cite: 3, 5]</li>
+          <li><strong>Efisiensi Energi:</strong> $$\eta = \left( \frac{E_{\text{output}}}{E_{\text{input}}} \right) \times 100\%$$[cite: 3, 5]</li>
+          <li><strong>Energi Listrik & Biaya:</strong> $$W = V \cdot I \cdot t$$ <em>($1\text{ kWh} = 3,6 \times 10^6\text{ Joule}$)</em>[cite: 3, 4]</li>
+        </ul>
+      </div>
+
+      <!-- LINK GAMBAR KOSONG (SILAKAN ISI SRC) -->
+      <div class="gambar-container">
+        <img src="" alt="[Isi Link Gambar Konsep Usaha & Daya Di Sini]">
+        <p><em>Gambar 1.1: Visualisasi Usaha, Gaya, dan Perubahan Energi.</em></p>
+      </div>
+
+      <h4>Kodingan Perhitungan Python (Usaha & Daya):</h4>
+<pre><code># Python: Hitung Usaha, Daya, dan Efisiensi
+def hitung_usaha_daya(gaya_n, jarak_m, waktu_s):
+    usaha = gaya_n * jarak_m
+    daya = usaha / waktu_s
+    return usaha, daya
+
+w, p = hitung_usaha_daya(100, 5, 2)
+print(f"Usaha: {w} Joule | Daya: {p} Watt")
+</code></pre>
+    </div>
+  </details>
+
+
+  <!-- ================= BAGIAN 2 ================= -->
+  <details>
+    <summary>📗 2. Bentuk & Perubahan Energi (Hukum Kekekalan Energi)</summary>
+    <div class="detail-content">
+      <h3>Penjelasan Teori</h3>
+      <p>Energi tidak dapat diciptakan atau dimusnahkan, tetapi hanya dapat dikonversi dari satu bentuk ke bentuk lainnya (Hukum Kekekalan Energi)[cite: 3, 5]. Dalam sistem mekanik, energi total dinamakan Energi Mekanik yang merupakan penjumlahan Energi Kinetik (gerak) dan Energi Potensial (ketinggian/posisi)[cite: 3, 5].</p>
+
+      <div class="box-rumus">
+        <h4>Rumus-Rumus Utama:</h4>
+        <ul>
+          <li><strong>Energi Kinetik:</strong> $$EK = \frac{1}{2} m v^2$$[cite: 3, 5]</li>
+          <li><strong>Energi Potensial Gravitasi:</strong> $$EP = m \cdot g \cdot h$$[cite: 3, 5]</li>
+          <li><strong>Energi Mekanik Total:</strong> $$EM = EK + EP$$[cite: 3, 5]</li>
+          <li><strong>Persamaan Kekekalan Energi:</strong> $$EM_1 = EM_2 \implies EP_1 + EK_1 = EP_2 + EK_2$$[cite: 3, 5]</li>
+        </ul>
+      </div>
+
+      <!-- LINK GAMBAR KOSONG -->
+      <div class="gambar-container">
+        <img src="" alt="[Isi Link Gambar Perubahan Energi Di Sini]">
+        <p><em>Gambar 2.1: Diagram Konversi Energi Potensial menjadi Energi Kinetik.</em></p>
+      </div>
+
+      <h4>Kodingan Perhitungan Python (Energi Mekanik):</h4>
+<pre><code># Python: Hitung Energi Kinetik & Potensial
+def hitung_energi_mekanik(massa, kecepatan, tinggi, g=9.8):
+    ek = 0.5 * massa * (kecepatan ** 2)
+    ep = massa * g * tinggi
+    em = ek + ep
+    return ek, ep, em
+
+ek, ep, em = hitung_energi_mekanik(massa=2, kecepatan=10, tinggi=5)
+print(f"EK: {ek} J | EP: {ep} J | Total EM: {em} J")
+</code></pre>
+    </div>
+  </details>
+
+
+  <!-- ================= BAGIAN 3 ================= -->
+  <details>
+    <summary>📙 3. Klasifikasi Sumber Energi (Primer/Sekunder & Terbarukan/Non-Terbarukan)</summary>
+    <div class="detail-content">
+      <h3>Penjelasan Teori & Pengelompokan</h3>
+      <p>Sumber energi di bumi dikelompokkan berdasarkan cara perolehannya serta tingkat ketersediaannya di alam[cite: 4, 5]:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kategori</th>
+            <th>Jenis Sumber Energi</th>
+            <th>Contoh & Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2"><strong>Berdasarkan Pemakaian</strong>[cite: 4, 5]</td>
+            <td><strong>Energi Primer</strong></td>
+            <td>Diambil langsung dari alam tanpa olahan (Matahari, Angin, Air, Minyak Bumi)[cite: 4, 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Energi Sekunder</strong></td>
+            <td>Hasil olahan dari energi primer (Listrik, Bensin, LPG, Biogas)[cite: 5].</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>Berdasarkan Ketersediaan</strong>[cite: 4, 5]</td>
+            <td><strong>Tak Terbarukan (Fosil)</strong></td>
+            <td>Jumlah terbatas, akan habis, butuh jutaan tahun (Batu Bara, Minyak Bumi, Gas Alam)[cite: 4, 5].</td>
+          </tr>
+          <tr>
+            <td><strong>Terbarukan (EBT)</strong></td>
+            <td>Tidak pernah habis, dapat dipulihkan cepat, ramah lingkungan (PLTS, PLTB, PLTA, Geotermal, Biomassa)[cite: 3, 4, 5].</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- LINK GAMBAR KOSONG -->
+      <div class="gambar-container">
+        <img src="" alt="[Isi Link Gambar Peta Klasifikasi Energi Di Sini]">
+        <p><em>Gambar 3.1: Diagram Klasifikasi Energi Primer, Sekunder, dan Terbarukan.</em></p>
+      </div>
+    </div>
+  </details>
+
+
+  <!-- ================= BAGIAN 4 ================= -->
+  <details>
+    <summary>🚀 4. Panduan Dilema 3 Zona (Air, Angin, Matahari)</summary>
+    <div class="detail-content">
+      <p>Berikut adalah paduan rumus dan perhitungan khusus untuk membantu siswa memecahkan masalah pada masing-masing zona proyek:</p>
+
+      <!-- ZONA AIR -->
+      <div style="margin-bottom: 25px;">
+        <h4>🌊 A. Zona Air (Pembangkit Listrik Tenaga Air / PLTA)</h4>
+        <p>Berfokus pada pemanfaatan debit air ($Q$) dan ketinggian jatuhnya air ($h$) untuk memutar turbin[cite: 3, 5].</p>
+        
+        <div class="box-rumus">
+          $$Q = \frac{V}{t}$$
+          $$P_{\text{air}} = \eta \cdot \rho \cdot Q \cdot g \cdot h$$
+          <small><em>($\rho_{\text{air}} = 1000\text{ kg/m}^3$, $g = 9,8\text{ m/s}^2$, $\eta$ = Efisiensi turbin)[cite: 3].</em></small>
+        </div>
+
+        <div class="gambar-container">
+          <img src="" alt="[Isi Link Gambar Zona Air Di Sini]">
+          <p><em>Gambar 4.1: Skema Turbin dan Debit Air Zona Air.</em></p>
+        </div>
+
+<pre><code># Python: Solusi Dilema Zona Air
+def hitung_plta(debit_q, tinggi_h, efisiensi=0.85):
+    rho, g = 1000, 9.8
+    p_watt = efisiensi * rho * debit_q * g * tinggi_h
+    return p_watt / 1000  # Hasil dalam kW
+
+print(f"Daya Listrik Air: {hitung_plta(0.5, 10):.2f} kW")
+</code></pre>
+      </div>
+
+      <hr>
+
+      <!-- ZONA ANGIN -->
+      <div style="margin-bottom: 25px;">
+        <h4>💨 B. Zona Angin (Pembangkit Listrik Tenaga Angin / PLTB)</h4>
+        <p>Menganalisis kecepatan angin ($v$) dan luas sapuan baling-baling ($A$)[cite: 5]. Kecepatan angin berpengaruh secara kuadratik/kubik[cite: 3, 5].</p>
+
+        <div class="box-rumus">
+          $$A = \pi \cdot r^2$$
+          $$P_{\text{angin}} = \frac{1}{2} \cdot \rho_{\text{udara}} \cdot A \cdot v^3 \cdot \eta$$
+          <small><em>($\rho_{\text{udara}} \approx 1,225\text{ kg/m}^3$, $v$ = Kecepatan angin m/s).</em></small>
+        </div>
+
+        <div class="gambar-container">
+          <img src="" alt="[Isi Link Gambar Zona Angin Di Sini]">
+          <p><em>Gambar 4.2: Skema Kincir Angin & Area Sapuan Baling-Baling.</em></p>
+        </div>
+
+<pre><code>import math
+
+# Python: Solusi Dilema Zona Angin
+def hitung_pltb(jari_jari_r, kecepatan_v, efisiensi=0.35):
+    rho_udara = 1.225
+    area = math.pi * (jari_jari_r ** 2)
+    p_watt = 0.5 * rho_udara * area * (kecepatan_v ** 3) * efisiensi
+    return p_watt / 1000  # Hasil dalam kW
+
+print(f"Daya Listrik Angin: {hitung_pltb(2.5, 8):.2f} kW")
+</code></pre>
+      </div>
+
+      <hr>
+
+      <!-- ZONA MATAHARI -->
+      <div>
+        <h4>☀️ C. Zona Matahari (Pembangkit Listrik Tenaga Surya / PLTS)</h4>
+        <p>Menghitung konversi radiasi matahari menjadi listrik DC menggunakan panel sel surya berdasarkan intensitas dan luas panel[cite: 4, 5].</p>
+
+        <div class="box-rumus">
+          $$W = V \cdot I \cdot t$$
+          $$E_{\text{harian}} = A \cdot r \cdot H \cdot PR$$
+          <small><em>($A$ = Luas Panel $m^2$, $r$ = Efisiensi %, $H$ = Radiasi Matahari $\text{kWh/m}^2$, $PR$ = Performance Ratio $\approx 0,75$).</em></small>
+        </div>
+
+        <div class="gambar-container">
+          <img src="" alt="[Isi Link Gambar Zona Matahari Di Sini]">
+          <p><em>Gambar 4.3: Skema Panel Fotovoltaik & Penyinaran Matahari.</em></p>
+        </div>
+
+<pre><code># Python: Solusi Dilema Zona Matahari
+def hitung_plts(luas_m2, efisiensi_persen, jam_sinar=4.5):
+    pr = 0.75
+    energi_kwh = luas_m2 * (efisiensi_persen / 100) * jam_sinar * pr
+    return energi_kwh
+
+print(f"Hasil Listrik Surya: {hitung_plts(10, 18):.2f} kWh/hari")
+</code></pre>
+      </div>
+
+    </div>
+  </details>
+
+</div>
+
+</body>
+</html>
