@@ -125,7 +125,6 @@
     <!-- 5. MASALAH AWAL (Video YouTube & Pertanyaan Pemantik Essay) -->
     <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
         <div class="text-center mb-8">
-            <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Aktivitas 1</span>
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Video Masalah Awal</h2>
             <p class="text-xs text-slate-500 mt-1">Simak video pemicu masalah berikut ini sebelum memasuki kegiatan inti pembelajaran!</p>
         </div>
@@ -292,9 +291,6 @@ function prosesJawaban(e) {
 
         <!-- 1. HEADER & INTRO STORY -->
         <div class="text-center space-y-3">
-            <span class="bg-amber-100 text-amber-800 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full border border-amber-300">
-                🏫 Misi Studi Kasus
-            </span>
             <h2 class="text-2xl sm:text-4xl font-black text-slate-900">
                 Petualangan di SMA Artemis
             </h2>
@@ -411,43 +407,58 @@ function prosesJawaban(e) {
 </section>
 
     <!-- 7. PUSAT LITERATUR (Semua Materi & Rumus Fisika) -->
-    <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Pusat Literatur Energi</h2>
-            <p class="text-xs text-slate-500 mt-1">Semua materi energi terbarukan & rumus fisika penunjang ada di sini</p>
-        </div>
+<section id="pusat-literatur" style="max-width: 950px; margin: 40px auto; padding: 0 20px; font-family: 'Segoe UI', Roboto, sans-serif;">
+  
+  <!-- ALAS PUTIH (CARD CONTAINER UTAMA) -->
+  <div style="background: #ffffff; border-radius: 16px; padding: 36px 32px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; text-align: center; position: relative; overflow: hidden;">
 
-        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-            <!-- Materi Surya -->
-            <div class="border-b border-slate-100 pb-6">
-                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">☀️ 1. Energi Surya (Solar Energy)</h3>
-                <p class="text-xs text-slate-600 mb-3">Mengubah radiasi foton sinar matahari menjadi energi listrik DC melalui sel Photovoltaic (PV).</p>
-                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
-                    $$\text{Daya Surya }(P) = I \cdot A \cdot \eta$$
-                </div>
-            </div>
+    <!-- Badge Kategori Atas -->
+    <div style="display: inline-block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; font-size: 0.75rem; font-weight: 700; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">
+      E-Literasi Energi
+    </div>
 
-            <!-- Materi Angin -->
-            <div class="border-b border-slate-100 pb-6">
-                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">🌀 2. Energi Angin (Wind Energy)</h3>
-                <p class="text-xs text-slate-600 mb-3">Memanfaatkan energi kinetik aliran udara untuk memutar bilah turbin yang menyambung ke rotor generator.</p>
-                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
-                    $$\text{Daya Angin }(P) = \frac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot \eta$$
-                </div>
-            </div>
+    <!-- Judul Utama -->
+    <h2 style="color: #0f172a; font-size: 1.8rem; font-weight: 800; margin: 0 0 12px 0; letter-spacing: -0.3px;">
+      Eksplorasi Materi
+    </h2>
 
-            <!-- Materi Air -->
-            <div>
-                <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">💧 3. Energi Air (Mikrohidro)</h3>
-                <p class="text-xs text-slate-600 mb-3">Memanfaatkan energi potensial beda tinggi jatuh air (*head*) dan debit aliran fluida.</p>
-                <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 text-xs font-bold text-emerald-900">
-                    $$\text{Daya Air }(P) = \rho \cdot Q \cdot g \cdot h \cdot \eta$$
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Kata Pengantar / Deskripsi Lebih Hidup -->
+    <p style="color: #475569; font-size: 0.95rem; line-height: 1.65; max-width: 680px; margin: 0 auto 24px auto;">
+      Selamat datang di pusat bahan ajar digital! Di sini kamu dapat mengeksplorasi seluruh materi dasar energi terbarukan, memahami prinsip kerja berbagai teknologi pembangkit listrik, hingga mempelajari rumus dan persamaan fisika yang menyertainya secara runtut.
+    </p>
 
-<!-- 7. STUDIO INOVASI -->
+    <!-- Poin-poin Ringkas (Fitur Penunjang Agar Kartu Terisi Rapi) -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 28px;">
+      
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 16px; font-size: 0.82rem; color: #334155; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #dc2626; font-size: 1rem; font-weight: bold;">✓</span> Konsep Energi Terbarukan
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 16px; font-size: 0.82rem; color: #334155; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #dc2626; font-size: 1rem; font-weight: bold;">✓</span> Prinsip Kerja PLTS, PLTB, PLTA, dll.
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 16px; font-size: 0.82rem; color: #334155; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #dc2626; font-size: 1rem; font-weight: bold;">✓</span> Persamaan Daya & Perhitungan
+      </div>
+
+    </div>
+
+    <!-- Tombol Akses Materi -->
+    <div style="display: flex; justify-content: center;">
+      <a href="materi.html" style="display: inline-flex; align-items: center; gap: 10px; background: #dc2626; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 0.92rem; padding: 12px 28px; border-radius: 8px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25); transition: all 0.2s ease-in-out;"
+         onmouseover="this.style.background='#b91c1c'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(220, 38, 38, 0.35)';" 
+         onmouseout="this.style.background='#dc2626'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(220, 38, 38, 0.25)';">
+        <span>Pelajari Materi</span>
+        <span style="font-size: 1.1rem; line-height: 1;">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- 8. STUDIO INOVASI -->
 <section id="studio-inovasi" class="py-16 bg-slate-50 border-b border-slate-200">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -644,7 +655,6 @@ function hitungDampakCO2() {
     <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
         <div class="text-center mb-8">
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Refleksi Pembelajaran</h2>
-            <p class="text-xs text-slate-500 mt-1">Open-Ended Question</p>
         </div>
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
