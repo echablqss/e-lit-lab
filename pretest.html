@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretest Literasi Energi | E-Lit Lab</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #172b4d;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 6%;
+            background: #e52525;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .topbar-title {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .topbar-progress {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 45px 20px 70px;
+        }
+
+        .intro-card,
+        .question-card,
+        .result-card {
+            background: #ffffff;
+            border: 1px solid #e1e7ef;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .intro-card {
+            padding: 40px;
+            margin-bottom: 25px;
+        }
+
+        .intro-card h1 {
+            margin: 0 0 10px;
+            font-size: 34px;
+        }
+
+        .intro-card p {
+            color: #5b6b7d;
+            line-height: 1.7;
+        }
+
+        .name-box {
+            margin-top: 25px;
+        }
+
+        .name-box label {
+            display: block;
+            margin-bottom: 9px;
+            font-weight: 700;
+        }
+
+        .name-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cfd8e3;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .name-box input:focus {
+            border-color: #e52525;
+            box-shadow: 0 0 0 3px rgba(229, 37, 37, 0.10);
+        }
+
+        .start-button,
+        .next-button,
+        .restart-button {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 22px;
+            background: #e52525;
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .start-button {
+            margin-top: 18px;
+        }
+
+        .start-button:hover,
+        .next-button:hover,
+        .restart-button:hover {
+            transform: translateY(-1px);
+            opacity: 0.92;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .question-card {
+            overflow: hidden;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 25px;
+            background: #fff5f5;
+            border-bottom: 1px solid #f0dcdc;
+        }
+
+        .question-number {
+            font-size: 16px;
+            font-weight: 800;
+            color: #b71919;
+        }
+
+        .timer {
+            min-width: 120px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background: #172b4d;
+            color: white;
+            text-align: center;
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .timer.warning {
+            background: #b45309;
+        }
+
+        .timer.danger {
+            background: #b91c1c;
+        }
+
+        .question-body {
+            padding: 30px;
+        }
+
+        .question-text {
+            margin: 0 0 25px;
+            font-size: 18px;
+            line-height: 1.75;
+            color: #172b4d;
+            white-space: pre-line;
+        }
+
+        .question-table {
+            width: 100%;
+            margin: 0 0 25px;
+            border-collapse: collapse;
+        }
+
+        .question-table th,
+        .question-table td {
+            padding: 10px;
+            border: 1px solid #cfd8e3;
+            text-align: center;
+        }
+
+        .question-table th {
+            background: #f3f6fa;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid #d9e1ea;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.15s ease;
+        }
+
+        .option:hover {
+            background: #fafcff;
+            border-color: #aebdce;
+        }
+
+        .option.selected {
+            background: #fff2f2;
+            border-color: #e52525;
+        }
+
+        .option input {
+            margin-top: 4px;
+            accent-color: #e52525;
+        }
+
+        .option-text {
+            line-height: 1.55;
+        }
+
+        .question-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px 30px 30px;
+        }
+
+        .result-card {
+            padding: 35px;
+        }
+
+        .result-card h1 {
+            margin-top: 0;
+        }
+
+        .score-box {
+            margin: 20px 0 30px;
+            padding: 25px;
+            border-radius: 16px;
+            background: #f3f7fb;
+            text-align: center;
+        }
+
+        .score-box .score {
+            display: block;
+            font-size: 46px;
+            font-weight: 900;
+            color: #e52525;
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .result-table th,
+        .result-table td {
+            padding: 12px;
+            border: 1px solid #d9e1ea;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .result-table th {
+            background: #f3f6fa;
+        }
+
+        .correct {
+            color: #15803d;
+            font-weight: 800;
+        }
+
+        .wrong {
+            color: #b91c1c;
+            font-weight: 800;
+        }
+
+        .answer-review {
+            margin-top: 8px;
+            color: #53657a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 12px;
+            background: #eef2f7;
+            color: #172b4d;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .intro-card,
+            .result-card {
+                padding: 25px 20px;
+            }
+
+            .question-body {
+                padding: 22px 18px;
+            }
+
+            .question-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .question-footer {
+                padding: 15px 18px 22px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-title">E-Lit Lab — Pretest Literasi Energi</div>
+        <div class="topbar-progress" id="topProgress">Belum dimulai</div>
+    </header>
+
+    <main class="page">
+
+        <!-- HALAMAN IDENTITAS -->
+        <section class="intro-card" id="introScreen">
+            <h1>Pretest Literasi Energi</h1>
+
+            <p>
+                Bacalah setiap soal dengan teliti dan pilih satu jawaban yang
+                paling tepat. Soal diberikan satu per satu. Setiap soal memiliki
+                durasi 90 menit. Setelah jawaban dipilih, tekan tombol
+                <strong>Soal Berikutnya</strong>.
+            </p>
+
+            <div class="name-box">
+                <label for="studentName">Nama Siswa</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Masukkan nama lengkap"
+                    autocomplete="name"
+                >
+            </div>
+
+            <button class="start-button" onclick="startTest()">
+                Mulai Pretest
+            </button>
+        </section>
+
+        <!-- HALAMAN SOAL -->
+        <section class="question-card hidden" id="quizScreen">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">
+                    Soal 1 dari 15
+                </div>
+
+                <div class="timer" id="timer">
+                    90:00:00
+                </div>
+            </div>
+
+            <div class="question-body">
+                <div id="questionContent"></div>
+            </div>
+
+            <div class="question-footer">
+                <button class="next-button" id="nextButton" onclick="nextQuestion()">
+                    Soal Berikutnya →
+                </button>
+            </div>
+        </section>
+
+        <!-- HALAMAN HASIL -->
+        <section class="result-card hidden" id="resultScreen">
+            <h1>Hasil Pretest</h1>
+
+            <p id="resultGreeting"></p>
+
+            <div class="score-box">
+                <span>Nilai</span>
+                <span class="score" id="finalScore">0</span>
+                <span id="scoreDetail"></span>
+            </div>
+
+            <h2>Rekap Jawaban</h2>
+
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Hasil</th>
+                        <th>Jawaban Kamu</th>
+                        <th>Kunci</th>
+                    </tr>
+                </thead>
+                <tbody id="resultBody"></tbody>
+            </table>
+
+            <div class="result-actions">
+                <button class="restart-button" onclick="restartTest()">
+                    Kerjakan Ulang
+                </button>
+
+                <a class="secondary-button" href="index_rightnow.html">
+                    Kembali ke Beranda
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        /*
+         * ============================================================
+         * DATA SOAL
+         * ============================================================
+         * 15 soal berikut dipertahankan sesuai versi soal yang telah
+         * disusun sebelumnya.
+         */
+
+        const questions = [
+            {
+                number: 1,
+                text: `Indonesia memiliki banyak wilayah yang berpotensi dikembangkan sebagai pembangkit listrik tenaga panas bumi. Sebagian besar wilayah tersebut berada di sekitar kawasan gunung api. Kondisi ini berkaitan dengan posisi Indonesia yang berada pada pertemuan beberapa lempeng tektonik.
+
+Jika pemerintah akan menentukan wilayah yang diprioritaskan untuk pembangunan Pembangkit Listrik Tenaga Panas Bumi (PLTP), alasan geologis yang paling tepat adalah ...`,
+                options: [
+                    `Aktivitas tektonik dapat menyebabkan wilayah Indonesia menerima curah hujan yang lebih tinggi sehingga air tanah lebih banyak tersedia.`,
+                    `Pertemuan lempeng tektonik menyebabkan aktivitas vulkanik yang dapat menyediakan sumber panas dari dalam bumi untuk dimanfaatkan sebagai energi panas bumi.`,
+                    `Gunung api aktif menghasilkan energi listrik secara langsung sehingga pembangkit panas bumi tidak membutuhkan sistem konversi energi.`,
+                    `Wilayah yang memiliki banyak gunung api selalu memiliki intensitas cahaya matahari yang lebih tinggi dibandingkan wilayah lainnya.`,
+                    `Aktivitas tektonik menyebabkan seluruh wilayah Indonesia memiliki temperatur permukaan yang sama sepanjang tahun.`
+                ],
+                answer: 1
+            },
+
+            {
+                number: 2,
+                text: `Sebuah sekolah memasang turbin angin kecil untuk membantu memenuhi kebutuhan listrik laboratorium. Pada hari pertama, kecepatan angin rata-rata cukup tinggi sehingga bilah turbin berputar lebih cepat dan lampu indikator menghasilkan cahaya yang lebih terang. Pada hari kedua, kecepatan angin lebih rendah sehingga putaran turbin dan keluaran listrik menurun.
+
+Berdasarkan kondisi tersebut, analisis yang paling tepat mengenai perubahan energi pada sistem PLTB adalah ...`,
+                options: [
+                    `Energi listrik berubah menjadi energi kinetik angin sehingga bilah turbin dapat berputar.`,
+                    `Energi kinetik angin diubah menjadi energi mekanik melalui putaran turbin, kemudian generator mengubahnya menjadi energi listrik.`,
+                    `Energi mekanik dari generator diubah menjadi energi kinetik angin sehingga menghasilkan energi listrik.`,
+                    `Energi potensial gravitasi angin diubah langsung menjadi energi listrik tanpa melalui gerakan turbin.`,
+                    `Energi cahaya dari lingkungan diubah menjadi energi mekanik oleh bilah turbin sebelum generator menghasilkan listrik.`
+                ],
+                answer: 1
+            },
+
+            {
+                number: 3,
+                text: `Dua lokasi dipertimbangkan untuk pembangunan Pembangkit Listrik Tenaga Mikrohidro (PLTMH). Data hasil survei ditunjukkan berikut.
+
+Parameter | Lokasi A | Lokasi B
+Debit air (Q) | 2 m³/s | 3 m³/s
+Tinggi jatuh air (h) | 8 m | 5 m
+Efisiensi (η) | 80% | 80%
+
+Daya air dapat diperkirakan menggunakan persamaan:
+
+P = ρQghη
+
+dengan ρ dan g dianggap sama untuk kedua lokasi.
+
+Berdasarkan data tersebut, pernyataan yang paling tepat adalah ...`,
+                options: [
+                    `Lokasi A pasti menghasilkan daya lebih besar karena memiliki tinggi jatuh air yang lebih besar.`,
+                    `Lokasi B pasti menghasilkan daya lebih besar karena debit air merupakan satu-satunya faktor yang menentukan daya.`,
+                    `Kedua lokasi menghasilkan daya yang sama karena nilai efisiensinya sama.`,
+                    `Lokasi B berpotensi menghasilkan daya lebih besar karena hasil perkalian debit dan tinggi jatuh airnya lebih besar.`,
+                    `Lokasi A tidak dapat digunakan karena debit airnya lebih kecil daripada lokasi B.`
+                ],
+                answer: 3,
+                table: {
+                    headers: ["Parameter", "Lokasi A", "Lokasi B"],
+                    rows: [
+                        ["Debit air (Q)", "2 m³/s", "3 m³/s"],
+                        ["Tinggi jatuh air (h)", "8 m", "5 m"],
+                        ["Efisiensi (η)", "80%", "80%"]
+                    ]
+                }
+            },
+
+            {
+                number: 4,
+                text: `Sebuah pemerintah daerah ingin mengurangi ketergantungan terhadap pembangkit listrik berbahan bakar fosil. Salah satu alternatif yang dipertimbangkan adalah pengembangan PLTS dan PLTB di beberapa wilayah.
+
+Alasan yang paling tepat untuk mendukung pengembangan energi terbarukan tersebut adalah ...`,
+                options: [
+                    `Energi terbarukan selalu menghasilkan listrik dengan jumlah yang sama setiap saat tanpa dipengaruhi kondisi lingkungan.`,
+                    `Penggunaan energi terbarukan pada tahap pengoperasian umumnya menghasilkan emisi langsung yang lebih rendah dibandingkan pembakaran bahan bakar fosil.`,
+                    `Seluruh teknologi energi terbarukan tidak membutuhkan biaya pemeliharaan selama masa penggunaannya.`,
+                    `Semua sumber energi terbarukan memiliki kapasitas yang lebih besar daripada pembangkit berbahan bakar fosil.`,
+                    `Penggunaan energi terbarukan dapat menghilangkan seluruh dampak lingkungan dari kegiatan produksi energi.`
+                ],
+                answer: 1
+            },
+
+            {
+                number: 5,
+                text: `Sebuah desa di wilayah Nusa Tenggara Timur memiliki kondisi sebagai berikut:
+
+- intensitas sinar matahari tinggi hampir sepanjang tahun;
+- musim kemarau berlangsung cukup panjang;
+- sungai dengan debit air besar sulit ditemukan;
+- kecepatan angin tidak selalu stabil;
+- sebagian besar rumah belum terhubung dengan jaringan listrik.
+
+Pemerintah desa hanya memiliki anggaran untuk membangun satu jenis pembangkit utama.
+
+Berdasarkan kondisi tersebut, teknologi yang paling sesuai untuk diprioritaskan adalah ...`,
+                options: [
+                    `PLTA karena pembangkit tenaga air selalu dapat digunakan tanpa dipengaruhi kondisi wilayah.`,
+                    `PLTB karena semua wilayah terbuka memiliki kecepatan angin yang cukup untuk menghasilkan listrik.`,
+                    `PLTU karena bahan bakar fosil dapat menghasilkan listrik tanpa bergantung pada kondisi cuaca.`,
+                    `PLTS karena sumber energi matahari tersedia melimpah dan sesuai dengan karakteristik wilayah tersebut.`,
+                    `PLTBm karena wilayah yang kering selalu memiliki jumlah limbah biomassa yang tinggi.`
+                ],
+                answer: 3
+            },
+
+            {
+                number: 6,
+                text: `Sebuah sekolah menggunakan 100 lampu pijar berdaya 60 W. Sekolah kemudian mempertimbangkan menggantinya dengan lampu LED berdaya 9 W dengan tingkat pencahayaan yang dianggap setara.
+
+Berdasarkan data tersebut, alasan paling kuat untuk mengganti lampu pijar dengan LED adalah ...`,
+                options: [
+                    `Lampu LED memiliki daya lebih kecil sehingga kebutuhan energi listrik dan emisi yang terkait dengan penggunaan listrik dapat dikurangi.`,
+                    `Lampu LED tidak membutuhkan energi listrik sehingga penggunaannya tidak menghasilkan konsumsi energi.`,
+                    `Lampu pijar menghasilkan cahaya lebih terang sehingga membutuhkan emisi yang lebih besar.`,
+                    `Lampu LED tidak memiliki umur pakai sehingga sekolah tidak perlu menggantinya kembali.`,
+                    `Penggunaan LED hanya memberikan perubahan pada tampilan ruang kelas tanpa berhubungan dengan efisiensi energi.`
+                ],
+                answer: 0,
+                table: {
+                    headers: ["Jenis lampu", "Daya", "Umur pakai", "Emisi CO₂/1.000 jam"],
+                    rows: [
+                        ["Lampu pijar", "60 W", "1.000 jam", "±51 kg"],
+                        ["Lampu LED", "9 W", "25.000 jam", "±7,65 kg"]
+                    ]
+                }
+            },
+
+            {
+                number: 7,
+                text: `Sebuah desa menggunakan PLTS sebagai sumber listrik utama. Selama musim hujan, intensitas cahaya matahari menurun selama beberapa hari sehingga produksi listrik PLTS tidak mampu memenuhi seluruh kebutuhan warga.
+
+Beberapa alternatif yang diusulkan adalah:
+
+1. menambah panel surya tanpa menambah sistem penyimpanan;
+2. memasang baterai untuk menyimpan energi berlebih;
+3. menggabungkan PLTS dengan sumber energi lain yang tersedia di wilayah tersebut;
+4. mengganti seluruh PLTS dengan PLTU batu bara.
+
+Jika tujuan utama desa adalah menjaga keandalan pasokan sekaligus mempertahankan penggunaan energi yang lebih ramah lingkungan, keputusan yang paling tepat adalah ...`,
+                options: [
+                    `hanya menambah panel surya tanpa mempertimbangkan penyimpanan energi.`,
+                    `mengganti seluruh PLTS dengan PLTU agar listrik selalu tersedia.`,
+                    `menghentikan penggunaan PLTS selama musim hujan.`,
+                    `menggunakan sistem penyimpanan energi dan/atau sistem pembangkit hibrida yang sesuai dengan potensi energi lokal.`,
+                    `mengurangi jumlah panel surya agar konsumsi listrik warga ikut berkurang.`
+                ],
+                answer: 3
+            },
+
+            {
+                number: 8,
+                text: `Perhatikan data hipotetik berikut.
+
+Tahun | Konsentrasi CO₂ atmosfer | Suhu rata-rata global relatif terhadap kondisi awal
+1990 | 354 ppm | +0,3°C
+2000 | 370 ppm | +0,5°C
+2010 | 390 ppm | +0,7°C
+2020 | 414 ppm | +1,0°C
+
+Data tersebut menunjukkan adanya peningkatan konsentrasi CO₂ yang disertai peningkatan suhu rata-rata global.
+
+Kesimpulan yang paling tepat berdasarkan data tersebut adalah ...`,
+                options: [
+                    `Peningkatan CO₂ menyebabkan suhu global selalu meningkat dengan nilai yang sama setiap tahun.`,
+                    `Peningkatan konsentrasi CO₂ menunjukkan adanya hubungan dengan perubahan suhu global, sehingga pengurangan emisi menjadi salah satu upaya penting dalam mitigasi perubahan iklim.`,
+                    `Peningkatan suhu global membuktikan bahwa seluruh perubahan iklim hanya disebabkan oleh CO₂.`,
+                    `Konsentrasi CO₂ yang semakin tinggi menyebabkan permukaan bumi menerima lebih sedikit energi matahari.`,
+                    `Peningkatan suhu global menunjukkan bahwa penggunaan energi fosil semakin efisien.`
+                ],
+                answer: 1,
+                table: {
+                    headers: ["Tahun", "Konsentrasi CO₂ atmosfer", "Suhu rata-rata global"],
+                    rows: [
+                        ["1990", "354 ppm", "+0,3°C"],
+                        ["2000", "370 ppm", "+0,5°C"],
+                        ["2010", "390 ppm", "+0,7°C"],
+                        ["2020", "414 ppm", "+1,0°C"]
+                    ]
+                }
+            },
+
+            {
+                number: 9,
+                text: `Kendaraan listrik tidak menghasilkan emisi gas buang secara langsung ketika digunakan. Namun, dampak lingkungan kendaraan listrik juga dipengaruhi oleh sumber listrik yang digunakan untuk mengisi baterainya.
+
+Perhatikan dua kondisi berikut.
+
+Wilayah A: sebagian besar listrik berasal dari PLTU batu bara.
+Wilayah B: sebagian besar listrik berasal dari PLTS, PLTA, dan sumber energi terbarukan lainnya.
+
+Berdasarkan kondisi tersebut, kesimpulan yang paling tepat adalah ...`,
+                options: [
+                    `Kendaraan listrik di Wilayah A tetap dapat berkaitan dengan emisi karena listrik yang digunakan untuk mengisi baterainya masih berasal dari bahan bakar fosil.`,
+                    `Kendaraan listrik di Wilayah A pasti menghasilkan emisi lebih besar daripada kendaraan berbahan bakar bensin.`,
+                    `Kendaraan listrik di Wilayah B tidak menggunakan energi karena sumber listriknya berasal dari energi terbarukan.`,
+                    `Kendaraan listrik tidak memiliki hubungan dengan sistem pembangkitan listrik.`,
+                    `Penggunaan kendaraan listrik otomatis menghilangkan seluruh emisi karbon tanpa bergantung pada sumber listrik.`
+                ],
+                answer: 0
+            },
+
+            {
+                number: 10,
+                text: `Sebuah sekolah telah memasang PLTS untuk mengurangi penggunaan listrik dari jaringan. Namun, hasil evaluasi menunjukkan bahwa konsumsi listrik sekolah masih tinggi karena lampu, AC, dan proyektor sering dibiarkan menyala ketika ruang kelas kosong.
+
+Jika sekolah ingin meningkatkan manfaat pemasangan PLTS sekaligus mengurangi konsumsi energi, tindakan yang paling tepat adalah ...`,
+                options: [
+                    `menambah panel surya sebanyak mungkin tanpa mengubah kebiasaan penggunaan listrik.`,
+                    `meningkatkan kapasitas peralatan listrik agar energi dari PLTS dapat digunakan lebih banyak.`,
+                    `menggabungkan pemanfaatan PLTS dengan program efisiensi energi dan perubahan kebiasaan penggunaan listrik warga sekolah.`,
+                    `mematikan PLTS ketika konsumsi listrik sekolah meningkat.`,
+                    `mengganti seluruh peralatan listrik dengan peralatan berdaya lebih besar agar pekerjaan selesai lebih cepat.`
+                ],
+                answer: 2
+            },
+
+            {
+                number: 11,
+                text: `Sebuah sekolah ingin memasang PLTS. Hasil pengukuran intensitas cahaya matahari selama empat waktu ditunjukkan berikut.
+
+Waktu | Intensitas matahari
+08.00 | 450 W/m²
+10.00 | 750 W/m²
+12.00 | 950 W/m²
+14.00 | 700 W/m²
+
+Panel surya yang digunakan memiliki luas dan efisiensi yang sama pada setiap waktu pengukuran.
+
+Berdasarkan data tersebut, kesimpulan yang paling tepat adalah ...`,
+                options: [
+                    `Panel menghasilkan listrik paling besar pada pukul 08.00 karena suhu lingkungan masih rendah.`,
+                    `Panel menghasilkan listrik paling besar sekitar pukul 12.00 karena intensitas radiasi matahari yang diterima paling tinggi.`,
+                    `Panel menghasilkan listrik sama besar sepanjang hari karena luas panel tidak berubah.`,
+                    `Panel tidak dapat menghasilkan listrik pada pukul 14.00 karena intensitas matahari mulai menurun.`,
+                    `Efisiensi panel pasti meningkat dua kali lipat ketika intensitas matahari meningkat.`
+                ],
+                answer: 1,
+                table: {
+                    headers: ["Waktu", "Intensitas matahari"],
+                    rows: [
+                        ["08.00", "450 W/m²"],
+                        ["10.00", "750 W/m²"],
+                        ["12.00", "950 W/m²"],
+                        ["14.00", "700 W/m²"]
+                    ]
+                }
+            },
+
+            {
+                number: 12,
+                text: `Tim pengembang ingin menentukan lokasi pembangunan PLTB. Hasil survei menunjukkan:
+
+Lokasi A: kecepatan angin rata-rata 3 m/s, dekat permukiman.
+Lokasi B: kecepatan angin rata-rata 7 m/s, area terbuka.
+Lokasi C: kecepatan angin rata-rata 4 m/s, banyak bangunan tinggi.
+Lokasi D: kecepatan angin rata-rata 5 m/s, area terbuka.
+Lokasi E: kecepatan angin rata-rata 2 m/s, area terbuka.
+
+Tim ingin memilih lokasi yang memiliki potensi angin baik sekaligus kondisi lingkungan yang mendukung pemasangan turbin.
+
+Lokasi yang paling rasional untuk diprioritaskan adalah ...`,
+                options: [
+                    `Lokasi A karena paling dekat dengan permukiman.`,
+                    `Lokasi B karena memiliki kecepatan angin tertinggi dan berada di area terbuka.`,
+                    `Lokasi C karena keberadaan bangunan dapat meningkatkan kecepatan angin.`,
+                    `Lokasi D karena kecepatan anginnya sedang sehingga pasti menghasilkan listrik paling stabil.`,
+                    `Lokasi E karena area terbuka merupakan satu-satunya faktor yang menentukan keberhasilan PLTB.`
+                ],
+                answer: 1
+            },
+
+            {
+                number: 13,
+                text: `Seorang siswa ingin mengetahui pengaruh sudut kemiringan panel surya terhadap daya listrik yang dihasilkan. Ia memiliki satu panel surya, multimeter, dan sumber cahaya yang dapat dibuat tetap.
+
+Rancangan penyelidikan yang paling tepat adalah ...`,
+                options: [
+                    `Mengubah sudut panel dan intensitas cahaya secara bersamaan kemudian membandingkan hasil daya.`,
+                    `Mengubah sudut panel, menjaga intensitas cahaya dan jenis panel tetap, kemudian mengukur daya listrik pada setiap sudut.`,
+                    `Menggunakan panel yang berbeda pada setiap sudut agar hasil lebih bervariasi.`,
+                    `Mengubah sudut panel dan mengganti beban listrik pada setiap pengukuran.`,
+                    `Mengukur daya satu kali pada satu sudut kemudian membandingkannya dengan hasil pengukuran dari penelitian lain.`
+                ],
+                answer: 1
+            },
+
+            {
+                number: 14,
+                text: `Sebuah sekolah menghasilkan banyak limbah organik dari kantin setiap hari. Limbah tersebut selama ini dibuang bersama sampah lainnya. Sekolah ingin mengurangi jumlah limbah sekaligus memanfaatkan energi yang dihasilkan.
+
+Beberapa alternatif yang dipertimbangkan:
+
+- membakar seluruh limbah di halaman sekolah;
+- mengolah limbah organik menjadi biogas;
+- membuang limbah ke sungai;
+- mengubur limbah tanpa pengolahan;
+- mencampurkan limbah organik dengan sampah plastik.
+
+Berdasarkan tujuan tersebut, pilihan yang paling tepat adalah ...`,
+                options: [
+                    `Membakar seluruh limbah karena pembakaran selalu menghasilkan energi yang ramah lingkungan.`,
+                    `Membuang limbah ke sungai karena bahan organik akan terurai secara alami.`,
+                    `Mengolah limbah organik menjadi biogas karena bahan organik dapat dimanfaatkan sebagai sumber energi sekaligus mengurangi jumlah limbah.`,
+                    `Mengubur semua limbah tanpa pengolahan karena tidak menghasilkan dampak terhadap lingkungan.`,
+                    `Mencampurkan limbah organik dengan plastik agar seluruh sampah dapat digunakan sebagai bahan bakar.`
+                ],
+                answer: 2
+            },
+
+            {
+                number: 15,
+                text: `Sebuah sekolah berada di wilayah dengan intensitas matahari tinggi. Sekolah memiliki konsumsi listrik yang cukup besar pada siang hari karena penggunaan komputer, proyektor, dan pendingin ruangan. Hasil evaluasi juga menunjukkan bahwa sebagian besar penggunaan listrik terjadi ketika ruangan digunakan untuk kegiatan belajar.
+
+Sekolah memiliki tiga rencana:
+
+Rencana I: memasang PLTS tanpa melakukan perubahan pada pola penggunaan listrik.
+
+Rencana II: mengganti seluruh peralatan listrik dengan peralatan berdaya besar dan memasang PLTS.
+
+Rencana III: memasang PLTS, menggunakan peralatan yang lebih hemat energi, serta menerapkan kebiasaan mematikan peralatan ketika tidak digunakan.
+
+Jika tujuan sekolah adalah mengurangi konsumsi energi dari jaringan sekaligus meningkatkan pemanfaatan energi terbarukan, rencana yang paling tepat adalah ...`,
+                options: [
+                    `Rencana I, karena pemasangan PLTS saja sudah cukup untuk mengatasi seluruh masalah konsumsi energi.`,
+                    `Rencana II, karena peralatan berdaya besar dapat memanfaatkan listrik PLTS secara maksimal.`,
+                    `Rencana III, karena menggabungkan pemanfaatan energi terbarukan dengan efisiensi dan penghematan energi.`,
+                    `Rencana I, karena perubahan perilaku tidak berhubungan dengan penggunaan energi.`,
+                    `Rencana II, karena semakin besar daya peralatan maka semakin efisien penggunaan energi.`
+                ],
+                answer: 2
+            }
+        ];
+
+        const TOTAL_TIME_SECONDS = 90 * 60;
+
+        let currentQuestion = 0;
+        let studentAnswers = new Array(questions.length).fill(null);
+        let studentName = "";
+        let timerInterval = null;
+        let remainingSeconds = TOTAL_TIME_SECONDS;
+
+        function startTest() {
+            const input = document.getElementById("studentName");
+            const name = input.value.trim();
+
+            if (!name) {
+                alert("Silakan masukkan nama terlebih dahulu.");
+                input.focus();
+                return;
+            }
+
+            studentName = name;
+            currentQuestion = 0;
+            studentAnswers = new Array(questions.length).fill(null);
+
+            document.getElementById("introScreen").classList.add("hidden");
+            document.getElementById("quizScreen").classList.remove("hidden");
+            document.getElementById("resultScreen").classList.add("hidden");
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+
+            document.getElementById("questionNumber").textContent =
+                `Soal ${currentQuestion + 1} dari ${questions.length}`;
+
+            document.getElementById("topProgress").textContent =
+                `${currentQuestion + 1} / ${questions.length}`;
+
+            const content = document.getElementById("questionContent");
+
+            let html = `
+                <p class="question-text">${escapeHtml(question.text)}</p>
+            `;
+
+            if (question.table) {
+                html += `
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                ${question.table.headers.map(h => `<th>${escapeHtml(h)}</th>`).join("")}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${question.table.rows.map(row => `
+                                <tr>
+                                    ${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join("")}
+                                </tr>
+                            `).join("")}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            html += `<div class="options">`;
+
+            question.options.forEach((option, index) => {
+                const selected = studentAnswers[currentQuestion] === index;
+
+                html += `
+                    <label class="option ${selected ? "selected" : ""}">
+                        <input
+                            type="radio"
+                            name="answer"
+                            value="${index}"
+                            ${selected ? "checked" : ""}
+                            onchange="selectAnswer(${index})"
+                        >
+                        <span class="option-text">
+                            <strong>${String.fromCharCode(65 + index)}.</strong>
+                            ${escapeHtml(option)}
+                        </span>
+                    </label>
+                `;
+            });
+
+            html += `</div>`;
+
+            content.innerHTML = html;
+
+            const nextButton = document.getElementById("nextButton");
+
+            if (currentQuestion === questions.length - 1) {
+                nextButton.textContent = "Selesai & Lihat Hasil";
+            } else {
+                nextButton.textContent = "Soal Berikutnya →";
+            }
+
+            startTimer();
+        }
+
+        function selectAnswer(index) {
+            studentAnswers[currentQuestion] = index;
+
+            document.querySelectorAll(".option").forEach((option, i) => {
+                option.classList.toggle("selected", i === index);
+            });
+        }
+
+        function nextQuestion() {
+            if (studentAnswers[currentQuestion] === null) {
+                alert("Silakan pilih satu jawaban terlebih dahulu.");
+                return;
+            }
+
+            stopTimer();
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                finishTest();
+            }
+        }
+
+        function startTimer() {
+            stopTimer();
+
+            remainingSeconds = TOTAL_TIME_SECONDS;
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+
+                updateTimerDisplay();
+
+                if (remainingSeconds <= 0) {
+                    stopTimer();
+                    handleTimeUp();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function updateTimerDisplay() {
+            const timer = document.getElementById("timer");
+
+            const hours = Math.floor(remainingSeconds / 3600);
+            const minutes = Math.floor((remainingSeconds % 3600) / 60);
+            const seconds = remainingSeconds % 60;
+
+            timer.textContent =
+                `${String(hours).padStart(2, "0")}:` +
+                `${String(minutes).padStart(2, "0")}:` +
+                `${String(seconds).padStart(2, "0")}`;
+
+            timer.classList.remove("warning", "danger");
+
+            if (remainingSeconds <= 10 * 60) {
+                timer.classList.add("danger");
+            } else if (remainingSeconds <= 30 * 60) {
+                timer.classList.add("warning");
+            }
+        }
+
+        function handleTimeUp() {
+            /*
+             * Jika waktu habis, soal dianggap belum dijawab jika siswa
+             * belum memilih jawaban. Tes otomatis berpindah ke soal berikutnya.
+             */
+            if (currentQuestion < questions.length - 1) {
+                alert("Waktu untuk soal ini telah habis. Kamu akan melanjutkan ke soal berikutnya.");
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                alert("Waktu untuk soal terakhir telah habis. Hasil tes akan ditampilkan.");
+                finishTest();
+            }
+        }
+
+        function finishTest() {
+            stopTimer();
+
+            document.getElementById("quizScreen").classList.add("hidden");
+            document.getElementById("resultScreen").classList.remove("hidden");
+            document.getElementById("topProgress").textContent = "Selesai";
+
+            let correct = 0;
+
+            questions.forEach((question, index) => {
+                if (studentAnswers[index] === question.answer) {
+                    correct++;
+                }
+            });
+
+            const score = Math.round((correct / questions.length) * 100);
+
+            document.getElementById("resultGreeting").textContent =
+                `Nama: ${studentName}. Berikut adalah hasil pengerjaan pretest kamu.`;
+
+            document.getElementById("finalScore").textContent = score;
+            document.getElementById("scoreDetail").textContent =
+                `${correct} benar dari ${questions.length} soal`;
+
+            const resultBody = document.getElementById("resultBody");
+            resultBody.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = studentAnswers[index];
+                const correctAnswer = question.answer;
+
+                const isCorrect = userAnswer === correctAnswer;
+
+                const userText =
+                    userAnswer === null
+                        ? "Tidak dijawab"
+                        : `${String.fromCharCode(65 + userAnswer)}. ${question.options[userAnswer]}`;
+
+                const correctText =
+                    `${String.fromCharCode(65 + correctAnswer)}. ${question.options[correctAnswer]}`;
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="${isCorrect ? "correct" : "wrong"}">
+                        ${isCorrect ? "BENAR" : "SALAH"}
+                    </td>
+                    <td>${escapeHtml(userText)}</td>
+                    <td>${escapeHtml(correctText)}</td>
+                `;
+
+                resultBody.appendChild(row);
+            });
+        }
+
+        function restartTest() {
+            stopTimer();
+
+            studentAnswers = new Array(questions.length).fill(null);
+            currentQuestion = 0;
+            remainingSeconds = TOTAL_TIME_SECONDS;
+
+            document.getElementById("resultScreen").classList.add("hidden");
+            document.getElementById("quizScreen").classList.add("hidden");
+            document.getElementById("introScreen").classList.remove("hidden");
+            document.getElementById("topProgress").textContent = "Belum dimulai";
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+
+</body>
+</html>
