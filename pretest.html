@@ -339,6 +339,30 @@
             }
         }
     </style>
+
+<!-- ================= GOOGLE SHEETS E-LIT LAB ================= -->
+<script>
+const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbwNRrbU_K_h1iuh-CjgUfRVcLp_UeM3r2XmrzxVNktpR19Ly8zJf2WGSYU8b5Tvqkld/exec";
+
+async function kirimKeSpreadsheet(payload) {
+    try {
+        await fetch(ELIT_SHEETS_API, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
+        return { ok: true };
+    } catch (error) {
+        console.error("Gagal mengirim data ke Google Sheets:", error);
+        return { ok: false, error };
+    }
+}
+</script>
+<!-- ========================================================== -->
+
 </head>
 
 <body>
@@ -430,7 +454,7 @@
                     Kerjakan Ulang
                 </button>
 
-                <a class="secondary-button" href="index_rightnow.html">
+                <a class="secondary-button" href="index_rightnow_sheets.html">
                     Kembali ke Beranda
                 </a>
             </div>
@@ -979,6 +1003,22 @@ Jika tujuan sekolah adalah mengurangi konsumsi energi dari jaringan sekaligus me
             });
 
             const score = Math.round((correct / questions.length) * 100);
+            const wrong = questions.length - correct;
+
+            // Ubah jawaban index 0-4 menjadi A-E untuk disimpan di Spreadsheet
+            const answerLetters = studentAnswers.map(answer =>
+                answer === null ? "" : String.fromCharCode(65 + answer)
+            );
+
+            // Kirim hasil pretest ke Google Sheets
+            kirimKeSpreadsheet({
+                type: "pretest",
+                nama: studentName,
+                answers: answerLetters,
+                correct: correct,
+                wrong: wrong,
+                score: score
+            });
 
             document.getElementById("resultGreeting").textContent =
                 `Nama: ${studentName}. Berikut adalah hasil pengerjaan pretest kamu.`;
