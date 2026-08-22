@@ -24,6 +24,30 @@
 .result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.home-button{background:#eef2f7;color:#172b4d;text-decoration:none;display:inline-flex;align-items:center}.hidden{display:none!important}
 @media(max-width:700px){.topbar{padding:12px 16px}.brand{font-size:16px}.timer-box{min-width:125px;padding:7px 10px}#timer{font-size:17px}.intro-card,.quiz-card,.result-card{padding:22px}.question{font-size:16px}}
 </style>
+
+<!-- ================= GOOGLE SHEETS E-LIT LAB ================= -->
+<script>
+const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbwNRrbU_K_h1iuh-CjgUfRVcLp_UeM3r2XmrzxVNktpR19Ly8zJf2WGSYU8b5Tvqkld/exec";
+
+async function kirimKeSpreadsheet(payload) {
+    try {
+        await fetch(ELIT_SHEETS_API, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
+        return { ok: true };
+    } catch (error) {
+        console.error("Gagal mengirim data ke Google Sheets:", error);
+        return { ok: false, error };
+    }
+}
+</script>
+<!-- ========================================================== -->
+
 </head>
 <body>
 <header class="topbar"><div class="brand">⚡ E-lit lab — Post-Test</div><div class="timer-box"><span class="timer-label">WAKTU SOAL</span><span id="timer">90:00:00</span></div></header>
@@ -47,7 +71,7 @@
 <h2 class="result-title">Hasil Post-Test</h2><p id="resultGreeting"></p>
 <div class="score-box"><div>Nilai Akhir</div><div id="score" class="score">0</div><div id="scoreSummary"></div></div>
 <h3>Review Jawaban</h3><div id="reviewList"></div>
-<div class="result-actions"><button class="retry-button" onclick="location.reload()">Kerjakan Ulang</button><a class="home-button" href="index_rightnow.html">← Kembali ke Beranda</a></div>
+<div class="result-actions"><button class="retry-button" onclick="location.reload()">Kerjakan Ulang</button><a class="home-button" href="index_rightnow_sheets.html">← Kembali ke Beranda</a></div>
 </section>
 </main>
 
@@ -91,6 +115,21 @@ function finishQuiz(){
  clearInterval(timerInterval);let correct=0;
  questions.forEach((q,i)=>{if(answers[i]===q.answer)correct++});
  const score=Math.round(correct/questions.length*100);
+ const wrong=questions.length-correct;
+ const answerLetters=answers.map(answer =>
+   answer===null ? "" : String.fromCharCode(65+answer)
+ );
+
+ // Kirim hasil posttest ke Google Sheets
+ kirimKeSpreadsheet({
+   type:"posttest",
+   nama:studentName,
+   answers:answerLetters,
+   correct:correct,
+   wrong:wrong,
+   score:score
+ });
+
  document.getElementById("quizCard").style.display="none";document.getElementById("resultCard").style.display="block";
  document.getElementById("resultGreeting").innerHTML="Nama peserta: <strong>"+escapeHtml(studentName)+"</strong>";
  document.getElementById("score").textContent=score;
