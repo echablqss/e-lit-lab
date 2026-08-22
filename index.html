@@ -60,6 +60,30 @@ window.MathJax = {
             }
         }
     </script>
+
+<!-- ================= GOOGLE SHEETS E-LIT LAB ================= -->
+<script>
+const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbwNRrbU_K_h1iuh-CjgUfRVcLp_UeM3r2XmrzxVNktpR19Ly8zJf2WGSYU8b5Tvqkld/exec";
+
+async function kirimKeSpreadsheet(payload) {
+    try {
+        await fetch(ELIT_SHEETS_API, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
+        return { ok: true };
+    } catch (error) {
+        console.error("Gagal mengirim data ke Google Sheets:", error);
+        return { ok: false, error };
+    }
+}
+</script>
+<!-- ========================================================== -->
+
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
 
@@ -1213,6 +1237,16 @@ function prosesJawaban(e) {
             <p class="mt-1 text-xs text-red-700"><i>Catatan: Bahan bakar fosil bukan berarti tidak ramah lingkungan atau hanya ada di negara konflik, melainkan jumlahnya terbatas dan sangat cepat habis jika dipakai terus-menerus!</i></p>
         `;
     }
+
+    // Kirim data pemantik ke Google Sheets
+    kirimKeSpreadsheet({
+        type: "pemantik",
+        nama: document.getElementById("namaSiswa").value.trim(),
+        kelas: document.getElementById("kelasSiswa").value.trim(),
+        jawaban1: document.getElementById("essay1").value.trim(),
+        jawaban2: jawabanSiswa,
+        jawaban3: document.getElementById("essay2").value.trim()
+    });
 
     // Beri info ke siswa bahwa jawaban telah direkam
     alert("Jawabanmu berhasil direkam! Silakan cek pembetulan soal pilihan ganda di bawah soal No. 2.");
