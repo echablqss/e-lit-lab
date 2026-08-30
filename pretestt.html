@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretest Literasi Energi | E-Lit Lab</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #172b4d;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 6%;
+            background: #e52525;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .topbar-title {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .topbar-progress {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 45px 20px 70px;
+        }
+
+        .intro-card,
+        .question-card,
+        .result-card {
+            background: #ffffff;
+            border: 1px solid #e1e7ef;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .intro-card {
+            padding: 40px;
+            margin-bottom: 25px;
+        }
+
+        .intro-card h1 {
+            margin: 0 0 10px;
+            font-size: 34px;
+        }
+
+        .intro-card p {
+            color: #5b6b7d;
+            line-height: 1.7;
+        }
+
+        .name-box {
+            margin-top: 25px;
+        }
+
+        .name-box label {
+            display: block;
+            margin-bottom: 9px;
+            font-weight: 700;
+        }
+
+        .name-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cfd8e3;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .name-box input:focus {
+            border-color: #e52525;
+            box-shadow: 0 0 0 3px rgba(229, 37, 37, 0.10);
+        }
+
+        .start-button,
+        .next-button,
+        .restart-button {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 22px;
+            background: #e52525;
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .start-button {
+            margin-top: 18px;
+        }
+
+        .start-button:hover,
+        .next-button:hover,
+        .restart-button:hover {
+            transform: translateY(-1px);
+            opacity: 0.92;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .question-card {
+            overflow: hidden;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 25px;
+            background: #fff5f5;
+            border-bottom: 1px solid #f0dcdc;
+        }
+
+        .question-number {
+            font-size: 16px;
+            font-weight: 800;
+            color: #b71919;
+        }
+
+        .timer {
+            min-width: 120px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background: #172b4d;
+            color: white;
+            text-align: center;
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .timer.warning {
+            background: #b45309;
+        }
+
+        .timer.danger {
+            background: #b91c1c;
+        }
+
+        .question-body {
+            padding: 30px;
+        }
+
+        .question-text {
+            margin: 0 0 25px;
+            font-size: 18px;
+            line-height: 1.75;
+            color: #172b4d;
+            white-space: pre-line;
+        }
+
+        .question-table {
+            width: 100%;
+            margin: 0 0 25px;
+            border-collapse: collapse;
+        }
+
+        .question-table th,
+        .question-table td {
+            padding: 10px;
+            border: 1px solid #cfd8e3;
+            text-align: center;
+        }
+
+        .question-table th {
+            background: #f3f6fa;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid #d9e1ea;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.15s ease;
+        }
+
+        .option:hover {
+            background: #fafcff;
+            border-color: #aebdce;
+        }
+
+        .option.selected {
+            background: #fff2f2;
+            border-color: #e52525;
+        }
+
+        .option input {
+            margin-top: 4px;
+            accent-color: #e52525;
+        }
+
+        .option-text {
+            line-height: 1.55;
+        }
+
+        .question-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px 30px 30px;
+        }
+
+        .result-card {
+            padding: 35px;
+        }
+
+        .result-card h1 {
+            margin-top: 0;
+        }
+
+        .score-box {
+            margin: 20px 0 30px;
+            padding: 25px;
+            border-radius: 16px;
+            background: #f3f7fb;
+            text-align: center;
+        }
+
+        .score-box .score {
+            display: block;
+            font-size: 46px;
+            font-weight: 900;
+            color: #e52525;
+        }
+
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .result-table th,
+        .result-table td {
+            padding: 12px;
+            border: 1px solid #d9e1ea;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .result-table th {
+            background: #f3f6fa;
+        }
+
+        .correct {
+            color: #15803d;
+            font-weight: 800;
+        }
+
+        .wrong {
+            color: #b91c1c;
+            font-weight: 800;
+        }
+
+        .answer-review {
+            margin-top: 8px;
+            color: #53657a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 12px;
+            background: #eef2f7;
+            color: #172b4d;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .intro-card,
+            .result-card {
+                padding: 25px 20px;
+            }
+
+            .question-body {
+                padding: 22px 18px;
+            }
+
+            .question-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .question-footer {
+                padding: 15px 18px 22px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+    <style>
+        /* Perlindungan dasar terhadap penyalinan/seleksi teks. */
+        body.quiz-active,
+        body.quiz-active * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+        }
+
+        body.quiz-active input,
+        body.quiz-active button {
+            user-select: auto !important;
+            -webkit-user-select: auto !important;
+        }
+
+        .anti-cheat-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: #fff8e1;
+            color: #6b4f00;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .timer {
+            min-width: 120px;
+        }
+
+        .timer.finished {
+            background: #991b1b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-title">E-Lit Lab — Pretest Literasi Energi</div>
+        <div class="topbar-progress" id="topProgress">Belum dimulai</div>
+    </header>
+
+    <main class="page">
+
+        <!-- HALAMAN IDENTITAS -->
+        <section class="intro-card" id="introScreen">
+            <h1>Pretest Literasi Energi</h1>
+
+            <p>
+                Bacalah setiap soal dengan teliti dan pilih satu jawaban yang
+                paling tepat. Soal diberikan satu per satu. Setiap soal memiliki
+                durasi <strong>90 detik</strong>. Setelah jawaban dipilih, tekan tombol
+                <strong>Soal Berikutnya</strong>.
+            </p>
+
+            <div class="name-box">
+                <label for="studentName">Nama Siswa</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Masukkan nama lengkap"
+                    autocomplete="name"
+                >
+            </div>
+
+            <button class="start-button" onclick="startTest()">
+                Mulai Pretest
+            </button>
+        </section>
+
+        <!-- HALAMAN SOAL -->
+        <section class="question-card hidden" id="quizScreen">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">
+                    Soal 1 dari 15
+                </div>
+
+                <div class="timer" id="timer">
+                    01:30
+                </div>
+            </div>
+
+            <div class="question-body">
+                <div id="questionContent"></div>
+            </div>
+
+            <div class="question-footer">
+                <button class="next-button" id="nextButton" onclick="nextQuestion()">
+                    Soal Berikutnya →
+                </button>
+            </div>
+        </section>
+
+        <!-- HALAMAN HASIL -->
+        <section class="result-card hidden" id="resultScreen">
+            <h1>Hasil Pretest</h1>
+
+            <p id="resultGreeting"></p>
+
+            <div class="score-box">
+                <span>Nilai</span>
+                <span class="score" id="finalScore">0</span>
+                <span id="scoreDetail"></span>
+            </div>
+
+            <h2>Rekap Jawaban</h2>
+
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Hasil</th>
+                        <th>Jawaban Kamu</th>
+                        <th>Kunci</th>
+                    </tr>
+                </thead>
+                <tbody id="resultBody"></tbody>
+            </table>
+
+            <div class="result-actions">
+                <button class="restart-button" onclick="restartTest()">
+                    Kerjakan Ulang
+                </button>
+
+                <a class="secondary-button" href="index_rightnow.html">
+                    Kembali ke Beranda
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        /*
+         * ============================================================
+         * DATA SOAL
+         * Sumber: pretestttt.docx yang diberikan.
+         * ============================================================
+         */
+        const questions = [
+            {
+                        "number": 1,
+                        "text": "Indonesia memiliki potensi energi panas bumi (geotermal) yang sangat melimpah karena berada pada jalur Ring of Fire dan pertemuan lempeng tektonik aktif.\n\nJika pemerintah daerah menentukan kawasan gunung api sebagai prioritas pembangunan PLTP, alasan geologis dan sains yang paling tepat adalah ...",
+                        "options": [
+                                    "Aktivitas tektonik meningkatkan curah hujan harian sehingga pasokan air permukaan penjelas turbin melimpah.",
+                                    "Pertemuan lempeng menyediakan magma cair dekat permukaan yang dapat memanaskan air tanah menjadi uap bertekanan tinggi.",
+                                    "Kawasan gunung api memancarkan gelombang elektromagnetik yang dapat diubah langsung menjadi listrik tanpa sistem konversi.",
+                                    "Wilayah vulkanik memiliki intensitas radiasi matahari rata-rata lebih tinggi dibanding wilayah dataran rendah.",
+                                    "Gesekan antar-lempeng tektonik menghasilkan muatan listrik statis di dalam tanah yang dapat dipanen secara langsung."
+                        ],
+                        "answer": 1
+            },
+            {
+                        "number": 2,
+                        "text": "Sebuah turbin angin kecil dipasang di atap laboratorium sekolah. Saat tiupan angin kencang, bilah turbin berputar cepat dan listrik yang dihasilkan mampu menyalakan lampu indikator dengan terang. Saat angin melemah, putaran turbin melambat dan daya listrik menurun.\n\nAnalisis rantai konversi energi yang terjadi pada sistem PLTB tersebut adalah ...",
+                        "options": [
+                                    "Energi kinetik angin → energi mekanik putaran rotor → energi listrik melalui induksi elektromagnetik generator.",
+                                    "Energi listrik → angin → energi potensial turbin → energi kinetik generator.",
+                                    "Energi mekanik generator → energi kinetik bilah turbin → energi listrik fluida.",
+                                    "Energi potensial gravitasi angin → energi kinetik rotasi → energi listrik langsung.",
+                                    "Energi kalor lingkungan → energi mekanik turbin → energi listrik generator."
+                        ],
+                        "answer": 0
+            },
+            {
+                        "number": 3,
+                        "text": "Dua lokasi diuji untuk pembangunan Pembangkit Listrik Tenaga Mikrohidro (PLTMH).\n\nDaya listrik diperkirakan melalui persamaan P = ρQghη. Jika massa jenis air (ρ) dan percepatan gravitasi (g) bernilai konstan, kesimpulan yang paling tepat adalah ...",
+                        "options": [
+                                    "Lokasi A berpotensi menghasilkan daya lebih besar karena hasil kali Q × h lokasi A lebih tinggi dibanding lokasi B.",
+                                    "Lokasi B menghasilkan daya lebih besar karena debit air merupakan parameter tunggal paling dominan.",
+                                    "Kedua lokasi menghasilkan daya listrik yang persis sama karena efisiensinya sama-sama 80%.",
+                                    "Lokasi A menghasilkan daya lebih kecil karena debit airnya kalah dibanding lokasi B.",
+                                    "Daya listrik tidak dapat ditentukan sebelum massa total air ditimbang secara langsung."
+                        ],
+                        "answer": 0,
+                        "table": {
+                                    "headers": [
+                                                "Parameter",
+                                                "Lokasi A",
+                                                "Lokasi B"
+                                    ],
+                                    "rows": [
+                                                [
+                                                            "Debit air (Q)",
+                                                            "2 m³/s",
+                                                            "3 m³/s"
+                                                ],
+                                                [
+                                                            "Tinggi jatuh air (h)",
+                                                            "8 m",
+                                                            "5 m"
+                                                ],
+                                                [
+                                                            "Efisiensi",
+                                                            "80%",
+                                                            "80%"
+                                                ]
+                                    ]
+                        }
+            },
+            {
+                        "number": 4,
+                        "text": "Sebuah kabupaten berencana menghentikan operasional PLTU batu bara dan menggantinya dengan kombinasi PLTS dan PLTB. Alasan ilmiah paling tepat yang mendukung keputusan transisi energi ini ditinjau dari aspek lingkungan adalah ...",
+                        "options": [
+                                    "Energi terbarukan mampu menghasilkan pasokan daya listrik yang stabil konstan tanpa dipengaruhi cuaca harian.",
+                                    "Teknologi energi terbarukan sama sekali tidak membutuhkan biaya perawatan selama 50 tahun pengoperasian.",
+                                    "Pembakaran bahan bakar fosil menghasilkan emisi dan partikulat PM2.5 tinggi, sedangkan operasional PLTS/PLTB hampir tidak menghasilkan emisi gas rumah kaca secara langsung.",
+                                    "Pembangkit EBT dapat dibangun di mana saja tanpa membutuhkan luas lahan baku.",
+                                    "Penggunaan EBT menghilangkan 100% jejak karbon dari tahap manufaktur komponen hingga daur ulang."
+                        ],
+                        "answer": 2
+            },
+            {
+                        "number": 5,
+                        "text": "Sebuah desa pesisir di Nusa Tenggara Timur memiliki profil lingkungan berikut:\n\n• Intensitas radiasi matahari tinggi\n• Musim kemarau berlangsung hingga 8–9 bulan.\n• Sungai terdekat berdebit sangat kecil dan musiman.\n• Kecepatan angin darat tergolong rendah dan fluktuatif.\n• Belum terjangkau jaringan kelistrikan PLN.\n\nJika anggaran desa terbatas untuk satu pembangkit utama, teknologi yang paling efektif dan rasional untuk dibangun adalah ...",
+                        "options": [
+                                    "PLTA besar karena daya air selalu konstan sepanjang tahun.",
+                                    "PLTBm (Biomassa) karena tanah kering dipastikan menghasilkan limbah kayu melimpah.",
+                                    "PLTB skala besar karena angin laut selalu berhembus konstan sepanjang malam.",
+                                    "PLTD (Diesel) karena biaya investasi awalnya paling murah tanpa memedulikan bahan bakar.",
+                                    "PLTS Off-Grid berbasis baterai karena memanfaatkan potensi kelimpahan radiasi surya lokal secara maksimal."
+                        ],
+                        "answer": 4
+            },
+            {
+                        "number": 6,
+                        "text": "Sebuah sekolah menggunakan 100 lampu pijar berdaya 60 W. Sekolah kemudian mempertimbangkan menggantinya dengan lampu LED berdaya 9 W dengan tingkat pencahayaan yang dianggap setara.\n\nBerdasarkan data tersebut, alasan paling kuat untuk mengganti lampu pijar dengan LED adalah ...",
+                        "options": [
+                                    "Lampu LED memiliki daya lebih kecil sehingga kebutuhan energi listrik dan emisi yang terkait dengan penggunaan listrik dapat dikurangi.",
+                                    "Lampu LED tidak membutuhkan energi listrik sehingga penggunaannya tidak menghasilkan konsumsi energi.",
+                                    "Lampu pijar menghasilkan cahaya lebih terang sehingga membutuhkan emisi yang lebih besar.",
+                                    "Lampu LED tidak memiliki umur pakai sehingga sekolah tidak perlu menggantinya kembali.",
+                                    "Penggunaan LED hanya memberikan perubahan pada tampilan ruang kelas tanpa berhubungan dengan efisiensi energi."
+                        ],
+                        "answer": 0,
+                        "table": {
+                                    "headers": [
+                                                "Jenis Lampu",
+                                                "Daya",
+                                                "Umur pakai",
+                                                "Emisi CO₂ / 1.000 jam"
+                                    ],
+                                    "rows": [
+                                                [
+                                                            "Lampu pijar",
+                                                            "60 W",
+                                                            "1.000 jam",
+                                                            "±51 kg"
+                                                ],
+                                                [
+                                                            "Lampu LED",
+                                                            "9 W",
+                                                            "25.000 jam",
+                                                            "±7,65 kg"
+                                                ]
+                                    ]
+                        }
+            },
+            {
+                        "number": 7,
+                        "text": "Sebuah desa terpencil mengandalkan PLTS sebagai sumber daya utama. Saat musim hujan berlangsung selama dua minggu berturut-turut, produksi panel surya turun hingga 70%, menyebabkan pemadaman listrik berkepanjangan pada fasilitas kesehatan desa.\n\nEvaluasi solusi teknis yang paling tepat untuk menjaga keandalan listrik tanpa mengorbankan prinsip ramah lingkungan adalah ...",
+                        "options": [
+                                    "Menambah luas panel surya 3× lipat tanpa menambahkan kapasitas penyimpan baterai.",
+                                    "Mengganti seluruh PLTS dengan generator diesel sebagai sumber listrik permanen.",
+                                    "Mematikan seluruh beban listrik desa selama musim hujan berlangsung.",
+                                    "Mengintegrasikan PLTS dengan bank baterai capacity-expanded dan mikro-turbin angin (Hybrid System).",
+                                    "Mengurangi tegangan luaran panel surya agar energi baterai tidak cepat habis."
+                        ],
+                        "answer": 3
+            },
+            {
+                        "number": 8,
+                        "text": "Sebuah wilayah pesisir menghadapi dilema pemilihan jenis teknologi EBT. Tim ahli menyusun tabel komparasi antara PLTA Waduk dan PLTS Terapung sebagai berikut:\n\nBerdasarkan penafsiran data komparasi tersebut, kesimpulan evaluatif yang paling rasional dalam menyikapi dilema teknis dan ekologis tersebut adalah ...",
+                        "options": [
+                                    "PLTA Waduk harus diprioritaskan karena keandalan teknis 85% mengabaikan seluruh dampak kerusakan ekosistem hutan.",
+                                    "PLTA Waduk tidak memiliki dampak ekologis sama sekali karena air merupakan sumber energi terbarukan.",
+                                    "Kedua opsi pembangkit tidak layak dibangun karena pasti merusak lingkungan tanpa memberikan manfaat daya listrik.",
+                                    "PLTS Terapung merupakan pilihan terbaik untuk mencegah alih fungsi 400 ha hutan, namun membutuhkan sistem pendukung (baterai/hibrida) untuk mengatasi faktor kapasitas yang rendah.",
+                                    "PLTS Terapung dapat menghasilkan daya konstan 24 jam tanpa dipengaruhi fluktuasi cuaca harian."
+                        ],
+                        "answer": 3,
+                        "table": {
+                                    "headers": [
+                                                "Parameter Evaluasi",
+                                                "PLTA Waduk",
+                                                "PLTS Terapung (Danau/Waduk)"
+                                    ],
+                                    "rows": [
+                                                [
+                                                            "Faktor kapasitas teknis (Keandalan)",
+                                                            "85% (Kontinu 24 jam)",
+                                                            "25% (Hanya saat ada matahari)"
+                                                ],
+                                                [
+                                                            "Dampak ekologis lahan darat",
+                                                            "Menggenangi 400 ha hutan tutupan",
+                                                            "0 ha lahan darat (di atas permukaan air)"
+                                                ],
+                                                [
+                                                            "Dampak ekosistem perairan",
+                                                            "Mengganggu jalur migrasi biota sungai",
+                                                            "Menutupi 15% permukaan air danau"
+                                                ]
+                                    ]
+                        }
+            },
+            {
+                        "number": 9,
+                        "text": "Kendaraan Listrik (EV) tidak mengeluarkan emisi gas buang dari knalpot. Namun, analisis dampak lingkungan EV sangat bergantung pada sumber energi kelistrikan pengisi daya:\n\n• Wilayah A: 85% pasokan listrik berasal dari PLTU Batu Bara.\n• Wilayah B: 85% pasokan listrik berasal dari kombinasi PLTA dan PLTS.\n\nKesimpulan analisis ekologis yang paling tepat adalah ...",
+                        "options": [
+                                    "Penggunaan EV di Wilayah A secara tidak langsung tetap menyumbang emisi karbon tinggi melalui proses pembangkitan listrik jaringan PLTU.",
+                                    "EV di Wilayah A memancarkan emisi gas beracun lebih banyak dibanding mobil pemakan bensin konvensional.",
+                                    "Penggunaan EV di Wilayah B menghilangkan seluruh bentuk dampak lingkungan industri.",
+                                    "Sumber jaringan listrik tidak memengaruhi profil emisi total pengoperasian EV.",
+                                    "EV di Wilayah B membutuhkan daya listrik 2× lebih besar dibanding EV di Wilayah A."
+                        ],
+                        "answer": 0
+            },
+            {
+                        "number": 10,
+                        "text": "SMA Merdeka telah memasang sistem PLTS 3.000 Watt. Namun, tagihan listrik tahunan tetap tinggi karena warga sekolah sering membiarkan AC (1.000 W) dan lampu kelas menyala di ruang kosong sepanjang hari.\n\nLangkah evaluatif berbasis efisiensi energi yang paling tepat adalah ...",
+                        "options": [
+                                    "Memasang daya PLTS tambahan tanpa mengubah perilaku konsumsi energi warga sekolah.",
+                                    "Mematikan sistem PLTS agar warga sekolah sadar tingginya biaya pengeluaran listrik.",
+                                    "Mengombinasikan sistem daya PLTS dengan manajemen perilaku hemat energi serta otomasi sensor gerak (occupancy sensor).",
+                                    "Mengganti semua pendingin ruangan (AC) dengan kipas angin berdaya ekstra besar.",
+                                    "Menjual seluruh daya PLTS ke jaringan utama dan membiarkan sekolah tanpa pasokan EBT."
+                        ],
+                        "answer": 2
+            },
+            {
+                        "number": 11,
+                        "text": "Sebuah sekolah ingin memasang PLTS. Hasil pengukuran intensitas cahaya matahari selama empat waktu ditunjukkan berikut:\n\nJika efisiensi konversi panel surya konstan sebesar 15%, analisis produksi daya puncak (P = I A η) terjadi pada ...",
+                        "options": [
+                                    "Pukul 08.00 dengan daya 135 W karena suhu ruang belum panas.",
+                                    "Pukul 12.00 dengan daya puncak sebesar 285 W karena intensitas radiasi berada pada level maksimum.",
+                                    "Pukul 10.00 dan 14.00 karena daya luaran terbagi rata secara simetris.",
+                                    "Semua waktu menghasilkan daya listrik yang sama karena luas permukaan panel tetap 2 m².",
+                                    "Daya keluaran panel mencapai 950 W pada pukul 12.00 tanpa memperhitungkan faktor efisiensi."
+                        ],
+                        "answer": 1,
+                        "table": {
+                                    "headers": [
+                                                "Waktu",
+                                                "Intensitas matahari"
+                                    ],
+                                    "rows": [
+                                                [
+                                                            "08.00",
+                                                            "450 W/m²"
+                                                ],
+                                                [
+                                                            "10.00",
+                                                            "750 W/m²"
+                                                ],
+                                                [
+                                                            "12.00",
+                                                            "950 W/m²"
+                                                ],
+                                                [
+                                                            "14.00",
+                                                            "700 W/m²"
+                                                ]
+                                    ]
+                        }
+            },
+            {
+                        "number": 12,
+                        "text": "Tim enjiniring mengevaluasi 5 tapak lokasi untuk pembangunan Turbin Angin (PLTB):\n\n• Lokasi A: Kecepatan angin 3 m/s, padat pemukiman.\n• Lokasi B: Kecepatan angin 7 m/s, lahan terbuka datar jauh dari pemukiman.\n• Lokasi C: Kecepatan angin 4 m/s, area dikelilingi gedung tinggi.\n• Lokasi D: Kecepatan angin 5 m/s, kawasan hutan lindung lebat.\n• Lokasi E: Kecepatan angin 2 m/s, pesisir berbukit.\n\nMengingat daya turbin angin berbanding lurus dengan pangkat tiga kecepatan angin (v³) dan faktor kebisingan, lokasi prioritas paling rasional adalah ...",
+                        "options": [
+                                    "Lokasi A agar energi listrik langsung disalurkan tanpa saluran transmisi panjang.",
+                                    "Lokasi B karena memiliki potensi daya paling optimal serta meminimalkan gangguan kebisingan warga.",
+                                    "Lokasi C karena gedung tinggi dapat memfokuskan hembusan angin ke bilah turbin.",
+                                    "Lokasi D untuk memanfaatkan angin hutan meskipun merusak ekosistem pohon.",
+                                    "Lokasi E karena kawasan berbukit selalu menghasilkan turbulensi angin ideal."
+                        ],
+                        "answer": 1
+            },
+            {
+                        "number": 13,
+                        "text": "Tim siswa ingin menyelidiki sudut kemiringan panel surya yang paling optimal terhadap penyerapan daya listrik di halaman sekolah. Rancangan eksperimen terkontrol yang memenuhi kaidah ilmiah adalah ...",
+                        "options": [
+                                    "Memvariasikan jenis baterai penyimpan tanpa mengubah sudut arah menghadap panel surya.",
+                                    "Mengubah sudut kemiringan panel bersamaan dengan mengganti jenis spesifikasi panel surya pada setiap interval waktu.",
+                                    "Mengukur daya luaran panel pada satu sudut saja di pagi hari, lalu membandingkannya dengan data sekunder internet.",
+                                    "Mengubah-ubah beban lampu AC saat kemiringan panel disetel tetap.",
+                                    "Mengubah sudut kemiringan panel surya, menjaga intensitas cahaya matahari dan jenis panel tetap konstan, lalu mengukur daya luaran harian."
+                        ],
+                        "answer": 4
+            },
+            {
+                        "number": 14,
+                        "text": "Kantin sekolah menghasilkan 30 kg limbah sisa makanan organik per hari yang menimbulkan bau tak sedap dan lalat. Sekolah ingin menerapkan solusi rekayasa berbasis EBT dan pengelolaan limbah berkelanjutan.\n\nRancangan solusi rekayasa yang paling efisien dan beretika lingkungan adalah ...",
+                        "options": [
+                                    "Pembakaran terbuka (open burning) limbah sisa makanan di lapangan untuk menghasilkan uap panas.",
+                                    "Membuang seluruh sampah sisa makanan ke saluran air drainase agar terurai secara alami.",
+                                    "Mengolah sisa makanan menggunakan digester anaerobik menjadi biogas untuk suplai kompor kantin dan pupuk organik.",
+                                    "Mencampur limbah sisa makanan dengan sampah plastik untuk dimanfaatkan sebagai bahan bakar semen.",
+                                    "Menimbun limbah makanan di dalam tanah tanpa sirkulasi udara."
+                        ],
+                        "answer": 2
+            },
+            {
+                        "number": 15,
+                        "text": "Sebuah turbin angin mikro (PLTB) di sekolah menghasilkan daya listrik yang sangat minim ketika kecepatan angin di area luar tergolong rendah. Tim siswa mengusulkan solusi rekayasa dengan merancang ulang bentuk bilah (blade) turbin menjadi bentuk aerodinamis (aerofoil) untuk menangkap hembusan angin secara lebih optimal.\n\nUntuk mengevaluasi efektivitas solusi rekayasa bentuk bilah turbin tersebut secara ilmiah, metode penyelidikan yang paling valid adalah ...",
+                        "options": [
+                                    "Mengukur daya listrik turbin berbilah aerofoil hanya pada satu saat tiupan angin kencang tanpa kelompok pembanding.",
+                                    "Mengestimasi kenaikan efisiensi putaran bilah secara teoritis di atas kertas tanpa melakukan pengukuran nyata.",
+                                    "Mengubah jumlah bilah turbin secara acak setiap jam sambil mengganti jenis generator listrik yang berbeda tiap hari.",
+                                    "Membandingkan daya luaran listrik (P = V I) antara turbin bilah aerofoil dan turbin bilah standar pada variasi kecepatan angin yang terkontrol dan identik.",
+                                    "Menambah ketinggian tiang penyangga turbin tanpa menguji perbedaan kinerja antar-desain bentuk bilah."
+                        ],
+                        "answer": 3
+            }
+];
+
+        /*
+         * ============================================================
+         * KONFIGURASI WAKTU
+         * ============================================================
+         * 90 detik PER SOAL.
+         *
+         * Timer menggunakan deadline berbasis Date.now(), bukan hanya
+         * menghitung setInterval. Jadi ketika siswa pindah tab,
+         * minimize browser, atau keluar sementara, waktu tetap berjalan.
+         *
+         * localStorage juga dipakai agar deadline dan jawaban tetap
+         * tersimpan ketika halaman direfresh/ditutup lalu dibuka kembali
+         * pada browser/perangkat yang sama.
+         */
+        const QUESTION_TIME_SECONDS = 90;
+        const STORAGE_KEY = "elitlab_pretest_session_v2";
+
+        let currentQuestion = 0;
+        let studentAnswers = new Array(questions.length).fill(null);
+        let studentName = "";
+        let timerInterval = null;
+        let questionDeadline = null;
+        let testStarted = false;
+        let timeUpHandling = false;
+
+        function saveSession() {
+            if (!testStarted) return;
+
+            const session = {
+                studentName,
+                currentQuestion,
+                studentAnswers,
+                questionDeadline,
+                testStarted: true
+            };
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+        }
+
+        function loadSession() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+
+                const session = JSON.parse(raw);
+
+                if (
+                    !session ||
+                    !session.testStarted ||
+                    !session.studentName ||
+                    !Array.isArray(session.studentAnswers)
+                ) {
+                    return null;
+                }
+
+                return session;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function clearSession() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        function startTest() {
+            const input = document.getElementById("studentName");
+            const name = input.value.trim();
+
+            if (!name) {
+                alert("Silakan masukkan nama terlebih dahulu.");
+                input.focus();
+                return;
+            }
+
+            clearSession();
+
+            studentName = name;
+            currentQuestion = 0;
+            studentAnswers = new Array(questions.length).fill(null);
+            testStarted = true;
+            timeUpHandling = false;
+
+            document.body.classList.add("quiz-active");
+
+            document.getElementById("introScreen").classList.add("hidden");
+            document.getElementById("quizScreen").classList.remove("hidden");
+            document.getElementById("resultScreen").classList.add("hidden");
+
+            renderQuestion(true);
+        }
+
+        function restoreSession() {
+            const session = loadSession();
+            if (!session) return;
+
+            studentName = session.studentName;
+            currentQuestion = Math.min(
+                Math.max(Number(session.currentQuestion) || 0, 0),
+                questions.length - 1
+            );
+            studentAnswers = Array.isArray(session.studentAnswers)
+                ? session.studentAnswers
+                : new Array(questions.length).fill(null);
+
+            studentAnswers.length = questions.length;
+
+            testStarted = true;
+            timeUpHandling = false;
+
+            document.body.classList.add("quiz-active");
+
+            document.getElementById("introScreen").classList.add("hidden");
+            document.getElementById("quizScreen").classList.remove("hidden");
+            document.getElementById("resultScreen").classList.add("hidden");
+
+            /*
+             * Jika deadline sudah lewat saat halaman dibuka kembali,
+             * langsung proses waktu habis. Kalau belum, gunakan deadline
+             * yang tersimpan sehingga waktu tidak kembali menjadi 90 detik.
+             */
+            if (Number(session.questionDeadline) > 0) {
+                questionDeadline = Number(session.questionDeadline);
+            } else {
+                questionDeadline = Date.now() + QUESTION_TIME_SECONDS * 1000;
+            }
+
+            renderQuestion(false);
+        }
+
+        function renderQuestion(resetTimer = true) {
+            const question = questions[currentQuestion];
+
+            document.getElementById("questionNumber").textContent =
+                `Soal ${currentQuestion + 1} dari ${questions.length}`;
+
+            document.getElementById("topProgress").textContent =
+                `${currentQuestion + 1} / ${questions.length}`;
+
+            const content = document.getElementById("questionContent");
+
+            let html = `
+                <p class="question-text">${escapeHtml(question.text)}</p>
+            `;
+
+            if (question.table) {
+                html += `
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                ${question.table.headers.map(h =>
+                                    `<th>${escapeHtml(h)}</th>`
+                                ).join("")}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${question.table.rows.map(row => `
+                                <tr>
+                                    ${row.map(cell =>
+                                        `<td>${escapeHtml(cell)}</td>`
+                                    ).join("")}
+                                </tr>
+                            `).join("")}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            html += `<div class="options">`;
+
+            question.options.forEach((option, index) => {
+                const selected = studentAnswers[currentQuestion] === index;
+
+                html += `
+                    <label class="option ${selected ? "selected" : ""}">
+                        <input
+                            type="radio"
+                            name="answer"
+                            value="${index}"
+                            ${selected ? "checked" : ""}
+                            onchange="selectAnswer(${index})"
+                        >
+                        <span class="option-text">
+                            <strong>${String.fromCharCode(65 + index)}.</strong>
+                            ${escapeHtml(option)}
+                        </span>
+                    </label>
+                `;
+            });
+
+            html += `</div>`;
+
+            content.innerHTML = html;
+
+            const nextButton = document.getElementById("nextButton");
+
+            if (currentQuestion === questions.length - 1) {
+                nextButton.textContent = "Selesai & Lihat Hasil";
+            } else {
+                nextButton.textContent = "Soal Berikutnya →";
+            }
+
+            if (resetTimer) {
+                startQuestionTimer();
+            } else {
+                startQuestionTimer(true);
+            }
+
+            saveSession();
+        }
+
+        function selectAnswer(index) {
+            if (!testStarted) return;
+
+            studentAnswers[currentQuestion] = index;
+
+            document.querySelectorAll(".option").forEach((option, i) => {
+                option.classList.toggle("selected", i === index);
+            });
+
+            saveSession();
+        }
+
+        function nextQuestion() {
+            if (!testStarted) return;
+
+            if (studentAnswers[currentQuestion] === null) {
+                alert("Silakan pilih satu jawaban terlebih dahulu.");
+                return;
+            }
+
+            stopTimer();
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion(true);
+            } else {
+                finishTest();
+            }
+        }
+
+        function startQuestionTimer(restoring = false) {
+            stopTimer();
+            timeUpHandling = false;
+
+            /*
+             * Saat pindah soal, selalu buat deadline baru 90 detik.
+             * Saat restore, gunakan deadline yang tersimpan.
+             */
+            if (!restoring) {
+                questionDeadline = Date.now() + QUESTION_TIME_SECONDS * 1000;
+            }
+
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                updateTimerDisplay();
+
+                if (Date.now() >= questionDeadline) {
+                    stopTimer();
+                    handleTimeUp();
+                }
+            }, 250);
+
+            /*
+             * Jalankan pengecekan langsung supaya jika deadline sudah
+             * terlewati ketika tab/browser dibuka kembali, soal langsung
+             * diproses tanpa menunggu interval lama.
+             */
+            if (Date.now() >= questionDeadline) {
+                stopTimer();
+                handleTimeUp();
+            }
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function updateTimerDisplay() {
+            const timer = document.getElementById("timer");
+            if (!timer || !questionDeadline) return;
+
+            const remaining = Math.max(
+                0,
+                Math.ceil((questionDeadline - Date.now()) / 1000)
+            );
+
+            const minutes = Math.floor(remaining / 60);
+            const seconds = remaining % 60;
+
+            timer.textContent =
+                `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+            timer.classList.remove("warning", "danger", "finished");
+
+            if (remaining <= 10) {
+                timer.classList.add("danger");
+            } else if (remaining <= 30) {
+                timer.classList.add("warning");
+            }
+
+            saveSession();
+        }
+
+        function handleTimeUp() {
+            if (timeUpHandling || !testStarted) return;
+
+            timeUpHandling = true;
+
+            /*
+             * Jawaban yang sudah dipilih tetap tersimpan.
+             * Jika belum menjawab, nilainya tetap null dan soal
+             * otomatis dilewati.
+             */
+            if (currentQuestion < questions.length - 1) {
+                alert("Waktu 90 detik untuk soal ini telah habis. Kamu akan melanjutkan ke soal berikutnya.");
+
+                currentQuestion++;
+                renderQuestion(true);
+            } else {
+                alert("Waktu 90 detik untuk soal terakhir telah habis. Hasil pretest akan ditampilkan.");
+                finishTest();
+            }
+        }
+
+const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
+
+async function kirimKeSpreadsheet(payload) {
+    try {
+        await fetch(ELIT_SHEETS_API, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        console.log("Data pretest dikirim ke Google Sheets.");
+        return true;
+
+    } catch (error) {
+        console.error("Gagal mengirim pretest:", error);
+        return false;
+    }
+}
+
+        function finishTest() {
+            stopTimer();
+            testStarted = false;
+            questionDeadline = null;
+            document.body.classList.remove("quiz-active");
+
+            document.getElementById("quizScreen").classList.add("hidden");
+            document.getElementById("resultScreen").classList.remove("hidden");
+            document.getElementById("topProgress").textContent = "Selesai";
+
+            let correct = 0;
+
+            questions.forEach((question, index) => {
+                if (studentAnswers[index] === question.answer) {
+                    correct++;
+                }
+            });
+
+            const score = Math.round((correct / questions.length) * 100);
+
+kirimKeSpreadsheet({
+    type: "pretestt",
+    nama: studentName,
+    answers: studentAnswers.map(answer =>
+        answer === null ? "" : String.fromCharCode(65 + answer)
+    ),
+    correct: correct,
+    wrong: questions.length - correct,
+    score: score
+});
+
+            document.getElementById("resultGreeting").textContent =
+                `Nama: ${studentName}. Berikut adalah hasil pengerjaan pretest kamu.`;
+
+            document.getElementById("finalScore").textContent = score;
+            document.getElementById("scoreDetail").textContent =
+                `${correct} benar dari ${questions.length} soal`;
+
+            const resultBody = document.getElementById("resultBody");
+            resultBody.innerHTML = "";
+
+            questions.forEach((question, index) => {
+                const userAnswer = studentAnswers[index];
+                const correctAnswer = question.answer;
+
+                const isCorrect = userAnswer === correctAnswer;
+
+                const userText =
+                    userAnswer === null
+                        ? "Tidak dijawab"
+                        : `${String.fromCharCode(65 + userAnswer)}. ${question.options[userAnswer]}`;
+
+                const correctText =
+                    `${String.fromCharCode(65 + correctAnswer)}. ${question.options[correctAnswer]}`;
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="${isCorrect ? "correct" : "wrong"}">
+                        ${isCorrect ? "BENAR" : "SALAH"}
+                    </td>
+                    <td>${escapeHtml(userText)}</td>
+                    <td>${escapeHtml(correctText)}</td>
+                `;
+
+                resultBody.appendChild(row);
+            });
+
+            clearSession();
+        }
+
+        function restartTest() {
+            stopTimer();
+            clearSession();
+
+            studentAnswers = new Array(questions.length).fill(null);
+            currentQuestion = 0;
+            studentName = "";
+            questionDeadline = null;
+            testStarted = false;
+
+            document.body.classList.remove("quiz-active");
+
+            document.getElementById("resultScreen").classList.add("hidden");
+            document.getElementById("quizScreen").classList.add("hidden");
+            document.getElementById("introScreen").classList.remove("hidden");
+            document.getElementById("topProgress").textContent = "Belum dimulai";
+            document.getElementById("studentName").value = "";
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        /*
+         * ============================================================
+         * ANTI-COPY / ANTI-PRINT DASAR
+         * ============================================================
+         * Catatan penting:
+         * Browser tidak menyediakan cara yang benar-benar bisa menjamin
+         * screenshot OS tidak dapat dilakukan. Yang bisa dilakukan dari
+         * halaman web adalah menghambat copy, klik kanan, seleksi teks,
+         * drag, print, dan beberapa shortcut umum.
+         */
+
+        document.addEventListener("contextmenu", function(event) {
+            if (testStarted) {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener("dragstart", function(event) {
+            if (testStarted) {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener("selectstart", function(event) {
+            if (testStarted) {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (!testStarted) return;
+
+            const key = event.key.toLowerCase();
+            const ctrlOrCmd = event.ctrlKey || event.metaKey;
+
+            /*
+             * Blok shortcut yang umum dipakai untuk menyalin,
+             * melihat source, menyimpan, mencetak, atau membuka
+             * developer tools.
+             */
+            if (
+                (ctrlOrCmd && ["c", "x", "u", "s", "p"].includes(key)) ||
+                (ctrlOrCmd && event.shiftKey && ["i", "j", "c"].includes(key)) ||
+                key === "f12"
+            ) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            /*
+             * PrintScreen tidak dapat dijamin dicegah oleh JavaScript.
+             * Beberapa browser hanya mengizinkan kita mendeteksi tombolnya,
+             * bukan membatalkan kemampuan sistem operasi mengambil screenshot.
+             */
+            if (event.key === "PrintScreen") {
+                event.preventDefault();
+            }
+        });
+
+        /*
+         * Jangan pause timer ketika visibility berubah.
+         * Deadline tetap menggunakan jam aktual sehingga pindah tab,
+         * minimize, atau keluar sementara tidak menghentikan waktu.
+         */
+        document.addEventListener("visibilitychange", function() {
+            if (testStarted) {
+                updateTimerDisplay();
+
+                if (Date.now() >= questionDeadline) {
+                    stopTimer();
+                    handleTimeUp();
+                }
+            }
+        });
+
+        /*
+         * Coba pulihkan sesi yang masih aktif setelah refresh/reopen.
+         */
+        window.addEventListener("load", function() {
+            restoreSession();
+        });
+
+        /*
+         * Simpan sesi ketika halaman hendak ditinggalkan.
+         * Timer TIDAK dihentikan.
+         */
+        window.addEventListener("pagehide", function() {
+            if (testStarted) {
+                saveSession();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
