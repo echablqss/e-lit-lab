@@ -63,7 +63,7 @@ window.MathJax = {
 
 <!-- ================= GOOGLE SHEETS E-LIT LAB ================= -->
 <script>
-const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbwNRrbU_K_h1iuh-CjgUfRVcLp_UeM3r2XmrzxVNktpR19Ly8zJf2WGSYU8b5Tvqkld/exec";
+const ELIT_SHEETS_API = "https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
 
 async function kirimKeSpreadsheet(payload) {
     try {
@@ -196,29 +196,36 @@ async function kirimKeSpreadsheet(payload) {
 <!-- 3. PEMBATAS (DIVIDER) WARNA HIJAU ESTETIK -->
 <div class="w-full h-2 bg-gradient-to-r from-red-500 via-teal-400 to-red-600"></div>
           
-    <!-- 4. TUJUAN PEMBELAJARAN (4 Kotak Visual) -->
-    <section id="tujuan pembelajaran" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-10">Tujuan Pembelajaran</h2>
+<!-- SECTION Tujuan Pembelajaran -->
+        <section id="tujuan pembelajaran" class="py-12 bg-slate-100">
+          <div class="max-w-4xl mx-auto px-4">
+        
+            <!-- Judul Section -->
+            <div class="text-center mb-12">
+               <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
+                   Tujuan Pembelajaran
+               </h2>
+            </div>
         
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
                 <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">1</div>
-                <p class="text-xs text-slate-600 leading-relaxed">Mengklasifikasikan bentuk-bentuk energi dasar serta membedakan potensi sumber energi terbarukan dalam memenuhi kebutuhan energi masyarakat.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Peserta didik mampu mengklasifikasikan bentuk-bentuk energi serta menganalisis potensi sumber energi terbarukan dalam memenuhi kebutuhan masyarakat.</p>
             </div>
 
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
                 <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">2</div>
-                <p class="text-xs text-slate-600 leading-relaxed">Menganalisis bentuk dan perubahan energi pada penerapannya dalam kehidupan sehari-hari beserta dampak penggunaannya terhadap lingkungan dan masyarakat.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Peserta didik mampu mengevaluasi dilema teknis dan dampak ekologis pemanfaatan energi terbarukan.</p>
             </div>
 
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
                 <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">3</div>
-                <p class="text-xs text-slate-600 leading-relaxed">Menemukan masalah ketersediaan energi dan dilema ekologi yang ada di lingkungan sekitar tempat tinggal maupun isu energi global.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Peserta didik mampu menganalisis hubungan antara daya, energi, dan efisiensi.</p>
             </div>
 
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500 transition">
                 <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold mb-4">4</div>
-                <p class="text-xs text-slate-600 leading-relaxed">Merancang dan mengevaluasi ide alat penghasil energi terbarukan sederhana berbasis pendekatan STEAM sebagai solusi atas masalah ketersediaan energi dengan bantuan AI.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Peserta didik mampu merancang dan mengevaluasi solusi sistem energi terbarukan berbasis cerita dilemma dan STEAM.</p>
             </div>
         </div>
     </section>
@@ -246,23 +253,17 @@ async function kirimKeSpreadsheet(payload) {
                 <span>Soal Pilihan Ganda</span>
             </div>
             <div class="pretest-info-item">
-                <strong>C4–C6</strong>
-                <span>Level Kognitif</span>
-            </div>
-            <div class="pretest-info-item">
-                <strong>90 Menit</strong>
+                <strong>90 Detik</strong>
                 <span>Waktu Setiap Soal</span>
             </div>
         </div>
 
         <div class="pretest-note">
             <strong>Petunjuk:</strong>
-            Siapkan diri sebelum memulai. Kamu akan mengerjakan soal satu per
-            satu. Setiap soal memiliki batas waktu 90 menit. Setelah memilih
-            jawaban, tekan tombol <strong>Soal Berikutnya</strong>.
+            Siapkan diri sebelum memulai. Kerjakan dengan teliti dan jujur untuk menguji pemahaman awal kamu.Setiap soal memiliki batas waktu 90 detik. 
         </div>
 
-        <a href="pretest.html" class="btn-pretest">
+        <a href="pretestt.html" class="btn-pretest">
             Kerjakan Pretest
             <span>→</span>
         </a>
@@ -319,7 +320,7 @@ async function kirimKeSpreadsheet(payload) {
 
     .pretest-info {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 18px;
         max-width: 800px;
         margin: 30px auto;
@@ -1129,7 +1130,7 @@ async function kirimKeSpreadsheet(payload) {
                 <div class="flex items-start gap-3">
                     <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 1</span>
                     <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
-                        Dari beberapa dampak buruk krisis energi tersebut, fasilitas atau aktivitas sehari-hari apa yang paling membuatmu panik jika tiba-tiba lumpuh? Berikan alasan singkat!
+                        Dari beberapa dampak krisis energi yang kamu lihat dalam video, fasilitas atau aktivitas sehari-hari apa yang paling kamu khawatirkan jika tiba-tiba tidak dapat menggunakan listrik? Mengapa?
                     </h3>
                 </div>
                 <textarea id="essay1" rows="3" required placeholder="Tuliskan jawaban dan alasanmu di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"></textarea>
@@ -1137,50 +1138,12 @@ async function kirimKeSpreadsheet(payload) {
 
               <hr class="border-slate-200">
 
-              <!-- SOAL 2: PILIHAN GANDA (INTERAKTIF + PEMBETULAN LANGSUNG) -->
-              <div class="space-y-4">
+            <!-- SOAL 2: ESSAY -->
+            <div class="space-y-3">
                 <div class="flex items-start gap-3">
                     <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 2</span>
                     <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
-                        Mengapa ketergantungan manusia pada bahan bakar minyak bumi, gas, dan batu bara menjadi pemicu utama terjadinya krisis energi global?
-                    </h3>
-                </div>
-
-                <!-- Pilihan Jawaban -->
-                <div class="space-y-2 pl-2">
-                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
-                        <input type="radio" name="pilgan" value="A" class="mt-1 text-red-600 focus:ring-red-500">
-                        <span class="text-sm text-slate-700"><b>A.</b> Karena energi tersebut menghasilkan daya listrik yang terlalu kecil untuk menyalakan perangkat elektronik modern.</span>
-                    </label>
-
-                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
-                        <input type="radio" name="pilgan" value="B" class="mt-1 text-red-600 focus:ring-red-500">
-                        <span class="text-sm text-slate-700"><b>B.</b> Karena proses pembentukannya membutuhkan waktu jutaan tahun, sedangkan manusia menghabiskannya dengan sangat cepat.</span>
-                    </label>
-
-                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
-                        <input type="radio" name="pilgan" value="C" class="mt-1 text-red-600 focus:ring-red-500">
-                        <span class="text-sm text-slate-700"><b>C.</b> Karena sumber daya tersebut hanya bisa ditemukan di negara yang sedang berkonflik saja.</span>
-                    </label>
-
-                    <label class="flex items-start gap-3 p-3 border rounded-xl hover:bg-slate-50 cursor-pointer transition">
-                        <input type="radio" name="pilgan" value="D" class="mt-1 text-red-600 focus:ring-red-500">
-                        <span class="text-sm text-slate-700"><b>D.</b> Karena energi fosil sangat ramah lingkungan sehingga pemerintah sengaja membatasi penggunaannya.</span>
-                    </label>
-                </div>
-
-                <!-- KOTAK PEMBETULAN LANGSUNG (Muncul Otomatis Setelah Klik Cek/Submit) -->
-                <div id="feedbackPilgan" class="hidden p-4 rounded-xl text-sm leading-relaxed transition-all"></div>
-            </div>
-
-            <hr class="border-slate-200">
-
-            <!-- SOAL 3: ESSAY -->
-            <div class="space-y-3">
-                <div class="flex items-start gap-3">
-                    <span class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg">Soal 3</span>
-                    <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-snug">
-                        Ditegaskan bahwa 'langkah kecil dari setiap orang' sangat membantu. Menurut pendapatmu pribadi, mengapa tindakan kecil seperti mematikan lampu atau mencabut charger yang tidak dipakai sering disepelekan orang? Bagaimana cara mengubah kebiasaan itu?
+                        Menurut pendapatmu, mengapa tindakan sederhana seperti mematikan lampu atau mencabut charger yang tidak digunakan sering dianggap sepele? Bagaimana cara membangun kebiasaan hemat energi?
                     </h3>
                 </div>
                 <textarea id="essay2" rows="3" required placeholder="Tuliskan pendapatmu di sini..." class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"></textarea>
@@ -1189,7 +1152,7 @@ async function kirimKeSpreadsheet(payload) {
             <!-- TOMBOL SUBMIT -->
             <div class="text-center pt-4">
                 <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">
-                    🚀 Kirim Jawaban & Cek Hasil
+                    Kirim Jawaban
                 </button>
             </div>
 
@@ -1202,54 +1165,17 @@ async function kirimKeSpreadsheet(payload) {
 function prosesJawaban(e) {
     e.preventDefault(); // Mencegah reload halaman
 
-    // Ambil Jawaban Pilgan
-    const pilihan = document.querySelector('input[name="pilgan"]:checked');
-    const feedbackBox = document.getElementById('feedbackPilgan');
-
-    if (!pilihan) {
-        alert("Pilih salah satu jawaban untuk Soal 2 (Pilihan Ganda) terlebih dahulu!");
-        return;
-    }
-
-    const jawabanBenar = "B";
-    const jawabanSiswa = pilihan.value;
-
-    // Tampilkan Kotak Pembetulan Langsung
-    feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'bg-red-50', 'border-emerald-300', 'border-red-300', 'text-emerald-900', 'text-red-900');
-
-    if (jawabanSiswa === jawabanBenar) {
-        // Jika Benar
-        feedbackBox.classList.add('bg-emerald-50', 'border', 'border-emerald-300', 'text-emerald-900');
-        feedbackBox.innerHTML = `
-            <div class="flex items-center gap-2 font-bold mb-1 text-emerald-700">
-                <span>🎉 JAWABANMU BENAR! (Opsi B)</span>
-            </div>
-            <p><b>Penjelasan:</b> Bahan bakar fosil merupakan sumber daya tak terbarukan yang membutuhkan waktu jutaan tahun untuk terbentuk kembali. Laju konsumsi manusia jauh lebih cepat dibandingkan kecepatan alam memproduksinya kembali.</p>
-        `;
-    } else {
-        // Jika Salah (Ada Pembetulan Langsung)
-        feedbackBox.classList.add('bg-red-50', 'border', 'border-red-300', 'text-red-900');
-        feedbackBox.innerHTML = `
-            <div class="flex items-center gap-2 font-bold mb-1 text-red-700">
-                <span>❌ JAWABANMU KURANG TEPAT (Kamu memilih ${jawabanSiswa})</span>
-            </div>
-            <p><b>Pembetulan:</b> Jawaban yang benar adalah <b>B. Karena proses pembentukannya membutuhkan waktu jutaan tahun, sedangkan manusia menghabiskannya dengan sangat cepat.</b></p>
-            <p class="mt-1 text-xs text-red-700"><i>Catatan: Bahan bakar fosil bukan berarti tidak ramah lingkungan atau hanya ada di negara konflik, melainkan jumlahnya terbatas dan sangat cepat habis jika dipakai terus-menerus!</i></p>
-        `;
-    }
-
     // Kirim data pemantik ke Google Sheets
     kirimKeSpreadsheet({
         type: "pemantik",
         nama: document.getElementById("namaSiswa").value.trim(),
         kelas: document.getElementById("kelasSiswa").value.trim(),
         jawaban1: document.getElementById("essay1").value.trim(),
-        jawaban2: jawabanSiswa,
-        jawaban3: document.getElementById("essay2").value.trim()
+        jawaban2: document.getElementById("essay2").value.trim()
     });
 
     // Beri info ke siswa bahwa jawaban telah direkam
-    alert("Jawabanmu berhasil direkam! Silakan cek pembetulan soal pilihan ganda di bawah soal No. 2.");
+    alert("Jawabanmu berhasil direkam!");
 }
 </script>
 
@@ -1648,30 +1574,40 @@ function prosesJawaban(e) {
     <!-- Grid 4 Fitur (2 Kolom di Layar Besar) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-      <!-- FITUR 1: LKPD DIGITAL (PDF PREVIEW + DOWNLOAD) -->
-      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
+<!-- FITUR 1: LKPD DIGITAL -->
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+    <div>
+        <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold">
-              📄
+                📄
             </div>
+
             <div>
-              <h3 class="font-bold text-slate-900 text-lg">LKPD Digital</h3>
-              <p class="text-xs text-slate-500">Lembar Kerja Peserta Didik STEAM</p>
+                <h3 class="font-bold text-slate-900 text-lg">LKPD Digital</h3>
+                <p class="text-xs text-slate-500">
+                    Lembar Kerja Peserta Didik STEAM
+                </p>
             </div>
-          </div>
-          
-          <!-- Frame Tampilan PDF -->
-          <div class="w-full h-80 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-4">
-            <iframe src="LKPD-STEAM.pdf" class="w-full h-full" frameborder="0"></iframe>
-          </div>
         </div>
 
-        <!-- Tombol Unduh LKPD -->
-        <a href="LKPD-STEAM.pdf" download class="w-full text-center bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm flex items-center justify-center gap-2">
-          <span>📥 Unduh LKPD (.pdf)</span>
-        </a>
-      </div>
+        <div class="w-full h-80 bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center text-center p-8">
+            <div>
+                <h4 class="font-bold text-slate-800 text-lg mb-2">
+                    Kerjakan LKPD secara langsung
+                </h4>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                    LKPD Eco-Gazebo dapat dikerjakan langsung melalui halaman digital E-Lit Lab.
+                    Jawaban dapat disimpan dan dikirim setelah seluruh kegiatan selesai.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <a href="lkpd.html"
+       class="w-full text-center bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-xl transition">
+        Buka & Kerjakan LKPD
+    </a>
+</div>
 
       <!-- FITUR 2: MADING DIGITAL (PADLET EMBED) -->
       <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
@@ -2250,12 +2186,12 @@ function hitungDampakCO2() {
 
     <div class="posttest-info">
       <div>
-        <b>📝 15 Soal</b>
+        <b>15 Soal</b>
         <small>Pilihan Ganda</small>
       </div>
 
       <div>
-        <b>⏱️ 90 Menit</b>
+        <b>90 Detik</b>
         <small>Setiap Soal</small>
       </div>
     </div>
@@ -2687,7 +2623,7 @@ function hitungDampakCO2() {
 
     <!-- 10. FOOTER -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-8 text-center border-t border-slate-800">
-        <p>© 2026 E-lit lab — Echa Balqis Putri Ernowo.</p>
+        <p>© 2026 E-lit Lab by Echa Balqis Putri Ernowo.</p>
         <p class="mt-1 text-[11px] text-slate-500">Dikembangkan untuk Media Pembelajaran Fisika SMA Berbasis AI-Assisted Dilemma-STEAM.</p>
     </footer>
 
