@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Materi Fisika Konseptual Energi Terbarukan</title>
 
-  <!-- MathJax Script untuk Render Rumus Fisika LaTeX -->
+  <title>Materi Energi Terbarukan</title>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
   <style>
+
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #10b981;
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
+      --cream: #f7f5ed;
+      --paper: #fffdf8;
+      --white: #ffffff;
+
+      --forest: #234f3d;
+      --forest-dark: #183b2d;
+      --sage: #dce8d9;
+      --sage-light: #eef4eb;
+
+      --sun: #e6b94f;
+      --sun-light: #f8edc9;
+
+      --blue-soft: #e5eef1;
+      --blue: #47747b;
+
+      --brown: #806044;
+
+      --text: #27352e;
+      --text-soft: #66736c;
+      --line: #dfe4dc;
+
+      --shadow: 0 10px 30px rgba(35, 79, 61, 0.07);
+      --shadow-small: 0 4px 15px rgba(35, 79, 61, 0.06);
     }
 
     * {
@@ -25,887 +58,2340 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.7;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: 20px 15px;
+      font-family:
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(230,185,79,0.10),
+          transparent 24%
+        ),
+        var(--cream);
+
+      color: var(--text);
+      line-height: 1.75;
+      padding: 0 18px 50px;
     }
 
     .container {
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 980px;
+      margin: auto;
     }
 
-    /* HEADER & ANIMASI KIRI-KANAN */
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
     header {
+      padding: 65px 20px 45px;
       text-align: center;
-      padding: 40px 20px 20px;
       position: relative;
+    }
+
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 15px;
+      margin-bottom: 18px;
+
+      background: var(--sage-light);
+      color: var(--forest);
+
+      border: 1px solid #d5e2d1;
+      border-radius: 50px;
+
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mini-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sun);
     }
 
     .title-wrapper {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .title-icon {
+      width: 54px;
+      height: 54px;
+
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 10px;
+
+      border-radius: 50%;
+
+      background: var(--white);
+      border: 1px solid var(--line);
+
+      box-shadow: var(--shadow-small);
+
+      font-size: 1.7rem;
+
+      animation: gentleFloat 4s ease-in-out infinite;
     }
 
-    .animated-icon {
-      font-size: 2.2rem;
-      display: inline-block;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .animated-icon.right {
+    .title-icon.right {
       animation-delay: 1.5s;
     }
 
     h1 {
-      font-size: 2rem;
-      color: #0f172a;
-      font-weight: 800;
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(2.1rem, 5vw, 3.3rem);
+
+      line-height: 1.15;
+
+      color: var(--forest-dark);
+
+      letter-spacing: -0.035em;
     }
 
-    p.subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
+    .subtitle {
+      max-width: 650px;
+      margin: 18px auto 0;
+
+      color: var(--text-soft);
+
+      font-size: 1rem;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(8deg); }
+    .header-line {
+      width: 55px;
+      height: 3px;
+
+      margin: 28px auto 0;
+
+      background: var(--sun);
+      border-radius: 20px;
     }
 
-    /* GELEMBUNG SCROLL DOWN */
-    .scroll-bubble-wrapper {
-      text-align: center;
-      margin: 25px 0 35px;
+    @keyframes gentleFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
     }
 
-    .scroll-bubble {
-      display: inline-flex;
-      flex-direction: column;
+
+    /* =====================================================
+       INTRO
+    ===================================================== */
+
+    .intro-note {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 18px;
+
+      padding: 22px 24px;
+
+      margin-bottom: 30px;
+
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--sun);
+
+      border-radius: 15px;
+
+      box-shadow: var(--shadow-small);
+    }
+
+    .intro-icon {
+      width: 45px;
+      height: 45px;
+
+      display: flex;
       align-items: center;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 10px 20px;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      cursor: pointer;
-      animation: bounce 2s infinite;
-      transition: all 0.3s ease;
-    }
+      justify-content: center;
 
-    .scroll-bubble:hover {
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
-      border-color: var(--primary);
-    }
-
-    .scroll-bubble span {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 2px;
-    }
-
-    .scroll-bubble .arrow {
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-4px); }
-    }
-
-    /* CARD ACCORDION STYLES */
-    details {
-      background: var(--card-bg);
-      border: 1px solid #e2e8f0;
       border-radius: 12px;
-      margin-bottom: 20px;
-      padding: 18px 22px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
+
+      background: var(--sun-light);
+
+      font-size: 1.35rem;
+    }
+
+    .intro-note strong {
+      display: block;
+      margin-bottom: 3px;
+
+      color: var(--forest);
+      font-size: 0.9rem;
+    }
+
+    .intro-note p {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       ACCORDION
+    ===================================================== */
+
+    details {
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+      border-radius: 17px;
+
+      margin-bottom: 22px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-small);
+
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    details:hover {
+      box-shadow: var(--shadow);
     }
 
     details[open] {
-      border-color: var(--primary);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+      border-color: #b9cdb9;
     }
 
     summary {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--text-main);
-      cursor: pointer;
       list-style: none;
+      cursor: pointer;
+
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      user-select: none;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 23px 27px;
+
+      color: var(--forest-dark);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 1.22rem;
+      font-weight: 700;
     }
 
     summary::-webkit-details-marker {
       display: none;
     }
 
+    .chapter-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .chapter-number {
+      min-width: 39px;
+      height: 39px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background: var(--sage-light);
+      color: var(--forest);
+
+      font-family: "Segoe UI", sans-serif;
+
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
     summary::after {
-      content: '➕';
-      font-size: 0.9rem;
-      color: var(--primary);
-      transition: transform 0.3s ease;
+      content: "+";
+
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--sage-light);
+      color: var(--forest);
+
+      font-family: Arial, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+
+      transition: 0.3s ease;
     }
 
     details[open] summary::after {
-      content: '➖';
+      content: "−";
+      background: var(--forest);
+      color: white;
     }
 
     .materi-content {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #f1f5f9;
+      padding: 4px 29px 32px;
     }
 
-    /* BOX RUMUS ELEGAN */
+    .materi-content > h3 {
+      margin-top: 27px;
+      margin-bottom: 10px;
+
+      color: var(--forest);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 1.25rem;
+    }
+
+    .materi-content > h3:first-child {
+      margin-top: 10px;
+    }
+
+    .materi-content p {
+      color: #4e5d55;
+      font-size: 0.94rem;
+    }
+
+
+    /* =====================================================
+       SECTION DIVIDER
+    ===================================================== */
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      margin: 32px 0 18px;
+
+      color: var(--forest);
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+
+      background: var(--line);
+    }
+
+    .section-divider span {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       SUB TITLE
+    ===================================================== */
+
+    .subheading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin: 25px 0 8px;
+
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+    }
+
+    .subheading::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--sun);
+    }
+
+
+    /* =====================================================
+       FORMULA
+    ===================================================== */
+
     .formula-box {
-      background-color: #f0fdf4;
-      border-left: 5px solid var(--accent);
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin: 20px 0;
+      position: relative;
+
+      margin: 22px 0;
+
+      padding: 20px 22px;
+
+      background: var(--sage-light);
+
+      border: 1px solid #d9e5d5;
+      border-radius: 13px;
+
+      overflow: hidden;
+    }
+
+    .formula-box::before {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      width: 4px;
+
+      background: var(--forest);
     }
 
     .formula-box h4 {
-      color: #065f46;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
+      margin-bottom: 9px;
+
+      color: var(--forest);
+
+      font-size: 0.83rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    /* PLACEHOLDER GAMBAR */
-    .image-container {
+    .formula {
+      padding: 7px 0;
+
+      color: var(--forest-dark);
+
+      font-size: 1.15rem;
       text-align: center;
-      margin: 25px 0;
-      background: #f8fafc;
-      border: 2px dashed #cbd5e1;
-      padding: 15px;
-      border-radius: 10px;
+    }
+
+    .formula-box small {
+      display: block;
+
+      margin-top: 10px;
+
+      color: var(--text-soft);
+
+      line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    .image-container {
+      margin: 26px 0;
+
+      background: #f1f3ed;
+
+      border: 1px solid var(--line);
+      border-radius: 14px;
+
+      padding: 10px;
+
+      text-align: center;
     }
 
     .image-container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
+      width: 100%;
+      max-height: 330px;
+
+      object-fit: cover;
+
+      border-radius: 9px;
+
+      display: block;
     }
 
     .image-caption {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 8px;
+      padding: 10px 8px 3px;
+
+      color: var(--text-soft);
+
+      font-size: 0.8rem;
       font-style: italic;
     }
 
-    /* TABEL KLASIFIKASI */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+
+    /* =====================================================
+       ENERGY CONVERSION FLOW
+    ===================================================== */
+
+    .conversion-card {
+      margin: 25px 0;
+
+      padding: 24px;
+
+      background: #f8faf6;
+
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+
+    .conversion-card h4 {
+      margin-bottom: 18px;
+
+      color: var(--forest);
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+    }
+
+    .energy-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+    .energy-box {
+      min-width: 150px;
+
+      padding: 14px 18px;
+
+      border-radius: 11px;
+
+      text-align: center;
+
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .energy-box small {
+      display: block;
+
+      margin-top: 4px;
+
+      font-size: 0.72rem;
+      font-weight: 400;
+    }
+
+    .energy-sun {
+      background: var(--sun-light);
+      border: 1px solid #ecdca9;
+      color: #735a1f;
+    }
+
+    .energy-wind {
+      background: var(--blue-soft);
+      border: 1px solid #cfdee1;
+      color: #385e64;
+    }
+
+    .energy-water {
+      background: var(--sage-light);
+      border: 1px solid #d2e2cf;
+      color: var(--forest);
+    }
+
+    .energy-mechanical {
+      background: #f1f1ee;
+      border: 1px solid #deded8;
+      color: #555d58;
+    }
+
+    .energy-electric {
+      background: var(--forest);
+      color: white;
+      border: 1px solid var(--forest);
+    }
+
+    .arrow {
+      color: var(--forest);
+      font-size: 1.35rem;
+    }
+
+
+    /* =====================================================
+       FACTOR GRID
+    ===================================================== */
+
+    .factor-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+      gap: 15px;
+
+      margin: 20px 0 28px;
+    }
+
+    .factor-card {
+      padding: 18px;
+
+      background: #fff;
+
+      border: 1px solid var(--line);
+      border-radius: 13px;
+
+      transition: transform 0.25s ease;
+    }
+
+    .factor-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .factor-card h4 {
+      margin-bottom: 8px;
+
+      color: var(--forest);
+
       font-size: 0.95rem;
     }
 
-    th, td {
-      border: 1px solid #cbd5e1;
-      padding: 12px;
-      text-align: left;
+    .factor-card ul {
+      margin: 0;
+      padding-left: 17px;
     }
 
-    th {
-      background-color: #f1f5f9;
-      color: #334155;
-    }
-
-    /* KODE PYTHON */
-    pre {
-      background-color: #0f172a;
-      color: #f8fafc;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 15px 0;
-      font-size: 0.9rem;
-    }
-
-    code {
-      font-family: 'Fira Code', 'Consolas', monospace;
-    }
-
-    ul, ol {
-      margin-left: 20px;
-      margin-bottom: 15px;
-    }
-
-    li {
+    .factor-card li {
       margin-bottom: 6px;
+
+      color: var(--text-soft);
+
+      font-size: 0.83rem;
     }
 
-    .highlight {
-      background-color: #fef08a;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
+
+    /* =====================================================
+       CHARACTERISTICS
+    ===================================================== */
+
+    .characteristics {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 13px;
+
+      margin: 18px 0 28px;
     }
 
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.5rem; }
-      summary { font-size: 1.05rem; }
-      .animated-icon { font-size: 1.6rem; }
+    .characteristic {
+      padding: 17px 18px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      position: relative;
+      overflow: hidden;
     }
+
+    .characteristic::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      width: 3px;
+
+      background: var(--sun);
+    }
+
+    .characteristic strong {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: var(--forest);
+
+      font-size: 0.88rem;
+    }
+
+    .characteristic span {
+      color: var(--text-soft);
+
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       RENEWABLE ENERGY CARDS
+    ===================================================== */
+
+    .renewable-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 22px;
+
+      margin-top: 22px;
+    }
+
+    .renewable-card {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        260px;
+
+      gap: 25px;
+
+      padding: 23px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+      border-radius: 16px;
+
+      box-shadow: var(--shadow-small);
+
+      transition: 0.3s ease;
+    }
+
+    .renewable-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .renewable-number {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 34px;
+      height: 34px;
+
+      margin-right: 8px;
+
+      border-radius: 9px;
+
+      background: var(--forest);
+      color: white;
+
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .renewable-title {
+      display: inline;
+
+      color: var(--forest-dark);
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 1.12rem;
+    }
+
+    .renewable-description {
+      margin: 14px 0 15px;
+
+      font-size: 0.88rem !important;
+    }
+
+    .work-title {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: var(--forest);
+
+      font-size: 0.83rem;
+      font-weight: 800;
+    }
+
+    .work-list {
+      padding-left: 19px;
+      margin-bottom: 17px;
+    }
+
+    .work-list li {
+      margin-bottom: 5px;
+
+      color: var(--text-soft);
+
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .renewable-image {
+      align-self: start;
+
+      background: #f3f4ef;
+
+      border: 1px solid var(--line);
+
+      padding: 9px;
+
+      border-radius: 12px;
+
+      text-align: center;
+    }
+
+    .renewable-image img {
+      width: 100%;
+      height: 175px;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      display: block;
+    }
+
+    .renewable-image span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: var(--text-soft);
+
+      font-size: 0.72rem;
+    }
+
+    .power-box {
+      margin-top: 18px;
+
+      padding: 16px;
+
+      background: #fcfaf1;
+
+      border: 1px solid #eee3bc;
+
+      border-radius: 11px;
+    }
+
+    .power-title {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: #806426;
+
+      font-size: 0.75rem;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .power-formula {
+      text-align: center;
+
+      color: var(--forest-dark);
+
+      font-size: 1rem;
+
+      padding: 5px 0;
+    }
+
+    .power-description {
+      margin-top: 7px !important;
+
+      padding-top: 8px;
+
+      border-top: 1px dashed #dfd5ae;
+
+      font-size: 0.74rem !important;
+      line-height: 1.6 !important;
+    }
+
+
+    /* =====================================================
+       FOOTER / BACK HOME
+    ===================================================== */
+
+    .bottom-area {
+      text-align: center;
+
+      padding: 40px 10px 15px;
+    }
+
+    .bottom-line {
+      width: 100%;
+      height: 1px;
+
+      margin-bottom: 28px;
+
+      background: var(--line);
+    }
+
+    .bottom-area p {
+      margin-bottom: 18px;
+
+      color: var(--text-soft);
+
+      font-size: 0.82rem;
+    }
+
+    .home-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 13px 23px;
+
+      background: var(--forest);
+      color: white;
+
+      border-radius: 50px;
+
+      text-decoration: none;
+
+      font-size: 0.86rem;
+      font-weight: 700;
+
+      box-shadow: 0 7px 18px rgba(35,79,61,0.18);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .home-button:hover {
+      background: var(--forest-dark);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 22px rgba(35,79,61,0.22);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 720px) {
+
+      body {
+        padding: 0 12px 35px;
+      }
+
+      header {
+        padding: 45px 10px 35px;
+      }
+
+      .title-wrapper {
+        gap: 10px;
+      }
+
+      .title-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
+      }
+
+      summary {
+        padding: 19px;
+        font-size: 1.05rem;
+      }
+
+      .materi-content {
+        padding: 3px 19px 25px;
+      }
+
+      .intro-note {
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .intro-icon {
+        width: 39px;
+        height: 39px;
+      }
+
+      .renewable-card {
+        grid-template-columns: 1fr;
+      }
+
+      .renewable-image {
+        order: -1;
+      }
+
+      .renewable-image img {
+        height: 220px;
+      }
+
+      .energy-flow {
+        flex-direction: column;
+      }
+
+      .energy-box {
+        width: 100%;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 0.88rem;
+      }
+
+      .title-icon {
+        display: none;
+      }
+
+      .materi-content > h3 {
+        font-size: 1.12rem;
+      }
+
+      .formula-box {
+        padding: 17px;
+      }
+
+      .renewable-card {
+        padding: 17px;
+      }
+
+      .renewable-image img {
+        height: 180px;
+      }
+    }
+
   </style>
 </head>
+
+
 <body>
 
 <div class="container">
 
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
+
   <header>
-    <div class="title-wrapper">
-      <span class="animated-icon left">☀️</span>
-      <h1>Materi Energi Terbarukan</h1>
-      <span class="animated-icon right">🍃</span>
+
+    <div class="mini-label">
+      Materi Fisika
     </div>
-    <p class="subtitle">Pembahasan Komprehensif Konsep Energi, Sumber Energi, Efisiensi, & Formulasi Daya Terapan</p>
+
+    <div class="title-wrapper">
+
+      <div class="title-icon">
+        ☀️
+      </div>
+
+      <h1>
+        Energi Terbarukan
+      </h1>
+
+      <div class="title-icon right">
+        🌿
+      </div>
+
+    </div>
+
+    <p class="subtitle">
+      Memahami konsep energi, daya, efisiensi, serta pemanfaatan
+      berbagai sumber energi terbarukan dalam kehidupan sehari-hari.
+    </p>
+
+    <div class="header-line"></div>
+
   </header>
 
-  <div class="scroll-bubble-wrapper">
-    <div class="scroll-bubble" onclick="document.querySelector('details').scrollIntoView({behavior: 'smooth'})">
-      <span>Klik Bab di Bawah untuk Membuka</span>
-      <span class="arrow">⬇️</span>
-    </div>
-  </div>
 
-<!-- ================= ACCORDION 1 ================= -->
-<details>
-  <summary>📘 BAB 1: Energi</summary>
-  <div class="materi-content">
-    
-    <h3>1.1 Pengertian Energi</h3>
-    <p>Energi adalah kemampuan untuk melakukan usaha atau menyebabkan terjadinya perubahan pada suatu benda maupun sistem. Perubahan tersebut dapat berupa benda yang bergerak, berubah bentuk, berubah suhu, menghasilkan cahaya, atau menghasilkan bunyi. Dalam fisika, energi termasuk besaran yang memiliki satuan Joule (J) menurut SI. Energi juga sering dinyatakan dalam satuan lain, seperti kalori (cal) untuk energi panas dan kilowatt-hour (kWh) untuk energi listrik yang digunakan dalam kehidupan sehari-hari. Energi tidak dapat diciptakan maupun dimusnahkan, hanya bisa diubah dari satu bentuk ke bentuk lainnya. Contohnya ketika lampu listrik dinyalakan, energi listrik yang digunakan dalam kehidupan sehari-hari.</p>
+  <!-- =====================================================
+       BAB 1
+  ===================================================== -->
 
-    <h3>1.2 Bentuk-Bentuk Energi</h3>
-    <p>Di alam terdapat berbagai jenis bentuk energi. Namun, dalam studi pemanfaatan sumber daya alam dan teknologi pembangkit, fokus utama kita tertuju pada 5 bentuk energi berikut:</p>
-
-    <!-- 1. Energi Potensial Gravitasi -->
-    <h4 style="margin-top: 15px; color: #1e40af;">1. Energi potensial gravitasi (EP)</h4>
-    <p>Energi potensial gravitasi merupakan energi yang dimiliki suatu benda karena posisinya berada pada ketinggian tertentu terhadap permukaan bumi. Semakin tinggi posisi benda, semakin besar energi potensial yang dimilikinya. Contohnya adalah air yang ditampung di bendungan. Air tersebur memiliki energi potensial yang besar karena berada di tempat yang lebih tinggi. Saat dialirkan ke bawah, EP berubah menjadi energi gerak untuk memutar turbin pada PLTA.</p> 
-
-    <div class="formula-box">
-      <h4>Persamaan Energi Potensial Gravitasi:</h4>
-      $$EP = m \cdot g \cdot h$$
-      <p><small><em>Keterangan: EP = Energi Potensial (Joule), m = Massa benda (kg), g = Percepatan gravitasi (9,81 m/s^2), h = Ketinggian benda (meter).</em></small></p>
-    </div>
-
-    <!-- 2. Energi Kinetik -->
-    <h4 style="margin-top: 15px; color: #1e40af;">2. Energi kinetik (EK)</h4>
-    <p>Energi kinetik adalah energi yang dimiliki oleh benda karena bergerak. Semakin besar massa benda dan semakin tinggi kecepatannya, maka semakin besar pula energi kinetiknya. Pada pembangkit listrik tenaga angin (PLTB), energi kinetik angin dimanfaatkan untuk memutar baling-baling turbin sehingga menghasilkan energi listrik.</p>
-
-    <div class="formula-box">
-      <h4>Persamaan Energi Kinetik:</h4>
-      $$EK = \frac{1}{2} \cdot m \cdot v^2$$
-      <p><small><em>Keterangan: E = Energi Kinetik (Joule), m = Massa benda/fluida (kg), v = Kecepatan gerak (m/s).</em></small></p>
-    </div>
-
-    <!-- TEMPAT GAMBAR 1.2 -->
-    <div class="image-container">
-      <img src="" alt="[GAMBAR 1.2: Perubahan Energi Potensial Air Menjadi Energi Kinetik]">
-      <p class="image-caption">Gambar 1.2: Ilustrasi Energi Potensial Air di Ketinggian yang Mengalir Menjadi Energi Kinetik.</p>
-    </div>
-
-    <!-- 3. Energi Cahaya / Radiasi -->
-    <h4 style="margin-top: 15px; color: #1e40af;">3. Energi cahaya</h4>
-    <p>Energi cahaya adalah energi yang dibawa oleh gelombang elektromagnetik yang dapat dilihat oleh mata amnusia. Sumber energi cahaya terbesar di bumi adalah matahari. Energi cahaya dimanfaatkan dalam berbagai bidang, salah satunya sebagai sumber energi pada panel surya. Panel surya mengubah energi cahaya matahari menjadi energi listrik melalui sel fotovoltaik.</p>
-
-    <!-- 4. Energi Listrik -->
-    <h4 style="margin-top: 15px; color: #1e40af;">4. Energi listrik</h4>
-    <p>Energi listrik adalah energi yang dihasilkan oleh pergerakan muatan listrik. Energi ini banyak digunakan karena mudah disalurkan dan dapat diubah menjadi bentuk energi lainnya.</p>
-  
-    <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; margin: 20px 0;">
-      
-      <!-- Sumber Utama (Energi Listrik) -->
-      <div style="text-align: center; margin-bottom: 20px;">
-        <div style="display: inline-flex; align-items: center; gap: 10px; background: #2563eb; color: white; padding: 10px 22px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);">
-          <span>⚡</span> Energi Listrik
-        </div>
-        <div style="color: #64748b; font-size: 0.9rem; font-weight: 600; margin-top: 8px;">
-          ⬇️ Mengalami Konversi Menjadi:
-        </div>
-      </div>
-
-      <!-- Grid 4 Kartu Output Energi -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
-        
-        <!-- Kartu 1: Cahaya -->
-        <div style="background: #ffffff; border-top: 4px solid #eab308; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s;">
-          <div style="font-size: 2.2rem; margin-bottom: 6px;">💡</div>
-          <strong style="display: block; color: #854d0e; font-size: 1rem; margin-bottom: 4px;">Energi Cahaya</strong>
-          <span style="font-size: 0.85rem; color: #64748b; background: #fef9c3; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Contoh: Lampu</span>
-        </div>
-
-        <!-- Kartu 2: Panas -->
-        <div style="background: #ffffff; border-top: 4px solid #ef4444; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s;">
-          <div style="font-size: 2.2rem; margin-bottom: 6px;">♨️</div>
-          <strong style="display: block; color: #991b1b; font-size: 1rem; margin-bottom: 4px;">Energi Panas</strong>
-          <span style="font-size: 0.85rem; color: #64748b; background: #fee2e2; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Contoh: Setrika</span>
-        </div>
-
-        <!-- Kartu 3: Gerak -->
-        <div style="background: #ffffff; border-top: 4px solid #06b6d4; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s;">
-          <div style="font-size: 2.2rem; margin-bottom: 6px;">🌀</div>
-          <strong style="display: block; color: #0e7490; font-size: 1rem; margin-bottom: 4px;">Energi Gerak</strong>
-          <span style="font-size: 0.85rem; color: #64748b; background: #cffaff; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Contoh: Kipas Angin</span>
-        </div>
-
-        <!-- Kartu 4: Bunyi -->
-        <div style="background: #ffffff; border-top: 4px solid #a855f7; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s;">
-          <div style="font-size: 2.2rem; margin-bottom: 6px;">🔊</div>
-          <strong style="display: block; color: #6b21a8; font-size: 1rem; margin-bottom: 4px;">Energi Bunyi</strong>
-          <span style="font-size: 0.85rem; color: #64748b; background: #f3e8ff; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Contoh: Speaker</span>
-        </div>
-
-      </div>
-    </div>
-  
-    <div class="formula-box">
-      <h4>Persamaan Energi Listrik:</h4>
-      $$W = V \cdot I \cdot t$$
-      <p><small><em>Keterangan: W = Energi Listrik (Joule), V = Tegangan (Volt), I = Kuat Arus (Ampere), t = Waktu (sekon).</em></small></p>
-    </div>
-
-    <!-- 5. Energi Mekanik -->
-    <h4 style="margin-top: 15px; color: #1e40af;">5. Energi Mekanik (EM)</h4>
-    <p>Energi mekanik adalah total penjumlahan dari energi potensial dan energi kinetik yang dimiliki oleh suatu sistem. Energi mekanik banyak dimanfaatkan dalam sistem pembangkit listrik. Misalnya pada turbin air dan turbin angin, putaran turbin merupakan bentuk energi mekanik yang kemudian diubah menjadi energi listrik oleh generator.</p>
-
-    <div class="formula-box">
-      <h4>Persamaan Energi Mekanik Total:</h4>
-      $$EM = EP + EK$$
-      <p><small><em>Keterangan: EM = Energi Mekanik Total (Joule), EP = Energi Potensial (Joule), EK = Energi Kinetik (Joule).</em></small></p>
-    </div>
-    <p><strong>Contoh Sehari-hari:</strong> Gabungan energi dari air di tebing tinggi (potensial) yang sedang meluncur jatuh dengan cepat (kinetik) untuk memutar poros turbin.</p>
-
-    <h3>1.3 Konversi Energi</h3>
-    <p>Konversi energi adalah proses perubahan energi dari satu bentuk ke bentuk lainnya. Perubahan ini terjadi hampir pada semua alat yang digunakan manusia. Meskipun bentuk energinya berubah, jumlah energi secara keseluruhan tetap mengikuti Hukum Kekekalan Energi. Dalam teknologi energi terbarukan, proses konversi energi menjadi konsep yang sangat penting. Setiap jenis pembangkit memanfaatkan sumber energi yang berbeda, tetapi semuanya bertujuan menghasilkan energi listrik.</p>
-
-    <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 18px; margin: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-      <h5 style="margin: 0 0 12px 0; color: #1e293b; font-size: 1rem;">1. Matahari (Pembangkit Listrik Tenaga Surya)</h5>
-      
-      <!-- Alur Kotak & Panah -->
-      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
-        <!-- Kotak 1 -->
-        <div style="background: #fef3c7; border: 2px solid #f59e0b; color: #78350f; padding: 10px 16px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center;">
-          Energi Cahaya<br><small style="font-weight: normal; font-size: 0.8rem; color: #92400e;">(Sinar Matahari)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.5rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 2 (Hasil Akhir) -->
-        <div style="background: #dbeafe; border: 2px solid #2563eb; color: #1e40af; padding: 10px 16px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center;">
-          Energi Listrik<br><small style="font-weight: normal; font-size: 0.8rem; color: #1e3a8a;">(Panel Surya / Fotovoltaik)</small>
-        </div>
-      </div>
-
-      <p style="margin: 8px 0 0 0; font-size: 0.88rem; color: #64748b; text-align: center;">
-        <em>Sel fotovoltaik menyerap foton cahaya matahari dan langsung diubah menjadi arus listrik DC.</em>
-      </p>
-    </div>
-
-
-    <!-- ================= DIAGRAM 2: ANGIN ================= -->
-    <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 18px; margin: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-      <h5 style="margin: 0 0 12px 0; color: #1e293b; font-size: 1rem;">2. Angin (Pembangkit Listrik Tenaga Bayu)</h5>
-      
-      <!-- Alur Kotak & Panah -->
-      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
-        <!-- Kotak 1 -->
-        <div style="background: #e0f2fe; border: 2px solid #0284c7; color: #075985; padding: 10px 16px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center;">
-          Energi Kinetik<br><small style="font-weight: normal; font-size: 0.8rem; color: #0369a1;">(Hembusan Angin)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.5rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 2 -->
-        <div style="background: #f1f5f9; border: 2px solid #64748b; color: #334155; padding: 10px 16px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center;">
-          Energi Mekanik<br><small style="font-weight: normal; font-size: 0.8rem; color: #475569;">(Putaran Poros Turbin)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.5rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 3 (Hasil Akhir) -->
-        <div style="background: #dbeafe; border: 2px solid #2563eb; color: #1e40af; padding: 10px 16px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; text-align: center;">
-          Energi Listrik<br><small style="font-weight: normal; font-size: 0.8rem; color: #1e3a8a;">(Output Generator)</small>
-        </div>
-      </div>
-
-      <p style="margin: 8px 0 0 0; font-size: 0.88rem; color: #64748b; text-align: center;">
-        <em>Angin memutar baling-baling kincir (kinetik ke mekanik), lalu putaran poros menggerakkan generator untuk menghasilkan listrik.</em>
-      </p>
-    </div>
-
-
-    <!-- ================= DIAGRAM 3: AIR ================= -->
-    <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 18px; margin: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-      <h5 style="margin: 0 0 12px 0; color: #1e293b; font-size: 1rem;">3. Air (Pembangkit Listrik Tenaga Air / PLTA)</h5>
-      
-      <!-- Alur Kotak & Panah -->
-      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 15px 0;">
-        <!-- Kotak 1 -->
-        <div style="background: #ecfdf5; border: 2px solid #059669; color: #065f46; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; text-align: center;">
-          Energi Potensial<br><small style="font-weight: normal; font-size: 0.78rem; color: #047857;">(Air Bendungan Tinggi)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.3rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 2 -->
-        <div style="background: #e0f2fe; border: 2px solid #0284c7; color: #075985; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; text-align: center;">
-          Energi Kinetik<br><small style="font-weight: normal; font-size: 0.78rem; color: #0369a1;">(Aliran Deras Air)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.3rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 3 -->
-        <div style="background: #f1f5f9; border: 2px solid #64748b; color: #334155; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; text-align: center;">
-          Energi Mekanik<br><small style="font-weight: normal; font-size: 0.78rem; color: #475569;">(Putaran Turbin Air)</small>
-        </div>
-
-        <!-- Panah -->
-        <div style="color: #2563eb; font-size: 1.3rem; font-weight: bold;">➔</div>
-
-        <!-- Kotak 4 (Hasil Akhir) -->
-        <div style="background: #dbeafe; border: 2px solid #2563eb; color: #1e40af; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; text-align: center;">
-          Energi Listrik<br><small style="font-weight: normal; font-size: 0.78rem; color: #1e3a8a;">(Output Generator)</small>
-        </div>
-      </div>
-
-      <p style="margin: 8px 0 0 0; font-size: 0.88rem; color: #64748b; text-align: center;">
-        <em>Air di posisi tinggi meluncur jatuh (EP ke EK), menghantam sudu turbin hingga berputar (EM), lalu memutar generator menghasilkan listrik.</em>
-      </p>
-    </div>
-
-  </div>
-</details>
-
-
-  <!-- ================= ACCORDION 2 ================= -->
   <details>
-    <summary>📗 BAB 2: Daya & Efisiensi</summary>
+
+    <summary>
+
+      <div class="chapter-title">
+        <span class="chapter-number">01</span>
+        <span>Energi</span>
+      </div>
+
+    </summary>
+
+
     <div class="materi-content">
-      <h3>2.1 Usaha</h3>
-      <p>Usaha adalah energi yang dipindahkan atau disalurkan oleh suatu gaya sehingga menyebabkan benda mengalami perpindahan. Konsep ini menjadi dasar dalam berbagai teknologi, termasuk pembangkit energi, karena proses menghasilkan energi listrik diawali dengan adanya usaha untuk mengubah suatu bentuk energi menjadi bentuk energi lainnya.</p>
+
+      <h3>1.1 Pengertian Energi</h3>
+
+      <p>
+        Energi adalah kemampuan untuk melakukan usaha atau menyebabkan
+        terjadinya perubahan pada suatu benda maupun sistem. Perubahan
+        tersebut dapat berupa benda yang bergerak, berubah bentuk,
+        berubah suhu, menghasilkan cahaya, atau menghasilkan bunyi.
+        Dalam fisika, energi termasuk besaran yang memiliki satuan
+        Joule (J) menurut SI. Energi juga sering dinyatakan dalam
+        satuan lain, seperti kalori (cal) untuk energi panas dan
+        kilowatt-hour (kWh) untuk energi listrik yang digunakan dalam
+        kehidupan sehari-hari. Energi tidak dapat diciptakan maupun
+        dimusnahkan, hanya bisa diubah dari satu bentuk ke bentuk lainnya.
+      </p>
+
+
+      <h3>1.2 Bentuk-Bentuk Energi</h3>
+
+      <p>
+        Di alam terdapat berbagai jenis bentuk energi. Namun, dalam
+        studi pemanfaatan sumber daya alam dan teknologi pembangkit,
+        fokus utama kita tertuju pada 5 bentuk energi berikut.
+      </p>
+
+
+      <!-- POTENSIAL -->
+
+      <h4 class="subheading">
+        1. Energi potensial gravitasi (EP)
+      </h4>
+
+      <p>
+        Energi potensial gravitasi merupakan energi yang dimiliki suatu
+        benda karena posisinya berada pada ketinggian tertentu terhadap
+        permukaan bumi. Semakin tinggi posisi benda, semakin besar energi
+        potensial yang dimilikinya. Contohnya adalah air yang ditampung
+        di bendungan. Air tersebut memiliki energi potensial yang besar
+        karena berada di tempat yang lebih tinggi. Saat dialirkan ke bawah,
+        energi potensial berubah menjadi energi gerak untuk memutar turbin
+        pada PLTA.
+      </p>
 
       <div class="formula-box">
-        <h4>Persamaan Usaha:</h4>
-        $$W = F \cdot S$$
-        <p><small><em>Keterangan: W = Usaha (Joule), F = Gaya (Newton), s = Perpindahan (meter).</em></small></p>
+
+        <h4>Persamaan Energi Potensial Gravitasi</h4>
+
+        <div class="formula">
+          $$EP = m \cdot g \cdot h$$
+        </div>
+
+        <small>
+          <strong>EP</strong> = Energi potensial (J),
+          <strong>m</strong> = massa benda (kg),
+          <strong>g</strong> = percepatan gravitasi (9,81 m/s²),
+          <strong>h</strong> = ketinggian benda (m).
+        </small>
+
       </div>
+
+
+      <!-- KINETIK -->
+
+      <h4 class="subheading">
+        2. Energi kinetik (EK)
+      </h4>
+
+      <p>
+        Energi kinetik adalah energi yang dimiliki oleh benda karena
+        bergerak. Semakin besar massa benda dan semakin tinggi
+        kecepatannya, maka semakin besar pula energi kinetiknya.
+        Pada pembangkit listrik tenaga angin (PLTB), energi kinetik
+        angin dimanfaatkan untuk memutar baling-baling turbin sehingga
+        menghasilkan energi listrik.
+      </p>
+
+      <div class="formula-box">
+
+        <h4>Persamaan Energi Kinetik</h4>
+
+        <div class="formula">
+          $$EK = \frac{1}{2} \cdot m \cdot v^2$$
+        </div>
+
+        <small>
+          <strong>EK</strong> = Energi kinetik (J),
+          <strong>m</strong> = massa benda/fluida (kg),
+          <strong>v</strong> = kecepatan gerak (m/s).
+        </small>
+
+      </div>
+
+
+      <!-- IMAGE -->
+
+      <div class="image-container">
+
+        <img
+          src=""
+          alt="Perubahan energi potensial air menjadi energi kinetik"
+        >
+
+        <p class="image-caption">
+          Gambar 1.2 — Ilustrasi energi potensial air di ketinggian
+          yang mengalir menjadi energi kinetik.
+        </p>
+
+      </div>
+
+
+      <!-- CAHAYA -->
+
+      <h4 class="subheading">
+        3. Energi cahaya
+      </h4>
+
+      <p>
+        Energi cahaya adalah energi yang dibawa oleh gelombang
+        elektromagnetik yang dapat dilihat oleh mata manusia.
+        Sumber energi cahaya terbesar di bumi adalah matahari.
+        Energi cahaya dimanfaatkan dalam berbagai bidang, salah
+        satunya sebagai sumber energi pada panel surya. Panel surya
+        mengubah energi cahaya matahari menjadi energi listrik melalui
+        sel fotovoltaik.
+      </p>
+
+
+      <!-- LISTRIK -->
+
+      <h4 class="subheading">
+        4. Energi listrik
+      </h4>
+
+      <p>
+        Energi listrik adalah energi yang dihasilkan oleh pergerakan
+        muatan listrik. Energi ini banyak digunakan karena mudah
+        disalurkan dan dapat diubah menjadi bentuk energi lainnya.
+      </p>
+
+
+      <div class="conversion-card">
+
+        <h4>
+          Energi listrik dapat dikonversi menjadi berbagai bentuk energi
+        </h4>
+
+        <div class="energy-flow">
+
+          <div class="energy-box energy-electric">
+            Energi Listrik
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-sun">
+            Energi Cahaya
+            <small>Contoh: Lampu</small>
+          </div>
+
+          <div class="energy-box energy-sun">
+            Energi Panas
+            <small>Contoh: Setrika</small>
+          </div>
+
+          <div class="energy-box energy-wind">
+            Energi Gerak
+            <small>Contoh: Kipas angin</small>
+          </div>
+
+          <div class="energy-box energy-water">
+            Energi Bunyi
+            <small>Contoh: Speaker</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="formula-box">
+
+        <h4>Persamaan Energi Listrik</h4>
+
+        <div class="formula">
+          $$W = V \cdot I \cdot t$$
+        </div>
+
+        <small>
+          <strong>W</strong> = energi listrik (J),
+          <strong>V</strong> = tegangan (V),
+          <strong>I</strong> = kuat arus (A),
+          <strong>t</strong> = waktu (s).
+        </small>
+
+      </div>
+
+
+      <!-- MEKANIK -->
+
+      <h4 class="subheading">
+        5. Energi mekanik (EM)
+      </h4>
+
+      <p>
+        Energi mekanik adalah total penjumlahan dari energi potensial
+        dan energi kinetik yang dimiliki oleh suatu sistem. Energi
+        mekanik banyak dimanfaatkan dalam sistem pembangkit listrik.
+        Misalnya pada turbin air dan turbin angin, putaran turbin
+        merupakan bentuk energi mekanik yang kemudian diubah menjadi
+        energi listrik oleh generator.
+      </p>
+
+      <div class="formula-box">
+
+        <h4>Persamaan Energi Mekanik Total</h4>
+
+        <div class="formula">
+          $$EM = EP + EK$$
+        </div>
+
+        <small>
+          <strong>EM</strong> = energi mekanik total (J),
+          <strong>EP</strong> = energi potensial (J),
+          <strong>EK</strong> = energi kinetik (J).
+        </small>
+
+      </div>
+
+      <p>
+        <strong>Contoh sehari-hari:</strong>
+        Gabungan energi dari air di tebing tinggi (potensial)
+        yang sedang meluncur jatuh dengan cepat (kinetik)
+        untuk memutar poros turbin.
+      </p>
+
+
+      <!-- KONVERSI -->
+
+      <h3>1.3 Konversi Energi</h3>
+
+      <p>
+        Konversi energi adalah proses perubahan energi dari satu bentuk
+        ke bentuk lainnya. Perubahan ini terjadi hampir pada semua alat
+        yang digunakan manusia. Meskipun bentuk energinya berubah,
+        jumlah energi secara keseluruhan tetap mengikuti Hukum Kekekalan
+        Energi. Dalam teknologi energi terbarukan, proses konversi energi
+        menjadi konsep yang sangat penting. Setiap jenis pembangkit
+        memanfaatkan sumber energi yang berbeda, tetapi semuanya
+        bertujuan menghasilkan energi listrik.
+      </p>
+
+
+      <!-- SURYA -->
+
+      <div class="conversion-card">
+
+        <h4>Matahari — Pembangkit Listrik Tenaga Surya</h4>
+
+        <div class="energy-flow">
+
+          <div class="energy-box energy-sun">
+            Energi Cahaya
+            <small>Sinar matahari</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-electric">
+            Energi Listrik
+            <small>Panel fotovoltaik</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ANGIN -->
+
+      <div class="conversion-card">
+
+        <h4>Angin — Pembangkit Listrik Tenaga Bayu</h4>
+
+        <div class="energy-flow">
+
+          <div class="energy-box energy-wind">
+            Energi Kinetik
+            <small>Hembusan angin</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-mechanical">
+            Energi Mekanik
+            <small>Putaran turbin</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-electric">
+            Energi Listrik
+            <small>Generator</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AIR -->
+
+      <div class="conversion-card">
+
+        <h4>Air — Pembangkit Listrik Tenaga Air</h4>
+
+        <div class="energy-flow">
+
+          <div class="energy-box energy-water">
+            Energi Potensial
+            <small>Air pada ketinggian</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-wind">
+            Energi Kinetik
+            <small>Aliran air</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-mechanical">
+            Energi Mekanik
+            <small>Putaran turbin</small>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="energy-box energy-electric">
+            Energi Listrik
+            <small>Generator</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </details>
+
+
+  <!-- =====================================================
+       BAB 2
+  ===================================================== -->
+
+  <details>
+
+    <summary>
+
+      <div class="chapter-title">
+        <span class="chapter-number">02</span>
+        <span>Daya & Efisiensi</span>
+      </div>
+
+    </summary>
+
+
+    <div class="materi-content">
+
+      <h3>2.1 Usaha</h3>
+
+      <p>
+        Usaha adalah energi yang dipindahkan atau disalurkan oleh suatu
+        gaya sehingga menyebabkan benda mengalami perpindahan. Konsep
+        ini menjadi dasar dalam berbagai teknologi, termasuk pembangkit
+        energi, karena proses menghasilkan energi listrik diawali dengan
+        adanya usaha untuk mengubah suatu bentuk energi menjadi bentuk
+        energi lainnya.
+      </p>
+
+
+      <div class="formula-box">
+
+        <h4>Persamaan Usaha</h4>
+
+        <div class="formula">
+          $$W = F \cdot s$$
+        </div>
+
+        <small>
+          <strong>W</strong> = usaha (J),
+          <strong>F</strong> = gaya (N),
+          <strong>s</strong> = perpindahan (m).
+        </small>
+
+      </div>
+
 
       <h3>2.2 Daya</h3>
-      <p>Daya adalah laju melakukan usaha atau banyaknya energi yang diubah setiap satuan waktu. Satuan daya dalam Sistem Internasional adalah watt (W). Satu watt menyatakan bahwa suatu alat mampu melakukan usaha sebesar satu joule setiap satu detik. Konsep daya digunakan untuk menunjukkan kemampuan suatu alat dalam menghasilkan atau mengubah energi. Semakin besar daya suatu alat, semakin besar energi yang dapat diubah setiap detiknya.</p>
-            
+
+      <p>
+        Daya adalah laju melakukan usaha atau banyaknya energi yang
+        diubah setiap satuan waktu. Satuan daya dalam Sistem Internasional
+        adalah watt (W). Satu watt menyatakan bahwa suatu alat mampu
+        melakukan usaha sebesar satu joule setiap satu detik. Konsep
+        daya digunakan untuk menunjukkan kemampuan suatu alat dalam
+        menghasilkan atau mengubah energi. Semakin besar daya suatu alat,
+        semakin besar energi yang dapat diubah setiap detiknya.
+      </p>
+
+
       <div class="formula-box">
-        <h4>Persamaan Daya:</h4>
-        $$P = \frac{W}{t}$$
-        <p><small><em>Keterangan: P = Daya (Watt), W = Usaha atau energi (Joule), t = Waktu (sekon).</em></small></p>
+
+        <h4>Persamaan Daya</h4>
+
+        <div class="formula">
+          $$P = \frac{W}{t}$$
+        </div>
+
+        <small>
+          <strong>P</strong> = daya (W),
+          <strong>W</strong> = usaha atau energi (J),
+          <strong>t</strong> = waktu (s).
+        </small>
+
       </div>
 
-      <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; margin: 20px 0;">
-      
-        <h5 style="margin: 0 0 8px 0; color: #1e293b; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
-          <strong>Faktor penentu besarnya Daya (P) pada pembangkit listrik:</strong>
-        </h5>
-      
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px;">
-        
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #f59e0b; border-radius: 8px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-            <div style="font-weight: bold; color: #b45309; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-              PLTS (Tenaga Surya)
-            </div>
-            <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #334155; line-height: 1.6;">
-              <li><strong>Intensitas cahaya:</strong> Makin terik sinar matahari, daya makin tinggi.</li>
-              <li><strong>Luas panel:</strong> Ukuran total area penyerapan sinar matahari.</li>
-              <li><strong>Efisiensi panel:</strong> Kemampuan material sel mengubah cahaya jadi listrik.</li>
-            </ul>
-          </div>
 
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #0284c7; border-radius: 8px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-            <div style="font-weight: bold; color: #0369a1; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-              PLTB (Tenaga Angin)
-            </div>
-            <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #334155; line-height: 1.6;">
-              <li><strong>Kecepatan angin:</strong> Berpengaruh sangat dominan terhadap daya.</li>
-              <li><strong>Luas sapuan baling-baling:</strong> Area lingkaran putaran kincir.</li>
-              <li><strong>Efisiensi sistem:</strong> Efektivitas aerodinamis turbin dan generator.</li>
-            </ul>
-          </div>
+      <h3>Faktor Penentu Besarnya Daya pada Pembangkit</h3>
 
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #2563eb; border-radius: 8px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-            <div style="font-weight: bold; color: #1d4ed8; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-              PLTA (Tenaga Air)
-            </div>
-            <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; color: #334155; line-height: 1.6;">
-              <li><strong>Debit air (Q):</strong> Volume air yang mengalir per satuan waktu.</li>
-              <li><strong>Tinggi jatuh air (h):</strong> Ketinggian air terjun/bendungan (head).</li>
-              <li><strong>Efisiensi turbin:</strong> Performa sudu turbin & generator air.</li>
-            </ul>
-          </div>
+
+      <div class="factor-grid">
+
+        <div class="factor-card">
+
+          <h4>PLTS — Tenaga Surya</h4>
+
+          <ul>
+            <li>
+              <strong>Intensitas cahaya:</strong>
+              makin terik sinar matahari, daya makin tinggi.
+            </li>
+
+            <li>
+              <strong>Luas panel:</strong>
+              ukuran total area penyerapan sinar matahari.
+            </li>
+
+            <li>
+              <strong>Efisiensi panel:</strong>
+              kemampuan material sel mengubah cahaya menjadi listrik.
+            </li>
+          </ul>
 
         </div>
+
+
+        <div class="factor-card">
+
+          <h4>PLTB — Tenaga Angin</h4>
+
+          <ul>
+            <li>
+              <strong>Kecepatan angin:</strong>
+              berpengaruh sangat dominan terhadap daya.
+            </li>
+
+            <li>
+              <strong>Luas sapuan baling-baling:</strong>
+              area lingkaran putaran kincir.
+            </li>
+
+            <li>
+              <strong>Efisiensi sistem:</strong>
+              efektivitas aerodinamis turbin dan generator.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="factor-card">
+
+          <h4>PLTA — Tenaga Air</h4>
+
+          <ul>
+            <li>
+              <strong>Debit air (Q):</strong>
+              volume air yang mengalir per satuan waktu.
+            </li>
+
+            <li>
+              <strong>Tinggi jatuh air (h):</strong>
+              ketinggian air terjun atau bendungan.
+            </li>
+
+            <li>
+              <strong>Efisiensi turbin:</strong>
+              performa sudu turbin dan generator.
+            </li>
+          </ul>
+
+        </div>
+
       </div>
+
 
       <h3>2.3 Efisiensi</h3>
-      <p>Efisiensi adalah ukuran yang menunjukkan seberapa baik suatu alat mengubah energi masukan (input) menjadi energi keluaran (output) yang bermanfaat. Semakin tinggi nilai efisiensi, semakin kecil energi yang terbuang sehingga alat bekerja semakin baik. Dalam proses konversi energi, tidak semua energi masukan dapat diubah menjadi energi yang berguna. Sebagian energi akan hilang ke lingkungan dalam bentuk panas, suara, getaran, atau akibat gesekan.</p> 
-      
+
+      <p>
+        Efisiensi adalah ukuran yang menunjukkan seberapa baik suatu
+        alat mengubah energi masukan (input) menjadi energi keluaran
+        (output) yang bermanfaat. Semakin tinggi nilai efisiensi,
+        semakin kecil energi yang terbuang sehingga alat bekerja
+        semakin baik. Dalam proses konversi energi, tidak semua energi
+        masukan dapat diubah menjadi energi yang berguna. Sebagian
+        energi akan hilang ke lingkungan dalam bentuk panas, suara,
+        getaran, atau akibat gesekan.
+      </p>
+
+
       <div class="formula-box">
-        <h4>Persamaan Efisiensi Energi:</h4>
-        $$\eta = \left( \frac{P_{\text{keluar}}}{P_{\text{masuk}}} \right) \times 100\% \quad \text{atau} \quad P_{\text{bersih}} = P_{\text{teoretis}} \cdot \eta$$
+
+        <h4>Persamaan Efisiensi Energi</h4>
+
+        <div class="formula">
+          $$\eta =
+          \left(
+          \frac{P_{\text{keluar}}}
+          {P_{\text{masuk}}}
+          \right)
+          \times 100\%$$
+        </div>
+
+        <div class="formula">
+          $$P_{\text{bersih}}
+          =
+          P_{\text{teoretis}}\cdot\eta$$
+        </div>
+
+      </div>
+
+      <!-- BEBAN -->
+
+      <h3>
+        2.4 Kebutuhan Energi dan Beban Listrik
+      </h3>
+
+      <p>
+        Dalam penggunaan energi listrik, kebutuhan energi
+        dipengaruhi oleh peralatan yang digunakan, besar daya
+        masing-masing peralatan, dan lama waktu penggunaannya.
+        Peralatan listrik yang digunakan dalam suatu sistem
+        disebut sebagai beban listrik.
+      </p>
+
+      <div class="formula-box">
+
+        <h4>
+          Energi Listrik
+        </h4>
+
+        <div class="formula">
+          $$E = P \cdot t$$
+        </div>
+
+        <small>
+          E = energi listrik,
+          P = daya peralatan,
+          t = waktu penggunaan.
+        </small>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <div class="info-card">
+
+          <h4>
+            1. Daya
+          </h4>
+
+          <p>
+            Menunjukkan seberapa besar energi yang digunakan
+            atau diubah oleh peralatan setiap satuan waktu.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h4>
+            2. Waktu Penggunaan
+          </h4>
+
+          <p>
+            Semakin lama suatu peralatan digunakan, semakin
+            besar energi listrik yang dibutuhkan.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h4>
+            3. Beban Listrik
+          </h4>
+
+          <p>
+            Peralatan yang menggunakan energi listrik,
+            seperti lampu, kipas, televisi, dan peralatan lainnya.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTOH -->
+
+      <h3>
+        2.5 Contoh Perhitungan Energi Sederhana
+      </h3>
+
+      <p>
+        Sebuah lampu memiliki daya 20 W dan digunakan selama
+        5 jam. Energi listrik yang digunakan dapat dihitung
+        menggunakan hubungan antara daya dan waktu.
+      </p>
+
+      <div class="example-box">
+
+        <span class="example-label">
+          Contoh
+        </span>
+
+        <div class="calculation">
+
+          $$E = P \cdot t$$
+
+          <br>
+
+          $$E = 20 \times 5$$
+
+          <br>
+
+          $$E = 100 \text{ Wh}$$
+
+        </div>
+
+        <p style="margin-top:12px;">
+          Jadi, lampu tersebut menggunakan energi sebesar
+          <strong>100 Wh</strong> atau <strong>0,1 kWh</strong>
+          selama 5 jam.
+        </p>
+
       </div>
 
     </div>
+
+  </details>
+
+  <!-- =====================================================
+       BAB 3
+  ===================================================== -->
+
+  <details>
+
+    <summary>
+
+      <div class="chapter-title">
+        <span class="chapter-number">03</span>
+        <span>Energi Terbarukan</span>
+      </div>
+
+    </summary>
+
+
+    <div class="materi-content">
+
+      <p>
+        Energi terbarukan adalah energi yang berasal dari sumber daya
+        alam yang dapat diperbarui secara alami dalam waktu relatif
+        singkat sehingga ketersediaannya dapat dimanfaatkan secara
+        berkelanjutan. Berbeda dengan energi fosil yang jumlahnya
+        terbatas, sumber energi terbarukan terus tersedia melalui
+        proses alam, seperti penyinaran matahari, siklus air,
+        pergerakan angin, maupun aktivitas panas bumi.
+      </p>
+
+
+      <h3>Ciri-ciri Energi Terbarukan</h3>
+
+
+      <div class="characteristics">
+
+        <div class="characteristic">
+          <strong>Terbarukan secara alami</strong>
+          <span>
+            Berasal dari sumber daya alam yang dapat diperbarui
+            secara alami.
+          </span>
+        </div>
+
+        <div class="characteristic">
+          <strong>Pasokan relatif berkelanjutan</strong>
+          <span>
+            Ketersediaannya relatif tidak akan habis jika dimanfaatkan
+            secara bijaksana.
+          </span>
+        </div>
+
+        <div class="characteristic">
+          <strong>Rendah emisi gas rumah kaca</strong>
+          <span>
+            Menghasilkan emisi gas rumah kaca yang lebih rendah
+            dibandingkan energi fosil.
+          </span>
+        </div>
+
+        <div class="characteristic">
+          <strong>Ramah lingkungan</strong>
+          <span>
+            Lebih ramah terhadap lingkungan dan ekosistem sekitar.
+          </span>
+        </div>
+
+        <div class="characteristic">
+          <strong>Penggunaan multifungsi</strong>
+          <span>
+            Dapat dimanfaatkan sebagai sumber energi listrik
+            maupun energi panas.
+          </span>
+        </div>
+
+        <div class="characteristic">
+          <strong>Berbasis teknologi</strong>
+          <span>
+            Memerlukan teknologi tertentu untuk mengubah energi
+            alam menjadi energi yang dapat digunakan.
+          </span>
+        </div>
+
+      </div>
+
+
+      <h3>Jenis-jenis Energi Terbarukan</h3>
+
+      <p>
+        Energi terbarukan terdiri atas beberapa jenis berdasarkan
+        sumber energi yang dimanfaatkan. Setiap jenis energi memiliki
+        karakteristik dan prinsip kerja yang berbeda, tetapi semuanya
+        bertujuan menghasilkan energi yang dapat dimanfaatkan manusia,
+        terutama energi listrik.
+      </p>
+
+
+      <div class="renewable-list">
+
+
+        <!-- =================================================
+             PLTS
+        ================================================= -->
+
+        <div class="renewable-card">
+
+          <div>
+
+            <div>
+              <span class="renewable-number">01</span>
+
+              <span class="renewable-title">
+                Energi Matahari (Surya)
+              </span>
+            </div>
+
+
+            <p class="renewable-description">
+              Energi surya merupakan energi yang berasal dari sinar
+              matahari. Matahari menjadi sumber energi terbesar di
+              Bumi karena mampu memancarkan energi cahaya dan panas
+              secara terus-menerus. Energi cahaya tersebut dapat
+              dimanfaatkan menggunakan panel surya yang tersusun
+              atas sel fotovoltaik (photovoltaic cell) untuk
+              menghasilkan energi listrik.
+            </p>
+
+
+            <span class="work-title">
+              Cara Kerja PLTS
+            </span>
+
+            <ol class="work-list">
+
+              <li>
+                Energi berbasis sinar matahari diubah menjadi
+                energi listrik dan menghasilkan aliran listrik DC.
+              </li>
+
+              <li>
+                Aliran DC menjadi daya AC diubah oleh inverter.
+              </li>
+
+              <li>
+                Arus AC masuk ke jaringan listrik melalui
+                AC breaker panel di dalam bangunan.
+              </li>
+
+              <li>
+                Energi listrik siap digunakan.
+              </li>
+
+            </ol>
+
+
+            <div class="power-box">
+
+              <span class="power-title">
+                Persamaan Daya Surya
+              </span>
+
+              <div class="power-formula">
+                $$P = I \cdot A \cdot \eta$$
+              </div>
+
+              <p class="power-description">
+                <strong>P</strong> = daya yang dihasilkan (Watt),
+                <strong>I</strong> = intensitas radiasi matahari (W/m²),
+                <strong>A</strong> = luas permukaan panel (m²),
+                dan <strong>η</strong> = efisiensi panel surya.
+                Semakin tinggi intensitas cahaya serta semakin luas
+                dan efisien panel, semakin besar daya listrik yang
+                dapat dihasilkan.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="renewable-image">
+
+            <img
+              src="plts.jpeg"
+              alt="Pembangkit Listrik Tenaga Surya"
+            >
+
+            <span>
+              Pembangkit Listrik Tenaga Surya (PLTS)
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PLTB
+        ================================================= -->
+
+        <div class="renewable-card">
+
+          <div>
+
+            <div>
+
+              <span class="renewable-number">02</span>
+
+              <span class="renewable-title">
+                Energi Angin
+              </span>
+
+            </div>
+
+
+            <p class="renewable-description">
+              Energi angin merupakan energi yang berasal dari
+              pergerakan massa udara akibat perbedaan tekanan
+              dan suhu di atmosfer. Energi kinetik yang dimiliki
+              angin dimanfaatkan untuk memutar baling-baling turbin
+              sehingga menghasilkan energi mekanik. Putaran turbin
+              kemudian diteruskan ke generator untuk menghasilkan
+              energi listrik.
+            </p>
+
+
+            <span class="work-title">
+              Cara Kerja PLTB
+            </span>
+
+            <ul class="work-list">
+
+              <li>
+                Angin menggerakkan sudu-sudu kincir angin yang
+                mengkonversi energi angin menjadi energi mekanik.
+              </li>
+
+              <li>
+                Kincir menggerakkan poros dan gerakannya
+                ditransmisikan ke gearbox.
+              </li>
+
+              <li>
+                Putaran gearbox diteruskan ke generator.
+              </li>
+
+              <li>
+                Generator mengubah putaran menjadi energi listrik.
+              </li>
+
+            </ul>
+
+
+            <div class="power-box">
+
+              <span class="power-title">
+                Persamaan Daya Angin
+              </span>
+
+              <div class="power-formula">
+                $$P =
+                \frac{1}{2}
+                \cdot \rho
+                \cdot A
+                \cdot v^3
+                \cdot \eta$$
+              </div>
+
+              <p class="power-description">
+                <strong>P</strong> = daya listrik (Watt),
+                <strong>ρ</strong> = massa jenis udara (kg/m³),
+                <strong>A</strong> = luas sapuan baling-baling (m²),
+                <strong>v</strong> = kecepatan angin (m/s),
+                dan <strong>η</strong> = efisiensi sistem.
+                Kecepatan angin memiliki pengaruh sangat besar
+                karena berpangkat tiga.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="renewable-image">
+
+            <img
+              src="pltb.jpg"
+              alt="Pembangkit Listrik Tenaga Angin"
+            >
+
+            <span>
+              Pembangkit Listrik Tenaga Angin (PLTB)
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PLTA
+        ================================================= -->
+
+        <div class="renewable-card">
+
+          <div>
+
+            <div>
+
+              <span class="renewable-number">03</span>
+
+              <span class="renewable-title">
+                Energi Air
+              </span>
+
+            </div>
+
+
+            <p class="renewable-description">
+              Energi air merupakan energi yang memanfaatkan aliran
+              air atau perbedaan ketinggian air untuk menghasilkan
+              listrik. Pada PLTA, energi potensial air diubah menjadi
+              energi kinetik ketika air mengalir menuju turbin.
+              Turbin menghasilkan energi mekanik, kemudian generator
+              mengubahnya menjadi energi listrik.
+            </p>
+
+
+            <span class="work-title">
+              Cara Kerja PLTA
+            </span>
+
+            <ul class="work-list">
+
+              <li>
+                Energi potensial dari aliran air dimanfaatkan
+                untuk menggerakkan turbin.
+              </li>
+
+              <li>
+                Turbin berputar dan menghasilkan energi mekanik.
+              </li>
+
+              <li>
+                Energi mekanik dari putaran turbin digunakan
+                untuk memutar generator.
+              </li>
+
+              <li>
+                Generator menghasilkan energi listrik.
+              </li>
+
+            </ul>
+
+
+            <div class="power-box">
+
+              <span class="power-title">
+                Persamaan Daya Air
+              </span>
+
+              <div class="power-formula">
+                $$P =
+                \rho
+                \cdot Q
+                \cdot g
+                \cdot h
+                \cdot \eta$$
+              </div>
+
+              <p class="power-description">
+                <strong>P</strong> = daya listrik (Watt),
+                <strong>ρ</strong> = massa jenis air (kg/m³),
+                <strong>Q</strong> = debit aliran air (m³/s),
+                <strong>g</strong> = percepatan gravitasi (m/s²),
+                <strong>h</strong> = tinggi jatuh air (m),
+                dan <strong>η</strong> = efisiensi sistem.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="renewable-image">
+
+            <img
+              src="plta.jpg"
+              alt="Pembangkit Listrik Tenaga Air"
+            >
+
+            <span>
+              Pembangkit Listrik Tenaga Air (PLTA)
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PLTP
+        ================================================= -->
+
+        <div class="renewable-card">
+
+          <div>
+
+            <div>
+
+              <span class="renewable-number">04</span>
+
+              <span class="renewable-title">
+                Energi Panas Bumi
+              </span>
+
+            </div>
+
+
+            <p class="renewable-description">
+              Energi panas bumi (geothermal) merupakan energi
+              yang berasal dari panas alami di dalam bumi. Panas
+              tersebut memanaskan air di bawah permukaan sehingga
+              menghasilkan uap bertekanan tinggi. Uap tersebut
+              dimanfaatkan untuk memutar turbin pembangkit listrik.
+              Indonesia memiliki potensi panas bumi yang sangat
+              besar karena berada di jalur Ring of Fire.
+            </p>
+
+
+            <span class="work-title">
+              Cara Kerja PLTP
+            </span>
+
+            <ol class="work-list">
+
+              <li>
+                Mengebor sumur produksi pada kedalaman yang sesuai
+                dengan kondisi sumber panas bumi.
+              </li>
+
+              <li>
+                Fluida thermal dialirkan untuk menggerakkan turbin.
+              </li>
+
+              <li>
+                Turbin menggerakkan generator sehingga menghasilkan
+                listrik.
+              </li>
+
+              <li>
+                Fluida thermal dialirkan kembali ke dalam bumi
+                untuk menjaga keberlanjutan sistem.
+              </li>
+
+            </ol>
+
+          </div>
+
+
+          <div class="renewable-image">
+
+            <img
+              src="pltp.jpeg"
+              alt="Pembangkit Listrik Tenaga Panas Bumi"
+            >
+
+            <span>
+              Pembangkit Listrik Tenaga Panas Bumi (PLTP)
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BIOMASSA
+        ================================================= -->
+
+        <div class="renewable-card">
+
+          <div>
+
+            <div>
+
+              <span class="renewable-number">05</span>
+
+              <span class="renewable-title">
+                Energi Biomassa
+              </span>
+
+            </div>
+
+
+            <p class="renewable-description">
+              Energi biomassa berasal dari bahan organik, seperti
+              kayu, limbah pertanian, jerami, sampah organik,
+              maupun kotoran hewan. Biomassa dapat dimanfaatkan
+              sebagai bahan bakar untuk menghasilkan panas.
+              Panas tersebut kemudian digunakan untuk menghasilkan
+              uap yang menggerakkan turbin pembangkit listrik.
+            </p>
+
+
+            <span class="work-title">
+              Cara Kerja PLTBm
+            </span>
+
+            <ul class="work-list">
+
+              <li>
+                Membakar bahan biomassa dalam ruang pembakaran.
+              </li>
+
+              <li>
+                Memanaskan fluida cair di dalam boiler.
+              </li>
+
+              <li>
+                Fluida berubah menjadi uap panas yang mampu
+                menggerakkan turbin uap.
+              </li>
+
+              <li>
+                Generator menghasilkan energi listrik.
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="renewable-image">
+
+            <img
+              src="pltbm.jpg"
+              alt="Pembangkit Listrik Tenaga Biomassa"
+            >
+
+            <span>
+              Pembangkit Listrik Tenaga Biomassa (PLTBm)
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </details>
 
 
-  <!-- ================= ACCORDION 3 ================= -->
-  <details>
-    <summary>📙 BAB 3: Energi Terbarukan</summary>
-    <div class="materi-content">
-      <p>Energi terbarukan adalah energi yang berasal dari sumber daya alam yang dapat diperbarui secara alami dalam waktu relatif singkat sehingga ketersediaannya dapat dimanfaatkan secara berkelanjutan. Berbeda dengan energi fosil yang jumlahnya terbatas, sumber energi terbarukan terus tersedia melalui proses alam, seperti penyinaran matahari, siklus air, pergerakan angin, maupun aktivitas panas bumi.</p>
+  <!-- =====================================================
+       BOTTOM / HOME
+  ===================================================== -->
 
-      <h3>Ciri-ciri energi terbarukan</h3>
+  <div class="bottom-area">
 
-      <!-- Grid 6 Kartu Ciri-Ciri -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
-        
-        <!-- Poin 1 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Terbarukan secara alami</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Berasal dari sumber daya alam yang dapat diperbarui secara alami.</span>
-        </div>
+    <div class="bottom-line"></div>
 
-        <!-- Poin 2 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Pasokan tak terbatas</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Ketersediaannya relatif tidak akan habis jika dimanfaatkan secara bijaksana.</span>
-        </div>
-
-        <!-- Poin 3 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Rendah emisi gas kaca</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Menghasilkan emisi gas rumah kaca yang lebih rendah dibandingkan energi fosil.</span>
-        </div>
-
-        <!-- Poin 4 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Ramah lingkungan</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Lebih ramah terhadap lingkungan dan ekosistem sekitar.</span>
-        </div>
-
-        <!-- Poin 5 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Penggunaan multifungsi</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Dapat dimanfaatkan sebagai sumber energi listrik maupun energi panas.</span>
-        </div>
-
-        <!-- Poin 6 -->
-        <div style="background: #ffffff; border: 1px solid #ffedd5; border-left: 4px solid #f97316; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-          <strong style="display: block; color: #7c2d12; font-size: 0.9rem; margin-bottom: 2px;">Konversi berbasis teknologi</strong>
-          <span style="font-size: 0.82rem; color: #374151;">Memerlukan teknologi tertentu untuk mengubah energi alam menjadi energi yang dapat digunakan.</span>
-        </div>
-
-      </div>
-    </div>
-
-      <h3>Jenis-jenis energi terbarukan</h3>
-      <p>Energi terbarukan terdiri atas beberapa jenis berdasarkan sumber energi yang dimanfaatkan. Setiap jenis energi memiliki karakteristik dan prinsip kerja yang berbeda, tetapi semuanya bertujuan menghasilkan energi yang dapat dimanfaatkan manusia, terutama energi listrik. Berikut beberapa jenis energi terbarukan yang banyak digunakan.</p>
-  
-       <div style="display: flex; flex-direction: column; gap: 24px;">
-
-    <!-- 1. ENERGI MATAHARI -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Header Badge -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="background: #f1f5f9; color: #475569; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">01</span>
-        <h4 style="margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;">Energi matahari (surya)</h4>
-      </div>
-
-      <!-- Split Layout (Teks Kiri, Gambar + Rumus Kanan) -->
-      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- Kolom Kiri: Definisi & Cara Kerja -->
-        <div style="flex: 1 1 320px;">
-          <p style="margin: 0 0 12px 0; font-size: 0.88rem; line-height: 1.6; color: #334155;">
-            Energi surya merupakan energi yang berasal dari sinar matahari. Matahari menjadi sumber energi terbesar di Bumi karena mampu memancarkan energi cahaya dan panas secara terus-menerus. Energi cahaya tersebut dapat dimanfaatkan menggunakan panel surya yang tersusun atas sel fotovoltaik (photovoltaic cell) untuk menghasilkan energi listrik. Transformasi energi matahari menjadi energi lain dapat dilakukan melalui proses heliokimia, heliotermal, dan helioelektrik, sedangkan pada pembangkit listrik tenaga surya digunakan prinsip fotovoltaik untuk menghasilkan listrik.
-          </p>
-          
-          <strong style="display: block; color: #9a3412; font-size: 0.88rem; margin-bottom: 6px;">Cara Kerja PLTS:</strong>
-          <ol style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6; color: #475569;">
-            <li>Energi berbasis sinar matahari diubah menjadi energi listrik dan menghasilkan aliran listrik DC oleh PLTS.</li>
-            <li>Aliran DC menjadi daya AC diubah oleh inverter.</li>
-            <li>Arus AC masuk ke jaringan listrik melalui AC breaker panel di dalam bangunan.</li>
-            <li>Energi listrik siap digunakan.</li>
-          </ol>
-
-          <div style="background: #fff7ed; border: 1px dashed #fdba74; border-radius: 8px; padding: 10px; text-align: center;">
-            <span style="display: block; font-size: 0.78rem; font-weight: 700; color: #c2410c; margin-bottom: 4px;">Persamaan Daya Surya</span>
-            <div style="font-size: 0.95rem; color: #0f172a;">
-              $$\text{Daya Surya } (P) = I \cdot A \cdot \eta$$
-            </div>
-
-            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #fed7aa; font-size: 0.75rem; color: #334155; text-align: left; line-height: 1.5;">
-              <strong style="color: #9a3412;">Keterangan:</strong><br>
-              • <strong>P</strong> = Daya yang dihasilkan (Watt)<br>
-              • <strong>I</strong> = Intensitas radiasi matahari (W/m²)<br>
-              • <strong>A</strong> = Luas permukaan panel (m²)<br>
-              • <strong>η</strong> = Efisiensi panel surya (%)
-            </div>
-
-            <!-- SPACE UNTUK CATATAN TAMBAHAN KAMU -->
-            <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dotted #cbd5e1; font-size: 0.75rem; color: #475569; text-align: left;">
-              <!-- Tulis catatan atau teks tambahan kamu di bawah ini -->
-              <em>Persamaan tersebut menunjukkan bahwa daya panel surya dipengaruhi oleh intensitas cahaya matahari, luas panel, dan efisiensi panel. Semakin tinggi intensitas cahaya yang diterima serta semakin luas dan efisien panel yang digunakan, maka semakin besar pula daya listrik yang dihasilkan.</em>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Kolom Kanan: Gambar & Kotak Persamaan -->
-        <div style="flex: 0 1 260px; min-width: 240px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="text-align: center; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px;">
-            <img src="plts.jpeg" alt="Pembangkit Listrik Tenaga Surya" style="width: 100%; max-height: 130px; object-fit: cover; border-radius: 6px;">
-            <span style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">Pembangkit Listrik Tenaga Surya (PLTS)</span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 2. ENERGI ANGIN -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Header Badge -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="background: #f1f5f9; color: #475569; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">02</span>
-        <h4 style="margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;">Energi angin</h4>
-      </div>
-
-      <!-- Split Layout -->
-      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- Kolom Kiri: Definisi & Cara Kerja -->
-        <div style="flex: 1 1 320px;">
-          <p style="margin: 0 0 12px 0; font-size: 0.88rem; line-height: 1.6; color: #334155;">
-            Energi angin merupakan energi yang berasal dari pergerakan massa udara akibat perbedaan tekanan dan suhu di atmosfer. Energi kinetik yang dimiliki angin dimanfaatkan untuk memutar baling-baling turbin sehingga menghasilkan energi mekanik. Putaran turbin kemudian diteruskan ke generator untuk menghasilkan energi listrik. Besarnya energi yang dihasilkan dipengaruhi oleh beberapa faktor, seperti ukuran rotor, kecepatan angin, dan jenis generator.
-          </p>
-          
-          <strong style="display: block; color: #9a3412; font-size: 0.88rem; margin-bottom: 6px;">Cara Kerja PLTB:</strong>
-          <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6; color: #475569;">
-            <li>Angin menggerakkan sudu-sudu kincir angin yang mengkonversi energi angin menjadi energi gerak (mekanik).</li>
-            <li>Kincir angin menggerakkan poros dan selanjutnya gerakan poros ditransmisikan ke gearbox supaya besar putarannya.</li>
-            <li>Putaran gearbox ditransmisikan ke generator.</li>
-            <li>Generator mengubah putaran menjadi listrik, ada listriknya langsung digunakan dan ada juga sebagian disimpan pada baterai untuk digunakan di lain waktu.</li>
-          </ul>
-
-          <div style="background: #fff7ed; border: 1px dashed #fdba74; border-radius: 8px; padding: 10px; text-align: center;">
-            <span style="display: block; font-size: 0.78rem; font-weight: 700; color: #c2410c; margin-bottom: 4px;">Persamaan Daya Angin</span>
-            <div style="font-size: 0.95rem; color: #0f172a;">
-              $$\text{Daya Angin } (P) = \frac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot \eta$$
-            </div>
-
-            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #fed7aa; font-size: 0.75rem; color: #334155; text-align: left; line-height: 1.5;">
-              <strong style="color: #9a3412;">Keterangan:</strong><br>
-              • <strong>P</strong> = Daya listrik (Watt)<br>
-              • <strong>ρ</strong> = Massa jenis udara (kg/m³)<br>
-              • <strong>A</strong> = Luas sapuan baling-baling (m²)<br>
-              • <strong>v</strong> = Kecepatan angin (m/s)<br>
-              • <strong>η</strong> = Efisiensi turbin/generator (%)
-            </div>
-
-            <!-- SPACE UNTUK CATATAN TAMBAHAN KAMU -->
-            <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dotted #cbd5e1; font-size: 0.75rem; color: #475569; text-align: left;">
-              <!-- Tulis catatan atau teks tambahan kamu di bawah ini -->
-              <em>Dari persamaan tersebut terlihat bahwa kecepatan angin memiliki pengaruh yang sangat besar terhadap daya karena nilainya dipangkatkan tiga. Oleh sebab itu, lokasi dengan angin yang lebih kencang umumnya menghasilkan energi listrik yang lebih besar.</em>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Kolom Kanan: Gambar & Kotak Persamaan -->
-        <div style="flex: 0 1 260px; min-width: 240px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="text-align: center; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px;">
-            <img src="pltb.jpg" alt="Pembangkit Listrik Tenaga Angin" style="width: 100%; max-height: 130px; object-fit: cover; border-radius: 6px;">
-            <span style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">Pembangkit Listrik Tenaga Angin (PLTB)</span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 3. ENERGI AIR -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Header Badge -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="background: #f1f5f9; color: #475569; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">03</span>
-        <h4 style="margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;">Energi air</h4>
-      </div>
-
-      <!-- Split Layout -->
-      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- Kolom Kiri: Definisi & Cara Kerja -->
-        <div style="flex: 1 1 320px;">
-          <p style="margin: 0 0 12px 0; font-size: 0.88rem; line-height: 1.6; color: #334155;">
-            Energi air merupakan energi yang memanfaatkan aliran air atau perbedaan ketinggian air untuk menghasilkan listrik. Pada PLTA, energi potensial air di bendungan atau sungai diubah menjadi energi kinetik ketika air mengalir menuju turbin. Turbin yang berputar menghasilkan energi mekanik, kemudian generator mengubahnya menjadi energi listrik. Besarnya energi yang dihasilkan dipengaruhi oleh tinggi jatuh air (head) dan debit air yang mengalir.
-          </p>
-          
-          <strong style="display: block; color: #9a3412; font-size: 0.88rem; margin-bottom: 6px;">Cara Kerja PLTA:</strong>
-          <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6; color: #475569;">
-            <li>Energi potensial dari aliran air dimanfaatkan untuk menggerakkan turbin.</li>
-            <li>Turbin berputar dan menghasilkan energi mekanik.</li>
-            <li>Energi mekanik dari putaran turbin digunakan untuk memutar generator.</li>
-            <li>Dari generator tersebut dihasilkan energi listrik.</li>
-          </ul>
-
-          <div style="background: #fff7ed; border: 1px dashed #fdba74; border-radius: 8px; padding: 10px; text-align: center;">
-            <span style="display: block; font-size: 0.78rem; font-weight: 700; color: #c2410c; margin-bottom: 4px;">Persamaan Daya Air (Mikrohidro)</span>
-            <div style="font-size: 0.95rem; color: #0f172a;">
-              $$\text{Daya Air } (P) = \rho \cdot Q \cdot g \cdot h \cdot \eta$$
-            </div>
-
-            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #fed7aa; font-size: 0.75rem; color: #334155; text-align: left; line-height: 1.5;">
-              <strong style="color: #9a3412;">Keterangan:</strong><br>
-              • <strong>P</strong> = Daya listrik (Watt)<br>
-              • <strong>ρ</strong> = Massa jenis air (kg/m³)<br>
-              • <strong>Q</strong> = Debit aliran air (m³/s)<br>
-              • <strong>g</strong> = Percepatan gravitasi (m/s²)<br>
-              • <strong>h</strong> = Tinggi jatuh air (m)<br>
-              • <strong>η</strong> = Efisiensi sistem PLTA (%)
-            </div>
-
-            <!-- SPACE UNTUK CATATAN TAMBAHAN KAMU -->
-            <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dotted #cbd5e1; font-size: 0.75rem; color: #475569; text-align: left;">
-              <!-- Tulis catatan atau teks tambahan kamu di bawah ini -->
-              <em>Persamaan tersebut menunjukkan bahwa semakin besar debit air dan semakin tinggi jatuh air, semakin besar pula daya listrik yang dapat dihasilkan.</em>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Kolom Kanan: Gambar & Kotak Persamaan -->
-        <div style="flex: 0 1 260px; min-width: 240px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="text-align: center; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px;">
-            <img src="plta.jpg" alt="Pembangkit Listrik Tenaga Air" style="width: 100%; max-height: 130px; object-fit: cover; border-radius: 6px;">
-            <span style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">Pembangkit Listrik Tenaga Air (PLTA)</span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 4. ENERGI PANAS BUMI -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Header Badge -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="background: #f1f5f9; color: #475569; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">04</span>
-        <h4 style="margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;">Energi Panas Bumi</h4>
-      </div>
-
-      <!-- Split Layout -->
-      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- Kolom Kiri: Definisi & Cara Kerja -->
-        <div style="flex: 1 1 320px;">
-          <p style="margin: 0 0 12px 0; font-size: 0.88rem; line-height: 1.6; color: #334155;">
-            Energi panas bumi (geothermal) merupakan energi yang berasal dari panas alami di dalam bumi. Panas tersebut memanaskan air di bawah permukaan sehingga menghasilkan uap bertekanan tinggi. Uap inilah yang dimanfaatkan untuk memutar turbin pembangkit listrik. Indonesia memiliki potensi panas bumi yang sangat besar karena berada di jalur cincin api (Ring of Fire).
-          </p>
-          
-          <strong style="display: block; color: #475569; font-size: 0.88rem; margin-bottom: 6px;">Cara Kerja PLTP:</strong>
-          <ol style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6; color: #475569;">
-            <li>Mengebor sumur produksi di kedalaman 1.500–2.500 m sesuai dengan anjuran ESDM.</li>
-            <li>Fluida thermal yang ada di dalam sumur produksi dialirkan untuk menggerakkan turbin.</li>
-            <li>Generator bergerak menghasilkan listrik.</li>
-            <li>Fluida thermal dialirkan kembali ke dalam bumi untuk menjaga keseimbangan fluida dan panas sehingga panas bumi terus berkelanjutan.</li>
-          </ol>
-        </div>
-
-        <!-- Kolom Kanan: Gambar -->
-        <div style="flex: 0 1 260px; min-width: 240px;">
-          <div style="text-align: center; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px;">
-            <img src="pltp.jpeg" alt="Pembangkit Listrik Tenaga Panas Bumi" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px;">
-            <span style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">Pembangkit Listrik Tenaga Panas Bumi (PLTP)</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 5. ENERGI BIOMASSA -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Header Badge -->
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="background: #f1f5f9; color: #475569; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">05</span>
-        <h4 style="margin: 0; color: #0f172a; font-size: 1.1rem; font-weight: 700;">Energi Biomassa</h4>
-      </div>
-
-      <!-- Split Layout -->
-      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- Kolom Kiri: Definisi & Cara Kerja -->
-        <div style="flex: 1 1 320px;">
-          <p style="margin: 0 0 12px 0; font-size: 0.88rem; line-height: 1.6; color: #334155;">
-            Energi biomassa berasal dari bahan organik, seperti kayu, limbah pertanian, jerami, sampah organik, maupun kotoran hewan. Biomassa dapat dimanfaatkan sebagai bahan bakar untuk menghasilkan panas, kemudian panas tersebut digunakan untuk menghasilkan uap yang menggerakkan turbin pembangkit listrik.
-          </p>
-          
-          <strong style="display: block; color: #475569; font-size: 0.88rem; margin-bottom: 6px;">Cara Kerja PLTBm:</strong>
-          <ul style="margin: 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6; color: #475569;">
-            <li>Membakar bahan alami biomassa dalam ruang pembakaran.</li>
-            <li>Memanaskan fluida cair di boiler.</li>
-            <li>Fluida yang telah dicairkan berubah menjadi uap panas sehingga mampu menggerakkan turbin uap dan generator.</li>
-            <li>Generator menghasilkan energi listrik.</li>
-          </ul>
-        </div>
-
-        <!-- Kolom Kanan: Gambar -->
-        <div style="flex: 0 1 260px; min-width: 240px;">
-          <div style="text-align: center; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 10px;">
-            <img src="pltbm.jpg" alt="Pembangkit Listrik Tenaga Biomassa" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px;">
-            <span style="display: block; font-size: 0.75rem; color: #64748b; margin-top: 6px;">Pembangkit Listrik Tenaga Biomassa (PLTBm)</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <a
+      href="index.html"
+      class="home-button"
+    >
+      ← Kembali ke Beranda
+    </a>
 
   </div>
-</div>
 
-    </div>
-  </details>
 
 </div>
+
 
 </body>
 </html>
