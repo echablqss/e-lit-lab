@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LKPD Digital | Proyek Eco-Gazebo</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#172b4d;
+    background:#dfe7df;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        linear-gradient(rgba(20,55,38,.54),rgba(20,55,38,.54)),
+        url("bg-energi-new.gif") center/cover no-repeat;
+}
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:rgba(255,255,255,.12);
+    pointer-events:none;
+}
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:14px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    background:rgba(229,37,37,.96);
+    color:#fff;
+    box-shadow:0 5px 18px rgba(0,0,0,.18);
+    backdrop-filter:blur(8px);
+}
+.brand{font-weight:900;font-size:20px}
+.progress{font-size:13px;font-weight:800}
+.page{
+    width:min(1120px,94%);
+    margin:32px auto 60px;
+}
+.sheet{
+    background:rgba(255,255,255,.97);
+    border-radius:28px;
+    box-shadow:0 18px 55px rgba(0,0,0,.20);
+    overflow:hidden;
+}
+.hero{
+    padding:45px 50px;
+    background:linear-gradient(135deg,#fff,#f5faf5);
+    border-bottom:1px solid #e2e8e3;
+}
+.hero h1{margin:0 0 8px;font-size:38px;color:#173d2a}
+.hero h2{margin:0 0 25px;color:#e52525;font-size:21px}
+.hero p{line-height:1.7;color:#526575}
+.identity{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:25px;
+}
+.field label,.label{
+    display:block;
+    font-weight:800;
+    margin-bottom:7px;
+}
+input[type=text],input[type=number],textarea,select{
+    width:100%;
+    border:1px solid #ccd7d0;
+    border-radius:11px;
+    padding:11px 13px;
+    font:inherit;
+    color:#172b4d;
+    background:#fff;
+    outline:none;
+}
+textarea{min-height:75px;resize:vertical;line-height:1.55}
+input:focus,textarea:focus,select:focus{
+    border-color:#e52525;
+    box-shadow:0 0 0 3px rgba(229,37,37,.09);
+}
+.section{
+    padding:38px 50px;
+    border-bottom:1px solid #e7ece8;
+}
+.section:last-child{border-bottom:0}
+.section-title{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:25px;
+}
+.badge{
+    min-width:48px;height:48px;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:#ffe1e1;color:#c51f1f;font-weight:900;
+}
+.section-title h2{margin:2px 0 4px;color:#173d2a}
+.section-title p{margin:0;color:#68788a}
+.sub-title{
+    color:#e52525;
+    font-size:19px;
+    margin:28px 0 14px;
+}
+.instructions{
+    background:#f6f9f6;
+    border-left:5px solid #e52525;
+    padding:18px 20px;
+    border-radius:12px;
+}
+.instructions ol{margin:0;padding-left:22px}
+.instructions li{margin:7px 0;line-height:1.55}
+.dilemma{
+    background:#f8fbf8;
+    border:1px solid #dfe8e1;
+    border-radius:16px;
+    padding:18px;
+    line-height:1.65;
+}
+.table-wrap{overflow-x:auto;margin:15px 0 24px}
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+th,td{
+    border:1px solid #cbd7cf;
+    padding:11px;
+    vertical-align:top;
+}
+th{background:#eef4ef;font-weight:800}
+td input,td textarea{min-width:90px}
+.check-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+.check{
+    display:flex;align-items:center;gap:9px;
+    padding:12px 14px;
+    border:1px solid #d8e1da;
+    border-radius:11px;
+    background:#fff;
+}
+.check input{accent-color:#e52525}
+.answer-block{
+    margin:14px 0;
+    padding:15px;
+    border:1px dashed #c8d5cc;
+    border-radius:13px;
+    background:#fbfdfb;
+}
+.answer-block .question{font-weight:800;line-height:1.55;margin-bottom:9px}
+.grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+.compact{min-height:45px}
+.savebar{
+    position:sticky;
+    bottom:15px;
+    z-index:900;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    padding:10px;
+    pointer-events:none;
+}
+.btn{
+    pointer-events:auto;
+    border:0;
+    border-radius:12px;
+    padding:13px 20px;
+    font-weight:900;
+    cursor:pointer;
+    background:#e52525;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+.btn.secondary{background:#173d2a}
+.btn.light{background:#eef3ef;color:#173d2a}
+.status{
+    text-align:center;
+    font-size:13px;
+    color:#526575;
+    margin:8px 0 18px;
+}
+.note{
+    margin:15px 0;
+    padding:13px 16px;
+    border-radius:12px;
+    background:#fff8e1;
+    color:#6b4f00;
+    line-height:1.5;
+}
+.footer{
+    padding:25px 50px 45px;
+    background:#f4f8f4;
+    text-align:center;
+    color:#667587;
+}
+@media(max-width:800px){
+    .hero,.section,.footer{padding:30px 22px}
+    .identity,.grid-4{grid-template-columns:1fr 1fr}
+    .check-grid{grid-template-columns:1fr}
+    .hero h1{font-size:29px}
+    .topbar{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px){
+    .identity,.grid-4{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+    <div class="brand">E-Lit Lab — LKPD Digital</div>
+    <div class="progress" id="progress">Proyek Eco-Gazebo</div>
+</header>
+
+<main class="page">
+<div class="sheet">
+
+<section class="hero">
+    <h1>LKPD DIGITAL</h1>
+    <h2>PROYEK ECO-GAZEBO</h2>
+    <p><strong>Energi Terbarukan Berbasis Dilemma-STEAM</strong></p>
+
+    <div class="identity">
+        <div class="field">
+            <label for="namaKelompok">Nama Kelompok:</label>
+            <input id="namaKelompok" type="text" placeholder="Masukkan nama kelompok">
+        </div>
+        <div class="field">
+            <label for="kelas">Kelas:</label>
+            <input id="kelas" type="text" placeholder="Masukkan kelas">
+        </div>
+        <div class="field" style="grid-column:1/-1">
+            <label>Anggota:</label>
+            <textarea id="anggota" placeholder="1.&#10;2.&#10;3.&#10;4."></textarea>
+        </div>
+        <div class="field" style="grid-column:1/-1">
+            <label>Zona yang dipilih:</label>
+            <div class="check-grid">
+                <label class="check"><input type="checkbox" name="zona" value="Surya"> Zona Surya</label>
+                <label class="check"><input type="checkbox" name="zona" value="Angin"> Zona Angin</label>
+                <label class="check"><input type="checkbox" name="zona" value="Air"> Zona Air</label>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="badge">A</div><div><h2>TUJUAN KEGIATAN</h2></div></div>
+<p>Setelah menyelesaikan kegiatan dalam LKPD, peserta didik diharapkan mampu:</p>
+<ol>
+<li>Menganalisis potensi dan karakteristik sumber energi terbarukan berdasarkan kondisi suatu wilayah.</li>
+<li>Menggunakan hasil pengamatan dan data untuk menentukan pilihan solusi energi.</li>
+<li>Menganalisis hubungan daya, energi, dan efisiensi.</li>
+<li>Merancang solusi pemanfaatan energi terbarukan berdasarkan batasan yang diberikan.</li>
+<li>Mengevaluasi hasil rancangan berdasarkan daya, harga, dan efisiensi.</li>
+</ol>
+</section>
+
+<section class="section">
+<div class="section-title"><div class="badge">B</div><div><h2>PETUNJUK KEGIATAN</h2></div></div>
+<div class="instructions">
+<ol>
+<li>Kerjakan LKPD secara berkelompok sesuai pembagian yang telah ditentukan.</li>
+<li>Bacalah permasalahan dan karakteristik setiap zona sebelum menentukan pilihan.</li>
+<li>Gunakan hasil pembelajaran dan Virtual Lab sebagai bahan pertimbangan.</li>
+<li>Catat hasil pengamatan dan perhitungan sesuai data yang diperoleh.</li>
+<li>Saat menggunakan AI Artemis, tetap lakukan perhitungan secara manual pada kertas kerja.</li>
+<li>Gunakan kesempatan yang tersedia dengan mempertimbangkan pilihan komponen secara cermat.</li>
+<li>Simpan data hasil rancangan karena akan digunakan pada tahap AI Evaluator dan pembuatan infografis.</li>
+</ol>
+</div>
+</section>
+
+<section class="section" id="kegiatan1">
+<div class="section-title"><div class="badge">1</div><div><h2>KEGIATAN 1</h2><p>EKSPLORASI DAN PEMILIHAN ZONA</p></div></div>
+
+<h3 class="sub-title">A. Memahami Dilema</h3>
+<div class="dilemma">
+SMA Artemis mengalami keterbatasan pasokan listrik sehingga membutuhkan solusi energi terbarukan untuk mendukung kegiatan sekolah. Terdapat tiga lokasi yang dapat digunakan untuk membangun Eco-Gazebo. Setiap lokasi memiliki potensi dan tantangan yang berbeda.
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Zona</th><th>Sumber Energi</th><th>Tantangan</th></tr></thead>
+<tbody>
+<tr><td>Zona Surya</td><td>Energi matahari</td><td><input type="text" data-field="zonaSuryaTantangan"></td></tr>
+<tr><td>Zona Angin</td><td>Energi angin</td><td><input type="text" data-field="zonaAnginTantangan"></td></tr>
+<tr><td>Zona Air</td><td>Energi air</td><td><input type="text" data-field="zonaAirTantangan"></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="sub-title">B. Pilihan Kelompok</h3>
+<p>Setelah mempertimbangkan ketiga zona, zona yang kami pilih adalah:</p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" name="zonaPilihan" value="Zona Surya"> Zona Surya</label>
+<label class="check"><input type="checkbox" name="zonaPilihan" value="Zona Angin"> Zona Angin</label>
+<label class="check"><input type="checkbox" name="zonaPilihan" value="Zona Air"> Zona Air</label>
+</div>
+<div class="answer-block"><div class="question">Alasan kelompok memilih zona tersebut:</div><textarea data-field="alasanZona"></textarea></div>
+<div class="answer-block"><div class="question">Potensi utama zona yang kami pilih adalah:</div><textarea data-field="potensiZona"></textarea></div>
+<div class="answer-block"><div class="question">Tantangan yang mungkin dihadapi adalah:</div><textarea data-field="tantanganZona"></textarea></div>
+
+<h3 class="sub-title">C. EKSPLORASI VIRTUAL LAB</h3>
+<p>Jalankan Virtual Lab sesuai zona yang dipilih. Amati bagaimana perubahan variabel memengaruhi hasil yang diperoleh.</p>
+<h4>Hasil Pengamatan</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Variabel yang Diubah</th><th>Kondisi Awal</th><th>Kondisi Setelah Diubah</th><th>Perubahan Daya/Energi</th></tr>
+</thead>
+<tbody>
+<tr><td><input data-field="vlab1variabel"></td><td><input data-field="vlab1awal"></td><td><input data-field="vlab1akhir"></td><td><input data-field="vlab1perubahan"></td></tr>
+<tr><td><input data-field="vlab2variabel"></td><td><input data-field="vlab2awal"></td><td><input data-field="vlab2akhir"></td><td><input data-field="vlab2perubahan"></td></tr>
+<tr><td><input data-field="vlab3variabel"></td><td><input data-field="vlab3awal"></td><td><input data-field="vlab3akhir"></td><td><input data-field="vlab3perubahan"></td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Pertanyaan Analisis</h4>
+<div class="answer-block"><div class="question">1. Variabel apa yang paling berpengaruh terhadap daya yang dihasilkan?</div><textarea data-field="analisis1"></textarea></div>
+<div class="answer-block"><div class="question">2. Bagaimana perubahan variabel tersebut memengaruhi energi yang dihasilkan?</div><textarea data-field="analisis2"></textarea></div>
+<div class="answer-block"><div class="question">3. Apa yang dapat kamu simpulkan berdasarkan hasil Virtual Lab?</div><textarea data-field="analisis3"></textarea></div>
+<div class="answer-block"><div class="question">4. Apakah hasil Virtual Lab mendukung pilihan zona kelompokmu? Jelaskan.</div><textarea data-field="analisis4"></textarea></div>
+</section>
+
+<section class="section" id="kegiatan2">
+<div class="section-title"><div class="badge">2</div><div><h2>KEGIATAN 2</h2><p>STUDIO INOVASI ECO-GAZEBO</p></div></div>
+<p>Pada kegiatan ini, kelompokmu akan mengembangkan rancangan Eco-Gazebo berdasarkan zona yang telah dipilih.</p>
+
+<h3 class="sub-title">A. Rencana Desain</h3>
+<div class="answer-block"><div class="question">Zona yang dipilih:</div><input data-field="desainZona"></div>
+<div class="answer-block"><div class="question">Masalah utama yang ingin diselesaikan:</div><textarea data-field="masalahUtama"></textarea></div>
+<div class="answer-block"><div class="question">Ide solusi kelompok:</div><textarea data-field="ideSolusi"></textarea></div>
+<div class="answer-block"><div class="question">Inovasi yang ditambahkan pada rancangan:</div><textarea data-field="inovasi"></textarea></div>
+
+<h3 class="sub-title">B. MENENTUKAN KEBUTUHAN RANCANGAN</h3>
+<p>Sebelum memilih komponen, tentukan terlebih dahulu kebutuhan energi rancangan kelompok.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Komponen/Beban</th><th>Jumlah</th><th>Daya per Unit</th><th>Total Daya</th></tr></thead>
+<tbody>
+<tr><td><input data-field="beban1"></td><td><input data-field="jumlah1"></td><td><input data-field="dayaUnit1"></td><td><input data-field="totalDaya1"></td></tr>
+<tr><td><input data-field="beban2"></td><td><input data-field="jumlah2"></td><td><input data-field="dayaUnit2"></td><td><input data-field="totalDaya2"></td></tr>
+<tr><td><input data-field="beban3"></td><td><input data-field="jumlah3"></td><td><input data-field="dayaUnit3"></td><td><input data-field="totalDaya3"></td></tr>
+<tr><th colspan="3">Total</th><th><input data-field="totalDaya"></th></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Total daya yang dibutuhkan:</strong> <input style="max-width:220px;display:inline-block" data-field="kebutuhanDaya"> Watt</p>
+<p><strong>Target proyek: minimal 1000 Watt</strong></p>
+
+<h3 class="sub-title">C. KONSULTASI DENGAN AI ARTEMIS</h3>
+<p>Gunakan AI Artemis untuk mencari kombinasi komponen yang sesuai dengan batasan proyek.</p>
+<div class="note">
+<strong>Ketentuan</strong><br>
+ Anggaran maksimum: Rp2.500.000<br>
+ Target daya minimum: 1.000 Watt<br>
+ Kelompok memiliki 3 kesempatan untuk mencoba kombinasi komponen.<br>
+ Setiap pilihan harus dipertimbangkan berdasarkan daya, harga, dan efisiensi.
+</div>
+
+<h4>Percobaan 1</h4>
+<div class="answer-block"><div class="question">Kode:</div><input data-field="kode1"></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Komponen</th><th>Jumlah</th><th>Harga</th><th>Daya</th></tr></thead>
+<tbody>
+<tr><td><input data-field="p1c1"></td><td><input data-field="p1j1"></td><td><input data-field="p1h1"></td><td><input data-field="p1d1"></td></tr>
+<tr><td><input data-field="p1c2"></td><td><input data-field="p1j2"></td><td><input data-field="p1h2"></td><td><input data-field="p1d2"></td></tr>
+<tr><td><input data-field="p1c3"></td><td><input data-field="p1j3"></td><td><input data-field="p1h3"></td><td><input data-field="p1d3"></td></tr>
+<tr><th colspan="2">Total</th><td><input data-field="p1totalHarga"></td><td><input data-field="p1totalDaya"></td></tr>
+</tbody></table></div>
+<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p1efisiensi"> %</p>
+<p>Apakah memenuhi ketentuan?</p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" name="p1memenuhi" value="Ya"> Ya</label>
+<label class="check"><input type="checkbox" name="p1memenuhi" value="Tidak"> Tidak</label>
+</div>
+<div class="answer-block"><div class="question">Hasil evaluasi kelompok:</div><textarea data-field="p1evaluasi"></textarea></div>
+
+<h4>Percobaan 2</h4>
+<div class="answer-block"><div class="question">Kode:</div><input data-field="kode2"></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Komponen</th><th>Jumlah</th><th>Harga</th><th>Daya</th></tr></thead>
+<tbody>
+<tr><td><input data-field="p2c1"></td><td><input data-field="p2j1"></td><td><input data-field="p2h1"></td><td><input data-field="p2d1"></td></tr>
+<tr><td><input data-field="p2c2"></td><td><input data-field="p2j2"></td><td><input data-field="p2h2"></td><td><input data-field="p2d2"></td></tr>
+<tr><td><input data-field="p2c3"></td><td><input data-field="p2j3"></td><td><input data-field="p2h3"></td><td><input data-field="p2d3"></td></tr>
+<tr><th colspan="2">Total</th><td><input data-field="p2totalHarga"></td><td><input data-field="p2totalDaya"></td></tr>
+</tbody></table></div>
+<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p2efisiensi"> %</p>
+<p>Apakah memenuhi ketentuan?</p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" name="p2memenuhi" value="Ya"> Ya</label>
+<label class="check"><input type="checkbox" name="p2memenuhi" value="Tidak"> Tidak</label>
+</div>
+<div class="answer-block"><div class="question">Perubahan yang dilakukan dari percobaan sebelumnya:</div><textarea data-field="p2perubahan"></textarea></div>
+
+<h4>Percobaan 3</h4>
+<div class="answer-block"><div class="question">Kode:</div><input data-field="kode3"></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Komponen</th><th>Jumlah</th><th>Harga</th><th>Daya</th></tr></thead>
+<tbody>
+<tr><td><input data-field="p3c1"></td><td><input data-field="p3j1"></td><td><input data-field="p3h1"></td><td><input data-field="p3d1"></td></tr>
+<tr><td><input data-field="p3c2"></td><td><input data-field="p3j2"></td><td><input data-field="p3h2"></td><td><input data-field="p3d2"></td></tr>
+<tr><td><input data-field="p3c3"></td><td><input data-field="p3j3"></td><td><input data-field="p3h3"></td><td><input data-field="p3d3"></td></tr>
+<tr><th colspan="2">Total</th><td><input data-field="p3totalHarga"></td><td><input data-field="p3totalDaya"></td></tr>
+</tbody></table></div>
+<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p3efisiensi"> %</p>
+<p>Apakah memenuhi ketentuan?</p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" name="p3memenuhi" value="Ya"> Ya</label>
+<label class="check"><input type="checkbox" name="p3memenuhi" value="Tidak"> Tidak</label>
+</div>
+<div class="answer-block"><div class="question">Alasan memilih kombinasi ini atau alasan melakukan perubahan:</div><textarea data-field="p3alasan"></textarea></div>
+
+<h3 class="sub-title">D. PERHITUNGAN MANUAL</h3>
+<p>Gunakan data yang diperoleh dari AI Artemis untuk memeriksa hasil secara manual.</p>
+<div class="grid-4">
+<div class="field"><label>Percobaan yang dipilih</label><input data-field="percobaanDipilih"></div>
+<div class="field"><label>Kode</label><input data-field="kodeDipilih"></div>
+<div class="field"><label>Daya</label><input data-field="dayaDipilih"></div>
+<div class="field"><label>Harga</label><input data-field="hargaDipilih"></div>
+</div>
+<div class="answer-block"><div class="question">Efisiensi:</div><input data-field="efisiensiDipilih"></div>
+<div class="answer-block"><div class="question">Perhitungan</div><textarea data-field="perhitunganManual" style="min-height:130px"></textarea></div>
+<div class="answer-block"><div class="question">Hasil perhitungan kelompok:</div><textarea data-field="hasilPerhitungan"></textarea></div>
+
+<h3 class="sub-title">E. MENENTUKAN RANCANGAN AKHIR</h3>
+<p>Setelah membandingkan ketiga percobaan, tentukan rancangan yang akan digunakan.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspek</th><th>Hasil</th></tr></thead>
+<tbody>
+<tr><td>Kode terpilih</td><td><input data-field="kodeTerpilih"></td></tr>
+<tr><td>Total daya</td><td><input data-field="totalDayaAkhir"> Watt</td></tr>
+<tr><td>Total harga</td><td>Rp<input data-field="totalHargaAkhir"></td></tr>
+<tr><td>Efisiensi</td><td><input data-field="efisiensiAkhir"> %</td></tr>
+</tbody></table></div>
+<div class="answer-block"><div class="question">Mengapa kelompok memilih rancangan tersebut?</div><textarea data-field="alasanRancanganAkhir"></textarea></div>
+
+<h3 class="sub-title">F. DESAIN INFOGRAFIS ECO-GAZEBO</h3>
+<p>Buat infografis sederhana berdasarkan rancangan akhir kelompok.</p>
+<p><strong>Infografis minimal memuat:</strong></p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" data-check="infoGambar"> Gambar/desain Eco-Gazebo</label>
+<label class="check"><input type="checkbox" data-check="infoUkuran"> Ukuran atau skala desain</label>
+<label class="check"><input type="checkbox" data-check="infoSumber"> Jenis sumber energi</label>
+<label class="check"><input type="checkbox" data-check="infoKomponen"> Komponen yang digunakan</label>
+<label class="check"><input type="checkbox" data-check="infoDaya"> Total daya (Watt)</label>
+<label class="check"><input type="checkbox" data-check="infoHarga"> Total harga</label>
+<label class="check"><input type="checkbox" data-check="infoEfisiensi"> Efisiensi</label>
+<label class="check"><input type="checkbox" data-check="infoKode"> Kode rancangan</label>
+<label class="check"><input type="checkbox" data-check="infoInovasi"> Keterangan singkat mengenai inovasi</label>
+</div>
+<div class="answer-block"><div class="question">Sketsa awal:</div><textarea data-field="sketsaAwal" style="min-height:160px" placeholder="Tuliskan gambaran/sketsa awal rancangan di sini..."></textarea></div>
+
+<h3 class="sub-title">G. EVALUASI DENGAN AI EVALUATOR</h3>
+<p>Masukkan kode, daya, harga, dan efisiensi rancangan kelompok ke AI Evaluator.</p>
+<h4>Hasil Evaluasi</h4>
+<div class="grid-4">
+<div class="field"><label>Kode:</label><input data-field="evalKode"></div>
+<div class="field"><label>Daya:</label><input data-field="evalDaya"> Watt</div>
+<div class="field"><label>Harga:</label><input data-field="evalHarga"> </div>
+<div class="field"><label>Efisiensi:</label><input data-field="evalEfisiensi"> %</div>
+</div>
+<p style="margin-top:18px"><strong>Status hasil evaluasi:</strong></p>
+<div class="check-grid">
+<label class="check"><input type="checkbox" name="statusEvaluasi" value="Pemenang"> Pemenang</label>
+<label class="check"><input type="checkbox" name="statusEvaluasi" value="Belum menjadi pemenang"> Belum menjadi pemenang</label>
+</div>
+<div class="answer-block"><div class="question">Umpan balik AI Evaluator:</div><textarea data-field="feedbackAI"></textarea></div>
+
+<h4>Analisis Kelompok</h4>
+<div class="answer-block"><div class="question">1. Menurut kelompokmu, apa yang membuat rancangan tersebut menjadi unggul atau belum unggul?</div><textarea data-field="kelompokAnalisis1"></textarea></div>
+<div class="answer-block"><div class="question">2. Apakah hasil AI Evaluator sesuai dengan perkiraan kelompok? Jelaskan.</div><textarea data-field="kelompokAnalisis2"></textarea></div>
+<div class="answer-block"><div class="question">3. Apa yang kamu pelajari dari perbandingan hasil rancangan kelompokmu dengan kelompok lain?</div><textarea data-field="kelompokAnalisis3"></textarea></div>
+
+<h3 class="sub-title">H. KESIMPULAN PROYEK</h3>
+<p>Tuliskan kesimpulan berdasarkan seluruh proses yang telah dilakukan.</p>
+<div class="answer-block"><div class="question">1. Sumber energi yang kami pilih adalah ... karena ...</div><textarea data-field="kesimpulan1"></textarea></div>
+<div class="answer-block"><div class="question">2. Berdasarkan Virtual Lab, kami menemukan bahwa ...</div><textarea data-field="kesimpulan2"></textarea></div>
+<div class="answer-block"><div class="question">3. Rancangan yang kami pilih menghasilkan ... Watt dengan harga Rp... dan efisiensi ... %.</div><textarea data-field="kesimpulan3"></textarea></div>
+<div class="answer-block"><div class="question">4. Menurut kelompok kami, rancangan tersebut dapat menjadi solusi karena ...</div><textarea data-field="kesimpulan4"></textarea></div>
+
+<h3 class="sub-title">I. REFLEKSI KELOMPOK</h3>
+<div class="answer-block"><div class="question">1. Bagian yang paling menantang dalam proyek ini adalah ...</div><textarea data-field="refleksi1"></textarea></div>
+<div class="answer-block"><div class="question">2. Kesalahan atau kegagalan yang pernah kami alami adalah ... dan cara kami mengatasinya adalah ...</div><textarea data-field="refleksi2"></textarea></div>
+<div class="answer-block"><div class="question">3. Hal yang paling kami pelajari dari proyek Eco-Gazebo adalah ...</div><textarea data-field="refleksi3"></textarea></div>
+</section>
+
+<div class="status" id="saveStatus">Belum disimpan ke Google Sheets.</div>
+
+<div class="savebar">
+    <button class="btn light" onclick="saveDraft()">Simpan Draft</button>
+    <button class="btn" onclick="submitLKPD()">Kirim LKPD ke Spreadsheet</button>
+</div>
+
+<footer class="footer">
+    <strong>E-Lit Lab — Proyek Eco-Gazebo</strong><br>
+    Energi Terbarukan Berbasis Dilemma-STEAM
+</footer>
+
+</div>
+</main>
+
+<script>
+/* ============================================================
+   GOOGLE SHEETS
+   Gunakan endpoint yang sama dengan Pretest/Post-test.
+   ============================================================ */
+const ELIT_SHEETS_API =
+"https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
+
+const LKPD_STORAGE_KEY = "elitlab_lkpd_digital_v1";
+
+function getFormData(){
+    const data = {
+        namaKelompok: document.getElementById("namaKelompok").value,
+        anggota: document.getElementById("anggota").value,
+        kelas: document.getElementById("kelas").value,
+        fields: {},
+        checks: {},
+        zona: [],
+        timestamp: new Date().toISOString()
+    };
+
+    document.querySelectorAll("[data-field]").forEach(el=>{
+        data.fields[el.dataset.field] = el.value;
+    });
+
+    document.querySelectorAll("[data-check]").forEach(el=>{
+        data.checks[el.dataset.check] = el.checked;
+    });
+
+    document.querySelectorAll('input[type="checkbox"][name]').forEach(el=>{
+        if(el.checked){
+            if(!data.checks[el.name]) data.checks[el.name] = [];
+            if(Array.isArray(data.checks[el.name])){
+                data.checks[el.name].push(el.value);
+            }
+        }
+    });
+
+    data.zona = [...document.querySelectorAll('input[name="zona"]:checked')].map(x=>x.value);
+
+    return data;
+}
+
+function applyFormData(data){
+    if(!data) return;
+
+    if(data.namaKelompok !== undefined)
+        document.getElementById("namaKelompok").value = data.namaKelompok;
+
+    if(data.anggota !== undefined)
+        document.getElementById("anggota").value = data.anggota;
+
+    if(data.kelas !== undefined)
+        document.getElementById("kelas").value = data.kelas;
+
+    if(data.fields){
+        Object.entries(data.fields).forEach(([key,value])=>{
+            const el = document.querySelector(`[data-field="${key}"]`);
+            if(el) el.value = value ?? "";
+        });
+    }
+
+    if(data.checks){
+        document.querySelectorAll("[data-check]").forEach(el=>{
+            el.checked = Boolean(data.checks[el.dataset.check]);
+        });
+
+        document.querySelectorAll('input[type="checkbox"][name]').forEach(el=>{
+            const values = data.checks[el.name];
+            el.checked = Array.isArray(values) && values.includes(el.value);
+        });
+    }
+
+    if(Array.isArray(data.zona)){
+        document.querySelectorAll('input[name="zona"]').forEach(el=>{
+            el.checked = data.zona.includes(el.value);
+        });
+    }
+}
+
+function saveLocal(){
+    const data = getFormData();
+    localStorage.setItem(LKPD_STORAGE_KEY, JSON.stringify(data));
+    return data;
+}
+
+function loadLocal(){
+    try{
+        const raw = localStorage.getItem(LKPD_STORAGE_KEY);
+        if(!raw) return;
+        applyFormData(JSON.parse(raw));
+        document.getElementById("saveStatus").textContent =
+            "Draft terakhir berhasil dipulihkan dari perangkat.";
+    }catch(e){
+        console.error("Gagal memulihkan draft:",e);
+    }
+}
+
+async function kirimKeSpreadsheet(payload){
+    try{
+        await fetch(ELIT_SHEETS_API,{
+            method:"POST",
+            mode:"no-cors",
+            headers:{
+                "Content-Type":"text/plain;charset=utf-8"
+            },
+            body:JSON.stringify(payload)
+        });
+        return {ok:true};
+    }catch(error){
+        console.error("Gagal mengirim ke Google Sheets:",error);
+        return {ok:false,error};
+    }
+}
+
+async function saveDraft(){
+    const data = saveLocal();
+
+    document.getElementById("saveStatus").textContent =
+        "Draft tersimpan di perangkat. Mengirim salinan ke Google Sheets...";
+
+    const result = await kirimKeSpreadsheet({
+        type:"lkpd_draft",
+        nama:data.namaKelompok,
+        kelas:data.kelas,
+        data:data
+    });
+
+    document.getElementById("saveStatus").textContent =
+        result.ok
+        ? "Draft tersimpan dan permintaan pengiriman ke Google Sheets sudah dikirim."
+        : "Draft tersimpan di perangkat, tetapi pengiriman ke Google Sheets gagal.";
+}
+
+async function submitLKPD(){
+    const data = saveLocal();
+
+    if(!data.namaKelompok.trim()){
+        alert("Silakan isi Nama Kelompok terlebih dahulu.");
+        document.getElementById("namaKelompok").focus();
+        return;
+    }
+
+    const confirmed = confirm(
+        "Kirim seluruh jawaban LKPD kelompok ke Spreadsheet?"
+    );
+
+    if(!confirmed) return;
+
+    document.getElementById("saveStatus").textContent =
+        "Mengirim seluruh LKPD ke Google Sheets...";
+
+    const result = await kirimKeSpreadsheet({
+        type:"lkpd",
+        nama:data.namaKelompok,
+        kelas:data.kelas,
+        data:data
+    });
+
+    if(result.ok){
+        document.getElementById("saveStatus").textContent =
+            "LKPD sudah dikirim ke endpoint Google Sheets.";
+        alert("LKPD berhasil dikirim. Silakan lanjutkan ke tahap berikutnya.");
+    }else{
+        document.getElementById("saveStatus").textContent =
+            "LKPD belum berhasil dikirim ke Google Sheets.";
+        alert("Pengiriman gagal. Draft tetap tersimpan di perangkat.");
+    }
+}
+
+/* Autosave lokal supaya jawaban tidak hilang saat refresh. */
+let autosaveTimer;
+document.addEventListener("input",()=>{
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(saveLocal,500);
+});
+
+document.addEventListener("change",saveLocal);
+
+window.addEventListener("load",loadLocal);
+
+window.addEventListener("beforeunload",saveLocal);
+</script>
+</body>
+</html>
