@@ -468,6 +468,116 @@ Setiap pilihan memiliki kelebihan dan keterbatasan sehingga tidak terdapat satu 
     <button class="btn report" id="reportBtn" onclick="downloadReportPDF()" disabled>Download Laporan PDF</button>
 </div>
 
+<section class="section" id="pengumpulanLKPD">
+
+    <div class="section-title">
+        <div class="badge">📤</div>
+
+        <div>
+            <h2>PENGUMPULAN LKPD</h2>
+            <p>Unggah laporan PDF hasil pengerjaan kelompok</p>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Langkah pengumpulan:</strong><br>
+        1. Pastikan seluruh bagian LKPD sudah selesai.<br>
+        2. Klik <strong>Kirim LKPD ke Spreadsheet</strong> terlebih dahulu.<br>
+        3. Download laporan LKPD dalam format PDF.<br>
+        4. Pilih file PDF tersebut pada bagian pengumpulan di bawah.<br>
+        5. Klik <strong>Upload LKPD</strong>.
+    </div>
+
+    <div class="answer-block">
+
+        <div class="question">
+            File LKPD PDF
+        </div>
+
+        <input
+            type="file"
+            id="lkpdPdfFile"
+            accept="application/pdf,.pdf"
+            style="
+                width:100%;
+                padding:12px;
+                border:1px solid #ccd7d0;
+                border-radius:11px;
+                background:#fff;
+                font:inherit;
+            "
+        >
+
+        <p
+            id="uploadFileInfo"
+            style="
+                margin:10px 0 0;
+                font-size:13px;
+                color:#68788a;
+            "
+        >
+            Belum ada file dipilih.
+        </p>
+
+    </div>
+
+    <div
+        id="uploadProgress"
+        style="
+            display:none;
+            margin-top:15px;
+        "
+    >
+
+        <div
+            style="
+                height:10px;
+                background:#e8eee9;
+                border-radius:20px;
+                overflow:hidden;
+            "
+        >
+
+            <div
+                id="uploadProgressBar"
+                style="
+                    width:0%;
+                    height:100%;
+                    background:#e52525;
+                    transition:width .2s ease;
+                "
+            ></div>
+
+        </div>
+
+        <p
+            id="uploadStatus"
+            style="
+                text-align:center;
+                font-size:13px;
+                color:#526575;
+                margin:8px 0 0;
+            "
+        >
+            Menyiapkan upload...
+        </p>
+
+    </div>
+
+    <button
+        class="btn"
+        id="uploadLKPDButton"
+        onclick="uploadLKPDPDF()"
+        style="
+            width:100%;
+            margin-top:15px;
+        "
+    >
+        Upload LKPD PDF
+    </button>
+
+</section>
+
 <footer class="footer">
 <strong>E-Lit Lab — Proyek Eco-Gazebo</strong><br>
 Energi Terbarukan Berbasis Dilemma-STEAM
@@ -478,6 +588,319 @@ Energi Terbarukan Berbasis Dilemma-STEAM
 <script>
 const ELIT_SHEETS_API =
 "https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
+
+// ======================================================
+// UPLOAD PDF LKPD KE GOOGLE DRIVE
+// ======================================================
+
+const ELIT_LKPD_UPLOAD_API = ELIT_SHEETS_API;
+
+
+// Menampilkan nama file ketika dipilih
+document.addEventListener("DOMContentLoaded", function(){
+
+    const fileInput =
+        document.getElementById("lkpdPdfFile");
+
+    const fileInfo =
+        document.getElementById("uploadFileInfo");
+
+    if(fileInput){
+
+        fileInput.addEventListener("change", function(){
+
+            const file = this.files[0];
+
+            if(!file){
+
+                fileInfo.textContent =
+                    "Belum ada file dipilih.";
+
+                return;
+            }
+
+            const sizeMB =
+                (file.size / (1024 * 1024))
+                .toFixed(2);
+
+            fileInfo.textContent =
+                "File dipilih: " +
+                file.name +
+                " (" +
+                sizeMB +
+                " MB)";
+        });
+    }
+
+});
+
+
+// ======================================================
+// KONVERSI FILE KE BASE64
+// ======================================================
+
+function fileToBase64(file){
+
+    return new Promise(function(resolve,reject){
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(){
+
+            const result =
+                reader.result;
+
+            // Mengambil bagian Base64 saja
+            const base64 =
+                result.split(",")[1];
+
+            resolve(base64);
+        };
+
+        reader.onerror = function(){
+            reject(reader.error);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+
+// ======================================================
+// UPLOAD PDF
+// ======================================================
+
+async function uploadLKPDPDF(){
+
+    const fileInput =
+        document.getElementById("lkpdPdfFile");
+
+    const uploadButton =
+        document.getElementById("uploadLKPDButton");
+
+    const progress =
+        document.getElementById("uploadProgress");
+
+    const progressBar =
+        document.getElementById("uploadProgressBar");
+
+    const uploadStatus =
+        document.getElementById("uploadStatus");
+
+    const file =
+        fileInput.files[0];
+
+
+    // ----------------------------------------------
+    // CEK FILE
+    // ----------------------------------------------
+
+    if(!file){
+
+        alert(
+            "Silakan pilih file PDF LKPD terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    // ----------------------------------------------
+    // CEK FORMAT
+    // ----------------------------------------------
+
+    const isPDF =
+        file.type === "application/pdf" ||
+        file.name.toLowerCase().endsWith(".pdf");
+
+    if(!isPDF){
+
+        alert(
+            "File yang dikumpulkan harus berupa PDF."
+        );
+
+        return;
+    }
+
+
+    // ----------------------------------------------
+    // CEK NAMA KELOMPOK
+    // ----------------------------------------------
+
+    const namaKelompok =
+        document
+            .getElementById("namaKelompok")
+            .value
+            .trim();
+
+    const kelas =
+        document
+            .getElementById("kelas")
+            .value
+            .trim();
+
+
+    if(!namaKelompok){
+
+        alert(
+            "Silakan isi Nama Kelompok terlebih dahulu."
+        );
+
+        document
+            .getElementById("namaKelompok")
+            .focus();
+
+        return;
+    }
+
+
+    // ----------------------------------------------
+    // BATAS FILE
+    // ----------------------------------------------
+
+    const maxSize =
+        10 * 1024 * 1024;
+
+    if(file.size > maxSize){
+
+        alert(
+            "Ukuran PDF terlalu besar. " +
+            "Maksimal 10 MB."
+        );
+
+        return;
+    }
+
+
+    try{
+
+        uploadButton.disabled = true;
+
+        uploadButton.textContent =
+            "Mengupload...";
+
+        progress.style.display =
+            "block";
+
+        progressBar.style.width =
+            "10%";
+
+        uploadStatus.textContent =
+            "Membaca file PDF...";
+
+
+        // ------------------------------------------
+        // KONVERSI PDF KE BASE64
+        // ------------------------------------------
+
+        const base64 =
+            await fileToBase64(file);
+
+        progressBar.style.width =
+            "40%";
+
+        uploadStatus.textContent =
+            "Mengirim PDF ke Google Drive...";
+
+
+        // ------------------------------------------
+        // NAMA FILE
+        // ------------------------------------------
+
+        const safeName =
+            "LKPD_" +
+            namaKelompok
+                .replace(/[\\\/:*?"<>|]/g,"_")
+                .replace(/\s+/g,"_") +
+            "_" +
+            Date.now() +
+            ".pdf";
+
+
+        // ------------------------------------------
+        // KIRIM KE APPS SCRIPT
+        // ------------------------------------------
+
+        await fetch(
+            ELIT_LKPD_UPLOAD_API,
+            {
+                method:"POST",
+
+                mode:"no-cors",
+
+                headers:{
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    type:"lkpd_pdf",
+
+                    fileName:safeName,
+
+                    fileBase64:base64,
+
+                    namaKelompok:
+                        namaKelompok,
+
+                    kelas:
+                        kelas
+                })
+            }
+        );
+
+
+        progressBar.style.width =
+            "100%";
+
+        uploadStatus.textContent =
+            "PDF berhasil dikirim ke Google Drive.";
+
+
+        uploadButton.textContent =
+            "✅ LKPD Berhasil Dikumpulkan";
+
+        uploadButton.style.background =
+            "#173d2a";
+
+
+        fileInput.disabled =
+            true;
+
+
+        alert(
+            "LKPD PDF berhasil dikumpulkan!"
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Upload LKPD gagal:",
+            error
+        );
+
+        progressBar.style.width =
+            "0%";
+
+        uploadStatus.textContent =
+            "Upload gagal. Silakan coba lagi.";
+
+        uploadButton.disabled =
+            false;
+
+        uploadButton.textContent =
+            "Upload LKPD PDF";
+
+
+        alert(
+            "Upload LKPD gagal. " +
+            "Silakan coba lagi."
+        );
+    }
+}
 
 const LKPD_STORAGE_KEY = "elitlab_lkpd_digital_final_v1";
 let lkpdSubmitted = false;
