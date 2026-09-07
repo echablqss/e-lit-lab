@@ -3,26 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LKPD Digital | Proyek Eco-Gazebo</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
     color:#172b4d;
     background:#dfe7df;
 }
+
 body::before{
     content:"";
     position:fixed;
     inset:0;
     z-index:-2;
     background:
-        linear-gradient(rgba(20,55,38,.54),rgba(20,55,38,.54)),
+        linear-gradient(
+            rgba(20,55,38,.54),
+            rgba(20,55,38,.54)
+        ),
         url("bg-energi-new.gif") center/cover no-repeat;
 }
+
 body::after{
     content:"";
     position:fixed;
@@ -31,670 +43,4111 @@ body::after{
     background:rgba(255,255,255,.12);
     pointer-events:none;
 }
+
+/* =========================
+   TOPBAR
+========================= */
+
 .topbar{
     position:sticky;
     top:0;
     z-index:1000;
+
     padding:14px 5%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:20px;
+
     background:rgba(229,37,37,.96);
     color:#fff;
+
     box-shadow:0 5px 18px rgba(0,0,0,.18);
+
     backdrop-filter:blur(8px);
 }
-.brand{font-weight:900;font-size:20px}
-.progress{font-size:13px;font-weight:800}
+
+.brand{
+    font-weight:900;
+    font-size:20px;
+}
+
+.progress{
+    font-size:13px;
+    font-weight:800;
+}
+
+/* =========================
+   MAIN
+========================= */
+
 .page{
     width:min(1120px,94%);
     margin:32px auto 60px;
 }
+
 .sheet{
     background:rgba(255,255,255,.97);
     border-radius:28px;
-    box-shadow:0 18px 55px rgba(0,0,0,.20);
+
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.20);
+
     overflow:hidden;
 }
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
     padding:45px 50px;
-    background:linear-gradient(135deg,#fff,#f5faf5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f5faf5
+        );
+
     border-bottom:1px solid #e2e8e3;
 }
-.hero h1{margin:0 0 8px;font-size:38px;color:#173d2a}
-.hero h2{margin:0 0 25px;color:#e52525;font-size:21px}
-.hero p{line-height:1.7;color:#526575}
+
+.hero h1{
+    margin:0 0 8px;
+    font-size:38px;
+    color:#173d2a;
+}
+
+.hero h2{
+    margin:0 0 25px;
+    color:#e52525;
+    font-size:21px;
+}
+
+.hero p{
+    line-height:1.7;
+    color:#526575;
+}
+
+/* =========================
+   FORM
+========================= */
+
 .identity{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:16px;
     margin-top:25px;
 }
-.field label,.label{
+
+.field label,
+.label{
     display:block;
     font-weight:800;
     margin-bottom:7px;
 }
-input[type=text],input[type=number],textarea,select{
+
+input[type="text"],
+input[type="number"],
+textarea,
+select{
     width:100%;
+
     border:1px solid #ccd7d0;
     border-radius:11px;
+
     padding:11px 13px;
+
     font:inherit;
     color:#172b4d;
     background:#fff;
+
     outline:none;
 }
-textarea{min-height:75px;resize:vertical;line-height:1.55}
-input:focus,textarea:focus,select:focus{
-    border-color:#e52525;
-    box-shadow:0 0 0 3px rgba(229,37,37,.09);
+
+textarea{
+    min-height:75px;
+    resize:vertical;
+    line-height:1.55;
 }
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#e52525;
+
+    box-shadow:
+        0 0 0 3px rgba(229,37,37,.09);
+}
+
+/* =========================
+   SECTION
+========================= */
+
 .section{
     padding:38px 50px;
     border-bottom:1px solid #e7ece8;
 }
-.section:last-child{border-bottom:0}
+
+.section:last-child{
+    border-bottom:0;
+}
+
 .section-title{
     display:flex;
     align-items:flex-start;
     gap:15px;
     margin-bottom:25px;
 }
+
 .badge{
-    min-width:48px;height:48px;
+    min-width:48px;
+    height:48px;
+
     border-radius:14px;
-    display:flex;align-items:center;justify-content:center;
-    background:#ffe1e1;color:#c51f1f;font-weight:900;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#ffe1e1;
+    color:#c51f1f;
+
+    font-weight:900;
 }
-.section-title h2{margin:2px 0 4px;color:#173d2a}
-.section-title p{margin:0;color:#68788a}
+
+.section-title h2{
+    margin:2px 0 4px;
+    color:#173d2a;
+}
+
+.section-title p{
+    margin:0;
+    color:#68788a;
+}
+
 .sub-title{
     color:#e52525;
     font-size:19px;
     margin:28px 0 14px;
 }
+
+/* =========================
+   CONTENT BOX
+========================= */
+
 .instructions{
     background:#f6f9f6;
     border-left:5px solid #e52525;
+
     padding:18px 20px;
+
     border-radius:12px;
 }
-.instructions ol{margin:0;padding-left:22px}
-.instructions li{margin:7px 0;line-height:1.55}
+
+.instructions ol{
+    margin:0;
+    padding-left:22px;
+}
+
+.instructions li{
+    margin:7px 0;
+    line-height:1.55;
+}
+
 .dilemma{
     background:#f8fbf8;
+
     border:1px solid #dfe8e1;
+
     border-radius:16px;
+
     padding:18px;
+
     line-height:1.65;
 }
-.table-wrap{overflow-x:auto;margin:15px 0 24px}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    overflow-x:auto;
+    margin:15px 0 24px;
+}
+
 table{
     width:100%;
     border-collapse:collapse;
     min-width:650px;
 }
-th,td{
+
+th,
+td{
     border:1px solid #cbd7cf;
     padding:11px;
     vertical-align:top;
 }
-th{background:#eef4ef;font-weight:800}
-td input,td textarea{min-width:90px}
+
+th{
+    background:#eef4ef;
+    font-weight:800;
+}
+
+td input,
+td textarea{
+    min-width:90px;
+}
+
+/* =========================
+   CHECKBOX / RADIO
+========================= */
+
 .check-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:10px;
 }
+
 .check{
-    display:flex;align-items:center;gap:9px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+
     padding:12px 14px;
+
     border:1px solid #d8e1da;
     border-radius:11px;
+
     background:#fff;
 }
-.check input{accent-color:#e52525}
+
+.check input{
+    accent-color:#e52525;
+}
+
+/* =========================
+   ANSWER
+========================= */
+
 .answer-block{
     margin:14px 0;
+
     padding:15px;
+
     border:1px dashed #c8d5cc;
     border-radius:13px;
+
     background:#fbfdfb;
 }
-.answer-block .question{font-weight:800;line-height:1.55;margin-bottom:9px}
+
+.answer-block .question{
+    font-weight:800;
+    line-height:1.55;
+    margin-bottom:9px;
+}
+
+/* =========================
+   GRID
+========================= */
+
 .grid-4{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:12px;
 }
-.compact{min-height:45px}
+
+.compact{
+    min-height:45px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
 .savebar{
     position:sticky;
     bottom:15px;
     z-index:900;
+
     display:flex;
     justify-content:center;
     gap:12px;
+
     padding:10px;
+
     pointer-events:none;
 }
+
 .btn{
     pointer-events:auto;
+
     border:0;
     border-radius:12px;
+
     padding:13px 20px;
+
     font-weight:900;
     cursor:pointer;
+
     background:#e52525;
     color:#fff;
-    box-shadow:0 8px 20px rgba(0,0,0,.16);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.16);
+
+    transition:.2s ease;
 }
-.btn.secondary{background:#173d2a}
-.btn.light{background:#eef3ef;color:#173d2a}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.btn.secondary{
+    background:#173d2a;
+}
+
+.btn.light{
+    background:#eef3ef;
+    color:#173d2a;
+}
+
+/* =========================
+   STATUS
+========================= */
+
 .status{
     text-align:center;
+
     font-size:13px;
     color:#526575;
+
     margin:8px 0 18px;
 }
+
 .note{
     margin:15px 0;
+
     padding:13px 16px;
+
     border-radius:12px;
+
     background:#fff8e1;
     color:#6b4f00;
+
     line-height:1.5;
 }
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-box{
+    margin-top:15px;
+}
+
+.upload-file{
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccd7d0;
+    border-radius:11px;
+
+    background:#fff;
+
+    font:inherit;
+}
+
+.upload-progress{
+    display:none;
+    margin-top:15px;
+}
+
+.progress-track{
+    height:10px;
+
+    background:#e8eee9;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+
+    background:#e52525;
+
+    transition:width .2s ease;
+}
+
+.upload-status{
+    text-align:center;
+
+    font-size:13px;
+    color:#526575;
+
+    margin:8px 0 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 .footer{
     padding:25px 50px 45px;
+
     background:#f4f8f4;
+
     text-align:center;
+
     color:#667587;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:800px){
-    .hero,.section,.footer{padding:30px 22px}
-    .identity,.grid-4{grid-template-columns:1fr 1fr}
-    .check-grid{grid-template-columns:1fr}
-    .hero h1{font-size:29px}
-    .topbar{align-items:flex-start;flex-direction:column}
+
+    .hero,
+    .section,
+    .footer{
+        padding:30px 22px;
+    }
+
+    .identity,
+    .grid-4{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .check-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .topbar{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .savebar{
+        flex-wrap:wrap;
+    }
 }
+
 @media(max-width:520px){
-    .identity,.grid-4{grid-template-columns:1fr}
+
+    .identity,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .savebar{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
 }
 </style>
 </head>
 
+
 <body>
+
 <header class="topbar">
-    <div class="brand">E-Lit Lab — LKPD Digital</div>
-    <div class="progress" id="progress">Proyek Eco-Gazebo</div>
+
+    <div class="brand">
+        E-Lit Lab — LKPD Digital
+    </div>
+
+    <div class="progress" id="progress">
+        Proyek Eco-Gazebo
+    </div>
+
 </header>
 
-<main class="page"><div class="sheet">
+
+<main class="page">
+
+<div class="sheet">
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
+
     <h1>LKPD DIGITAL</h1>
+
     <h2>PROYEK ECO-GAZEBO</h2>
-    <p><strong>Energi Terbarukan Berbasis Dilemma-STEAM</strong></p>
+
+    <p>
+        <strong>
+            Energi Terbarukan Berbasis Dilemma-STEAM
+        </strong>
+    </p>
+
     <div class="identity">
+
         <div class="field">
-            <label for="namaKelompok">Nama Kelompok :</label>
-            <input id="namaKelompok" type="text" placeholder="Masukkan nama kelompok">
+
+            <label for="namaKelompok">
+                Nama Kelompok :
+            </label>
+
+            <input
+                id="namaKelompok"
+                type="text"
+                placeholder="Masukkan nama kelompok"
+            >
+
         </div>
+
+
         <div class="field">
-            <label for="kelas">Kelas :</label>
-            <input id="kelas" type="text" placeholder="Masukkan kelas">
+
+            <label for="kelas">
+                Kelas :
+            </label>
+
+            <input
+                id="kelas"
+                type="text"
+                placeholder="Masukkan kelas"
+            >
+
         </div>
-        <div class="field" style="grid-column:1/-1">
-            <label>Anggota :</label>
-            <textarea id="anggota" placeholder="1.&#10;2."></textarea>
+
+
+        <div
+            class="field"
+            style="grid-column:1/-1"
+        >
+
+            <label for="anggota">
+                Anggota :
+            </label>
+
+            <textarea
+                id="anggota"
+                placeholder="1.&#10;2.&#10;3.&#10;4."
+            ></textarea>
+
         </div>
+
     </div>
+
 </section>
+
+
+<!-- =====================================================
+     TUJUAN
+===================================================== -->
 
 <section class="section">
-<div class="section-title"><div class="badge">A</div><div><h2>TUJUAN KEGIATAN</h2></div></div>
-<p>Setelah menyelesaikan kegiatan dalam LKPD, peserta didik diharapkan mampu:</p>
-<ol>
-<li>Menganalisis potensi dan karakteristik sumber energi terbarukan berdasarkan kondisi suatu wilayah.</li>
-<li>Menggunakan hasil pengamatan dan data untuk menentukan pilihan solusi energi.</li>
-<li>Menganalisis hubungan daya, energi, dan efisiensi.</li>
-<li>Merancang solusi pemanfaatan energi terbarukan berdasarkan batasan yang diberikan.</li>
-<li>Mengevaluasi hasil rancangan berdasarkan daya, harga, dan efisiensi.</li>
-</ol>
-</section>
-
-<section class="section">
-<div class="section-title"><div class="badge">B</div><div><h2>PETUNJUK KEGIATAN</h2></div></div>
-<div class="instructions">
-<ol>
-<li>Kerjakan LKPD secara berkelompok dengan teman sebangku;</li>
-<li>Bacalah permasalahan dan karakteristik setiap zona sebelum menentukan pilihan.</li>
-<li>Gunakan hasil pembelajaran dan Virtual Lab sebagai bahan pertimbangan.</li>
-<li>Catat hasil pengamatan dan perhitungan sesuai data yang diperoleh.</li>
-<li>Saat menggunakan AI Artemis, tetap lakukan perhitungan secara manual pada kertas kerja.</li>
-<li>Gunakan kesempatan yang tersedia dengan mempertimbangkan pilihan komponen secara cermat.</li>
-<li>Simpan data hasil rancangan karena akan digunakan pada tahap AI Evaluator dan pembuatan infografis.</li>
-</ol>
-</div>
-</section>
-
-<section class="section" id="kegiatan1">
-<div class="section-title"><div class="badge">1</div><div><h2>KEGIATAN 1</h2><p>EKSPLORASI DAN PEMILIHAN ZONA</p></div></div>
-
-<h3 class="sub-title">A. Memahami Dilema</h3>
-<div class="dilemma">
-SMA Artemis mengalami peningkatan tarif listrik akibat krisis energi yang terjadi secara global. Kondisi tersebut menyebabkan sekolah harus mengurangi penggunaan listrik pada beberapa fasilitas, termasuk area taman sekolah. Untuk mengatasi permasalahan tersebut, sekolah menyelenggarakan <strong>Sayembara Desain Eco-Gazebo Mandiri Energi</strong>. Eco-Gazebo dirancang sebagai tempat siswa beristirahat dan berkumpul sekaligus menyediakan listrik untuk kebutuhan sederhana, seperti mengisi daya telepon seluler, tanpa menambah beban listrik sekolah.
-<br><br>
-Tersedia tiga lokasi yang dapat digunakan untuk pembangunan Eco-Gazebo, yaitu <strong>Zona Matahari, Zona Angin, dan Zona Air</strong>. Setiap zona memiliki potensi sumber energi sekaligus permasalahan yang berbeda. Zona Matahari memiliki paparan sinar matahari yang cukup baik, tetapi sebagian area atap gazebo tertutup oleh bayangan pohon beringin. Zona Angin berada di sekitar lapangan yang memiliki hembusan angin cukup kuat, tetapi lokasinya berdekatan dengan ruang kelas sehingga suara turbin perlu dipertimbangkan. Sementara itu, Zona Air memiliki aliran air yang cukup deras untuk menggerakkan turbin, tetapi saluran air sering dipenuhi sampah plastik yang dapat menghambat aliran dan meningkatkan risiko genangan.
-<br><br>
-Setiap pilihan memiliki kelebihan dan keterbatasan sehingga tidak terdapat satu zona yang sepenuhnya paling baik. Rancangan Eco-Gazebo harus mampu menghasilkan <strong>daya minimal 1.000 Watt</strong> dengan <strong>anggaran maksimal Rp2.500.000</strong> serta tetap mempertimbangkan efisiensi dan kondisi lingkungan pada lokasi yang dipilih.
-</div>
-
-<h3 class="sub-title">B. Pilihan Kelompok</h3>
-<p>Setelah mempertimbangkan ketiga zona, zona yang kami pilih adalah:</p>
-<div class="check-grid">
-<label class="check"><input type="radio" name="zonaPilihan" value="Zona Surya"> Zona Surya</label>
-<label class="check"><input type="radio" name="zonaPilihan" value="Zona Angin"> Zona Angin</label>
-<label class="check"><input type="radio" name="zonaPilihan" value="Zona Air"> Zona Air</label>
-</div>
-<div class="answer-block"><div class="question">1. Alasan kelompok memilih zona tersebut:</div><textarea data-field="alasanZona"></textarea></div>
-<div class="answer-block"><div class="question">2. Potensi utama zona yang kami pilih adalah:</div><textarea data-field="potensiZona"></textarea></div>
-<div class="answer-block"><div class="question">3. Tantangan yang mungkin dihadapi adalah:</div><textarea data-field="tantanganZona"></textarea></div>
-
-<h3 class="sub-title">C. EKSPLORASI VIRTUAL LAB</h3>
-<p>Jalankan Virtual Lab sesuai zona yang dipilih. Amati bagaimana perubahan variabel memengaruhi hasil yang diperoleh.</p>
-<h4>a. Hasil Pengamatan</h4>
-<div class="table-wrap"><table>
-<thead><tr><th>Variabel yang Diubah</th><th>Kondisi Awal</th><th>Kondisi Setelah Diubah</th><th>Perubahan Daya/Energi</th></tr></thead>
-<tbody>
-<tr><td><input data-field="vlab1variabel"></td><td><input data-field="vlab1awal"></td><td><input data-field="vlab1akhir"></td><td><input data-field="vlab1perubahan"></td></tr>
-<tr><td><input data-field="vlab2variabel"></td><td><input data-field="vlab2awal"></td><td><input data-field="vlab2akhir"></td><td><input data-field="vlab2perubahan"></td></tr>
-<tr><td><input data-field="vlab3variabel"></td><td><input data-field="vlab3awal"></td><td><input data-field="vlab3akhir"></td><td><input data-field="vlab3perubahan"></td></tr>
-</tbody></table></div>
-
-<h4>b. Pertanyaan Analisis</h4>
-<div class="answer-block"><div class="question">1. Variabel apa yang paling berpengaruh terhadap daya yang dihasilkan?</div><textarea data-field="analisis1"></textarea></div>
-<div class="answer-block"><div class="question">2. Bagaimana perubahan variabel tersebut memengaruhi energi yang dihasilkan?</div><textarea data-field="analisis2"></textarea></div>
-<div class="answer-block"><div class="question">3. Apa yang dapat kamu simpulkan berdasarkan hasil Virtual Lab?</div><textarea data-field="analisis3"></textarea></div>
-<div class="answer-block"><div class="question">4. Apakah hasil Virtual Lab mendukung pilihan zona kelompokmu? Jelaskan.</div><textarea data-field="analisis4"></textarea></div>
-</section>
-
-<section class="section" id="kegiatan2">
-<div class="section-title"><div class="badge">2</div><div><h2>KEGIATAN 2</h2><p>STUDIO INOVASI ECO-GAZEBO</p></div></div>
-<p>Pada kegiatan ini, kelompokmu akan mengembangkan rancangan Eco-Gazebo berdasarkan zona yang telah dipilih.</p>
-
-<h3 class="sub-title">A. Rencana Desain</h3>
-<div class="answer-block"><div class="question">Zona yang dipilih:</div><input data-field="desainZona"></div>
-<div class="answer-block"><div class="question">Masalah utama yang ingin diselesaikan:</div><textarea data-field="masalahUtama"></textarea></div>
-<div class="answer-block"><div class="question">Ide solusi kelompok:</div><textarea data-field="ideSolusi"></textarea></div>
-<div class="answer-block"><div class="question">Inovasi yang ditambahkan pada rancangan:</div><textarea data-field="inovasi"></textarea></div>
-
-<h3 class="sub-title">B. KONSULTASI DENGAN AI ARTEMIS</h3>
-<p>Gunakan AI Artemis untuk mencari kombinasi komponen yang sesuai dengan batasan proyek.</p>
-<p>Selama berkonsultasi dengan AI Artemis, tetap gunakan kertas dan pensil untuk perhitungan manual. Buka halaman materi untuk menemukan rumus di setiap zona.</p>
-<div class="note">
-<strong>Ketentuan</strong><br>
-• Anggaran maksimum: Rp2.500.000<br>
-• Target daya minimum: 1.000 Watt<br>
-• Kelompok memiliki 3 kesempatan untuk mencoba kombinasi komponen.<br>
-• Setiap pilihan harus dipertimbangkan berdasarkan daya, harga, dan efisiensi.
-</div>
-
-<h4>Percobaan 1</h4>
-<div class="answer-block"><div class="question">Kode:</div><input data-field="kode1" placeholder="(.....) (.....) (.....)"></div>
-<div class="table-wrap"><table>
-<thead><tr><th>Komponen</th><th>Jumlah</th><th>Fungsi Komponen</th><th>Harga</th></tr></thead>
-<tbody>
-<tr><td><input data-field="p1c1"></td><td><input data-field="p1j1"></td><td><input data-field="p1fungsi1"></td><td><input data-field="p1h1"></td></tr>
-<tr><td><input data-field="p1c2"></td><td><input data-field="p1j2"></td><td><input data-field="p1fungsi2"></td><td><input data-field="p1h2"></td></tr>
-<tr><td><input data-field="p1c3"></td><td><input data-field="p1j3"></td><td><input data-field="p1fungsi3"></td><td><input data-field="p1h3"></td></tr>
-<tr><th colspan="3">Total Biaya</th><td><input data-field="p1totalHarga"></td></tr>
-</tbody></table></div>
-<p>Daya … Watt <input style="max-width:130px;display:inline-block" data-field="p1totalDaya"></p>
-<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p1efisiensi"> %</p>
-<p>Apakah memenuhi ketentuan?</p>
-<div class="check-grid">
-<label class="check"><input type="radio" name="p1memenuhi" value="Ya"> Ya</label>
-<label class="check"><input type="radio" name="p1memenuhi" value="Tidak"> Tidak</label>
-</div>
-<div class="answer-block"><div class="question">Hasil evaluasi kelompok:</div><textarea data-field="p1evaluasi"></textarea></div>
-
-<h4>Percobaan 2</h4>
-<div class="answer-block"><div class="question">Kode:</div><input data-field="kode2" placeholder="(.....) (.....) (.....)"></div>
-<div class="table-wrap"><table>
-<thead><tr><th>Komponen</th><th>Jumlah</th><th>Fungsi Komponen</th><th>Harga</th></tr></thead>
-<tbody>
-<tr><td><input data-field="p2c1"></td><td><input data-field="p2j1"></td><td><input data-field="p2fungsi1"></td><td><input data-field="p2h1"></td></tr>
-<tr><td><input data-field="p2c2"></td><td><input data-field="p2j2"></td><td><input data-field="p2fungsi2"></td><td><input data-field="p2h2"></td></tr>
-<tr><td><input data-field="p2c3"></td><td><input data-field="p2j3"></td><td><input data-field="p2fungsi3"></td><td><input data-field="p2h3"></td></tr>
-<tr><th colspan="3">Total Biaya</th><td><input data-field="p2totalHarga"></td></tr>
-</tbody></table></div>
-<p>Daya … Watt <input style="max-width:130px;display:inline-block" data-field="p2totalDaya"></p>
-<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p2efisiensi"> %</p>
-<p>Apakah memenuhi ketentuan?</p>
-<div class="check-grid">
-<label class="check"><input type="radio" name="p2memenuhi" value="Ya"> Ya</label>
-<label class="check"><input type="radio" name="p2memenuhi" value="Tidak"> Tidak</label>
-</div>
-<div class="answer-block"><div class="question">Perubahan yang dilakukan dari percobaan sebelumnya:</div><textarea data-field="p2perubahan"></textarea></div>
-
-<h4>Percobaan 3</h4>
-<div class="answer-block"><div class="question">Kode:</div><input data-field="kode3" placeholder="(.....) (.....) (.....)"></div>
-<div class="table-wrap"><table>
-<thead><tr><th>Komponen</th><th>Jumlah</th><th>Fungsi Komponen</th><th>Harga</th></tr></thead>
-<tbody>
-<tr><td><input data-field="p3c1"></td><td><input data-field="p3j1"></td><td><input data-field="p3fungsi1"></td><td><input data-field="p3h1"></td></tr>
-<tr><td><input data-field="p3c2"></td><td><input data-field="p3j2"></td><td><input data-field="p3fungsi2"></td><td><input data-field="p3h2"></td></tr>
-<tr><td><input data-field="p3c3"></td><td><input data-field="p3j3"></td><td><input data-field="p3fungsi3"></td><td><input data-field="p3h3"></td></tr>
-<tr><th colspan="3">Total Biaya</th><td><input data-field="p3totalHarga"></td></tr>
-</tbody></table></div>
-<p>Daya … Watt <input style="max-width:130px;display:inline-block" data-field="p3totalDaya"></p>
-<p>Efisiensi: <input style="max-width:130px;display:inline-block" data-field="p3efisiensi"> %</p>
-<p>Apakah memenuhi ketentuan?</p>
-<div class="check-grid">
-<label class="check"><input type="radio" name="p3memenuhi" value="Ya"> Ya</label>
-<label class="check"><input type="radio" name="p3memenuhi" value="Tidak"> Tidak</label>
-</div>
-<div class="answer-block"><div class="question">Alasan memilih kombinasi ini atau alasan melakukan perubahan:</div><textarea data-field="p3alasan"></textarea></div>
-
-<h3 class="sub-title">D. PERHITUNGAN MANUAL</h3>
-<p>Gunakan data yang diperoleh dari AI Artemis untuk memeriksa hasil secara manual.</p>
-<div class="grid-4">
-<div class="field"><label>Percobaan yang dipilih</label><input data-field="percobaanDipilih"></div>
-<div class="field"><label>Kode</label><input data-field="kodeDipilih"></div>
-<div class="field"><label>Daya</label><input data-field="dayaDipilih"></div>
-<div class="field"><label>Harga</label><input data-field="hargaDipilih"></div>
-</div>
-<div class="answer-block"><div class="question">Efisiensi:</div><input data-field="efisiensiDipilih"></div>
-<div class="answer-block"><div class="question">Perhitungan</div><textarea data-field="perhitunganManual" style="min-height:130px"></textarea></div>
-<div class="answer-block"><div class="question">Hasil perhitungan kelompok:</div><textarea data-field="hasilPerhitungan"></textarea></div>
-
-<h3 class="sub-title">E. MENENTUKAN RANCANGAN AKHIR</h3>
-<p>Setelah membandingkan ketiga percobaan, tentukan rancangan yang akan digunakan.</p>
-<div class="table-wrap"><table>
-<thead><tr><th>Aspek</th><th>Hasil</th></tr></thead>
-<tbody>
-<tr><td>Zona</td><td><input data-field="zonaAkhir"></td></tr>
-<tr><td>Kode terpilih</td><td><input data-field="kodeTerpilih"></td></tr>
-<tr><td>Total daya</td><td><input data-field="totalDayaAkhir"> Watt</td></tr>
-<tr><td>Total harga</td><td>Rp<input data-field="totalHargaAkhir"></td></tr>
-<tr><td>Efisiensi</td><td><input data-field="efisiensiAkhir"> %</td></tr>
-</tbody></table></div>
-<div class="answer-block"><div class="question">Mengapa kelompok memilih rancangan tersebut?</div><textarea data-field="alasanRancanganAkhir"></textarea></div>
-
-<h3 class="sub-title">F. DESAIN INFOGRAFIS ECO-GAZEBO</h3>
-<p>Buat infografis sederhana berdasarkan rancangan akhir kelompok. Kumpulkan pada Padlet yang tersedia di dalam section Studio Inovasi E-Lit Lab. Infografis minimal memuat:</p>
-<div class="check-grid">
-<label class="check"><input type="checkbox" data-check="infoGambar"> Gambar/desain Eco-Gazebo</label>
-<label class="check"><input type="checkbox" data-check="infoUkuran"> Ukuran atau skala desain bebas</label>
-<label class="check"><input type="checkbox" data-check="infoZona"> Zona yang digunakan</label>
-<label class="check"><input type="checkbox" data-check="infoKomponen"> Komponen yang digunakan dan keterangan ukurannya</label>
-<label class="check"><input type="checkbox" data-check="infoDaya"> Total daya (Watt),</label>
-<label class="check"><input type="checkbox" data-check="infoHarga"> harga</label>
-<label class="check"><input type="checkbox" data-check="infoEfisiensi"> dan efisiensi</label>
-<label class="check"><input type="checkbox" data-check="infoInovasi"> Keterangan singkat mengenai inovasi</label>
-</div>
-
-<h3 class="sub-title">G. EVALUASI DENGAN AI EVALUATOR</h3>
-<p>Masukkan kode, daya, harga, dan efisiensi rancangan kelompok ke AI Evaluator.</p>
-<h4>Hasil Evaluasi</h4>
-<div class="grid-4">
-<div class="field"><label>Kode:</label><input data-field="evalKode"></div>
-<div class="field"><label>Daya:</label><input data-field="evalDaya"> Watt</div>
-<div class="field"><label>Harga:</label><input data-field="evalHarga"></div>
-<div class="field"><label>Efisiensi:</label><input data-field="evalEfisiensi"> %</div>
-</div>
-<p style="margin-top:18px"><strong>Status hasil evaluasi:</strong></p>
-<div class="check-grid">
-<label class="check"><input type="radio" name="statusEvaluasi" value="Pemenang"> Pemenang</label>
-<label class="check"><input type="radio" name="statusEvaluasi" value="Belum menjadi pemenang"> Belum menjadi pemenang</label>
-</div>
-<div class="answer-block"><div class="question">Analisis Kelompok</div></div>
-<div class="answer-block"><div class="question">1. Menurut kelompokmu, apa yang membuat rancangan tersebut menjadi unggul atau belum unggul?</div><textarea data-field="kelompokAnalisis1"></textarea></div>
-<div class="answer-block"><div class="question">2. Apakah hasil AI Evaluator sesuai dengan perkiraan kelompok? Jelaskan.</div><textarea data-field="kelompokAnalisis2"></textarea></div>
-<div class="answer-block"><div class="question">3. Apa yang kamu pelajari dari perbandingan hasil rancangan kelompokmu dengan kelompok lain?</div><textarea data-field="kelompokAnalisis3"></textarea></div>
-
-<h3 class="sub-title">H. KESIMPULAN PROYEK</h3>
-<p>Tuliskan kesimpulan berdasarkan seluruh proses yang telah dilakukan.</p>
-<textarea data-field="kesimpulan" style="min-height:170px"></textarea>
-</section>
-
-<div class="status" id="saveStatus">Belum disimpan.</div>
-<div class="savebar">
-    <button class="btn light" onclick="saveDraft()">Simpan Draft</button>
-    <button class="btn" onclick="submitLKPD()">Kirim LKPD ke Spreadsheet</button>
-    <button class="btn report" id="reportBtn" onclick="downloadReportPDF()" disabled>Download Laporan PDF</button>
-</div>
-
-<section class="section" id="pengumpulanLKPD">
 
     <div class="section-title">
-        <div class="badge">📤</div>
+
+        <div class="badge">
+            A
+        </div>
 
         <div>
-            <h2>PENGUMPULAN LKPD</h2>
-            <p>Unggah laporan PDF hasil pengerjaan kelompok</p>
+
+            <h2>
+                TUJUAN KEGIATAN
+            </h2>
+
         </div>
+
     </div>
 
-    <div class="note">
-        <strong>Langkah pengumpulan:</strong><br>
-        1. Pastikan seluruh bagian LKPD sudah selesai.<br>
-        2. Klik <strong>Kirim LKPD ke Spreadsheet</strong> terlebih dahulu.<br>
-        3. Download laporan LKPD dalam format PDF.<br>
-        4. Pilih file PDF tersebut pada bagian pengumpulan di bawah.<br>
-        5. Klik <strong>Upload LKPD</strong>.
+
+    <p>
+        Setelah menyelesaikan kegiatan dalam LKPD,
+        peserta didik diharapkan mampu:
+    </p>
+
+
+    <ol>
+
+        <li>
+            Menganalisis potensi dan karakteristik sumber
+            energi terbarukan berdasarkan kondisi suatu wilayah.
+        </li>
+
+        <li>
+            Menggunakan hasil pengamatan dan data untuk
+            menentukan pilihan solusi energi.
+        </li>
+
+        <li>
+            Menganalisis hubungan daya, energi, dan efisiensi.
+        </li>
+
+        <li>
+            Merancang solusi pemanfaatan energi terbarukan
+            berdasarkan batasan yang diberikan.
+        </li>
+
+        <li>
+            Mengevaluasi hasil rancangan berdasarkan daya,
+            harga, dan efisiensi.
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =====================================================
+     PETUNJUK
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div class="badge">
+            B
+        </div>
+
+        <div>
+
+            <h2>
+                PETUNJUK KEGIATAN
+            </h2>
+
+        </div>
+
     </div>
+
+
+    <div class="instructions">
+
+        <ol>
+
+            <li>
+                Kerjakan LKPD secara berkelompok dengan
+                teman sebangku.
+            </li>
+
+            <li>
+                Bacalah permasalahan dan karakteristik setiap
+                zona sebelum menentukan pilihan.
+            </li>
+
+            <li>
+                Gunakan hasil pembelajaran dan Virtual Lab
+                sebagai bahan pertimbangan.
+            </li>
+
+            <li>
+                Catat hasil pengamatan dan perhitungan sesuai
+                data yang diperoleh.
+            </li>
+
+            <li>
+                Saat menggunakan AI Artemis, tetap lakukan
+                perhitungan secara manual pada kertas kerja.
+            </li>
+
+            <li>
+                Gunakan kesempatan yang tersedia dengan
+                mempertimbangkan pilihan komponen secara cermat.
+            </li>
+
+            <li>
+                Simpan data hasil rancangan karena akan
+                digunakan pada tahap AI Evaluator dan
+                pembuatan infografis.
+            </li>
+
+        </ol>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     KEGIATAN 1
+===================================================== -->
+
+<section
+    class="section"
+    id="kegiatan1"
+>
+
+    <div class="section-title">
+
+        <div class="badge">
+            1
+        </div>
+
+        <div>
+
+            <h2>
+                KEGIATAN 1
+            </h2>
+
+            <p>
+                EKSPLORASI DAN PEMILIHAN ZONA
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <h3 class="sub-title">
+        A. Memahami Dilema
+    </h3>
+
+
+    <div class="dilemma">
+
+        SMA Artemis mengalami peningkatan tarif listrik akibat
+        krisis energi yang terjadi secara global. Kondisi tersebut
+        menyebabkan sekolah harus mengurangi penggunaan listrik
+        pada beberapa fasilitas, termasuk area taman sekolah.
+        Untuk mengatasi permasalahan tersebut, sekolah
+        menyelenggarakan
+        <strong>Sayembara Desain Eco-Gazebo Mandiri Energi</strong>.
+
+        Eco-Gazebo dirancang sebagai tempat siswa beristirahat
+        dan berkumpul sekaligus menyediakan listrik untuk kebutuhan
+        sederhana, seperti mengisi daya telepon seluler, tanpa
+        menambah beban listrik sekolah.
+
+        <br><br>
+
+        Tersedia tiga lokasi yang dapat digunakan untuk pembangunan
+        Eco-Gazebo, yaitu
+        <strong>Zona Matahari, Zona Angin, dan Zona Air</strong>.
+
+        Setiap zona memiliki potensi sumber energi sekaligus
+        permasalahan yang berbeda.
+
+        Zona Matahari memiliki paparan sinar matahari yang cukup
+        baik, tetapi sebagian area atap gazebo tertutup oleh
+        bayangan pohon beringin.
+
+        Zona Angin berada di sekitar lapangan yang memiliki
+        hembusan angin cukup kuat, tetapi lokasinya berdekatan
+        dengan ruang kelas sehingga suara turbin perlu
+        dipertimbangkan.
+
+        Sementara itu, Zona Air memiliki aliran air yang cukup
+        deras untuk menggerakkan turbin, tetapi saluran air sering
+        dipenuhi sampah plastik yang dapat menghambat aliran dan
+        meningkatkan risiko genangan.
+
+        <br><br>
+
+        Setiap pilihan memiliki kelebihan dan keterbatasan sehingga
+        tidak terdapat satu zona yang sepenuhnya paling baik.
+
+        Rancangan Eco-Gazebo harus mampu menghasilkan
+        <strong>daya minimal 1.000 Watt</strong>
+        dengan
+        <strong>anggaran maksimal Rp2.500.000</strong>
+        serta tetap mempertimbangkan efisiensi dan kondisi
+        lingkungan pada lokasi yang dipilih.
+
+    </div>
+
+
+    <h3 class="sub-title">
+        B. Pilihan Kelompok
+    </h3>
+
+
+    <p>
+        Setelah mempertimbangkan ketiga zona,
+        zona yang kami pilih adalah:
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="zonaPilihan"
+                value="Zona Surya"
+            >
+
+            Zona Surya
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="zonaPilihan"
+                value="Zona Angin"
+            >
+
+            Zona Angin
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="zonaPilihan"
+                value="Zona Air"
+            >
+
+            Zona Air
+
+        </label>
+
+    </div>
+
 
     <div class="answer-block">
+
+        <div class="question">
+            1. Alasan kelompok memilih zona tersebut:
+        </div>
+
+        <textarea
+            data-field="alasanZona"
+        ></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            2. Potensi utama zona yang kami pilih adalah:
+        </div>
+
+        <textarea
+            data-field="potensiZona"
+        ></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            3. Tantangan yang mungkin dihadapi adalah:
+        </div>
+
+        <textarea
+            data-field="tantanganZona"
+        ></textarea>
+
+    </div>
+
+
+    <h3 class="sub-title">
+        C. EKSPLORASI VIRTUAL LAB
+    </h3>
+
+
+    <p>
+        Jalankan Virtual Lab sesuai zona yang dipilih.
+        Amati bagaimana perubahan variabel memengaruhi
+        hasil yang diperoleh.
+    </p>
+
+
+    <h4>
+        a. Hasil Pengamatan
+    </h4>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Variabel yang Diubah
+                    </th>
+
+                    <th>
+                        Kondisi Awal
+                    </th>
+
+                    <th>
+                        Kondisi Setelah Diubah
+                    </th>
+
+                    <th>
+                        Perubahan Daya/Energi
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <input data-field="vlab1variabel">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab1awal">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab1akhir">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab1perubahan">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <input data-field="vlab2variabel">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab2awal">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab2akhir">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab2perubahan">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <input data-field="vlab3variabel">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab3awal">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab3akhir">
+                    </td>
+
+                    <td>
+                        <input data-field="vlab3perubahan">
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <h4>
+        b. Pertanyaan Analisis
+    </h4>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            1. Variabel apa yang paling berpengaruh
+            terhadap daya yang dihasilkan?
+        </div>
+
+        <textarea data-field="analisis1"></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            2. Bagaimana perubahan variabel tersebut
+            memengaruhi energi yang dihasilkan?
+        </div>
+
+        <textarea data-field="analisis2"></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            3. Apa yang dapat kamu simpulkan berdasarkan
+            hasil Virtual Lab?
+        </div>
+
+        <textarea data-field="analisis3"></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            4. Apakah hasil Virtual Lab mendukung pilihan
+            zona kelompokmu? Jelaskan.
+        </div>
+
+        <textarea data-field="analisis4"></textarea>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     KEGIATAN 2
+===================================================== -->
+
+<section
+    class="section"
+    id="kegiatan2"
+>
+
+    <div class="section-title">
+
+        <div class="badge">
+            2
+        </div>
+
+        <div>
+
+            <h2>
+                KEGIATAN 2
+            </h2>
+
+            <p>
+                STUDIO INOVASI ECO-GAZEBO
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        Pada kegiatan ini, kelompokmu akan mengembangkan
+        rancangan Eco-Gazebo berdasarkan zona yang telah dipilih.
+    </p>
+
+
+    <!-- RENCANA DESAIN -->
+
+    <h3 class="sub-title">
+        A. Rencana Desain
+    </h3>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Zona yang dipilih:
+        </div>
+
+        <input data-field="desainZona">
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Masalah utama yang ingin diselesaikan:
+        </div>
+
+        <textarea data-field="masalahUtama"></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Ide solusi kelompok:
+        </div>
+
+        <textarea data-field="ideSolusi"></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Inovasi yang ditambahkan pada rancangan:
+        </div>
+
+        <textarea data-field="inovasi"></textarea>
+
+    </div>
+
+
+    <!-- AI ARTEMIS -->
+
+    <h3 class="sub-title">
+        B. KONSULTASI DENGAN AI ARTEMIS
+    </h3>
+
+
+    <p>
+        Gunakan AI Artemis untuk mencari kombinasi komponen
+        yang sesuai dengan batasan proyek.
+    </p>
+
+
+    <p>
+        Selama berkonsultasi dengan AI Artemis, tetap gunakan
+        kertas dan pensil untuk perhitungan manual.
+        Buka halaman materi untuk menemukan rumus di setiap zona.
+    </p>
+
+
+    <div class="note">
+
+        <strong>Ketentuan</strong>
+        <br>
+
+        • Anggaran maksimum: Rp2.500.000
+        <br>
+
+        • Target daya minimum: 1.000 Watt
+        <br>
+
+        • Kelompok memiliki 3 kesempatan untuk mencoba
+        kombinasi komponen.
+        <br>
+
+        • Setiap pilihan harus dipertimbangkan berdasarkan
+        daya, harga, dan efisiensi.
+
+    </div>
+
+
+    <!-- =================================================
+         PERCOBAAN 1
+    ================================================= -->
+
+    <h4>
+        Percobaan 1
+    </h4>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Kode:
+        </div>
+
+        <input
+            data-field="kode1"
+            placeholder="(.....) (.....) (.....)"
+        >
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Komponen
+                    </th>
+
+                    <th>
+                        Jumlah
+                    </th>
+
+                    <th>
+                        Fungsi Komponen
+                    </th>
+
+                    <th>
+                        Harga
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td><input data-field="p1c1"></td>
+                    <td><input data-field="p1j1"></td>
+                    <td><input data-field="p1fungsi1"></td>
+                    <td><input data-field="p1h1"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p1c2"></td>
+                    <td><input data-field="p1j2"></td>
+                    <td><input data-field="p1fungsi2"></td>
+                    <td><input data-field="p1h2"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p1c3"></td>
+                    <td><input data-field="p1j3"></td>
+                    <td><input data-field="p1fungsi3"></td>
+                    <td><input data-field="p1h3"></td>
+                </tr>
+
+                <tr>
+
+                    <th colspan="3">
+                        Total Biaya
+                    </th>
+
+                    <td>
+                        <input data-field="p1totalHarga">
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <p>
+        Daya
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p1totalDaya"
+        >
+        Watt
+    </p>
+
+
+    <p>
+        Efisiensi:
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p1efisiensi"
+        >
+        %
+    </p>
+
+
+    <p>
+        Apakah memenuhi ketentuan?
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p1memenuhi"
+                value="Ya"
+            >
+
+            Ya
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p1memenuhi"
+                value="Tidak"
+            >
+
+            Tidak
+
+        </label>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Hasil evaluasi kelompok:
+        </div>
+
+        <textarea data-field="p1evaluasi"></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         PERCOBAAN 2
+    ================================================= -->
+
+    <h4>
+        Percobaan 2
+    </h4>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Kode:
+        </div>
+
+        <input
+            data-field="kode2"
+            placeholder="(.....) (.....) (.....)"
+        >
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Komponen</th>
+                    <th>Jumlah</th>
+                    <th>Fungsi Komponen</th>
+                    <th>Harga</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td><input data-field="p2c1"></td>
+                    <td><input data-field="p2j1"></td>
+                    <td><input data-field="p2fungsi1"></td>
+                    <td><input data-field="p2h1"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p2c2"></td>
+                    <td><input data-field="p2j2"></td>
+                    <td><input data-field="p2fungsi2"></td>
+                    <td><input data-field="p2h2"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p2c3"></td>
+                    <td><input data-field="p2j3"></td>
+                    <td><input data-field="p2fungsi3"></td>
+                    <td><input data-field="p2h3"></td>
+                </tr>
+
+                <tr>
+
+                    <th colspan="3">
+                        Total Biaya
+                    </th>
+
+                    <td>
+                        <input data-field="p2totalHarga">
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <p>
+        Daya
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p2totalDaya"
+        >
+        Watt
+    </p>
+
+
+    <p>
+        Efisiensi:
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p2efisiensi"
+        >
+        %
+    </p>
+
+
+    <p>
+        Apakah memenuhi ketentuan?
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p2memenuhi"
+                value="Ya"
+            >
+
+            Ya
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p2memenuhi"
+                value="Tidak"
+            >
+
+            Tidak
+
+        </label>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Perubahan yang dilakukan dari percobaan sebelumnya:
+        </div>
+
+        <textarea data-field="p2perubahan"></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         PERCOBAAN 3
+    ================================================= -->
+
+    <h4>
+        Percobaan 3
+    </h4>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Kode:
+        </div>
+
+        <input
+            data-field="kode3"
+            placeholder="(.....) (.....) (.....)"
+        >
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Komponen</th>
+                    <th>Jumlah</th>
+                    <th>Fungsi Komponen</th>
+                    <th>Harga</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <td><input data-field="p3c1"></td>
+                    <td><input data-field="p3j1"></td>
+                    <td><input data-field="p3fungsi1"></td>
+                    <td><input data-field="p3h1"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p3c2"></td>
+                    <td><input data-field="p3j2"></td>
+                    <td><input data-field="p3fungsi2"></td>
+                    <td><input data-field="p3h2"></td>
+                </tr>
+
+                <tr>
+                    <td><input data-field="p3c3"></td>
+                    <td><input data-field="p3j3"></td>
+                    <td><input data-field="p3fungsi3"></td>
+                    <td><input data-field="p3h3"></td>
+                </tr>
+
+                <tr>
+
+                    <th colspan="3">
+                        Total Biaya
+                    </th>
+
+                    <td>
+                        <input data-field="p3totalHarga">
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <p>
+        Daya
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p3totalDaya"
+        >
+        Watt
+    </p>
+
+
+    <p>
+        Efisiensi:
+        <input
+            style="max-width:130px;display:inline-block"
+            data-field="p3efisiensi"
+        >
+        %
+    </p>
+
+
+    <p>
+        Apakah memenuhi ketentuan?
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p3memenuhi"
+                value="Ya"
+            >
+
+            Ya
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="p3memenuhi"
+                value="Tidak"
+            >
+
+            Tidak
+
+        </label>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Alasan memilih kombinasi ini atau alasan
+            melakukan perubahan:
+        </div>
+
+        <textarea data-field="p3alasan"></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         PERHITUNGAN MANUAL
+    ================================================= -->
+
+    <h3 class="sub-title">
+        D. PERHITUNGAN MANUAL
+    </h3>
+
+
+    <p>
+        Gunakan data yang diperoleh dari AI Artemis
+        untuk memeriksa hasil secara manual.
+    </p>
+
+
+    <div class="grid-4">
+
+        <div class="field">
+
+            <label>
+                Percobaan yang dipilih
+            </label>
+
+            <input data-field="percobaanDipilih">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Kode
+            </label>
+
+            <input data-field="kodeDipilih">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Daya
+            </label>
+
+            <input data-field="dayaDipilih">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Harga
+            </label>
+
+            <input data-field="hargaDipilih">
+
+        </div>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Efisiensi:
+        </div>
+
+        <input data-field="efisiensiDipilih">
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Perhitungan
+        </div>
+
+        <textarea
+            data-field="perhitunganManual"
+            style="min-height:130px"
+        ></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Hasil perhitungan kelompok:
+        </div>
+
+        <textarea
+            data-field="hasilPerhitungan"
+        ></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         RANCANGAN AKHIR
+    ================================================= -->
+
+    <h3 class="sub-title">
+        E. MENENTUKAN RANCANGAN AKHIR
+    </h3>
+
+
+    <p>
+        Setelah membandingkan ketiga percobaan,
+        tentukan rancangan yang akan digunakan.
+    </p>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Aspek
+                    </th>
+
+                    <th>
+                        Hasil
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        Zona
+                    </td>
+
+                    <td>
+                        <input data-field="zonaAkhir">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Kode terpilih
+                    </td>
+
+                    <td>
+                        <input data-field="kodeTerpilih">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Total daya
+                    </td>
+
+                    <td>
+                        <input data-field="totalDayaAkhir">
+                        Watt
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Total harga
+                    </td>
+
+                    <td>
+                        Rp
+                        <input data-field="totalHargaAkhir">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Efisiensi
+                    </td>
+
+                    <td>
+                        <input data-field="efisiensiAkhir">
+                        %
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Mengapa kelompok memilih rancangan tersebut?
+        </div>
+
+        <textarea
+            data-field="alasanRancanganAkhir"
+        ></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         INFOGRAFIS
+    ================================================= -->
+
+    <h3 class="sub-title">
+        F. DESAIN INFOGRAFIS ECO-GAZEBO
+    </h3>
+
+
+    <p>
+        Buat infografis sederhana berdasarkan rancangan akhir
+        kelompok. Kumpulkan pada Padlet yang tersedia di dalam
+        section Studio Inovasi E-Lit Lab.
+        Infografis minimal memuat:
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoGambar"
+            >
+            Gambar/desain Eco-Gazebo
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoUkuran"
+            >
+            Ukuran atau skala desain bebas
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoZona"
+            >
+            Zona yang digunakan
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoKomponen"
+            >
+            Komponen yang digunakan dan keterangan ukurannya
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoDaya"
+            >
+            Total daya (Watt)
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoHarga"
+            >
+            Harga
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoEfisiensi"
+            >
+            Efisiensi
+        </label>
+
+
+        <label class="check">
+            <input
+                type="checkbox"
+                data-check="infoInovasi"
+            >
+            Keterangan singkat mengenai inovasi
+        </label>
+
+    </div>
+
+
+    <!-- =================================================
+         AI EVALUATOR
+    ================================================= -->
+
+    <h3 class="sub-title">
+        G. EVALUASI DENGAN AI EVALUATOR
+    </h3>
+
+
+    <p>
+        Masukkan kode, daya, harga, dan efisiensi rancangan
+        kelompok ke AI Evaluator.
+    </p>
+
+
+    <h4>
+        Hasil Evaluasi
+    </h4>
+
+
+    <div class="grid-4">
+
+        <div class="field">
+
+            <label>
+                Kode:
+            </label>
+
+            <input data-field="evalKode">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Daya:
+            </label>
+
+            <input data-field="evalDaya">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Harga:
+            </label>
+
+            <input data-field="evalHarga">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Efisiensi:
+            </label>
+
+            <input data-field="evalEfisiensi">
+
+        </div>
+
+    </div>
+
+
+    <p style="margin-top:18px">
+
+        <strong>
+            Status hasil evaluasi:
+        </strong>
+
+    </p>
+
+
+    <div class="check-grid">
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="statusEvaluasi"
+                value="Pemenang"
+            >
+
+            Pemenang
+
+        </label>
+
+
+        <label class="check">
+
+            <input
+                type="radio"
+                name="statusEvaluasi"
+                value="Belum menjadi pemenang"
+            >
+
+            Belum menjadi pemenang
+
+        </label>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            Analisis Kelompok
+        </div>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            1. Menurut kelompokmu, apa yang membuat rancangan
+            tersebut menjadi unggul atau belum unggul?
+        </div>
+
+        <textarea
+            data-field="kelompokAnalisis1"
+        ></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            2. Apakah hasil AI Evaluator sesuai dengan perkiraan
+            kelompok? Jelaskan.
+        </div>
+
+        <textarea
+            data-field="kelompokAnalisis2"
+        ></textarea>
+
+    </div>
+
+
+    <div class="answer-block">
+
+        <div class="question">
+            3. Apa yang kamu pelajari dari perbandingan hasil
+            rancangan kelompokmu dengan kelompok lain?
+        </div>
+
+        <textarea
+            data-field="kelompokAnalisis3"
+        ></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         KESIMPULAN
+    ================================================= -->
+
+    <h3 class="sub-title">
+        H. KESIMPULAN PROYEK
+    </h3>
+
+
+    <p>
+        Tuliskan kesimpulan berdasarkan seluruh proses
+        yang telah dilakukan.
+    </p>
+
+
+    <textarea
+        data-field="kesimpulan"
+        style="min-height:170px"
+    ></textarea>
+
+</section>
+
+
+<!-- =====================================================
+     STATUS + BUTTON
+===================================================== -->
+
+<div
+    class="status"
+    id="saveStatus"
+>
+    Belum disimpan.
+</div>
+
+
+<div class="savebar">
+
+    <button
+        class="btn light"
+        onclick="saveDraft()"
+    >
+        Simpan Draft
+    </button>
+
+
+    <button
+        class="btn"
+        onclick="submitLKPD()"
+    >
+        Kirim LKPD ke Spreadsheet
+    </button>
+
+
+    <button
+        class="btn secondary"
+        id="reportBtn"
+        onclick="downloadReportPDF()"
+        disabled
+    >
+        Download Laporan PDF
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     PENGUMPULAN LKPD
+===================================================== -->
+
+<section
+    class="section"
+    id="pengumpulanLKPD"
+>
+
+    <div class="section-title">
+
+        <div class="badge">
+            📤
+        </div>
+
+        <div>
+
+            <h2>
+                PENGUMPULAN LKPD
+            </h2>
+
+            <p>
+                Unggah laporan PDF hasil pengerjaan kelompok
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>
+            Langkah pengumpulan:
+        </strong>
+
+        <br>
+
+        1. Pastikan seluruh bagian LKPD sudah selesai.
+        <br>
+
+        2. Klik
+        <strong>
+            Kirim LKPD ke Spreadsheet
+        </strong>
+        terlebih dahulu.
+        <br>
+
+        3. Download laporan LKPD dalam format PDF.
+        <br>
+
+        4. Pilih file PDF tersebut pada bagian pengumpulan.
+        <br>
+
+        5. Klik
+        <strong>
+            Upload LKPD PDF
+        </strong>.
+
+    </div>
+
+
+    <div class="answer-block upload-box">
 
         <div class="question">
             File LKPD PDF
         </div>
 
+
         <input
             type="file"
             id="lkpdPdfFile"
             accept="application/pdf,.pdf"
-            style="
-                width:100%;
-                padding:12px;
-                border:1px solid #ccd7d0;
-                border-radius:11px;
-                background:#fff;
-                font:inherit;
-            "
+            class="upload-file"
         >
 
-        <p
-            id="uploadFileInfo"
-            style="
-                margin:10px 0 0;
-                font-size:13px;
-                color:#68788a;
-            "
-        >
+
+        <p id="uploadFileInfo">
             Belum ada file dipilih.
         </p>
 
     </div>
 
+
     <div
         id="uploadProgress"
-        style="
-            display:none;
-            margin-top:15px;
-        "
+        class="upload-progress"
     >
 
-        <div
-            style="
-                height:10px;
-                background:#e8eee9;
-                border-radius:20px;
-                overflow:hidden;
-            "
-        >
+        <div class="progress-track">
 
             <div
                 id="uploadProgressBar"
-                style="
-                    width:0%;
-                    height:100%;
-                    background:#e52525;
-                    transition:width .2s ease;
-                "
+                class="progress-bar"
             ></div>
 
         </div>
 
+
         <p
             id="uploadStatus"
-            style="
-                text-align:center;
-                font-size:13px;
-                color:#526575;
-                margin:8px 0 0;
-            "
+            class="upload-status"
         >
             Menyiapkan upload...
         </p>
 
     </div>
 
+
     <button
         class="btn"
         id="uploadLKPDButton"
         onclick="uploadLKPDPDF()"
-        style="
-            width:100%;
-            margin-top:15px;
-        "
+        style="width:100%;margin-top:15px"
     >
         Upload LKPD PDF
     </button>
 
 </section>
 
+
 <footer class="footer">
-<strong>E-Lit Lab — Proyek Eco-Gazebo</strong><br>
-Energi Terbarukan Berbasis Dilemma-STEAM
+
+    <strong>
+        E-Lit Lab — Proyek Eco-Gazebo
+    </strong>
+
+    <br>
+
+    Energi Terbarukan Berbasis Dilemma-STEAM
+
 </footer>
-</div></main>
+
+</div>
+</main>
 
 
 <script>
+
+/* =====================================================
+   KONFIGURASI API
+===================================================== */
+
+/*
+    PENTING:
+    Ganti URL di bawah dengan URL WEB APP
+    Google Apps Script kamu.
+
+    Format:
+    https://script.google.com/macros/s/XXXXX/exec
+*/
+
 const ELIT_SHEETS_API =
-"https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
-
-// ======================================================
-// UPLOAD PDF LKPD KE GOOGLE DRIVE
-// ======================================================
-
-const ELIT_LKPD_UPLOAD_API = ELIT_SHEETS_API;
+    "https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
 
 
-// Menampilkan nama file ketika dipilih
-document.addEventListener("DOMContentLoaded", function(){
+const ELIT_LKPD_UPLOAD_API =
+    ELIT_SHEETS_API;
 
-    const fileInput =
-        document.getElementById("lkpdPdfFile");
 
-    const fileInfo =
-        document.getElementById("uploadFileInfo");
+/* =====================================================
+   STORAGE
+===================================================== */
 
-    if(fileInput){
+const LKPD_STORAGE_KEY =
+    "elitlab_lkpd_digital_final_v2";
 
-        fileInput.addEventListener("change", function(){
 
-            const file = this.files[0];
+let lkpdSubmitted = false;
 
-            if(!file){
 
-                fileInfo.textContent =
-                    "Belum ada file dipilih.";
+/* =====================================================
+   GET FORM DATA
+===================================================== */
 
-                return;
+function getFormData(){
+
+    const namaKelompok =
+        document.getElementById("namaKelompok");
+
+    const anggota =
+        document.getElementById("anggota");
+
+    const kelas =
+        document.getElementById("kelas");
+
+
+    const data = {
+
+        namaKelompok:
+            namaKelompok
+                ? namaKelompok.value
+                : "",
+
+        anggota:
+            anggota
+                ? anggota.value
+                : "",
+
+        kelas:
+            kelas
+                ? kelas.value
+                : "",
+
+        fields:{},
+
+        checks:{},
+
+        radios:{},
+
+        timestamp:
+            new Date().toISOString()
+
+    };
+
+
+    document
+        .querySelectorAll("[data-field]")
+        .forEach(function(el){
+
+            data.fields[el.dataset.field] =
+                el.value;
+
+        });
+
+
+    document
+        .querySelectorAll("[data-check]")
+        .forEach(function(el){
+
+            data.checks[el.dataset.check] =
+                el.checked;
+
+        });
+
+
+    document
+        .querySelectorAll(
+            'input[type="radio"][name]'
+        )
+        .forEach(function(el){
+
+            if(el.checked){
+
+                data.radios[el.name] =
+                    el.value;
+
             }
 
-            const sizeMB =
-                (file.size / (1024 * 1024))
-                .toFixed(2);
-
-            fileInfo.textContent =
-                "File dipilih: " +
-                file.name +
-                " (" +
-                sizeMB +
-                " MB)";
         });
-    }
-
-});
 
 
-// ======================================================
-// KONVERSI FILE KE BASE64
-// ======================================================
-
-function fileToBase64(file){
-
-    return new Promise(function(resolve,reject){
-
-        const reader =
-            new FileReader();
-
-        reader.onload = function(){
-
-            const result =
-                reader.result;
-
-            // Mengambil bagian Base64 saja
-            const base64 =
-                result.split(",")[1];
-
-            resolve(base64);
-        };
-
-        reader.onerror = function(){
-            reject(reader.error);
-        };
-
-        reader.readAsDataURL(file);
-    });
+    return data;
 }
 
 
-// ======================================================
-// UPLOAD PDF
-// ======================================================
+/* =====================================================
+   APPLY DATA
+===================================================== */
+
+function applyFormData(data){
+
+    if(!data){
+        return;
+    }
+
+
+    if(data.namaKelompok !== undefined){
+
+        document.getElementById(
+            "namaKelompok"
+        ).value =
+            data.namaKelompok;
+
+    }
+
+
+    if(data.anggota !== undefined){
+
+        document.getElementById(
+            "anggota"
+        ).value =
+            data.anggota;
+
+    }
+
+
+    if(data.kelas !== undefined){
+
+        document.getElementById(
+            "kelas"
+        ).value =
+            data.kelas;
+
+    }
+
+
+    if(data.fields){
+
+        Object
+            .entries(data.fields)
+            .forEach(function([key,value]){
+
+                const el =
+                    document.querySelector(
+                        '[data-field="' +
+                        CSS.escape(key) +
+                        '"]'
+                    );
+
+                if(el){
+
+                    el.value =
+                        value ?? "";
+
+                }
+
+            });
+
+    }
+
+
+    if(data.checks){
+
+        document
+            .querySelectorAll("[data-check]")
+            .forEach(function(el){
+
+                el.checked =
+                    Boolean(
+                        data.checks[
+                            el.dataset.check
+                        ]
+                    );
+
+            });
+
+    }
+
+
+    if(data.radios){
+
+        Object
+            .entries(data.radios)
+            .forEach(function([name,value]){
+
+                const radios =
+                    document.querySelectorAll(
+                        'input[type="radio"][name="' +
+                        CSS.escape(name) +
+                        '"]'
+                    );
+
+                radios.forEach(function(radio){
+
+                    radio.checked =
+                        radio.value === value;
+
+                });
+
+            });
+
+    }
+}
+
+
+/* =====================================================
+   SAVE LOCAL
+===================================================== */
+
+function saveLocal(){
+
+    const data =
+        getFormData();
+
+    localStorage.setItem(
+        LKPD_STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+    return data;
+}
+
+
+/* =====================================================
+   LOAD LOCAL
+===================================================== */
+
+function loadLocal(){
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                LKPD_STORAGE_KEY
+            );
+
+        if(!raw){
+            return;
+        }
+
+
+        const data =
+            JSON.parse(raw);
+
+
+        applyFormData(data);
+
+
+        document.getElementById(
+            "saveStatus"
+        ).textContent =
+            "Draft terakhir berhasil dipulihkan dari perangkat.";
+
+    }catch(error){
+
+        console.error(
+            "Gagal memulihkan draft:",
+            error
+        );
+
+    }
+}
+
+
+/* =====================================================
+   KIRIM KE GOOGLE SHEETS
+===================================================== */
+
+async function kirimKeSpreadsheet(payload){
+
+    try{
+
+        const response =
+            await fetch(
+                ELIT_SHEETS_API,
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(payload)
+                }
+            );
+
+
+        /*
+            Kalau backend mengembalikan JSON,
+            kita coba baca.
+        */
+
+        let result = null;
+
+        try{
+
+            result =
+                await response.json();
+
+        }catch(e){
+
+            result = null;
+
+        }
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+
+        }
+
+
+        return {
+
+            ok:true,
+
+            result:result
+
+        };
+
+    }catch(error){
+
+        console.error(
+            "Gagal mengirim ke Google Sheets:",
+            error
+        );
+
+
+        /*
+            Fallback:
+            Apps Script kadang terkena masalah CORS.
+            Untuk request text/plain, server masih
+            bisa menerima POST walaupun respons sulit
+            dibaca browser.
+        */
+
+        return {
+
+            ok:false,
+
+            error:error
+
+        };
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE DRAFT
+===================================================== */
+
+async function saveDraft(){
+
+    const data =
+        saveLocal();
+
+
+    document.getElementById(
+        "saveStatus"
+    ).textContent =
+        "Draft tersimpan di perangkat. Mengirim salinan...";
+
+
+    const result =
+        await kirimKeSpreadsheet({
+
+            type:"lkpd_draft",
+
+            nama:
+                data.namaKelompok,
+
+            kelas:
+                data.kelas,
+
+            data:
+                data
+
+        });
+
+
+    if(result.ok){
+
+        document.getElementById(
+            "saveStatus"
+        ).textContent =
+            "Draft berhasil disimpan.";
+
+    }else{
+
+        document.getElementById(
+            "saveStatus"
+        ).textContent =
+            "Draft tersimpan di perangkat, tetapi pengiriman salinan gagal.";
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBMIT LKPD
+===================================================== */
+
+async function submitLKPD(){
+
+    const data =
+        saveLocal();
+
+
+    if(!data.namaKelompok.trim()){
+
+        alert(
+            "Silakan isi Nama Kelompok terlebih dahulu."
+        );
+
+
+        document
+            .getElementById("namaKelompok")
+            .focus();
+
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            "Kirim seluruh jawaban LKPD kelompok ke Spreadsheet?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    document.getElementById(
+        "saveStatus"
+    ).textContent =
+        "Mengirim seluruh LKPD...";
+
+
+    const result =
+        await kirimKeSpreadsheet({
+
+            type:"lkpd",
+
+            nama:
+                data.namaKelompok,
+
+            kelas:
+                data.kelas,
+
+            data:
+                data
+
+        });
+
+
+    if(result.ok){
+
+        lkpdSubmitted = true;
+
+
+        document.getElementById(
+            "reportBtn"
+        ).disabled = false;
+
+
+        document.getElementById(
+            "saveStatus"
+        ).textContent =
+            "LKPD berhasil dikirim. Laporan PDF siap diunduh.";
+
+
+        alert(
+            "LKPD berhasil dikirim.\n\n" +
+            "Kamu sekarang dapat mengunduh laporan PDF."
+        );
+
+    }else{
+
+        document.getElementById(
+            "saveStatus"
+        ).textContent =
+            "Pengiriman LKPD gagal. Draft tetap tersimpan.";
+
+
+        alert(
+            "Pengiriman LKPD gagal.\n\n" +
+            "Draft tetap tersimpan di perangkat."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TEXT UTILITY
+===================================================== */
+
+function cleanText(value){
+
+    return String(value ?? "")
+
+        .replace(/\r/g,"")
+
+        .replace(/[“”]/g,'"')
+
+        .replace(/[‘’]/g,"'")
+
+        .replace(/[–—]/g,"-")
+
+        .replace(/[•·]/g,"-")
+
+        /*
+            PDF Helvetica hanya menggunakan
+            karakter ASCII.
+        */
+        .replace(
+            /[^\x09\x0A\x0D\x20-\x7E]/g,
+            ""
+        );
+
+}
+
+
+function human(value){
+
+    const text =
+        String(value ?? "").trim();
+
+    return text
+        ? text
+        : "-";
+
+}
+
+
+/* =====================================================
+   RADIO
+===================================================== */
+
+function radioValue(name){
+
+    const el =
+        document.querySelector(
+            'input[type="radio"][name="' +
+            CSS.escape(name) +
+            '"]:checked'
+        );
+
+
+    return el
+        ? el.value
+        : "-";
+
+}
+
+
+/* =====================================================
+   WRAP TEXT
+===================================================== */
+
+function addWrapped(
+    lines,
+    text,
+    width = 88
+){
+
+    const raw =
+        cleanText(text);
+
+
+    if(!raw){
+
+        lines.push("");
+
+        return;
+
+    }
+
+
+    const words =
+        raw.split(/\s+/);
+
+
+    let line = "";
+
+
+    for(const word of words){
+
+        if(
+            (line + " " + word)
+                .trim()
+                .length <= width
+        ){
+
+            line =
+                (line + " " + word)
+                    .trim();
+
+        }else{
+
+            if(line){
+
+                lines.push(line);
+
+            }
+
+            line = word;
+
+        }
+
+    }
+
+
+    if(line){
+
+        lines.push(line);
+
+    }
+
+}
+
+
+/* =====================================================
+   COLLECT REPORT
+===================================================== */
+
+function collectReportLines(){
+
+    const d =
+        getFormData();
+
+    const f =
+        d.fields;
+
+    const lines = [];
+
+
+    lines.push(
+        "LAPORAN HASIL LKPD"
+    );
+
+    lines.push(
+        "Energi Terbarukan Berbasis Dilemma-STEAM"
+    );
+
+    lines.push("");
+
+
+    lines.push("IDENTITAS");
+
+    lines.push(
+        "Nama Kelompok: " +
+        human(d.namaKelompok)
+    );
+
+    lines.push(
+        "Anggota: " +
+        human(d.anggota)
+            .replace(/\n/g,"; ")
+    );
+
+    lines.push(
+        "Kelas: " +
+        human(d.kelas)
+    );
+
+    lines.push("");
+
+
+    /* KEGIATAN 1 */
+
+    lines.push(
+        "KEGIATAN 1 - EKSPLORASI DAN PEMILIHAN ZONA"
+    );
+
+
+    lines.push(
+        "Zona pilihan: " +
+        radioValue("zonaPilihan")
+    );
+
+
+    addWrapped(
+        lines,
+        "Alasan memilih zona: " +
+        human(f.alasanZona)
+    );
+
+
+    addWrapped(
+        lines,
+        "Potensi utama zona: " +
+        human(f.potensiZona)
+    );
+
+
+    addWrapped(
+        lines,
+        "Tantangan zona: " +
+        human(f.tantanganZona)
+    );
+
+
+    lines.push("");
+
+
+    lines.push(
+        "HASIL PENGAMATAN VIRTUAL LAB"
+    );
+
+
+    for(let i=1;i<=3;i++){
+
+        addWrapped(
+            lines,
+            "Pengamatan " +
+            i +
+            ": " +
+            human(
+                f["vlab" + i + "variabel"]
+            ) +
+            " | Awal: " +
+            human(
+                f["vlab" + i + "awal"]
+            ) +
+            " | Setelah diubah: " +
+            human(
+                f["vlab" + i + "akhir"]
+            ) +
+            " | Perubahan daya/energi: " +
+            human(
+                f["vlab" + i + "perubahan"]
+            )
+        );
+
+    }
+
+
+    addWrapped(
+        lines,
+        "Analisis 1: " +
+        human(f.analisis1)
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 2: " +
+        human(f.analisis2)
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 3: " +
+        human(f.analisis3)
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 4: " +
+        human(f.analisis4)
+    );
+
+
+    lines.push("");
+
+
+    /* KEGIATAN 2 */
+
+    lines.push(
+        "KEGIATAN 2 - STUDIO INOVASI ECO-GAZEBO"
+    );
+
+
+    addWrapped(
+        lines,
+        "Zona yang dipilih: " +
+        human(f.desainZona)
+    );
+
+
+    addWrapped(
+        lines,
+        "Masalah utama: " +
+        human(f.masalahUtama)
+    );
+
+
+    addWrapped(
+        lines,
+        "Ide solusi: " +
+        human(f.ideSolusi)
+    );
+
+
+    addWrapped(
+        lines,
+        "Inovasi: " +
+        human(f.inovasi)
+    );
+
+
+    lines.push("");
+
+
+    /* PERCOBAAN */
+
+    for(let p=1;p<=3;p++){
+
+        lines.push(
+            "AI ARTEMIS - PERCOBAAN " +
+            p
+        );
+
+
+        addWrapped(
+            lines,
+            "Kode: " +
+            human(
+                f["kode" + p]
+            )
+        );
+
+
+        for(let i=1;i<=3;i++){
+
+            addWrapped(
+                lines,
+                "Komponen " +
+                i +
+                ": " +
+                human(
+                    f["p" + p + "c" + i]
+                ) +
+                " | Jumlah: " +
+                human(
+                    f["p" + p + "j" + i]
+                ) +
+                " | Fungsi: " +
+                human(
+                    f["p" + p + "fungsi" + i]
+                ) +
+                " | Harga: " +
+                human(
+                    f["p" + p + "h" + i]
+                )
+            );
+
+        }
+
+
+        addWrapped(
+            lines,
+            "Total Biaya: " +
+            human(
+                f["p" + p + "totalHarga"]
+            )
+        );
+
+
+        addWrapped(
+            lines,
+            "Daya: " +
+            human(
+                f["p" + p + "totalDaya"]
+            ) +
+            " Watt"
+        );
+
+
+        addWrapped(
+            lines,
+            "Efisiensi: " +
+            human(
+                f["p" + p + "efisiensi"]
+            ) +
+            " %"
+        );
+
+
+        addWrapped(
+            lines,
+            "Memenuhi ketentuan: " +
+            radioValue(
+                "p" + p + "memenuhi"
+            )
+        );
+
+
+        if(p === 1){
+
+            addWrapped(
+                lines,
+                "Hasil evaluasi kelompok: " +
+                human(f.p1evaluasi)
+            );
+
+        }
+
+
+        if(p === 2){
+
+            addWrapped(
+                lines,
+                "Perubahan dari percobaan sebelumnya: " +
+                human(f.p2perubahan)
+            );
+
+        }
+
+
+        if(p === 3){
+
+            addWrapped(
+                lines,
+                "Alasan memilih kombinasi/perubahan: " +
+                human(f.p3alasan)
+            );
+
+        }
+
+
+        lines.push("");
+
+    }
+
+
+    /* MANUAL */
+
+    lines.push(
+        "PERHITUNGAN MANUAL"
+    );
+
+
+    addWrapped(
+        lines,
+        "Percobaan yang dipilih: " +
+        human(f.percobaanDipilih)
+    );
+
+
+    addWrapped(
+        lines,
+        "Kode: " +
+        human(f.kodeDipilih)
+    );
+
+
+    addWrapped(
+        lines,
+        "Daya: " +
+        human(f.dayaDipilih) +
+        " Watt"
+    );
+
+
+    addWrapped(
+        lines,
+        "Harga: Rp" +
+        human(f.hargaDipilih)
+    );
+
+
+    addWrapped(
+        lines,
+        "Efisiensi: " +
+        human(f.efisiensiDipilih) +
+        " %"
+    );
+
+
+    addWrapped(
+        lines,
+        "Perhitungan: " +
+        human(f.perhitunganManual)
+    );
+
+
+    addWrapped(
+        lines,
+        "Hasil perhitungan kelompok: " +
+        human(f.hasilPerhitungan)
+    );
+
+
+    lines.push("");
+
+
+    /* RANCANGAN AKHIR */
+
+    lines.push(
+        "RANCANGAN AKHIR"
+    );
+
+
+    addWrapped(
+        lines,
+        "Zona: " +
+        human(f.zonaAkhir)
+    );
+
+
+    addWrapped(
+        lines,
+        "Kode terpilih: " +
+        human(f.kodeTerpilih)
+    );
+
+
+    addWrapped(
+        lines,
+        "Total daya: " +
+        human(f.totalDayaAkhir) +
+        " Watt"
+    );
+
+
+    addWrapped(
+        lines,
+        "Total harga: Rp" +
+        human(f.totalHargaAkhir)
+    );
+
+
+    addWrapped(
+        lines,
+        "Efisiensi: " +
+        human(f.efisiensiAkhir) +
+        " %"
+    );
+
+
+    addWrapped(
+        lines,
+        "Alasan pemilihan: " +
+        human(f.alasanRancanganAkhir)
+    );
+
+
+    lines.push("");
+
+
+    /* INFOGRAFIS */
+
+    lines.push(
+        "DESAIN INFOGRAFIS"
+    );
+
+
+    const labels = {
+
+        infoGambar:
+            "Gambar/desain",
+
+        infoUkuran:
+            "Ukuran/skala",
+
+        infoZona:
+            "Zona",
+
+        infoKomponen:
+            "Komponen dan ukuran",
+
+        infoDaya:
+            "Total daya",
+
+        infoHarga:
+            "Total harga",
+
+        infoEfisiensi:
+            "Efisiensi",
+
+        infoInovasi:
+            "Keterangan inovasi"
+
+    };
+
+
+    Object
+        .entries(labels)
+        .forEach(function([key,label]){
+
+            lines.push(
+                label +
+                ": " +
+                (
+                    d.checks[key]
+                        ? "Sudah dicentang"
+                        : "Belum dicentang"
+                )
+            );
+
+        });
+
+
+    lines.push("");
+
+
+    /* AI EVALUATOR */
+
+    lines.push(
+        "AI EVALUATOR"
+    );
+
+
+    addWrapped(
+        lines,
+        "Kode: " +
+        human(f.evalKode)
+    );
+
+
+    addWrapped(
+        lines,
+        "Daya: " +
+        human(f.evalDaya) +
+        " Watt"
+    );
+
+
+    addWrapped(
+        lines,
+        "Harga: Rp" +
+        human(f.evalHarga)
+    );
+
+
+    addWrapped(
+        lines,
+        "Efisiensi: " +
+        human(f.evalEfisiensi) +
+        " %"
+    );
+
+
+    addWrapped(
+        lines,
+        "Status: " +
+        radioValue("statusEvaluasi")
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 1: " +
+        human(f.kelompokAnalisis1)
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 2: " +
+        human(f.kelompokAnalisis2)
+    );
+
+
+    addWrapped(
+        lines,
+        "Analisis 3: " +
+        human(f.kelompokAnalisis3)
+    );
+
+
+    lines.push("");
+
+
+    /* KESIMPULAN */
+
+    lines.push(
+        "KESIMPULAN PROYEK"
+    );
+
+
+    addWrapped(
+        lines,
+        human(f.kesimpulan)
+    );
+
+
+    lines.push("");
+
+
+    lines.push(
+        "Laporan dibuat dari jawaban terakhir yang tersimpan pada perangkat."
+    );
+
+
+    lines.push(
+        "Waktu: " +
+        new Date().toLocaleString("id-ID")
+    );
+
+
+    return lines;
+
+}
+
+
+/* =====================================================
+   PDF ESCAPE
+===================================================== */
+
+function pdfEscape(text){
+
+    return cleanText(text)
+        .replace(/\\/g,"\\\\")
+        .replace(/\(/g,"\\(")
+        .replace(/\)/g,"\\)");
+
+}
+
+
+/* =====================================================
+   BUILD PDF
+===================================================== */
+
+function buildPdf(lines){
+
+    const pageW =
+        595.28;
+
+    const pageH =
+        841.89;
+
+    const margin =
+        42;
+
+    const fontSize =
+        9.5;
+
+    const leading =
+        13;
+
+
+    const maxLines =
+        Math.floor(
+            (
+                pageH -
+                (2 * margin) -
+                35
+            ) /
+            leading
+        );
+
+
+    const pages = [];
+
+
+    for(
+        let i=0;
+        i<lines.length;
+        i+=maxLines
+    ){
+
+        pages.push(
+            lines.slice(
+                i,
+                i + maxLines
+            )
+        );
+
+    }
+
+
+    const objects = [];
+
+
+    const addObj =
+        function(content){
+
+            objects.push(content);
+
+            return objects.length;
+
+        };
+
+
+    const catalogId =
+        addObj("");
+
+
+    const pagesId =
+        addObj("");
+
+
+    const fontId =
+        addObj(
+            "<< /Type /Font " +
+            "/Subtype /Type1 " +
+            "/BaseFont /Helvetica >>"
+        );
+
+
+    const pageIds = [];
+
+    const contentIds = [];
+
+
+    for(
+        const pLines of pages
+    ){
+
+        let stream =
+            "BT\n" +
+            "/F1 " +
+            fontSize +
+            " Tf\n" +
+            margin +
+            " " +
+            (
+                pageH -
+                margin -
+                20
+            ) +
+            " Td\n";
+
+
+        pLines.forEach(
+            function(line,index){
+
+                if(index > 0){
+
+                    stream +=
+                        "0 -" +
+                        leading +
+                        " Td\n";
+
+                }
+
+
+                stream +=
+                    "(" +
+                    pdfEscape(line) +
+                    ") Tj\n";
+
+            }
+        );
+
+
+        stream +=
+            "ET";
+
+
+        const contentId =
+            addObj(
+                "<< /Length " +
+                stream.length +
+                " >>\n" +
+                "stream\n" +
+                stream +
+                "\nendstream"
+            );
+
+
+        contentIds.push(
+            contentId
+        );
+
+
+        pageIds.push(
+            addObj("")
+        );
+
+    }
+
+
+    objects[catalogId - 1] =
+        "<< /Type /Catalog " +
+        "/Pages " +
+        pagesId +
+        " 0 R >>";
+
+
+    objects[pagesId - 1] =
+        "<< /Type /Pages " +
+        "/Kids [" +
+        pageIds
+            .map(function(id){
+                return id + " 0 R";
+            })
+            .join(" ") +
+        "] " +
+        "/Count " +
+        pageIds.length +
+        " >>";
+
+
+    pageIds.forEach(
+        function(pid,index){
+
+            objects[pid - 1] =
+                "<< /Type /Page " +
+                "/Parent " +
+                pagesId +
+                " 0 R " +
+                "/MediaBox [0 0 " +
+                pageW +
+                " " +
+                pageH +
+                "] " +
+                "/Resources << /Font << /F1 " +
+                fontId +
+                " 0 R >> >> " +
+                "/Contents " +
+                contentIds[index] +
+                " 0 R >>";
+
+        }
+    );
+
+
+    let pdf =
+        "%PDF-1.4\n";
+
+
+    const offsets = [0];
+
+
+    objects.forEach(
+        function(obj,index){
+
+            offsets.push(
+                pdf.length
+            );
+
+
+            pdf +=
+                (
+                    index + 1
+                ) +
+                " 0 obj\n" +
+                obj +
+                "\nendobj\n";
+
+        }
+    );
+
+
+    const xref =
+        pdf.length;
+
+
+    pdf +=
+        "xref\n" +
+        "0 " +
+        (objects.length + 1) +
+        "\n" +
+        "0000000000 65535 f \n";
+
+
+    for(
+        let i=1;
+        i<offsets.length;
+        i++
+    ){
+
+        pdf +=
+            String(
+                offsets[i]
+            )
+            .padStart(
+                10,
+                "0"
+            ) +
+            " 00000 n \n";
+
+    }
+
+
+    pdf +=
+        "trailer\n" +
+        "<< /Size " +
+        (objects.length + 1) +
+        " /Root " +
+        catalogId +
+        " 0 R >>\n" +
+        "startxref\n" +
+        xref +
+        "\n" +
+        "%%EOF";
+
+
+    return new Blob(
+        [pdf],
+        {
+            type:"application/pdf"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DOWNLOAD PDF
+===================================================== */
+
+function downloadReportPDF(){
+
+    if(!lkpdSubmitted){
+
+        alert(
+            "Silakan kirim LKPD terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+
+    const blob =
+        buildPdf(
+            collectReportLines()
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const data =
+        getFormData();
+
+
+    let name =
+        (
+            data.namaKelompok ||
+            "Kelompok"
+        )
+        .trim()
+        .replace(
+            /[^\w-]+/g,
+            "_"
+        );
+
+
+    const a =
+        document.createElement("a");
+
+
+    a.href =
+        url;
+
+
+    a.download =
+        "Laporan_LKPD_Eco-Gazebo_" +
+        name +
+        ".pdf";
+
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+
+    setTimeout(
+        function(){
+
+            URL.revokeObjectURL(url);
+
+        },
+        1000
+    );
+
+}
+
+
+/* =====================================================
+   PDF UPLOAD
+===================================================== */
+
+function fileToBase64(file){
+
+    return new Promise(
+        function(resolve,reject){
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(){
+
+                    try{
+
+                        const result =
+                            reader.result;
+
+
+                        const base64 =
+                            result.split(",")[1];
+
+
+                        resolve(base64);
+
+                    }catch(error){
+
+                        reject(error);
+
+                    }
+
+                };
+
+
+            reader.onerror =
+                function(){
+
+                    reject(
+                        reader.error
+                    );
+
+                };
+
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FILE NAME
+===================================================== */
+
+function createSafeFileName(
+    namaKelompok
+){
+
+    const safeGroup =
+        String(
+            namaKelompok || "Kelompok"
+        )
+
+        .trim()
+
+        .replace(
+            /[\\/:*?"<>|]/g,
+            "_"
+        )
+
+        .replace(
+            /\s+/g,
+            "_"
+        );
+
+
+    return (
+        "LKPD_" +
+        safeGroup +
+        "_" +
+        Date.now() +
+        ".pdf"
+    );
+
+}
+
+
+/* =====================================================
+   UPLOAD PDF
+===================================================== */
 
 async function uploadLKPDPDF(){
 
     const fileInput =
-        document.getElementById("lkpdPdfFile");
+        document.getElementById(
+            "lkpdPdfFile"
+        );
+
 
     const uploadButton =
-        document.getElementById("uploadLKPDButton");
+        document.getElementById(
+            "uploadLKPDButton"
+        );
+
 
     const progress =
-        document.getElementById("uploadProgress");
+        document.getElementById(
+            "uploadProgress"
+        );
+
 
     const progressBar =
-        document.getElementById("uploadProgressBar");
+        document.getElementById(
+            "uploadProgressBar"
+        );
+
 
     const uploadStatus =
-        document.getElementById("uploadStatus");
+        document.getElementById(
+            "uploadStatus"
+        );
+
 
     const file =
         fileInput.files[0];
 
 
-    // ----------------------------------------------
-    // CEK FILE
-    // ----------------------------------------------
+    /* CEK FILE */
 
     if(!file){
 
@@ -703,16 +4156,18 @@ async function uploadLKPDPDF(){
         );
 
         return;
+
     }
 
 
-    // ----------------------------------------------
-    // CEK FORMAT
-    // ----------------------------------------------
+    /* CEK PDF */
 
     const isPDF =
         file.type === "application/pdf" ||
-        file.name.toLowerCase().endsWith(".pdf");
+        file.name
+            .toLowerCase()
+            .endsWith(".pdf");
+
 
     if(!isPDF){
 
@@ -721,22 +4176,26 @@ async function uploadLKPDPDF(){
         );
 
         return;
+
     }
 
 
-    // ----------------------------------------------
-    // CEK NAMA KELOMPOK
-    // ----------------------------------------------
+    /* CEK NAMA */
 
     const namaKelompok =
         document
-            .getElementById("namaKelompok")
+            .getElementById(
+                "namaKelompok"
+            )
             .value
             .trim();
 
+
     const kelas =
         document
-            .getElementById("kelas")
+            .getElementById(
+                "kelas"
+            )
             .value
             .trim();
 
@@ -747,113 +4206,215 @@ async function uploadLKPDPDF(){
             "Silakan isi Nama Kelompok terlebih dahulu."
         );
 
+
         document
-            .getElementById("namaKelompok")
+            .getElementById(
+                "namaKelompok"
+            )
             .focus();
 
+
         return;
+
     }
 
 
-    // ----------------------------------------------
-    // BATAS FILE
-    // ----------------------------------------------
+    /* CEK SUBMIT */
+
+    if(!lkpdSubmitted){
+
+        const lanjut =
+            confirm(
+                "LKPD belum dikirim ke Spreadsheet.\n\n" +
+                "Tetap upload PDF?"
+            );
+
+
+        if(!lanjut){
+
+            return;
+
+        }
+
+    }
+
+
+    /* MAX 10 MB */
 
     const maxSize =
         10 * 1024 * 1024;
 
+
     if(file.size > maxSize){
 
         alert(
-            "Ukuran PDF terlalu besar. " +
+            "Ukuran PDF terlalu besar.\n\n" +
             "Maksimal 10 MB."
         );
 
         return;
+
     }
 
 
     try{
 
-        uploadButton.disabled = true;
+        uploadButton.disabled =
+            true;
+
+
+        fileInput.disabled =
+            true;
+
 
         uploadButton.textContent =
             "Mengupload...";
 
+
         progress.style.display =
             "block";
 
+
         progressBar.style.width =
             "10%";
+
 
         uploadStatus.textContent =
             "Membaca file PDF...";
 
 
-        // ------------------------------------------
-        // KONVERSI PDF KE BASE64
-        // ------------------------------------------
+        /* BASE64 */
 
         const base64 =
-            await fileToBase64(file);
+            await fileToBase64(
+                file
+            );
+
 
         progressBar.style.width =
-            "40%";
+            "35%";
+
+
+        uploadStatus.textContent =
+            "Menyiapkan data PDF...";
+
+
+        const safeName =
+            createSafeFileName(
+                namaKelompok
+            );
+
+
+        /* DATA */
+
+        const payload = {
+
+            type:
+                "lkpd_pdf",
+
+            fileName:
+                safeName,
+
+            fileBase64:
+                base64,
+
+            namaKelompok:
+                namaKelompok,
+
+            kelas:
+                kelas
+
+        };
+
+
+        progressBar.style.width =
+            "50%";
+
 
         uploadStatus.textContent =
             "Mengirim PDF ke Google Drive...";
 
 
-        // ------------------------------------------
-        // NAMA FILE
-        // ------------------------------------------
+        /*
+            Jangan gunakan application/json.
+            text/plain lebih aman untuk Apps Script.
+        */
 
-        const safeName =
-            "LKPD_" +
-            namaKelompok
-                .replace(/[\\\/:*?"<>|]/g,"_")
-                .replace(/\s+/g,"_") +
-            "_" +
-            Date.now() +
-            ".pdf";
+        const response =
+            await fetch(
+                ELIT_LKPD_UPLOAD_API,
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+
+                }
+            );
 
 
-        // ------------------------------------------
-        // KIRIM KE APPS SCRIPT
-        // ------------------------------------------
+        progressBar.style.width =
+            "80%";
 
-        await fetch(
-            ELIT_LKPD_UPLOAD_API,
-            {
-                method:"POST",
 
-                mode:"no-cors",
+        /*
+            Baca respons backend.
+        */
 
-                headers:{
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-                },
+        let result = null;
 
-                body:JSON.stringify({
 
-                    type:"lkpd_pdf",
+        try{
 
-                    fileName:safeName,
+            result =
+                await response.json();
 
-                    fileBase64:base64,
+        }catch(error){
 
-                    namaKelompok:
-                        namaKelompok,
+            result = null;
 
-                    kelas:
-                        kelas
-                })
-            }
-        );
+        }
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server mengembalikan HTTP " +
+                response.status
+            );
+
+        }
+
+
+        /*
+            Kalau Apps Script mengembalikan
+            {success:false}, anggap gagal.
+        */
+
+        if(
+            result &&
+            result.success === false
+        ){
+
+            throw new Error(
+                result.message ||
+                "Google Apps Script menolak upload."
+            );
+
+        }
 
 
         progressBar.style.width =
             "100%";
+
 
         uploadStatus.textContent =
             "PDF berhasil dikirim ke Google Drive.";
@@ -862,12 +4423,9 @@ async function uploadLKPDPDF(){
         uploadButton.textContent =
             "✅ LKPD Berhasil Dikumpulkan";
 
+
         uploadButton.style.background =
             "#173d2a";
-
-
-        fileInput.disabled =
-            true;
 
 
         alert(
@@ -882,378 +4440,169 @@ async function uploadLKPDPDF(){
             error
         );
 
+
+        /*
+            Jika error karena CORS,
+            kita tampilkan pesan yang jelas.
+        */
+
         progressBar.style.width =
             "0%";
 
+
         uploadStatus.textContent =
-            "Upload gagal. Silakan coba lagi.";
+            "Upload gagal. Periksa Google Apps Script.";
+
 
         uploadButton.disabled =
             false;
+
+
+        fileInput.disabled =
+            false;
+
 
         uploadButton.textContent =
             "Upload LKPD PDF";
 
 
         alert(
-            "Upload LKPD gagal. " +
-            "Silakan coba lagi."
+            "Upload LKPD gagal.\n\n" +
+            "Periksa konfigurasi Google Apps Script " +
+            "dan URL Web App."
         );
-    }
-}
 
-const LKPD_STORAGE_KEY = "elitlab_lkpd_digital_final_v1";
-let lkpdSubmitted = false;
-
-function getFormData(){
-    const data = {
-        namaKelompok: document.getElementById("namaKelompok").value,
-        anggota: document.getElementById("anggota").value,
-        kelas: document.getElementById("kelas").value,
-        fields: {},
-        checks: {},
-        radios: {},
-        timestamp: new Date().toISOString()
-    };
-    document.querySelectorAll("[data-field]").forEach(el=>{
-        data.fields[el.dataset.field] = el.value;
-    });
-    document.querySelectorAll("[data-check]").forEach(el=>{
-        data.checks[el.dataset.check] = el.checked;
-    });
-    document.querySelectorAll('input[type="radio"][name]').forEach(el=>{
-        if(el.checked) data.radios[el.name] = el.value;
-    });
-    return data;
-}
-
-function applyFormData(data){
-    if(!data) return;
-    if(data.namaKelompok !== undefined) document.getElementById("namaKelompok").value = data.namaKelompok;
-    if(data.anggota !== undefined) document.getElementById("anggota").value = data.anggota;
-    if(data.kelas !== undefined) document.getElementById("kelas").value = data.kelas;
-
-    if(data.fields){
-        Object.entries(data.fields).forEach(([key,value])=>{
-            const el = document.querySelector(`[data-field="${key}"]`);
-            if(el) el.value = value ?? "";
-        });
-    }
-    if(data.checks){
-        document.querySelectorAll("[data-check]").forEach(el=>{
-            el.checked = Boolean(data.checks[el.dataset.check]);
-        });
-    }
-    if(data.radios){
-        Object.entries(data.radios).forEach(([name,value])=>{
-            const el = document.querySelector(`input[type="radio"][name="${name}"][value="${CSS.escape(value)}"]`);
-            if(el) el.checked = true;
-        });
-    }
-}
-
-function saveLocal(){
-    const data = getFormData();
-    localStorage.setItem(LKPD_STORAGE_KEY, JSON.stringify(data));
-    return data;
-}
-
-function loadLocal(){
-    try{
-        const raw = localStorage.getItem(LKPD_STORAGE_KEY);
-        if(!raw) return;
-        applyFormData(JSON.parse(raw));
-        document.getElementById("saveStatus").textContent =
-            "Draft terakhir berhasil dipulihkan dari perangkat.";
-    }catch(e){
-        console.error("Gagal memulihkan draft:",e);
-    }
-}
-
-async function kirimKeSpreadsheet(payload){
-    try{
-        await fetch(ELIT_SHEETS_API,{
-            method:"POST",
-            mode:"no-cors",
-            headers:{"Content-Type":"text/plain;charset=utf-8"},
-            body:JSON.stringify(payload)
-        });
-        return {ok:true};
-    }catch(error){
-        console.error("Gagal mengirim ke Google Sheets:",error);
-        return {ok:false,error};
-    }
-}
-
-async function saveDraft(){
-    const data = saveLocal();
-    document.getElementById("saveStatus").textContent =
-        "Draft tersimpan di perangkat. Mengirim salinan...";
-    const result = await kirimKeSpreadsheet({
-        type:"lkpd_draft",
-        nama:data.namaKelompok,
-        kelas:data.kelas,
-        data:data
-    });
-    document.getElementById("saveStatus").textContent =
-        result.ok ? "Draft tersimpan." : "Draft tersimpan di perangkat, tetapi pengiriman gagal.";
-}
-
-async function submitLKPD(){
-    const data = saveLocal();
-    if(!data.namaKelompok.trim()){
-        alert("Silakan isi Nama Kelompok terlebih dahulu.");
-        document.getElementById("namaKelompok").focus();
-        return;
     }
 
-    const confirmed = confirm("Kirim seluruh jawaban LKPD kelompok ke Spreadsheet?");
-    if(!confirmed) return;
-
-    document.getElementById("saveStatus").textContent =
-        "Mengirim seluruh LKPD...";
-    const result = await kirimKeSpreadsheet({
-        type:"lkpd",
-        nama:data.namaKelompok,
-        kelas:data.kelas,
-        data:data
-    });
-
-    if(result.ok){
-        lkpdSubmitted = true;
-        document.getElementById("reportBtn").disabled = false;
-        document.getElementById("saveStatus").textContent =
-            "LKPD sudah dikirim. Laporan PDF siap diunduh.";
-        alert("LKPD berhasil dikirim. Kamu sekarang dapat mengunduh laporan PDF.");
-    }else{
-        document.getElementById("saveStatus").textContent =
-            "Pengiriman LKPD gagal. Draft tetap tersimpan.";
-        alert("Pengiriman gagal. Draft tetap tersimpan di perangkat.");
-    }
 }
 
-function cleanText(s){
-    return String(s ?? "")
-      .replace(/\r/g,"")
-      .replace(/[“”]/g,'"')
-      .replace(/[‘’]/g,"'")
-      .replace(/[–—]/g,"-")
-      .replace(/[•·]/g,"-")
-      .replace(/[^\x09\x0A\x0D\x20-\x7E]/g,"");
-}
 
-function human(v){
-    const t = String(v ?? "").trim();
-    return t ? t : "-";
-}
+/* =====================================================
+   FILE INFO
+===================================================== */
 
-function radioValue(name){
-    const el = document.querySelector(`input[type="radio"][name="${name}"]:checked`);
-    return el ? el.value : "-";
-}
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
-function addWrapped(lines,text,width=88){
-    const raw = cleanText(text);
-    if(!raw){lines.push("");return;}
-    const words = raw.split(/\s+/);
-    let line="";
-    for(const word of words){
-        if((line+" "+word).trim().length<=width){
-            line=(line+" "+word).trim();
-        }else{
-            if(line) lines.push(line);
-            line=word;
+        const fileInput =
+            document.getElementById(
+                "lkpdPdfFile"
+            );
+
+
+        const fileInfo =
+            document.getElementById(
+                "uploadFileInfo"
+            );
+
+
+        if(fileInput){
+
+            fileInput.addEventListener(
+                "change",
+                function(){
+
+                    const file =
+                        this.files[0];
+
+
+                    if(!file){
+
+                        fileInfo.textContent =
+                            "Belum ada file dipilih.";
+
+                        return;
+
+                    }
+
+
+                    const sizeMB =
+                        (
+                            file.size /
+                            (
+                                1024 *
+                                1024
+                            )
+                        ).toFixed(2);
+
+
+                    fileInfo.textContent =
+                        "File dipilih: " +
+                        file.name +
+                        " (" +
+                        sizeMB +
+                        " MB)";
+
+                }
+            );
+
         }
+
     }
-    if(line) lines.push(line);
-}
+);
 
-function collectReportLines(){
-    const d = getFormData();
-    const f = d.fields;
-    const lines = [];
 
-    lines.push("LAPORAN HASIL LKPD");
-    lines.push("Energi Terbarukan Berbasis Dilemma-STEAM");
-    lines.push("");
-    lines.push("IDENTITAS");
-    lines.push("Nama Kelompok: "+human(d.namaKelompok));
-    lines.push("Anggota: "+human(d.anggota).replace(/\n/g,"; "));
-    lines.push("Kelas: "+human(d.kelas));
-    lines.push("");
-
-    lines.push("KEGIATAN 1 - EKSPLORASI DAN PEMILIHAN ZONA");
-    lines.push("Zona pilihan: "+radioValue("zonaPilihan"));
-    addWrapped(lines,"Alasan memilih zona: "+human(f.alasanZona));
-    addWrapped(lines,"Potensi utama zona: "+human(f.potensiZona));
-    addWrapped(lines,"Tantangan zona: "+human(f.tantanganZona));
-    lines.push("");
-    lines.push("HASIL PENGAMATAN VIRTUAL LAB");
-    for(let i=1;i<=3;i++){
-        addWrapped(lines,`Pengamatan ${i}: ${human(f["vlab"+i+"variabel"])} | Awal: ${human(f["vlab"+i+"awal"])} | Setelah diubah: ${human(f["vlab"+i+"akhir"])} | Perubahan daya/energi: ${human(f["vlab"+i+"perubahan"])}`);
-    }
-    addWrapped(lines,"Analisis 1: "+human(f.analisis1));
-    addWrapped(lines,"Analisis 2: "+human(f.analisis2));
-    addWrapped(lines,"Analisis 3: "+human(f.analisis3));
-    addWrapped(lines,"Analisis 4: "+human(f.analisis4));
-    lines.push("");
-
-    lines.push("KEGIATAN 2 - STUDIO INOVASI ECO-GAZEBO");
-    addWrapped(lines,"Zona yang dipilih: "+human(f.desainZona));
-    addWrapped(lines,"Masalah utama: "+human(f.masalahUtama));
-    addWrapped(lines,"Ide solusi: "+human(f.ideSolusi));
-    addWrapped(lines,"Inovasi: "+human(f.inovasi));
-    lines.push("");
-    lines.push("KEBUTUHAN RANCANGAN");
-    for(let i=1;i<=3;i++){
-        addWrapped(lines,`Beban ${i}: ${human(f["beban"+i]) || "-"} | Jumlah: ${human(f["jumlah"+i])} | Daya/unit: ${human(f["dayaUnit"+i])} | Total daya: ${human(f["totalDaya"+i])}`);
-    }
-    addWrapped(lines,"Total daya kebutuhan: "+human(f.kebutuhanDaya));
-    lines.push("");
-
-    for(let p=1;p<=3;p++){
-        lines.push("AI ARTEMIS - PERCOBAAN "+p);
-        addWrapped(lines,"Kode: "+human(f["kode"+p]));
-        for(let i=1;i<=3;i++){
-            addWrapped(lines,`Komponen ${i}: ${human(f[`${p}c${i}`])} | Jumlah: ${human(f[`${p}j${i}`])} | Fungsi: ${human(f[`${p}fungsi${i}`])} | Harga: ${human(f[`${p}h${i}`])}`);
-        }
-        addWrapped(lines,"Total Biaya: "+human(f[`${p}totalHarga`]));
-        addWrapped(lines,"Daya: "+human(f[`${p}totalDaya`])+" Watt");
-        addWrapped(lines,"Efisiensi: "+human(f[`${p}efisiensi`])+" %");
-        addWrapped(lines,"Memenuhi ketentuan: "+radioValue(`p${p}memenuhi`));
-        addWrapped(lines,p===1 ? "Hasil evaluasi kelompok: "+human(f.p1evaluasi) :
-                   p===2 ? "Perubahan dari percobaan sebelumnya: "+human(f.p2perubahan) :
-                           "Alasan memilih kombinasi/perubahan: "+human(f.p3alasan));
-        lines.push("");
-    }
-
-    lines.push("PERHITUNGAN MANUAL");
-    addWrapped(lines,"Percobaan yang dipilih: "+human(f.percobaanDipilih));
-    addWrapped(lines,"Kode: "+human(f.kodeDipilih));
-    addWrapped(lines,"Daya: "+human(f.dayaDipilih)+" Watt");
-    addWrapped(lines,"Harga: Rp"+human(f.hargaDipilih));
-    addWrapped(lines,"Efisiensi: "+human(f.efisiensiDipilih)+" %");
-    addWrapped(lines,"Perhitungan: "+human(f.perhitunganManual));
-    addWrapped(lines,"Hasil perhitungan kelompok: "+human(f.hasilPerhitungan));
-    lines.push("");
-
-    lines.push("RANCANGAN AKHIR");
-    addWrapped(lines,"Zona: "+human(f.zonaAkhir));
-    addWrapped(lines,"Kode terpilih: "+human(f.kodeTerpilih));
-    addWrapped(lines,"Total daya: "+human(f.totalDayaAkhir)+" Watt");
-    addWrapped(lines,"Total harga: Rp"+human(f.totalHargaAkhir));
-    addWrapped(lines,"Efisiensi: "+human(f.efisiensiAkhir)+" %");
-    addWrapped(lines,"Alasan pemilihan: "+human(f.alasanRancanganAkhir));
-    lines.push("");
-
-    lines.push("DESAIN INFOGRAFIS");
-    const labels = {
-        infoGambar:"Gambar/desain",
-        infoUkuran:"Ukuran/skala",
-        infoZona:"Zona",
-        infoKomponen:"Komponen dan ukuran",
-        infoDaya:"Total daya",
-        infoHarga:"Total harga",
-        infoEfisiensi:"Efisiensi",
-        infoInovasi:"Keterangan inovasi"
-    };
-    Object.entries(labels).forEach(([key,label])=>{
-        lines.push(`${label}: ${d.checks[key] ? "Sudah dicentang" : "Belum dicentang"}`);
-    });
-    lines.push("");
-
-    lines.push("AI EVALUATOR");
-    addWrapped(lines,"Kode: "+human(f.evalKode));
-    addWrapped(lines,"Daya: "+human(f.evalDaya)+" Watt");
-    addWrapped(lines,"Harga: Rp"+human(f.evalHarga));
-    addWrapped(lines,"Efisiensi: "+human(f.evalEfisiensi)+" %");
-    addWrapped(lines,"Status: "+radioValue("statusEvaluasi"));
-    addWrapped(lines,"Analisis 1: "+human(f.kelompokAnalisis1));
-    addWrapped(lines,"Analisis 2: "+human(f.kelompokAnalisis2));
-    addWrapped(lines,"Analisis 3: "+human(f.kelompokAnalisis3));
-    lines.push("");
-
-    lines.push("KESIMPULAN PROYEK");
-    addWrapped(lines,human(f.kesimpulan));
-    lines.push("");
-    lines.push("Laporan dibuat dari jawaban terakhir yang tersimpan pada perangkat.");
-    lines.push("Waktu: "+new Date().toLocaleString("id-ID"));
-    return lines;
-}
-
-function pdfEscape(text){
-    return cleanText(text).replace(/\\/g,"\\\\").replace(/\(/g,"\\(").replace(/\)/g,"\\)");
-}
-
-function buildPdf(lines){
-    const pageW=595.28,pageH=841.89,margin=42,fontSize=9.5,leading=13;
-    const maxLines=Math.floor((pageH-2*margin-35)/leading);
-    const pages=[];
-    for(let i=0;i<lines.length;i+=maxLines) pages.push(lines.slice(i,i+maxLines));
-
-    const objects=[];
-    const addObj=c=>{objects.push(c);return objects.length;};
-    const catalogId=addObj("");
-    const pagesId=addObj("");
-    const fontId=addObj("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
-    const pageIds=[],contentIds=[];
-
-    for(const pLines of pages){
-        let stream=`BT\n/F1 ${fontSize} Tf\n${margin} ${pageH-margin-20} Td\n`;
-        pLines.forEach((line,i)=>{
-            if(i>0) stream+=`0 -${leading} Td\n`;
-            stream+=`(${pdfEscape(line)}) Tj\n`;
-        });
-        stream+="ET";
-        const cid=addObj(`<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`);
-        contentIds.push(cid);
-        pageIds.push(addObj(""));
-    }
-
-    objects[catalogId-1]=`<< /Type /Catalog /Pages ${pagesId} 0 R >>`;
-    objects[pagesId-1]=`<< /Type /Pages /Kids [${pageIds.map(id=>id+" 0 R").join(" ")}] /Count ${pageIds.length} >>`;
-    pageIds.forEach((pid,i)=>{
-        objects[pid-1]=`<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /Font << /F1 ${fontId} 0 R >> >> /Contents ${contentIds[i]} 0 R >>`;
-    });
-
-    let pdf="%PDF-1.4\n";
-    const offsets=[0];
-    objects.forEach((obj,i)=>{
-        offsets.push(pdf.length);
-        pdf+=`${i+1} 0 obj\n${obj}\nendobj\n`;
-    });
-    const xref=pdf.length;
-    pdf+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n`;
-    for(let i=1;i<offsets.length;i++) pdf+=`${String(offsets[i]).padStart(10,"0")} 00000 n \n`;
-    pdf+=`trailer\n<< /Size ${objects.length+1} /Root ${catalogId} 0 R >>\nstartxref\n${xref}\n%%EOF`;
-    return new Blob([pdf],{type:"application/pdf"});
-}
-
-function downloadReportPDF(){
-    if(!lkpdSubmitted){
-        alert("Silakan kirim LKPD terlebih dahulu.");
-        return;
-    }
-    const blob=buildPdf(collectReportLines());
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    const name=(getFormData().namaKelompok||"Kelompok").trim().replace(/[^\w\-]+/g,"_");
-    a.href=url;
-    a.download=`Laporan_LKPD_Eco-Gazebo_${name}.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
+/* =====================================================
+   AUTO SAVE
+===================================================== */
 
 let autosaveTimer;
-document.addEventListener("input",()=>{
-    clearTimeout(autosaveTimer);
-    autosaveTimer=setTimeout(saveLocal,500);
-});
-document.addEventListener("change",saveLocal);
-window.addEventListener("load",loadLocal);
-window.addEventListener("beforeunload",saveLocal);
+
+
+document.addEventListener(
+    "input",
+    function(){
+
+        clearTimeout(
+            autosaveTimer
+        );
+
+
+        autosaveTimer =
+            setTimeout(
+                function(){
+
+                    saveLocal();
+
+                },
+                500
+            );
+
+    }
+);
+
+
+document.addEventListener(
+    "change",
+    function(){
+
+        saveLocal();
+
+    }
+);
+
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadLocal();
+
+    }
+);
+
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        saveLocal();
+
+    }
+);
+
 </script>
+
 </body>
 </html>
