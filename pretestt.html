@@ -350,6 +350,7 @@
         }
 
         body.quiz-active input,
+        body.quiz-active textarea,
         body.quiz-active button {
             user-select: auto !important;
             -webkit-user-select: auto !important;
@@ -389,9 +390,9 @@
             <h1>Pretest Literasi Energi</h1>
 
             <p>
-                Bacalah setiap soal dengan teliti dan pilih satu jawaban yang
-                paling tepat. Soal diberikan satu per satu. Setiap soal memiliki
-                durasi <strong>90 detik</strong>. Setelah jawaban dipilih, tekan tombol
+                Bacalah setiap soal dengan teliti dan tuliskan jawabanmu pada kolom yang tersedia.
+                Soal diberikan satu per satu. Setiap soal memiliki
+                durasi <strong>180 detik</strong>. Setelah jawaban selesai ditulis, tekan tombol
                 <strong>Soal Berikutnya</strong>.
             </p>
 
@@ -414,11 +415,11 @@
         <section class="question-card hidden" id="quizScreen">
             <div class="question-header">
                 <div class="question-number" id="questionNumber">
-                    Soal 1 dari 15
+                    Soal 1 dari 6
                 </div>
 
                 <div class="timer" id="timer">
-                    01:30
+                    03:00
                 </div>
             </div>
 
@@ -435,14 +436,14 @@
 
         <!-- HALAMAN HASIL -->
         <section class="result-card hidden" id="resultScreen">
-            <h1>Hasil Pretest</h1>
+            <h1>Pretest Selesai</h1>
 
             <p id="resultGreeting"></p>
 
             <div class="score-box">
-                <span>Nilai</span>
-                <span class="score" id="finalScore">0</span>
-                <span id="scoreDetail"></span>
+                <span>Jawaban telah dikirim</span>
+                <span class="score" id="finalScore">✓</span>
+                <span id="scoreDetail">Nilai akan dikoreksi oleh guru.</span>
             </div>
 
             <h2>Rekap Jawaban</h2>
@@ -451,9 +452,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Hasil</th>
                         <th>Jawaban Kamu</th>
-                        <th>Kunci</th>
                     </tr>
                 </thead>
                 <tbody id="resultBody"></tbody>
@@ -476,291 +475,64 @@
         /*
          * ============================================================
          * DATA SOAL
-         * Sumber: pretestttt.docx yang diberikan.
+         * Sumber: PRETEST ESSAY.docx yang diberikan.
          * ============================================================
          */
         const questions = [
-            {
-                        "number": 1,
-                        "text": "Indonesia memiliki potensi energi panas bumi (geotermal) yang sangat melimpah karena berada pada jalur Ring of Fire dan pertemuan lempeng tektonik aktif.\n\nJika pemerintah daerah menentukan kawasan gunung api sebagai prioritas pembangunan PLTP, alasan geologis dan sains yang paling tepat adalah ...",
-                        "options": [
-                                    "Aktivitas tektonik meningkatkan curah hujan harian sehingga pasokan air permukaan penjelas turbin melimpah.",
-                                    "Pertemuan lempeng menyediakan magma cair dekat permukaan yang dapat memanaskan air tanah menjadi uap bertekanan tinggi.",
-                                    "Kawasan gunung api memancarkan gelombang elektromagnetik yang dapat diubah langsung menjadi listrik tanpa sistem konversi.",
-                                    "Wilayah vulkanik memiliki intensitas radiasi matahari rata-rata lebih tinggi dibanding wilayah dataran rendah.",
-                                    "Gesekan antar-lempeng tektonik menghasilkan muatan listrik statis di dalam tanah yang dapat dipanen secara langsung."
-                        ],
-                        "answer": 1
-            },
-            {
-                        "number": 2,
-                        "text": "Sebuah turbin angin kecil dipasang di atap laboratorium sekolah. Saat tiupan angin kencang, bilah turbin berputar cepat dan listrik yang dihasilkan mampu menyalakan lampu indikator dengan terang. Saat angin melemah, putaran turbin melambat dan daya listrik menurun.\n\nAnalisis rantai konversi energi yang terjadi pada sistem PLTB tersebut adalah ...",
-                        "options": [
-                                    "Energi kinetik angin → energi mekanik putaran rotor → energi listrik melalui induksi elektromagnetik generator.",
-                                    "Energi listrik → angin → energi potensial turbin → energi kinetik generator.",
-                                    "Energi mekanik generator → energi kinetik bilah turbin → energi listrik fluida.",
-                                    "Energi potensial gravitasi angin → energi kinetik rotasi → energi listrik langsung.",
-                                    "Energi kalor lingkungan → energi mekanik turbin → energi listrik generator."
-                        ],
-                        "answer": 0
-            },
-            {
-                        "number": 3,
-                        "text": "Dua lokasi diuji untuk pembangunan Pembangkit Listrik Tenaga Mikrohidro (PLTMH).\n\nDaya listrik diperkirakan melalui persamaan P = ρQghη. Jika massa jenis air (ρ) dan percepatan gravitasi (g) bernilai konstan, kesimpulan yang paling tepat adalah ...",
-                        "options": [
-                                    "Lokasi A berpotensi menghasilkan daya lebih besar karena hasil kali Q × h lokasi A lebih tinggi dibanding lokasi B.",
-                                    "Lokasi B menghasilkan daya lebih besar karena debit air merupakan parameter tunggal paling dominan.",
-                                    "Kedua lokasi menghasilkan daya listrik yang persis sama karena efisiensinya sama-sama 80%.",
-                                    "Lokasi A menghasilkan daya lebih kecil karena debit airnya kalah dibanding lokasi B.",
-                                    "Daya listrik tidak dapat ditentukan sebelum massa total air ditimbang secara langsung."
-                        ],
-                        "answer": 0,
-                        "table": {
-                                    "headers": [
-                                                "Parameter",
-                                                "Lokasi A",
-                                                "Lokasi B"
-                                    ],
-                                    "rows": [
-                                                [
-                                                            "Debit air (Q)",
-                                                            "2 m³/s",
-                                                            "3 m³/s"
-                                                ],
-                                                [
-                                                            "Tinggi jatuh air (h)",
-                                                            "8 m",
-                                                            "5 m"
-                                                ],
-                                                [
-                                                            "Efisiensi",
-                                                            "80%",
-                                                            "80%"
-                                                ]
-                                    ]
-                        }
-            },
-            {
-                        "number": 4,
-                        "text": "Sebuah kabupaten berencana menghentikan operasional PLTU batu bara dan menggantinya dengan kombinasi PLTS dan PLTB. Alasan ilmiah paling tepat yang mendukung keputusan transisi energi ini ditinjau dari aspek lingkungan adalah ...",
-                        "options": [
-                                    "Energi terbarukan mampu menghasilkan pasokan daya listrik yang stabil konstan tanpa dipengaruhi cuaca harian.",
-                                    "Teknologi energi terbarukan sama sekali tidak membutuhkan biaya perawatan selama 50 tahun pengoperasian.",
-                                    "Pembakaran bahan bakar fosil menghasilkan emisi dan partikulat PM2.5 tinggi, sedangkan operasional PLTS/PLTB hampir tidak menghasilkan emisi gas rumah kaca secara langsung.",
-                                    "Pembangkit EBT dapat dibangun di mana saja tanpa membutuhkan luas lahan baku.",
-                                    "Penggunaan EBT menghilangkan 100% jejak karbon dari tahap manufaktur komponen hingga daur ulang."
-                        ],
-                        "answer": 2
-            },
-            {
-                        "number": 5,
-                        "text": "Sebuah desa pesisir di Nusa Tenggara Timur memiliki profil lingkungan berikut:\n\n• Intensitas radiasi matahari tinggi\n• Musim kemarau berlangsung hingga 8–9 bulan.\n• Sungai terdekat berdebit sangat kecil dan musiman.\n• Kecepatan angin darat tergolong rendah dan fluktuatif.\n• Belum terjangkau jaringan kelistrikan PLN.\n\nJika anggaran desa terbatas untuk satu pembangkit utama, teknologi yang paling efektif dan rasional untuk dibangun adalah ...",
-                        "options": [
-                                    "PLTA besar karena daya air selalu konstan sepanjang tahun.",
-                                    "PLTBm (Biomassa) karena tanah kering dipastikan menghasilkan limbah kayu melimpah.",
-                                    "PLTB skala besar karena angin laut selalu berhembus konstan sepanjang malam.",
-                                    "PLTD (Diesel) karena biaya investasi awalnya paling murah tanpa memedulikan bahan bakar.",
-                                    "PLTS Off-Grid berbasis baterai karena memanfaatkan potensi kelimpahan radiasi surya lokal secara maksimal."
-                        ],
-                        "answer": 4
-            },
-            {
-                        "number": 6,
-                        "text": "Sebuah sekolah menggunakan 100 lampu pijar berdaya 60 W. Sekolah kemudian mempertimbangkan menggantinya dengan lampu LED berdaya 9 W dengan tingkat pencahayaan yang dianggap setara.\n\nBerdasarkan data tersebut, alasan paling kuat untuk mengganti lampu pijar dengan LED adalah ...",
-                        "options": [
-                                    "Lampu LED memiliki daya lebih kecil sehingga kebutuhan energi listrik dan emisi yang terkait dengan penggunaan listrik dapat dikurangi.",
-                                    "Lampu LED tidak membutuhkan energi listrik sehingga penggunaannya tidak menghasilkan konsumsi energi.",
-                                    "Lampu pijar menghasilkan cahaya lebih terang sehingga membutuhkan emisi yang lebih besar.",
-                                    "Lampu LED tidak memiliki umur pakai sehingga sekolah tidak perlu menggantinya kembali.",
-                                    "Penggunaan LED hanya memberikan perubahan pada tampilan ruang kelas tanpa berhubungan dengan efisiensi energi."
-                        ],
-                        "answer": 0,
-                        "table": {
-                                    "headers": [
-                                                "Jenis Lampu",
-                                                "Daya",
-                                                "Umur pakai",
-                                                "Emisi CO₂ / 1.000 jam"
-                                    ],
-                                    "rows": [
-                                                [
-                                                            "Lampu pijar",
-                                                            "60 W",
-                                                            "1.000 jam",
-                                                            "±51 kg"
-                                                ],
-                                                [
-                                                            "Lampu LED",
-                                                            "9 W",
-                                                            "25.000 jam",
-                                                            "±7,65 kg"
-                                                ]
-                                    ]
-                        }
-            },
-            {
-                        "number": 7,
-                        "text": "Sebuah desa terpencil mengandalkan PLTS sebagai sumber daya utama. Saat musim hujan berlangsung selama dua minggu berturut-turut, produksi panel surya turun hingga 70%, menyebabkan pemadaman listrik berkepanjangan pada fasilitas kesehatan desa.\n\nEvaluasi solusi teknis yang paling tepat untuk menjaga keandalan listrik tanpa mengorbankan prinsip ramah lingkungan adalah ...",
-                        "options": [
-                                    "Menambah luas panel surya 3× lipat tanpa menambahkan kapasitas penyimpan baterai.",
-                                    "Mengganti seluruh PLTS dengan generator diesel sebagai sumber listrik permanen.",
-                                    "Mematikan seluruh beban listrik desa selama musim hujan berlangsung.",
-                                    "Mengintegrasikan PLTS dengan bank baterai capacity-expanded dan mikro-turbin angin (Hybrid System).",
-                                    "Mengurangi tegangan luaran panel surya agar energi baterai tidak cepat habis."
-                        ],
-                        "answer": 3
-            },
-            {
-                        "number": 8,
-                        "text": "Sebuah wilayah pesisir menghadapi dilema pemilihan jenis teknologi EBT. Tim ahli menyusun tabel komparasi antara PLTA Waduk dan PLTS Terapung sebagai berikut:\n\nBerdasarkan penafsiran data komparasi tersebut, kesimpulan evaluatif yang paling rasional dalam menyikapi dilema teknis dan ekologis tersebut adalah ...",
-                        "options": [
-                                    "PLTA Waduk harus diprioritaskan karena keandalan teknis 85% mengabaikan seluruh dampak kerusakan ekosistem hutan.",
-                                    "PLTA Waduk tidak memiliki dampak ekologis sama sekali karena air merupakan sumber energi terbarukan.",
-                                    "Kedua opsi pembangkit tidak layak dibangun karena pasti merusak lingkungan tanpa memberikan manfaat daya listrik.",
-                                    "PLTS Terapung merupakan pilihan terbaik untuk mencegah alih fungsi 400 ha hutan, namun membutuhkan sistem pendukung (baterai/hibrida) untuk mengatasi faktor kapasitas yang rendah.",
-                                    "PLTS Terapung dapat menghasilkan daya konstan 24 jam tanpa dipengaruhi fluktuasi cuaca harian."
-                        ],
-                        "answer": 3,
-                        "table": {
-                                    "headers": [
-                                                "Parameter Evaluasi",
-                                                "PLTA Waduk",
-                                                "PLTS Terapung (Danau/Waduk)"
-                                    ],
-                                    "rows": [
-                                                [
-                                                            "Faktor kapasitas teknis (Keandalan)",
-                                                            "85% (Kontinu 24 jam)",
-                                                            "25% (Hanya saat ada matahari)"
-                                                ],
-                                                [
-                                                            "Dampak ekologis lahan darat",
-                                                            "Menggenangi 400 ha hutan tutupan",
-                                                            "0 ha lahan darat (di atas permukaan air)"
-                                                ],
-                                                [
-                                                            "Dampak ekosistem perairan",
-                                                            "Mengganggu jalur migrasi biota sungai",
-                                                            "Menutupi 15% permukaan air danau"
-                                                ]
-                                    ]
-                        }
-            },
-            {
-                        "number": 9,
-                        "text": "Kendaraan Listrik (EV) tidak mengeluarkan emisi gas buang dari knalpot. Namun, analisis dampak lingkungan EV sangat bergantung pada sumber energi kelistrikan pengisi daya:\n\n• Wilayah A: 85% pasokan listrik berasal dari PLTU Batu Bara.\n• Wilayah B: 85% pasokan listrik berasal dari kombinasi PLTA dan PLTS.\n\nKesimpulan analisis ekologis yang paling tepat adalah ...",
-                        "options": [
-                                    "Penggunaan EV di Wilayah A secara tidak langsung tetap menyumbang emisi karbon tinggi melalui proses pembangkitan listrik jaringan PLTU.",
-                                    "EV di Wilayah A memancarkan emisi gas beracun lebih banyak dibanding mobil pemakan bensin konvensional.",
-                                    "Penggunaan EV di Wilayah B menghilangkan seluruh bentuk dampak lingkungan industri.",
-                                    "Sumber jaringan listrik tidak memengaruhi profil emisi total pengoperasian EV.",
-                                    "EV di Wilayah B membutuhkan daya listrik 2× lebih besar dibanding EV di Wilayah A."
-                        ],
-                        "answer": 0
-            },
-            {
-                        "number": 10,
-                        "text": "SMA Merdeka telah memasang sistem PLTS 3.000 Watt. Namun, tagihan listrik tahunan tetap tinggi karena warga sekolah sering membiarkan AC (1.000 W) dan lampu kelas menyala di ruang kosong sepanjang hari.\n\nLangkah evaluatif berbasis efisiensi energi yang paling tepat adalah ...",
-                        "options": [
-                                    "Memasang daya PLTS tambahan tanpa mengubah perilaku konsumsi energi warga sekolah.",
-                                    "Mematikan sistem PLTS agar warga sekolah sadar tingginya biaya pengeluaran listrik.",
-                                    "Mengombinasikan sistem daya PLTS dengan manajemen perilaku hemat energi serta otomasi sensor gerak (occupancy sensor).",
-                                    "Mengganti semua pendingin ruangan (AC) dengan kipas angin berdaya ekstra besar.",
-                                    "Menjual seluruh daya PLTS ke jaringan utama dan membiarkan sekolah tanpa pasokan EBT."
-                        ],
-                        "answer": 2
-            },
-            {
-                        "number": 11,
-                        "text": "Sebuah sekolah ingin memasang PLTS. Hasil pengukuran intensitas cahaya matahari selama empat waktu ditunjukkan berikut:\n\nJika efisiensi konversi panel surya konstan sebesar 15%, analisis produksi daya puncak (P = I A η) terjadi pada ...",
-                        "options": [
-                                    "Pukul 08.00 dengan daya 135 W karena suhu ruang belum panas.",
-                                    "Pukul 12.00 dengan daya puncak sebesar 285 W karena intensitas radiasi berada pada level maksimum.",
-                                    "Pukul 10.00 dan 14.00 karena daya luaran terbagi rata secara simetris.",
-                                    "Semua waktu menghasilkan daya listrik yang sama karena luas permukaan panel tetap 2 m².",
-                                    "Daya keluaran panel mencapai 950 W pada pukul 12.00 tanpa memperhitungkan faktor efisiensi."
-                        ],
-                        "answer": 1,
-                        "table": {
-                                    "headers": [
-                                                "Waktu",
-                                                "Intensitas matahari"
-                                    ],
-                                    "rows": [
-                                                [
-                                                            "08.00",
-                                                            "450 W/m²"
-                                                ],
-                                                [
-                                                            "10.00",
-                                                            "750 W/m²"
-                                                ],
-                                                [
-                                                            "12.00",
-                                                            "950 W/m²"
-                                                ],
-                                                [
-                                                            "14.00",
-                                                            "700 W/m²"
-                                                ]
-                                    ]
-                        }
-            },
-            {
-                        "number": 12,
-                        "text": "Tim enjiniring mengevaluasi 5 tapak lokasi untuk pembangunan Turbin Angin (PLTB):\n\n• Lokasi A: Kecepatan angin 3 m/s, padat pemukiman.\n• Lokasi B: Kecepatan angin 7 m/s, lahan terbuka datar jauh dari pemukiman.\n• Lokasi C: Kecepatan angin 4 m/s, area dikelilingi gedung tinggi.\n• Lokasi D: Kecepatan angin 5 m/s, kawasan hutan lindung lebat.\n• Lokasi E: Kecepatan angin 2 m/s, pesisir berbukit.\n\nMengingat daya turbin angin berbanding lurus dengan pangkat tiga kecepatan angin (v³) dan faktor kebisingan, lokasi prioritas paling rasional adalah ...",
-                        "options": [
-                                    "Lokasi A agar energi listrik langsung disalurkan tanpa saluran transmisi panjang.",
-                                    "Lokasi B karena memiliki potensi daya paling optimal serta meminimalkan gangguan kebisingan warga.",
-                                    "Lokasi C karena gedung tinggi dapat memfokuskan hembusan angin ke bilah turbin.",
-                                    "Lokasi D untuk memanfaatkan angin hutan meskipun merusak ekosistem pohon.",
-                                    "Lokasi E karena kawasan berbukit selalu menghasilkan turbulensi angin ideal."
-                        ],
-                        "answer": 1
-            },
-            {
-                        "number": 13,
-                        "text": "Tim siswa ingin menyelidiki sudut kemiringan panel surya yang paling optimal terhadap penyerapan daya listrik di halaman sekolah. Rancangan eksperimen terkontrol yang memenuhi kaidah ilmiah adalah ...",
-                        "options": [
-                                    "Memvariasikan jenis baterai penyimpan tanpa mengubah sudut arah menghadap panel surya.",
-                                    "Mengubah sudut kemiringan panel bersamaan dengan mengganti jenis spesifikasi panel surya pada setiap interval waktu.",
-                                    "Mengukur daya luaran panel pada satu sudut saja di pagi hari, lalu membandingkannya dengan data sekunder internet.",
-                                    "Mengubah-ubah beban lampu AC saat kemiringan panel disetel tetap.",
-                                    "Mengubah sudut kemiringan panel surya, menjaga intensitas cahaya matahari dan jenis panel tetap konstan, lalu mengukur daya luaran harian."
-                        ],
-                        "answer": 4
-            },
-            {
-                        "number": 14,
-                        "text": "Kantin sekolah menghasilkan 30 kg limbah sisa makanan organik per hari yang menimbulkan bau tak sedap dan lalat. Sekolah ingin menerapkan solusi rekayasa berbasis EBT dan pengelolaan limbah berkelanjutan.\n\nRancangan solusi rekayasa yang paling efisien dan beretika lingkungan adalah ...",
-                        "options": [
-                                    "Pembakaran terbuka (open burning) limbah sisa makanan di lapangan untuk menghasilkan uap panas.",
-                                    "Membuang seluruh sampah sisa makanan ke saluran air drainase agar terurai secara alami.",
-                                    "Mengolah sisa makanan menggunakan digester anaerobik menjadi biogas untuk suplai kompor kantin dan pupuk organik.",
-                                    "Mencampur limbah sisa makanan dengan sampah plastik untuk dimanfaatkan sebagai bahan bakar semen.",
-                                    "Menimbun limbah makanan di dalam tanah tanpa sirkulasi udara."
-                        ],
-                        "answer": 2
-            },
-            {
-                        "number": 15,
-                        "text": "Sebuah turbin angin mikro (PLTB) di sekolah menghasilkan daya listrik yang sangat minim ketika kecepatan angin di area luar tergolong rendah. Tim siswa mengusulkan solusi rekayasa dengan merancang ulang bentuk bilah (blade) turbin menjadi bentuk aerodinamis (aerofoil) untuk menangkap hembusan angin secara lebih optimal.\n\nUntuk mengevaluasi efektivitas solusi rekayasa bentuk bilah turbin tersebut secara ilmiah, metode penyelidikan yang paling valid adalah ...",
-                        "options": [
-                                    "Mengukur daya listrik turbin berbilah aerofoil hanya pada satu saat tiupan angin kencang tanpa kelompok pembanding.",
-                                    "Mengestimasi kenaikan efisiensi putaran bilah secara teoritis di atas kertas tanpa melakukan pengukuran nyata.",
-                                    "Mengubah jumlah bilah turbin secara acak setiap jam sambil mengganti jenis generator listrik yang berbeda tiap hari.",
-                                    "Membandingkan daya luaran listrik (P = V I) antara turbin bilah aerofoil dan turbin bilah standar pada variasi kecepatan angin yang terkontrol dan identik.",
-                                    "Menambah ketinggian tiang penyangga turbin tanpa menguji perbedaan kinerja antar-desain bentuk bilah."
-                        ],
-                        "answer": 3
-            }
+    {
+        number: 1,
+        text: `Sebuah desa berada di daerah perbukitan. Pada siang hari, daerah tersebut mendapat sinar matahari cukup kuat. Namun, kebutuhan listrik terbesar terjadi pada malam hari karena digunakan untuk penerangan rumah, pompa air, dan kegiatan warga. Desa juga memiliki sungai dengan aliran yang cukup deras sepanjang tahun.
+
+Berdasarkan kondisi tersebut, sumber energi terbarukan apa yang paling berpotensi dimanfaatkan untuk memenuhi kebutuhan listrik desa? Jelaskan perubahan energi yang terjadi pada sumber energi tersebut hingga menghasilkan energi listrik, serta jelaskan mengapa sumber energi tersebut paling sesuai dengan kondisi desa.`
+    },
+    {
+        number: 2,
+        text: `Perhatikan ketiga grafik berikut!\n\nKetiga grafik tersebut menunjukkan hubungan antara waktu dan kecepatan angin yang ada pada tiga daerah yang berbeda. Setiap daerah memiliki karakteristik kondisi angin yang berbeda sehingga pola hubungan waktu terhadap kecepatan angin yang dihasilkan juga berbeda. Berdasarkan ketiga grafik tersebut, daerah manakah yang paling sesuai untuk Pembangunan PLTB (Pembangkit Listrik Tenaga Bayu)? Pilih salah satu daerah dan jelaskan alasanmu!`,
+        image: "grafik-pltb.png"
+    },
+    {
+        number: 3,
+        text: `Sebuah kelompok siswa ingin mengetahui pengaruh jumlah sudu turbin air terhadap daya listrik yang dihasilkan. Mereka menguji tiga turbin dengan 3, 5, dan 7 sudu/bilah. Namun, setiap turbin diuji menggunakan debit air yang berbeda, yakni 3 sudu diuji menggunakan debit air 2 L/s, turbin 5 sudu menggunakan debit 3 L/s, dan turbin 7 sudu menggunakan debit 4 L/s. Hasil percobaan menunjukkan turbin dengan 7 sudu yang menghasilkan daya terbesar. Berdasarkan hasil tersebut, kelompok menyimpulkan bahwa semakin banyak jumlah sudu, maka semakin besar daya listrik yang dihasilkan.
+
+Evaluasilah apakah kesimpulan kelompok tersebut sudah dapat dipercaya atau tidak. Jelaskan alasanmu berdasarkan rancangan percobaan, kemudian rancanglah perbaikan percobaan yang lebih tepat untuk mengetahui pengaruh jumlah sudu terhadap daya listrik. Jelaskan variabel yang harus diubah, yang harus dibuat tetap, dan data yang perlu diukur.`
+    },
+    {
+        number: 4,
+        text: `Pengelola sebuah taman edukasi ingin mengurangi penggunaan listrik pada sore hingga malam hari. Mereka mencatat penggunaan tiga peralatan selama satu hari.
+ Lampu taman: daya 40 W, digunakan 8 jam.
+ Kipas: daya 80 W, digunakan 4 jam.
+ Pompa air: daya 200 W, digunakan 2 jam.
+
+Berdasarkan data tersebut, hitung energi listrik yang digunakan oleh masing-masing peralatan dalam satu hari. Peralatan mana yang menggunakan energi listrik paling besar? Jelaskan mengapa peralatan dengan daya paling besar belum tentu menjadi peralatan yang menggunakan energi paling banyak.`
+    },
+    {
+        number: 5,
+        text: `James ingin mengetahui pengaruh luas panel surya terhadap daya listrik yang dihasilkan. Ia memiliki tiga panel surya berukuran 0,5 m², 1 m², dan 1,5 m², sebuah wattmeter, multimeter, kabel, dan penyangga panel. James menguji ketiga panel pada hari yang sama, tetapi panel 0,5 m² diuji pukul 08.00, panel 1 m² pukul 12.00, dan panel 1,5 m² pukul 15.00. Hasil pengukuran menunjukkan panel 1,5 m² menghasilkan daya paling besar. James kemudian menyimpulkan bahwa semakin besar luas panel, semakin besar daya listrik yang dihasilkan.
+
+Jika kamu diminta memperbaiki percobaan James, bagaimana rancangan pengujian yang akan kamu lakukan agar pengaruh luas panel terhadap daya listrik dapat diketahui dengan lebih adil? Jelaskan variabel yang harus dibuat tetap dan variabel yang harus diubah dan cara pengambilan datanya. Setelah itu, evaluasilah apakah kesimpulan James sudah dapat dianggap kuat, jelaskan alasanmu!`
+    },
+    {
+        number: 6,
+        text: `SMA Nusa Bangsa mencatat kebutuhan dan kondisi sumber energi berikut selama satu hari.
+
+Berdasarkan data tersebut, ubahlah informasi pada tabel menjadi rekomendasi sederhana mengenai pemnafaatan sumber energi yang dapat digunakan di sekolah. Jelaskan alasanmu berdasarkan pola kebutuhan listrik dan ketersediaan sumber energi sepanjang hari!`,
+        table: {
+            headers: ["Waktu", "Kebutuhan listrik (kWh)", "Intensitas matahari"],
+            rows: [
+                ["Pagi (07.00-10.00)", "4", "Tinggi"],
+                ["Siang (10.00-15.00)", "8", "Sangat tinggi"],
+                ["Sore (15.00-18.00)", "5", "Menurun, angin cukup kuat"],
+                ["Malam (18.00-21.00)", "7", "Tidak ada cahaya matahari, angin masih tersedia"]
+            ]
+        }
+    }
 ];
 
         /*
          * ============================================================
          * KONFIGURASI WAKTU
          * ============================================================
-         * 90 detik PER SOAL.
+         * 180 detik PER SOAL.
          *
          * Timer menggunakan deadline berbasis Date.now(), bukan hanya
          * menghitung setInterval. Jadi ketika siswa pindah tab,
@@ -770,7 +542,7 @@
          * tersimpan ketika halaman direfresh/ditutup lalu dibuka kembali
          * pada browser/perangkat yang sama.
          */
-        const QUESTION_TIME_SECONDS = 90;
+        const QUESTION_TIME_SECONDS = 180;
         const STORAGE_KEY = "elitlab_pretest_session_v2";
 
         let currentQuestion = 0;
@@ -901,6 +673,14 @@
                 <p class="question-text">${escapeHtml(question.text)}</p>
             `;
 
+            if (question.image) {
+                html += `
+                    <div style="margin:20px 0;text-align:center;">
+                        <img src="${question.image}" alt="Grafik kecepatan angin pada tiga daerah" style="max-width:100%;height:auto;border-radius:12px;">
+                    </div>
+                `;
+            }
+
             if (question.table) {
                 html += `
                     <table class="question-table">
@@ -924,36 +704,27 @@
                 `;
             }
 
-            html += `<div class="options">`;
-
-            question.options.forEach((option, index) => {
-                const selected = studentAnswers[currentQuestion] === index;
-
-                html += `
-                    <label class="option ${selected ? "selected" : ""}">
-                        <input
-                            type="radio"
-                            name="answer"
-                            value="${index}"
-                            ${selected ? "checked" : ""}
-                            onchange="selectAnswer(${index})"
-                        >
-                        <span class="option-text">
-                            <strong>${String.fromCharCode(65 + index)}.</strong>
-                            ${escapeHtml(option)}
-                        </span>
+            html += `
+                <div class="answer-box">
+                    <label for="essayAnswer" style="display:block;font-weight:800;margin-bottom:10px;">
+                        Jawaban Kamu
                     </label>
-                `;
-            });
-
-            html += `</div>`;
+                    <textarea
+                        id="essayAnswer"
+                        rows="10"
+                        placeholder="Tuliskan jawabanmu di sini..."
+                        style="width:100%;padding:15px;border:1px solid #cfd8e3;border-radius:12px;font-size:16px;line-height:1.7;resize:vertical;outline:none;"
+                        oninput="saveEssayAnswer()"
+                    >${escapeHtml(studentAnswers[currentQuestion] || "")}</textarea>
+                </div>
+            `;
 
             content.innerHTML = html;
 
             const nextButton = document.getElementById("nextButton");
 
             if (currentQuestion === questions.length - 1) {
-                nextButton.textContent = "Selesai & Lihat Hasil";
+                nextButton.textContent = "Selesai & Kirim Jawaban";
             } else {
                 nextButton.textContent = "Soal Berikutnya →";
             }
@@ -964,6 +735,14 @@
                 startQuestionTimer(true);
             }
 
+            saveSession();
+        }
+
+        function saveEssayAnswer() {
+            const textarea = document.getElementById("essayAnswer");
+            if (!textarea) return;
+
+            studentAnswers[currentQuestion] = textarea.value;
             saveSession();
         }
 
@@ -982,8 +761,14 @@
         function nextQuestion() {
             if (!testStarted) return;
 
-            if (studentAnswers[currentQuestion] === null) {
-                alert("Silakan pilih satu jawaban terlebih dahulu.");
+            const textarea = document.getElementById("essayAnswer");
+            if (textarea) {
+                studentAnswers[currentQuestion] = textarea.value.trim();
+            }
+
+            if (!studentAnswers[currentQuestion]) {
+                alert("Silakan tuliskan jawaban terlebih dahulu.");
+                if (textarea) textarea.focus();
                 return;
             }
 
@@ -1075,12 +860,12 @@
              * otomatis dilewati.
              */
             if (currentQuestion < questions.length - 1) {
-                alert("Waktu 90 detik untuk soal ini telah habis. Kamu akan melanjutkan ke soal berikutnya.");
+                alert("Waktu 180 detik untuk soal ini telah habis. Kamu akan melanjutkan ke soal berikutnya.");
 
                 currentQuestion++;
                 renderQuestion(true);
             } else {
-                alert("Waktu 90 detik untuk soal terakhir telah habis. Hasil pretest akan ditampilkan.");
+                alert("Waktu 180 detik untuk soal terakhir telah habis. Hasil pretest akan ditampilkan.");
                 finishTest();
             }
         }
@@ -1109,6 +894,12 @@ async function kirimKeSpreadsheet(payload) {
 
         function finishTest() {
             stopTimer();
+
+            const textarea = document.getElementById("essayAnswer");
+            if (textarea) {
+                studentAnswers[currentQuestion] = textarea.value.trim();
+            }
+
             testStarted = false;
             questionDeadline = null;
             document.body.classList.remove("quiz-active");
@@ -1117,60 +908,30 @@ async function kirimKeSpreadsheet(payload) {
             document.getElementById("resultScreen").classList.remove("hidden");
             document.getElementById("topProgress").textContent = "Selesai";
 
-            let correct = 0;
-
-            questions.forEach((question, index) => {
-                if (studentAnswers[index] === question.answer) {
-                    correct++;
-                }
+            kirimKeSpreadsheet({
+                type: "pretestt",
+                nama: studentName,
+                answers: studentAnswers.map(answer => answer || ""),
+                questionCount: questions.length
             });
 
-            const score = Math.round((correct / questions.length) * 100);
-
-kirimKeSpreadsheet({
-    type: "pretestt",
-    nama: studentName,
-    answers: studentAnswers.map(answer =>
-        answer === null ? "" : String.fromCharCode(65 + answer)
-    ),
-    correct: correct,
-    wrong: questions.length - correct,
-    score: score
-});
-
             document.getElementById("resultGreeting").textContent =
-                `Nama: ${studentName}. Berikut adalah hasil pengerjaan pretest kamu.`;
+                `Nama: ${studentName}. Jawaban pretest kamu sudah dikirim.`;
 
-            document.getElementById("finalScore").textContent = score;
+            document.getElementById("finalScore").textContent = "✓";
             document.getElementById("scoreDetail").textContent =
-                `${correct} benar dari ${questions.length} soal`;
+                "Nilai akan dikoreksi oleh guru.";
 
             const resultBody = document.getElementById("resultBody");
             resultBody.innerHTML = "";
 
             questions.forEach((question, index) => {
-                const userAnswer = studentAnswers[index];
-                const correctAnswer = question.answer;
-
-                const isCorrect = userAnswer === correctAnswer;
-
-                const userText =
-                    userAnswer === null
-                        ? "Tidak dijawab"
-                        : `${String.fromCharCode(65 + userAnswer)}. ${question.options[userAnswer]}`;
-
-                const correctText =
-                    `${String.fromCharCode(65 + correctAnswer)}. ${question.options[correctAnswer]}`;
-
                 const row = document.createElement("tr");
+                const answer = studentAnswers[index] || "Tidak dijawab";
 
                 row.innerHTML = `
                     <td>${index + 1}</td>
-                    <td class="${isCorrect ? "correct" : "wrong"}">
-                        ${isCorrect ? "BENAR" : "SALAH"}
-                    </td>
-                    <td>${escapeHtml(userText)}</td>
-                    <td>${escapeHtml(correctText)}</td>
+                    <td style="white-space:pre-line;">${escapeHtml(answer)}</td>
                 `;
 
                 resultBody.appendChild(row);
