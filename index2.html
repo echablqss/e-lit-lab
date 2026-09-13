@@ -1789,472 +1789,7 @@ async function kirimKeSpreadsheet(payload) {
         </div>
       </div>
 
-<!-- FITUR 3: AI PEMERIKSAAN PROPOSAL -->
-<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
-
-    <div>
-        <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold">
-                🤖
-            </div>
-
-            <div>
-                <h3 class="font-bold text-slate-900 text-lg">
-                    [T] TECHNOLOGY
-                </h3>
-
-                <p class="text-xs text-slate-500">
-                    Asisten Review Otomatis Proposal Proyek
-                </p>
-            </div>
-        </div>
-
-        <!-- ================================
-             AI EVALUATOR PROPOSAL
-             CLOUDFLARE WORKER
-             ================================ -->
-
-        <div id="evaluatorAI" class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
-
-            <!-- HEADER -->
-            <div class="bg-blue-600 text-white px-4 py-3 flex items-center justify-between">
-
-                <div>
-                    <div class="font-bold text-sm">
-                        🤖 AI Evaluator
-                    </div>
-
-                    <div class="text-[10px] opacity-90">
-                        Evaluasi Proposal Proyek STEAM
-                    </div>
-                </div>
-
-                <span class="text-[10px] bg-white/20 px-2 py-1 rounded-full">
-                    ONLINE
-                </span>
-
-            </div>
-
-
-            <!-- INSTRUKSI -->
-            <div class="p-4 bg-blue-50 border-b border-blue-100">
-
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Masukkan proposal atau ide proyekmu pada kotak di bawah.
-                    AI akan membantu mengevaluasi kesesuaian masalah,
-                    solusi, aspek STEAM, energi terbarukan, serta memberikan
-                    saran perbaikan.
-                </p>
-
-            </div>
-
-
-            <!-- CHAT AREA -->
-            <div
-                id="evaluatorMessages"
-                class="h-56 overflow-y-auto p-3 space-y-3 bg-white">
-
-                <!-- PESAN AWAL -->
-                <div class="flex items-start gap-2">
-
-                    <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-sm shrink-0">
-                        🤖
-                    </div>
-
-                    <div class="bg-slate-100 rounded-xl rounded-tl-none px-3 py-2 max-w-[85%]">
-
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            Halo! 👋 Aku AI Evaluator Proposal.
-                            Kirimkan ide atau proposal proyek STEAM-mu,
-                            lalu aku akan membantu mengevaluasi dan memberikan
-                            saran perbaikannya.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- INPUT -->
-            <form id="evaluatorForm" class="border-t border-slate-200 bg-white p-3">
-
-                <textarea
-                    id="evaluatorInput"
-                    rows="3"
-                    placeholder="Contoh: Kami ingin membuat panel surya sederhana untuk mengurangi penggunaan listrik di sekolah..."
-                    autocomplete="off"
-                    class="w-full resize-none border border-slate-300 rounded-xl p-3 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </textarea>
-
-
-                <div class="flex items-center justify-between mt-2">
-
-                    <span class="text-[10px] text-slate-400">
-                        💡 Jelaskan ide/proposal proyek secara jelas
-                    </span>
-
-                    <button
-                        id="evaluatorSend"
-                        type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold text-xs px-4 py-2 rounded-lg transition">
-
-                        🚀 Evaluasi
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SCRIPT AI EVALUATOR
-     ===================================================== -->
-
-<script>
-
-const EVALUATOR_WORKER_URL =
-    "https://elitlab-evaluator.echa-23097.workers.dev/";
-
-
-const evaluatorForm =
-    document.getElementById("evaluatorForm");
-
-const evaluatorInput =
-    document.getElementById("evaluatorInput");
-
-const evaluatorMessages =
-    document.getElementById("evaluatorMessages");
-
-const evaluatorSend =
-    document.getElementById("evaluatorSend");
-
-
-/* =====================================================
-   RIWAYAT PERCAKAPAN
-   ===================================================== */
-
-let evaluatorHistory = [];
-
-
-/* =====================================================
-   ESCAPE HTML
-   Mencegah HTML dari input siswa dirender langsung
-   ===================================================== */
-
-function escapeEvaluatorHTML(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =====================================================
-   RENDER PESAN
-   ===================================================== */
-
-function addEvaluatorMessage(text, type = "bot") {
-
-    const wrapper =
-        document.createElement("div");
-
-    if (type === "user") {
-
-        wrapper.className =
-            "flex items-start justify-end gap-2";
-
-        wrapper.innerHTML = `
-
-            <div class="bg-blue-600 text-white rounded-xl rounded-tr-none px-3 py-2 max-w-[85%]">
-
-                <p class="text-xs leading-relaxed whitespace-pre-wrap">
-                    ${escapeEvaluatorHTML(text)}
-                </p>
-
-            </div>
-
-            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm shrink-0">
-                👤
-            </div>
-
-        `;
-
-    } else {
-
-        wrapper.className =
-            "flex items-start gap-2";
-
-        wrapper.innerHTML = `
-
-            <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-sm shrink-0">
-                🤖
-            </div>
-
-            <div class="bg-slate-100 rounded-xl rounded-tl-none px-3 py-2 max-w-[85%]">
-
-                <p class="text-xs text-slate-700 leading-relaxed whitespace-pre-wrap">
-                    ${escapeEvaluatorHTML(text)}
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    evaluatorMessages.appendChild(wrapper);
-
-    evaluatorMessages.scrollTop =
-        evaluatorMessages.scrollHeight;
-
-
-    return wrapper;
-
-}
-
-
-/* =====================================================
-   KIRIM KE CLOUDFLARE WORKER
-   ===================================================== */
-
-async function kirimKeEvaluator(message) {
-
-    const response = await fetch(
-        EVALUATOR_WORKER_URL,
-        {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-
-                message: message,
-
-                history: evaluatorHistory
-
-            })
-
-        }
-    );
-
-
-    const data =
-        await response.json();
-
-
-    if (!response.ok ||
-        data.success === false) {
-
-        throw new Error(
-            data.error ||
-            "AI Evaluator gagal memproses proposal."
-        );
-
-    }
-
-
-    const reply =
-        data.reply ||
-        data.response ||
-        data.text ||
-        data.message;
-
-
-    if (!reply) {
-
-        throw new Error(
-            "AI tidak mengirimkan jawaban."
-        );
-
-    }
-
-
-    /* Simpan history */
-
-    evaluatorHistory.push({
-
-        role: "user",
-
-        parts: [
-            {
-                text: message
-            }
-        ]
-
-    });
-
-
-    evaluatorHistory.push({
-
-        role: "model",
-
-        parts: [
-            {
-                text: reply
-            }
-        ]
-
-    });
-
-
-    /*
-     * Batasi history.
-     * 20 pesan = sekitar 10 percakapan.
-     */
-
-    if (evaluatorHistory.length > 20) {
-
-        evaluatorHistory =
-            evaluatorHistory.slice(-20);
-
-    }
-
-
-    return reply;
-
-}
-
-
-/* =====================================================
-   SUBMIT PROPOSAL
-   ===================================================== */
-
-evaluatorForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-
-        const message =
-            evaluatorInput.value.trim();
-
-
-        if (!message ||
-            evaluatorSend.disabled) {
-
-            return;
-
-        }
-
-
-        /* Tampilkan pesan siswa */
-
-        addEvaluatorMessage(
-            message,
-            "user"
-        );
-
-
-        /* Kosongkan input */
-
-        evaluatorInput.value = "";
-
-
-        /* Disable */
-
-        evaluatorSend.disabled = true;
-
-        evaluatorInput.disabled = true;
-
-
-        /* Loading */
-
-        const loading =
-            addEvaluatorMessage(
-                "Sedang mengevaluasi proposalmu... 🤖"
-            );
-
-
-        try {
-
-            const answer =
-                await kirimKeEvaluator(
-                    message
-                );
-
-
-            /*
-             * Ganti loading dengan jawaban AI
-             */
-
-            loading.remove();
-
-            addEvaluatorMessage(
-                answer,
-                "bot"
-            );
-
-
-        } catch (error) {
-
-            console.error(
-                "AI Evaluator Error:",
-                error
-            );
-
-
-            loading.remove();
-
-            addEvaluatorMessage(
-                "Maaf, AI Evaluator belum dapat memproses proposalmu. Silakan coba lagi beberapa saat."
-            );
-
-        }
-
-
-        /* Aktifkan kembali */
-
-        evaluatorSend.disabled = false;
-
-        evaluatorInput.disabled = false;
-
-        evaluatorInput.focus();
-
-    }
-);
-
-
-/* =====================================================
-   ENTER = SUBMIT
-   SHIFT + ENTER = BARIS BARU
-   ===================================================== */
-
-evaluatorInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter" &&
-            !event.shiftKey
-        ) {
-
-            event.preventDefault();
-
-            evaluatorForm.requestSubmit();
-
-        }
-
-    }
-);
-
-</script>
+<!-- AI Evaluator dihapus: Artemis adalah satu-satunya AI pada halaman ini -->
 
 <!-- FITUR 4: KALKULATOR DAMPAK CO2 (NATIVE JS) -->
 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
@@ -2955,16 +2490,7 @@ const aiSend = document.getElementById("aiChatSend");
    RIWAYAT PERCAKAPAN AI
    ========================================================= */
 
-let aiHistory = [
-    {
-        role: "model",
-        parts: [
-            {
-                text: "Halo! 👋 Aku AI Konsultasi Artemis. Kamu bisa bertanya tentang energi terbarukan, fisika, dilema di SMA Artemis, atau ide proyek STEAM-mu."
-            }
-        ]
-    }
-];
+let aiHistory = [];
 
 /* =========================================================
    BUKA / TUTUP CHAT
@@ -3041,34 +2567,52 @@ function addAIMessage(text, type) {
    ========================================================= */
 
 async function kirimKeAI(message) {
+    let response;
 
-    const response = await fetch(AI_WORKER_URL, {
-        method: "POST",
+    try {
+        response = await fetch(AI_WORKER_URL, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-store",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                message: message,
+                history: aiHistory
+            })
+        });
+    } catch (networkError) {
+        console.error("Gagal menghubungi Worker:", networkError);
+        throw new Error(
+            "Browser tidak dapat terhubung ke Cloudflare Worker."
+        );
+    }
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+    /*
+     * Baca sebagai teks terlebih dahulu supaya error dari Worker/Cloudflare
+     * tetap dapat ditampilkan walaupun responsnya bukan JSON valid.
+     */
+    const rawText = await response.text();
+    let data = {};
 
-        body: JSON.stringify({
-
-            /* Pesan terbaru */
-            message: message,
-
-            /*
-             * Kirim seluruh percakapan SEBELUM pesan terbaru.
-             *
-             * Worker akan menambahkan message terbaru
-             * sendiri ke history.
-             */
-            history: aiHistory
-        })
-    });
-
-    const data = await response.json();
+    if (rawText) {
+        try {
+            data = JSON.parse(rawText);
+        } catch (parseError) {
+            console.error("Respons Worker bukan JSON:", rawText);
+            throw new Error(
+                `Respons Worker tidak valid (HTTP ${response.status}).`
+            );
+        }
+    }
 
     if (!response.ok || data.success === false) {
         throw new Error(
-            data.error || "AI gagal memproses pesan."
+            data.error ||
+            data.message ||
+            `Worker mengembalikan HTTP ${response.status}.`
         );
     }
 
@@ -3076,36 +2620,26 @@ async function kirimKeAI(message) {
         data.reply ||
         data.response ||
         data.text ||
-        data.message ||
-        "AI tidak mengirim jawaban.";
+        data.message;
+
+    if (!reply) {
+        throw new Error("Artemis tidak mengirim jawaban.");
+    }
 
     /*
-     * Setelah AI berhasil menjawab,
-     * simpan percakapan ke history browser.
+     * Gunakan format {role, text}. Format ini dibaca Worker baru
+     * dan juga kompatibel dengan Worker lama.
      */
-
     aiHistory.push({
         role: "user",
-        parts: [
-            {
-                text: message
-            }
-        ]
+        text: message
     });
 
     aiHistory.push({
         role: "model",
-        parts: [
-            {
-                text: reply
-            }
-        ]
+        text: reply
     });
 
-    /*
-     * Batasi history agar tidak terlalu panjang.
-     * 20 pesan = 10 pertukaran user + AI.
-     */
     if (aiHistory.length > 20) {
         aiHistory = aiHistory.slice(-20);
     }
@@ -3153,9 +2687,14 @@ aiForm.addEventListener("submit", async function(event) {
 
         console.error("AI Worker Error:", error);
 
+        const detail =
+            error && error.message
+                ? error.message
+                : "Kesalahan tidak diketahui.";
+
         renderAIMessage(
             loading,
-            "Maaf, AI belum bisa menjawab. Coba lagi beberapa saat lagi."
+            "⚠️ Artemis belum bisa menjawab.\n\nDetail: " + detail
         );
     }
 
