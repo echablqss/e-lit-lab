@@ -447,60 +447,6 @@ td textarea{
 }
 
 /* =========================
-   UPLOAD
-========================= */
-
-.upload-box{
-    margin-top:15px;
-}
-
-.upload-file{
-    width:100%;
-
-    padding:12px;
-
-    border:1px solid #ccd7d0;
-    border-radius:11px;
-
-    background:#fff;
-
-    font:inherit;
-}
-
-.upload-progress{
-    display:none;
-    margin-top:15px;
-}
-
-.progress-track{
-    height:10px;
-
-    background:#e8eee9;
-
-    border-radius:20px;
-
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:0%;
-    height:100%;
-
-    background:#e52525;
-
-    transition:width .2s ease;
-}
-
-.upload-status{
-    text-align:center;
-
-    font-size:13px;
-    color:#526575;
-
-    margin:8px 0 0;
-}
-
-/* =========================
    FOOTER
 ========================= */
 
@@ -568,1842 +514,546 @@ td textarea{
 </head>
 
 
+
 <body>
 
 <header class="topbar">
-
-    <div class="brand">
-        E-Lit Lab — LKPD Digital
-    </div>
-
-    <div class="progress" id="progress">
-        Proyek Eco-Gazebo
-    </div>
-
+    <div class="brand">E-Lit Lab — LKPD Digital</div>
+    <div class="progress" id="progress">Studio Inovasi</div>
 </header>
 
-
 <main class="page">
-
 <div class="sheet">
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <section class="hero">
-
-    <h1>LKPD DIGITAL</h1>
-
-    <h2>PROYEK ECO-GAZEBO</h2>
-
-    <p>
-        <strong>
-            Energi Terbarukan Berbasis Dilemma-STEAM
-        </strong>
-    </p>
+    <h1>LKPD</h1>
+    <h2>Merancang Solusi Energi Terbarukan untuk SMA Artemis</h2>
+    <p><strong>Energi Terbarukan Berbasis Dilemma-STEAM</strong></p>
 
     <div class="identity">
+        <div class="field">
+            <label for="namaKelompok">Nama Kelompok :</label>
+            <input id="namaKelompok" type="text" placeholder="Masukkan nama kelompok">
+        </div>
 
         <div class="field">
-
-            <label for="namaKelompok">
-                Nama Kelompok :
-            </label>
-
-            <input
-                id="namaKelompok"
-                type="text"
-                placeholder="Masukkan nama kelompok"
-            >
-
+            <label for="kelas">Kelas :</label>
+            <input id="kelas" type="text" placeholder="Masukkan kelas">
         </div>
 
-
-        <div class="field">
-
-            <label for="kelas">
-                Kelas :
-            </label>
-
-            <input
-                id="kelas"
-                type="text"
-                placeholder="Masukkan kelas"
-            >
-
+        <div class="field" style="grid-column:1/-1">
+            <label for="anggota">Anggota :</label>
+            <textarea id="anggota" placeholder="1.&#10;2.&#10;3.&#10;4."></textarea>
         </div>
 
-
-        <div
-            class="field"
-            style="grid-column:1/-1"
-        >
-
-            <label for="anggota">
-                Anggota :
-            </label>
-
-            <textarea
-                id="anggota"
-                placeholder="1.&#10;2.&#10;3.&#10;4."
-            ></textarea>
-
+        <div class="field" style="grid-column:1/-1">
+            <label for="tanggal">Tanggal :</label>
+            <input id="tanggal" type="text" placeholder="Masukkan tanggal">
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
-     TUJUAN
-===================================================== -->
-
 <section class="section">
-
     <div class="section-title">
-
-        <div class="badge">
-            A
-        </div>
-
-        <div>
-
-            <h2>
-                TUJUAN KEGIATAN
-            </h2>
-
-        </div>
-
+        <div class="badge">A</div>
+        <div><h2>TUJUAN PEMBELAJARAN</h2></div>
     </div>
 
-
-    <p>
-        Setelah menyelesaikan kegiatan dalam LKPD,
-        peserta didik diharapkan mampu:
-    </p>
-
-
+    <p>Setelah menyelesaikan kegiatan dalam LKPD, peserta didik diharapkan mampu:</p>
     <ol>
-
-        <li>
-            Menganalisis potensi dan karakteristik sumber
-            energi terbarukan berdasarkan kondisi suatu wilayah.
-        </li>
-
-        <li>
-            Menggunakan hasil pengamatan dan data untuk
-            menentukan pilihan solusi energi.
-        </li>
-
-        <li>
-            Menganalisis hubungan daya, energi, dan efisiensi.
-        </li>
-
-        <li>
-            Merancang solusi pemanfaatan energi terbarukan
-            berdasarkan batasan yang diberikan.
-        </li>
-
-        <li>
-            Mengevaluasi hasil rancangan berdasarkan daya,
-            harga, dan efisiensi.
-        </li>
-
+        <li>Menganalisis potensi sumber energi terbarukan berdasarkan kondisi suatu wilayah.</li>
+        <li>Mengevaluasi dilema teknis dan dampak ekologis pemanfaatan energi terbarukan.</li>
+        <li>Menganalisis hubungan antara daya, energi, dan efisiensi.</li>
+        <li>Merancang dan mengevaluasi solusi sistem energi terbarukan berdasarkan dilema dan STEAM.</li>
     </ol>
-
 </section>
 
-
-<!-- =====================================================
-     PETUNJUK
-===================================================== -->
-
 <section class="section">
-
     <div class="section-title">
-
-        <div class="badge">
-            B
-        </div>
-
-        <div>
-
-            <h2>
-                PETUNJUK KEGIATAN
-            </h2>
-
-        </div>
-
+        <div class="badge">B</div>
+        <div><h2>PETUNJUK KEGIATAN</h2></div>
     </div>
-
 
     <div class="instructions">
-
         <ol>
-
-            <li>
-                Kerjakan LKPD secara berkelompok dengan
-                teman sebangku.
-            </li>
-
-            <li>
-                Bacalah permasalahan dan karakteristik setiap
-                zona sebelum menentukan pilihan.
-            </li>
-
-            <li>
-                Gunakan hasil pembelajaran dan Virtual Lab
-                sebagai bahan pertimbangan.
-            </li>
-
-            <li>
-                Catat hasil pengamatan dan perhitungan sesuai
-                data yang diperoleh.
-            </li>
-
-            <li>
-                Saat menggunakan AI Artemis, tetap lakukan
-                perhitungan secara manual pada kertas kerja.
-            </li>
-
-            <li>
-                Gunakan kesempatan yang tersedia dengan
-                mempertimbangkan pilihan komponen secara cermat.
-            </li>
-
-            <li>
-                Simpan data hasil rancangan karena akan
-                digunakan pada tahap AI Evaluator dan
-                pembuatan infografis.
-            </li>
-
+            <li>Kerjakan LKPD secara berkelompok.</li>
+            <li>Gunakan hasil analisis dari tahap <em>Exploration</em> sebagai dasar kegiatan.</li>
+            <li>Tentukan sumber energi yang menjadi pilihan awal kelompok.</li>
+            <li>Lakukan penyelidikan pada Virtual Lab sesuai dengan pilihan energi kelompok.</li>
+            <li>Catat hasil penyelidikan pada tabel.</li>
+            <li>Buat dan analisis grafik berdasarkan data yang diperoleh.</li>
+            <li>Gunakan hasil Virtual Lab bersama data SMA Artemis untuk mengevaluasi pilihan awal.</li>
+            <li>Tentukan keputusan akhir kelompok.</li>
+            <li>Rancang pemanfaatan sumber energi yang dipilih untuk membantu kebutuhan listrik SMA Artemis.</li>
+            <li>Gunakan perhitungan untuk memperkirakan daya yang dihasilkan oleh rancangan.</li>
+            <li>Gunakan AI Artemis apabila kelompok membutuhkan bantuan untuk memahami data atau mempertimbangkan rancangan.</li>
+            <li>Sajikan hasil akhir dalam bentuk infografis.</li>
         </ol>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
-     KEGIATAN 1
-===================================================== -->
-
-<section
-    class="section"
-    id="kegiatan1"
->
-
+<section class="section" id="kegiatan1">
     <div class="section-title">
-
-        <div class="badge">
-            1
-        </div>
-
+        <div class="badge">1</div>
         <div>
-
-            <h2>
-                KEGIATAN 1
-            </h2>
-
-            <p>
-                EKSPLORASI DAN PEMILIHAN ZONA
-            </p>
-
+            <h2>MENENTUKAN PILIHAN AWAL</h2>
+            <p>Menentukan sumber energi berdasarkan informasi awal</p>
         </div>
-
     </div>
 
+    <p><strong>Sumber energi pilihan awal:</strong></p>
+    <div class="check-grid">
+        <label class="check"><input type="radio" name="sumberAwal" value="Energi Matahari"> Energi Matahari</label>
+        <label class="check"><input type="radio" name="sumberAwal" value="Energi Angin"> Energi Angin</label>
+        <label class="check"><input type="radio" name="sumberAwal" value="Energi Air"> Energi Air</label>
+    </div>
 
-    <h3 class="sub-title">
-        A. Memahami Dilema
-    </h3>
+    <div class="answer-block">
+        <div class="question">Mengapa kelompok kalian memilih sumber energi tersebut?</div>
+        <textarea data-field="alasanAwal"></textarea>
+    </div>
 
+    <div class="note">
+        <strong>Perhatian:</strong> Pilihan ini merupakan dugaan awal, bukan keputusan akhir.
+        Hasil penyelidikan akan digunakan untuk mengevaluasi pilihan tersebut.
+    </div>
+</section>
+
+<section class="section" id="penyelidikan">
+    <div class="section-title">
+        <div class="badge">2</div>
+        <div>
+            <h2>PENYELIDIKAN VIRTUAL LAB</h2>
+            <p>Menyelidiki hubungan kondisi sumber energi dengan daya listrik</p>
+        </div>
+    </div>
+
+    <h3 class="sub-title">Langkah Penyelidikan</h3>
+    <div class="instructions">
+        <ol>
+            <li>Buka section Virtual Lab pada E-Lit Lab.</li>
+            <li>Pilih simulasi sesuai dengan sumber energi pilihan awal kelompok.</li>
+            <li>Tentukan variabel yang akan diubah, variabel yang diamati, dan variabel yang dikontrol.</li>
+            <li>Ubah variabel yang diteliti secara bertahap.</li>
+            <li>Pertahankan variabel lain agar kondisi percobaan dapat dibandingkan.</li>
+            <li>Lakukan minimal empat kali percobaan.</li>
+            <li>Catat kondisi sumber energi dan daya listrik yang dihasilkan.</li>
+        </ol>
+    </div>
+
+    <h3 class="sub-title">A. Menentukan Variabel</h3>
+    <div class="grid-4">
+        <div class="field">
+            <label>Variabel yang diubah</label>
+            <input data-field="variabelDiubah">
+        </div>
+        <div class="field">
+            <label>Variabel yang diamati</label>
+            <input data-field="variabelDiamati">
+        </div>
+        <div class="field">
+            <label>Variabel yang dikontrol</label>
+            <input data-field="variabelDikontrol">
+        </div>
+        <div class="field">
+            <label>Interval pengamatan</label>
+            <input data-field="intervalPengamatan" placeholder="Contoh: 1 jam">
+        </div>
+    </div>
+
+    <h3 class="sub-title">B. Data Hasil Penyelidikan</h3>
+
+    <h4>Jika memilih Energi Matahari</h4>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Percobaan</th>
+                    <th>Intensitas cahaya (W/m²)</th>
+                    <th>Luas panel (m²)</th>
+                    <th>Daya listrik (W)</th>
+                    <th>Energi output (Wh)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input data-field="surya1I"></td><td><input data-field="surya1A"></td><td><input data-field="surya1P"></td><td><input data-field="surya1E"></td></tr>
+                <tr><td>2</td><td><input data-field="surya2I"></td><td><input data-field="surya2A"></td><td><input data-field="surya2P"></td><td><input data-field="surya2E"></td></tr>
+                <tr><td>3</td><td><input data-field="surya3I"></td><td><input data-field="surya3A"></td><td><input data-field="surya3P"></td><td><input data-field="surya3E"></td></tr>
+                <tr><td>4</td><td><input data-field="surya4I"></td><td><input data-field="surya4A"></td><td><input data-field="surya4P"></td><td><input data-field="surya4E"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Jika memilih Energi Angin</h4>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Percobaan</th>
+                    <th>Kecepatan angin (m/s)</th>
+                    <th>Luas turbin (m²)</th>
+                    <th>Daya listrik (W)</th>
+                    <th>Energi output (Wh)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input data-field="angin1v"></td><td><input data-field="angin1A"></td><td><input data-field="angin1P"></td><td><input data-field="angin1E"></td></tr>
+                <tr><td>2</td><td><input data-field="angin2v"></td><td><input data-field="angin2A"></td><td><input data-field="angin2P"></td><td><input data-field="angin2E"></td></tr>
+                <tr><td>3</td><td><input data-field="angin3v"></td><td><input data-field="angin3A"></td><td><input data-field="angin3P"></td><td><input data-field="angin3E"></td></tr>
+                <tr><td>4</td><td><input data-field="angin4v"></td><td><input data-field="angin4A"></td><td><input data-field="angin4P"></td><td><input data-field="angin4E"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Jika memilih Energi Air</h4>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Percobaan</th>
+                    <th>Debit air (m³/s)</th>
+                    <th>Ketinggian/head (m)</th>
+                    <th>Daya listrik (W)</th>
+                    <th>Energi output (Wh)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input data-field="air1Q"></td><td><input data-field="air1h"></td><td><input data-field="air1P"></td><td><input data-field="air1E"></td></tr>
+                <tr><td>2</td><td><input data-field="air2Q"></td><td><input data-field="air2h"></td><td><input data-field="air2P"></td><td><input data-field="air2E"></td></tr>
+                <tr><td>3</td><td><input data-field="air3Q"></td><td><input data-field="air3h"></td><td><input data-field="air3P"></td><td><input data-field="air3E"></td></tr>
+                <tr><td>4</td><td><input data-field="air4Q"></td><td><input data-field="air4h"></td><td><input data-field="air4P"></td><td><input data-field="air4E"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="answer-block">
+        <div class="question">Berdasarkan data Virtual Lab, buatlah grafik hubungan antara variabel kondisi sumber energi dan daya listrik yang dihasilkan.</div>
+        <div class="grid-4">
+            <div class="field">
+                <label>Variabel pada sumbu X</label>
+                <input data-field="grafikX">
+            </div>
+            <div class="field">
+                <label>Variabel pada sumbu Y</label>
+                <input data-field="grafikY">
+            </div>
+        </div>
+    </div>
+
+    <h3 class="sub-title">C. Analisis Grafik</h3>
+
+    <div class="answer-block">
+        <div class="question">1. Bagaimana pola hubungan antara kondisi sumber energi dan daya listrik berdasarkan grafik? Apakah mengalami kenaikan atau penurunan? Jelaskan.</div>
+        <textarea data-field="analisisGrafik1"></textarea>
+    </div>
+
+    <div class="answer-block">
+        <div class="question">2. Berdasarkan hasil Virtual Lab, ketika kondisi sumber energi meningkat, daya listrik yang dihasilkan cenderung bagaimana? Tuliskan bukti dari hasil percobaan.</div>
+        <textarea data-field="analisisGrafik2"></textarea>
+    </div>
+</section>
+
+<section class="section" id="solusi">
+    <div class="section-title">
+        <div class="badge">3</div>
+        <div>
+            <h2>SOLUSI DILEMA SMA ARTEMIS</h2>
+            <p>Menggunakan dua sumber bukti untuk menentukan dan merancang solusi</p>
+        </div>
+    </div>
 
     <div class="dilemma">
-
-        SMA Artemis mengalami peningkatan tarif listrik akibat
-        krisis energi yang terjadi secara global. Kondisi tersebut
-        menyebabkan sekolah harus mengurangi penggunaan listrik
-        pada beberapa fasilitas, termasuk area taman sekolah.
-        Untuk mengatasi permasalahan tersebut, sekolah
-        menyelenggarakan
-        <strong>Sayembara Desain Eco-Gazebo Mandiri Energi</strong>.
-
-        Eco-Gazebo dirancang sebagai tempat siswa beristirahat
-        dan berkumpul sekaligus menyediakan listrik untuk kebutuhan
-        sederhana, seperti mengisi daya telepon seluler, tanpa
-        menambah beban listrik sekolah.
-
-        <br><br>
-
-        Tersedia tiga lokasi yang dapat digunakan untuk pembangunan
-        Eco-Gazebo, yaitu
-        <strong>Zona Matahari, Zona Angin, dan Zona Air</strong>.
-
-        Setiap zona memiliki potensi sumber energi sekaligus
-        permasalahan yang berbeda.
-
-        Zona Matahari memiliki paparan sinar matahari yang cukup
-        baik, tetapi sebagian area atap gazebo tertutup oleh
-        bayangan pohon beringin.
-
-        Zona Angin berada di sekitar lapangan yang memiliki
-        hembusan angin cukup kuat, tetapi lokasinya berdekatan
-        dengan ruang kelas sehingga suara turbin perlu
-        dipertimbangkan.
-
-        Sementara itu, Zona Air memiliki aliran air yang cukup
-        deras untuk menggerakkan turbin, tetapi saluran air sering
-        dipenuhi sampah plastik yang dapat menghambat aliran dan
-        meningkatkan risiko genangan.
-
-        <br><br>
-
-        Setiap pilihan memiliki kelebihan dan keterbatasan sehingga
-        tidak terdapat satu zona yang sepenuhnya paling baik.
-
-        Rancangan Eco-Gazebo harus mampu menghasilkan
-        <strong>daya minimal 1.000 Watt</strong>
-        dengan
-        <strong>anggaran maksimal Rp2.500.000</strong>
-        serta tetap mempertimbangkan efisiensi dan kondisi
-        lingkungan pada lokasi yang dipilih.
-
+        <p>
+            <strong>SMA Artemis ingin mulai memanfaatkan energi terbarukan untuk membantu memenuhi kebutuhan listrik sekolah.</strong>
+        </p>
+        <p>
+            Sekolah memiliki beberapa pilihan sumber energi, yaitu energi matahari, angin, dan air.
+            Setiap sumber energi memiliki kondisi penggunaan yang berbeda. Sekolah meminta bantuan
+            untuk menentukan sumber energi yang paling sesuai.
+        </p>
+        <p>
+            Saat ini terdapat dua sumber bukti yang dapat digunakan, yaitu data hasil penyelidikan
+            Virtual Lab dan data kondisi SMA Artemis yang tertera pada halaman
+            <strong>Exploration</strong> E-Lit Lab. Gunakan kedua bukti tersebut untuk mengevaluasi
+            pilihan kelompok.
+        </p>
     </div>
 
+    <h3 class="sub-title">A. Keputusan Akhir</h3>
 
-    <h3 class="sub-title">
-        B. Pilihan Kelompok
-    </h3>
+    <div class="answer-block">
+        <div class="question">Kelompok kami memilih sumber energi:</div>
+        <input data-field="keputusanAkhir">
+    </div>
 
+    <div class="answer-block">
+        <div class="question">Data yang ditemukan dan penjelasannya:</div>
+        <textarea data-field="dataKeputusan"></textarea>
+    </div>
+
+    <div class="answer-block">
+        <div class="question">Kelebihan dan keterbatasan:</div>
+        <textarea data-field="kelebihanKeterbatasan"></textarea>
+    </div>
+
+    <div class="answer-block">
+        <div class="question">Proses perubahan sumber energi yang dipilih menjadi energi listrik:</div>
+        <textarea data-field="prosesKonversi"></textarea>
+    </div>
+
+    <h3 class="sub-title">B. Menentukan Rancangan</h3>
+
+    <div class="answer-block">
+        <div class="question">1. Sumber energi yang digunakan:</div>
+        <input data-field="rancanganSumber">
+    </div>
+
+    <div class="answer-block">
+        <div class="question">2. Teknologi yang digunakan:</div>
+        <input data-field="rancanganTeknologi">
+    </div>
+
+    <div class="answer-block">
+        <div class="question">3. Kebutuhan listrik SMA Artemis yang ingin dibantu:</div>
+        <textarea data-field="rancanganKebutuhan"></textarea>
+    </div>
+
+    <div class="answer-block">
+        <div class="question">4. Lokasi pemasangan dan alasannya:</div>
+        <textarea data-field="rancanganLokasi"></textarea>
+    </div>
 
     <p>
-        Setelah mempertimbangkan ketiga zona,
-        zona yang kami pilih adalah:
+        Gunakan perhitungan untuk memperkirakan daya yang dapat dihasilkan oleh rancangan.
+        Kalian dapat mempertimbangkan perubahan pada ukuran atau kapasitas sistem, kebutuhan listrik
+        yang dibantu, jumlah peralatan, lokasi pemanfaatan, dan kondisi sumber energi.
     </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="zonaPilihan"
-                value="Zona Surya"
-            >
-
-            Zona Surya
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="zonaPilihan"
-                value="Zona Angin"
-            >
-
-            Zona Angin
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="zonaPilihan"
-                value="Zona Air"
-            >
-
-            Zona Air
-
-        </label>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            1. Alasan kelompok memilih zona tersebut:
-        </div>
-
-        <textarea
-            data-field="alasanZona"
-        ></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            2. Potensi utama zona yang kami pilih adalah:
-        </div>
-
-        <textarea
-            data-field="potensiZona"
-        ></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            3. Tantangan yang mungkin dihadapi adalah:
-        </div>
-
-        <textarea
-            data-field="tantanganZona"
-        ></textarea>
-
-    </div>
-
-
-    <h3 class="sub-title">
-        C. EKSPLORASI VIRTUAL LAB
-    </h3>
-
-
-    <p>
-        Jalankan Virtual Lab sesuai zona yang dipilih.
-        Amati bagaimana perubahan variabel memengaruhi
-        hasil yang diperoleh.
-    </p>
-
-
-    <h4>
-        a. Hasil Pengamatan
-    </h4>
-
 
     <div class="table-wrap">
-
         <table>
-
             <thead>
-
-                <tr>
-
-                    <th>
-                        Variabel yang Diubah
-                    </th>
-
-                    <th>
-                        Kondisi Awal
-                    </th>
-
-                    <th>
-                        Kondisi Setelah Diubah
-                    </th>
-
-                    <th>
-                        Perubahan Daya/Energi
-                    </th>
-
-                </tr>
-
+                <tr><th>Parameter</th><th>Nilai</th></tr>
             </thead>
-
-
             <tbody>
-
                 <tr>
-
-                    <td>
-                        <input data-field="vlab1variabel">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab1awal">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab1akhir">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab1perubahan">
-                    </td>
-
+                    <td>Kondisi sumber energi (intensitas cahaya, debit air, atau kecepatan angin)</td>
+                    <td><input data-field="parameterKondisi"></td>
                 </tr>
-
-
                 <tr>
-
-                    <td>
-                        <input data-field="vlab2variabel">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab2awal">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab2akhir">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab2perubahan">
-                    </td>
-
+                    <td>Pukul</td>
+                    <td><input data-field="parameterWaktu"></td>
                 </tr>
-
-
                 <tr>
-
-                    <td>
-                        <input data-field="vlab3variabel">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab3awal">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab3akhir">
-                    </td>
-
-                    <td>
-                        <input data-field="vlab3perubahan">
-                    </td>
-
+                    <td>Efisiensi</td>
+                    <td><input data-field="parameterEfisiensi"></td>
                 </tr>
-
+                <tr>
+                    <td>Parameter lain (luas panel, luas bilah, atau tinggi jatuh air)</td>
+                    <td><input data-field="parameterLain"></td>
+                </tr>
             </tbody>
-
         </table>
-
     </div>
 
-
-    <h4>
-        b. Pertanyaan Analisis
-    </h4>
-
+    <h4>Perhitungan Daya</h4>
+    <div class="note">
+        <strong>Gunakan rumus sesuai sumber energi yang dipilih.</strong><br>
+        Matahari: P₍in₎ = I × A &nbsp;&nbsp; dan &nbsp;&nbsp; P₍out₎ = P₍in₎ × η<br>
+        Angin: P₍in₎ = ½ × ρ × A × v³ &nbsp;&nbsp; dan &nbsp;&nbsp; P₍out₎ = P₍in₎ × η<br>
+        Air: P₍in₎ = ρ × Q × g × h &nbsp;&nbsp; dan &nbsp;&nbsp; P₍out₎ = P₍in₎ × η
+    </div>
 
     <div class="answer-block">
-
-        <div class="question">
-            1. Variabel apa yang paling berpengaruh
-            terhadap daya yang dihasilkan?
-        </div>
-
-        <textarea data-field="analisis1"></textarea>
-
+        <div class="question">1. Daya masukan:</div>
+        <textarea data-field="dayaMasukanManual" placeholder="Tuliskan substitusi dan hasil perhitungan."></textarea>
     </div>
-
 
     <div class="answer-block">
-
-        <div class="question">
-            2. Bagaimana perubahan variabel tersebut
-            memengaruhi energi yang dihasilkan?
-        </div>
-
-        <textarea data-field="analisis2"></textarea>
-
+        <div class="question">2. Daya keluaran:</div>
+        <textarea data-field="dayaKeluaranManual" placeholder="Tuliskan Pout = Pin × η dan hasilnya."></textarea>
     </div>
-
 
     <div class="answer-block">
-
-        <div class="question">
-            3. Apa yang dapat kamu simpulkan berdasarkan
-            hasil Virtual Lab?
+        <div class="question">Hasil daya keluaran:</div>
+        <div class="grid-4">
+            <input data-field="dayaKeluaranHasil" placeholder="... W">
+            <input data-field="dayaKeluaranWaktu" placeholder="... WIB">
         </div>
-
-        <textarea data-field="analisis3"></textarea>
-
     </div>
 
-
-    <div class="answer-block">
-
-        <div class="question">
-            4. Apakah hasil Virtual Lab mendukung pilihan
-            zona kelompokmu? Jelaskan.
-        </div>
-
-        <textarea data-field="analisis4"></textarea>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     KEGIATAN 2
-===================================================== -->
-
-<section
-    class="section"
-    id="kegiatan2"
->
-
-    <div class="section-title">
-
-        <div class="badge">
-            2
-        </div>
-
-        <div>
-
-            <h2>
-                KEGIATAN 2
-            </h2>
-
-            <p>
-                STUDIO INOVASI ECO-GAZEBO
-            </p>
-
-        </div>
-
-    </div>
-
-
+    <h3 class="sub-title">C. Menentukan Pemanfaatan dan Distribusi Daya</h3>
     <p>
-        Pada kegiatan ini, kelompokmu akan mengembangkan
-        rancangan Eco-Gazebo berdasarkan zona yang telah dipilih.
+        Tentukan peralatan yang ingin dibantu oleh sistem kalian. Sesuaikan dengan daya yang dihasilkan
+        oleh sistem. Tidak harus membantu seluruh peralatan.
     </p>
 
-
-    <!-- RENCANA DESAIN -->
-
-    <h3 class="sub-title">
-        A. Rencana Desain
-    </h3>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Zona yang dipilih:
-        </div>
-
-        <input data-field="desainZona">
-
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Peralatan</th>
+                    <th>Jumlah</th>
+                    <th>Daya peralatan (W)</th>
+                    <th>Rentang waktu</th>
+                    <th>Total daya (W)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lampu kelas</td><td><input data-field="lampuJumlah" type="number" min="0"></td>
+                    <td>20</td><td>08.00–16.00</td><td><input data-field="lampuTotal"></td>
+                </tr>
+                <tr>
+                    <td>Kipas</td><td><input data-field="kipasJumlah" type="number" min="0"></td>
+                    <td>45</td><td>10.00–15.00</td><td><input data-field="kipasTotal"></td>
+                </tr>
+                <tr>
+                    <td>Komputer</td><td><input data-field="komputerJumlah" type="number" min="0"></td>
+                    <td>100</td><td>08.00–14.00</td><td><input data-field="komputerTotal"></td>
+                </tr>
+                <tr>
+                    <td>Pompa air</td><td><input data-field="pompaJumlah" type="number" min="0"></td>
+                    <td>250</td><td>08.00–09.00 dan 14.00–15.00</td><td><input data-field="pompaTotal"></td>
+                </tr>
+                <tr>
+                    <th colspan="4">Total kebutuhan daya</th>
+                    <td><input data-field="totalKebutuhanDaya"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-
-    <div class="answer-block">
-
-        <div class="question">
-            Masalah utama yang ingin diselesaikan:
-        </div>
-
-        <textarea data-field="masalahUtama"></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Ide solusi kelompok:
-        </div>
-
-        <textarea data-field="ideSolusi"></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Inovasi yang ditambahkan pada rancangan:
-        </div>
-
-        <textarea data-field="inovasi"></textarea>
-
-    </div>
-
-
-    <!-- AI ARTEMIS -->
-
-    <h3 class="sub-title">
-        B. KONSULTASI DENGAN AI ARTEMIS
-    </h3>
-
-
+    <h4>Perbandingan Daya pada Setiap Waktu</h4>
     <p>
-        Gunakan AI Artemis untuk mencari kombinasi komponen
-        yang sesuai dengan batasan proyek.
+        Data daya keluaran berbeda pada setiap rentang waktu dan dapat dilihat dari hasil Virtual Lab
+        atau data kondisi SMA Artemis.
     </p>
 
-
-    <p>
-        Selama berkonsultasi dengan AI Artemis, tetap gunakan
-        kertas dan pensil untuk perhitungan manual.
-        Buka halaman materi untuk menemukan rumus di setiap zona.
-    </p>
-
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Waktu</th>
+                    <th>Daya keluaran sistem (W)</th>
+                    <th>Total kebutuhan daya (W)</th>
+                    <th>Mencukupi / Tidak</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>08.00</td><td><input data-field="w08out"></td><td><input data-field="w08need"></td><td><input data-field="w08cukup"></td><td><input data-field="w08ket"></td></tr>
+                <tr><td>09.00</td><td><input data-field="w09out"></td><td><input data-field="w09need"></td><td><input data-field="w09cukup"></td><td><input data-field="w09ket"></td></tr>
+                <tr><td>10.00</td><td><input data-field="w10out"></td><td><input data-field="w10need"></td><td><input data-field="w10cukup"></td><td><input data-field="w10ket"></td></tr>
+                <tr><td>11.00</td><td><input data-field="w11out"></td><td><input data-field="w11need"></td><td><input data-field="w11cukup"></td><td><input data-field="w11ket"></td></tr>
+                <tr><td>12.00</td><td><input data-field="w12out"></td><td><input data-field="w12need"></td><td><input data-field="w12cukup"></td><td><input data-field="w12ket"></td></tr>
+                <tr><td>13.00</td><td><input data-field="w13out"></td><td><input data-field="w13need"></td><td><input data-field="w13cukup"></td><td><input data-field="w13ket"></td></tr>
+                <tr><td>14.00</td><td><input data-field="w14out"></td><td><input data-field="w14need"></td><td><input data-field="w14cukup"></td><td><input data-field="w14ket"></td></tr>
+                <tr><td>15.00</td><td><input data-field="w15out"></td><td><input data-field="w15need"></td><td><input data-field="w15cukup"></td><td><input data-field="w15ket"></td></tr>
+                <tr><td>16.00</td><td><input data-field="w16out"></td><td><input data-field="w16need"></td><td><input data-field="w16cukup"></td><td><input data-field="w16ket"></td></tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="note">
-
-        <strong>Ketentuan</strong>
-        <br>
-
-        • Anggaran maksimum: Rp2.500.000
-        <br>
-
-        • Target daya minimum: 1.000 Watt
-        <br>
-
-        • Kelompok memiliki 3 kesempatan untuk mencoba
-        kombinasi komponen.
-        <br>
-
-        • Setiap pilihan harus dipertimbangkan berdasarkan
-        daya, harga, dan efisiensi.
-
+        <strong>Catatan:</strong> Total kebutuhan daya disesuaikan dengan peralatan yang dipilih dan
+        waktu penggunaannya. Daya sumber energi dapat berubah pada setiap waktu sesuai dengan kondisi SMA Artemis.
     </div>
 
-
-    <!-- =================================================
-         PERCOBAAN 1
-    ================================================= -->
-
-    <h4>
-        Percobaan 1
-    </h4>
-
-
+    <h4>Ayo Menghitung!</h4>
+    <p>Hitung energi listrik yang dibutuhkan berdasarkan daya peralatan dan lama penggunaannya.</p>
     <div class="answer-block">
-
-        <div class="question">
-            Kode:
+        <div class="question">E = P × t</div>
+        <div class="grid-4">
+            <input data-field="energiP" placeholder="P = ... W">
+            <input data-field="energiT" placeholder="t = ... jam">
+            <input data-field="energiHitung" placeholder="E = ... × ...">
+            <input data-field="energiHasil" placeholder="E = ... Wh">
         </div>
-
-        <input
-            data-field="kode1"
-            placeholder="(.....) (.....) (.....)"
-        >
-
+        <p><strong>Energi yang dibutuhkan untuk</strong>
+            <input style="max-width:120px;display:inline-block" data-field="energiDurasi">
+            <strong>jam sebesar</strong>
+            <input style="max-width:150px;display:inline-block" data-field="energiTotal">
+            <strong>Wh.</strong>
+        </p>
     </div>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Komponen
-                    </th>
-
-                    <th>
-                        Jumlah
-                    </th>
-
-                    <th>
-                        Fungsi Komponen
-                    </th>
-
-                    <th>
-                        Harga
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-                    <td><input data-field="p1c1"></td>
-                    <td><input data-field="p1j1"></td>
-                    <td><input data-field="p1fungsi1"></td>
-                    <td><input data-field="p1h1"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p1c2"></td>
-                    <td><input data-field="p1j2"></td>
-                    <td><input data-field="p1fungsi2"></td>
-                    <td><input data-field="p1h2"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p1c3"></td>
-                    <td><input data-field="p1j3"></td>
-                    <td><input data-field="p1fungsi3"></td>
-                    <td><input data-field="p1h3"></td>
-                </tr>
-
-                <tr>
-
-                    <th colspan="3">
-                        Total Biaya
-                    </th>
-
-                    <td>
-                        <input data-field="p1totalHarga">
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <p>
-        Daya
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p1totalDaya"
-        >
-        Watt
-    </p>
-
-
-    <p>
-        Efisiensi:
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p1efisiensi"
-        >
-        %
-    </p>
-
-
-    <p>
-        Apakah memenuhi ketentuan?
-    </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p1memenuhi"
-                value="Ya"
-            >
-
-            Ya
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p1memenuhi"
-                value="Tidak"
-            >
-
-            Tidak
-
-        </label>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Hasil evaluasi kelompok:
-        </div>
-
-        <textarea data-field="p1evaluasi"></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         PERCOBAAN 2
-    ================================================= -->
-
-    <h4>
-        Percobaan 2
-    </h4>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Kode:
-        </div>
-
-        <input
-            data-field="kode2"
-            placeholder="(.....) (.....) (.....)"
-        >
-
-    </div>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Komponen</th>
-                    <th>Jumlah</th>
-                    <th>Fungsi Komponen</th>
-                    <th>Harga</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-                    <td><input data-field="p2c1"></td>
-                    <td><input data-field="p2j1"></td>
-                    <td><input data-field="p2fungsi1"></td>
-                    <td><input data-field="p2h1"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p2c2"></td>
-                    <td><input data-field="p2j2"></td>
-                    <td><input data-field="p2fungsi2"></td>
-                    <td><input data-field="p2h2"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p2c3"></td>
-                    <td><input data-field="p2j3"></td>
-                    <td><input data-field="p2fungsi3"></td>
-                    <td><input data-field="p2h3"></td>
-                </tr>
-
-                <tr>
-
-                    <th colspan="3">
-                        Total Biaya
-                    </th>
-
-                    <td>
-                        <input data-field="p2totalHarga">
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <p>
-        Daya
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p2totalDaya"
-        >
-        Watt
-    </p>
-
-
-    <p>
-        Efisiensi:
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p2efisiensi"
-        >
-        %
-    </p>
-
-
-    <p>
-        Apakah memenuhi ketentuan?
-    </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p2memenuhi"
-                value="Ya"
-            >
-
-            Ya
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p2memenuhi"
-                value="Tidak"
-            >
-
-            Tidak
-
-        </label>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Perubahan yang dilakukan dari percobaan sebelumnya:
-        </div>
-
-        <textarea data-field="p2perubahan"></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         PERCOBAAN 3
-    ================================================= -->
-
-    <h4>
-        Percobaan 3
-    </h4>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Kode:
-        </div>
-
-        <input
-            data-field="kode3"
-            placeholder="(.....) (.....) (.....)"
-        >
-
-    </div>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Komponen</th>
-                    <th>Jumlah</th>
-                    <th>Fungsi Komponen</th>
-                    <th>Harga</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-                    <td><input data-field="p3c1"></td>
-                    <td><input data-field="p3j1"></td>
-                    <td><input data-field="p3fungsi1"></td>
-                    <td><input data-field="p3h1"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p3c2"></td>
-                    <td><input data-field="p3j2"></td>
-                    <td><input data-field="p3fungsi2"></td>
-                    <td><input data-field="p3h2"></td>
-                </tr>
-
-                <tr>
-                    <td><input data-field="p3c3"></td>
-                    <td><input data-field="p3j3"></td>
-                    <td><input data-field="p3fungsi3"></td>
-                    <td><input data-field="p3h3"></td>
-                </tr>
-
-                <tr>
-
-                    <th colspan="3">
-                        Total Biaya
-                    </th>
-
-                    <td>
-                        <input data-field="p3totalHarga">
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <p>
-        Daya
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p3totalDaya"
-        >
-        Watt
-    </p>
-
-
-    <p>
-        Efisiensi:
-        <input
-            style="max-width:130px;display:inline-block"
-            data-field="p3efisiensi"
-        >
-        %
-    </p>
-
-
-    <p>
-        Apakah memenuhi ketentuan?
-    </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p3memenuhi"
-                value="Ya"
-            >
-
-            Ya
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="p3memenuhi"
-                value="Tidak"
-            >
-
-            Tidak
-
-        </label>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Alasan memilih kombinasi ini atau alasan
-            melakukan perubahan:
-        </div>
-
-        <textarea data-field="p3alasan"></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         PERHITUNGAN MANUAL
-    ================================================= -->
-
-    <h3 class="sub-title">
-        D. PERHITUNGAN MANUAL
-    </h3>
-
-
-    <p>
-        Gunakan data yang diperoleh dari AI Artemis
-        untuk memeriksa hasil secara manual.
-    </p>
-
-
-    <div class="grid-4">
-
-        <div class="field">
-
-            <label>
-                Percobaan yang dipilih
-            </label>
-
-            <input data-field="percobaanDipilih">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Kode
-            </label>
-
-            <input data-field="kodeDipilih">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Daya
-            </label>
-
-            <input data-field="dayaDipilih">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Harga
-            </label>
-
-            <input data-field="hargaDipilih">
-
-        </div>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Efisiensi:
-        </div>
-
-        <input data-field="efisiensiDipilih">
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Perhitungan
-        </div>
-
-        <textarea
-            data-field="perhitunganManual"
-            style="min-height:130px"
-        ></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Hasil perhitungan kelompok:
-        </div>
-
-        <textarea
-            data-field="hasilPerhitungan"
-        ></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         RANCANGAN AKHIR
-    ================================================= -->
-
-    <h3 class="sub-title">
-        E. MENENTUKAN RANCANGAN AKHIR
-    </h3>
-
-
-    <p>
-        Setelah membandingkan ketiga percobaan,
-        tentukan rancangan yang akan digunakan.
-    </p>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Aspek
-                    </th>
-
-                    <th>
-                        Hasil
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                <tr>
-
-                    <td>
-                        Zona
-                    </td>
-
-                    <td>
-                        <input data-field="zonaAkhir">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Kode terpilih
-                    </td>
-
-                    <td>
-                        <input data-field="kodeTerpilih">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Total daya
-                    </td>
-
-                    <td>
-                        <input data-field="totalDayaAkhir">
-                        Watt
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Total harga
-                    </td>
-
-                    <td>
-                        Rp
-                        <input data-field="totalHargaAkhir">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Efisiensi
-                    </td>
-
-                    <td>
-                        <input data-field="efisiensiAkhir">
-                        %
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Mengapa kelompok memilih rancangan tersebut?
-        </div>
-
-        <textarea
-            data-field="alasanRancanganAkhir"
-        ></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         INFOGRAFIS
-    ================================================= -->
-
-    <h3 class="sub-title">
-        F. DESAIN INFOGRAFIS ECO-GAZEBO
-    </h3>
-
-
-    <p>
-        Buat infografis sederhana berdasarkan rancangan akhir
-        kelompok. Kumpulkan pada Padlet yang tersedia di dalam
-        section Studio Inovasi E-Lit Lab.
-        Infografis minimal memuat:
-    </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoGambar"
-            >
-            Gambar/desain Eco-Gazebo
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoUkuran"
-            >
-            Ukuran atau skala desain bebas
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoZona"
-            >
-            Zona yang digunakan
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoKomponen"
-            >
-            Komponen yang digunakan dan keterangan ukurannya
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoDaya"
-            >
-            Total daya (Watt)
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoHarga"
-            >
-            Harga
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoEfisiensi"
-            >
-            Efisiensi
-        </label>
-
-
-        <label class="check">
-            <input
-                type="checkbox"
-                data-check="infoInovasi"
-            >
-            Keterangan singkat mengenai inovasi
-        </label>
-
-    </div>
-
-
-    <!-- =================================================
-         AI EVALUATOR
-    ================================================= -->
-
-    <h3 class="sub-title">
-        G. EVALUASI DENGAN AI EVALUATOR
-    </h3>
-
-
-    <p>
-        Masukkan kode, daya, harga, dan efisiensi rancangan
-        kelompok ke AI Evaluator.
-    </p>
-
-
-    <h4>
-        Hasil Evaluasi
-    </h4>
-
-
-    <div class="grid-4">
-
-        <div class="field">
-
-            <label>
-                Kode:
-            </label>
-
-            <input data-field="evalKode">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Daya:
-            </label>
-
-            <input data-field="evalDaya">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Harga:
-            </label>
-
-            <input data-field="evalHarga">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                Efisiensi:
-            </label>
-
-            <input data-field="evalEfisiensi">
-
-        </div>
-
-    </div>
-
-
-    <p style="margin-top:18px">
-
-        <strong>
-            Status hasil evaluasi:
-        </strong>
-
-    </p>
-
-
-    <div class="check-grid">
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="statusEvaluasi"
-                value="Pemenang"
-            >
-
-            Pemenang
-
-        </label>
-
-
-        <label class="check">
-
-            <input
-                type="radio"
-                name="statusEvaluasi"
-                value="Belum menjadi pemenang"
-            >
-
-            Belum menjadi pemenang
-
-        </label>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            Analisis Kelompok
-        </div>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            1. Menurut kelompokmu, apa yang membuat rancangan
-            tersebut menjadi unggul atau belum unggul?
-        </div>
-
-        <textarea
-            data-field="kelompokAnalisis1"
-        ></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            2. Apakah hasil AI Evaluator sesuai dengan perkiraan
-            kelompok? Jelaskan.
-        </div>
-
-        <textarea
-            data-field="kelompokAnalisis2"
-        ></textarea>
-
-    </div>
-
-
-    <div class="answer-block">
-
-        <div class="question">
-            3. Apa yang kamu pelajari dari perbandingan hasil
-            rancangan kelompokmu dengan kelompok lain?
-        </div>
-
-        <textarea
-            data-field="kelompokAnalisis3"
-        ></textarea>
-
-    </div>
-
-
-    <!-- =================================================
-         KESIMPULAN
-    ================================================= -->
-
-    <h3 class="sub-title">
-        H. KESIMPULAN PROYEK
-    </h3>
-
-
-    <p>
-        Tuliskan kesimpulan berdasarkan seluruh proses
-        yang telah dilakukan.
-    </p>
-
-
-    <textarea
-        data-field="kesimpulan"
-        style="min-height:170px"
-    ></textarea>
-
 </section>
 
+<section class="section">
+    <div class="section-title">
+        <div class="badge">4</div>
+        <div><h2>KESIMPULAN</h2></div>
+    </div>
 
-<!-- =====================================================
-     STATUS + BUTTON
-===================================================== -->
+    <p>Tuliskan kesimpulan berdasarkan hasil penyelidikan, analisis data, dan rancangan solusi.</p>
+    <textarea data-field="kesimpulan" style="min-height:180px"></textarea>
+</section>
 
-<div
-    class="status"
-    id="saveStatus"
->
-    Belum disimpan.
-</div>
+<section class="section">
+    <div class="section-title">
+        <div class="badge">5</div>
+        <div>
+            <h2>PRODUK STUDIO INOVASI</h2>
+            <p>Infografis “Solusi Energi SMA Artemis”</p>
+        </div>
+    </div>
 
+    <p>
+        Luaran kegiatan berupa infografis sederhana yang disusun berdasarkan hasil penyelidikan,
+        analisis data, dan keputusan kelompok. Infografis dibuat secara kreatif sesuai gagasan
+        masing-masing kelompok.
+    </p>
+
+    <p><strong>Infografis memuat:</strong></p>
+    <div class="check-grid">
+        <label class="check"><input type="checkbox" data-check="produkSumber"> Sumber energi terbarukan yang dipilih</label>
+        <label class="check"><input type="checkbox" data-check="produkBukti"> Bukti atau data yang mendukung pilihan</label>
+        <label class="check"><input type="checkbox" data-check="produkRancangan"> Desain rancangan sederhana</label>
+        <label class="check"><input type="checkbox" data-check="produkDaya"> Daya yang dihasilkan</label>
+        <label class="check"><input type="checkbox" data-check="produkKebutuhan"> Kebutuhan listrik yang akan dipenuhi</label>
+        <label class="check"><input type="checkbox" data-check="produkAlasan"> Alasan pemilihan solusi</label>
+        <label class="check"><input type="checkbox" data-check="produkKeterbatasan"> Keterbatasan sumber energi</label>
+    </div>
+</section>
+
+<div class="status" id="saveStatus">Belum disimpan.</div>
 
 <div class="savebar">
-
-    <button
-        class="btn light"
-        onclick="saveDraft()"
-    >
-        Simpan Draft
-    </button>
-
-
-    <button
-        class="btn"
-        onclick="submitLKPD()"
-    >
-        Kirim LKPD ke Spreadsheet
-    </button>
-
-
-    <button
-        class="btn secondary"
-        id="reportBtn"
-        onclick="downloadReportPDF()"
-        disabled
-    >
-        Download Laporan PDF
-    </button>
-
+    <button class="btn light" onclick="saveDraft()">Simpan Draft</button>
+    <button class="btn" onclick="submitLKPD()">Kirim LKPD ke Spreadsheet</button>
+    <button class="btn secondary" id="reportBtn" onclick="downloadReportPDF()" disabled>Download Laporan PDF</button>
 </div>
 
-
-<!-- =====================================================
-     PENGUMPULAN LKPD
-===================================================== -->
-
-<section
-    class="section"
-    id="pengumpulanLKPD"
->
-
+<section class="section" id="pengumpulanLKPD">
     <div class="section-title">
-
-        <div class="badge">
-            📤
-        </div>
-
+        <div class="badge">📤</div>
         <div>
-
-            <h2>
-                PENGUMPULAN LKPD
-            </h2>
-
-            <p>
-                Unggah laporan PDF hasil pengerjaan kelompok
-            </p>
-
+            <h2>PENGUMPULAN LKPD</h2>
+            <p>Kumpulkan hasil pengerjaan melalui Google Drive</p>
         </div>
-
     </div>
-
 
     <div class="note">
-
-        <strong>
-            Langkah pengumpulan:
-        </strong>
-
-        <br>
-
-        1. Pastikan seluruh bagian LKPD sudah selesai.
-        <br>
-
-        2. Klik
-        <strong>
-            Kirim LKPD ke Spreadsheet
-        </strong>
-        terlebih dahulu.
-        <br>
-
-        3. Download laporan LKPD dalam format PDF.
-        <br>
-
-        4. Pilih file PDF tersebut pada bagian pengumpulan.
-        <br>
-
-        5. Klik
-        <strong>
-            Upload LKPD PDF
-        </strong>.
-
+        <strong>Langkah pengumpulan:</strong><br>
+        1. Pastikan seluruh bagian LKPD sudah selesai.<br>
+        2. Pastikan laporan LKPD sudah disimpan dalam format PDF.<br>
+        3. Klik tombol <strong>Kumpulkan LKPD di Google Drive</strong> di bawah ini.
     </div>
 
-
-    <div class="answer-block upload-box">
-
-        <div class="question">
-            File LKPD PDF
-        </div>
-
-
-        <input
-            type="file"
-            id="lkpdPdfFile"
-            accept="application/pdf,.pdf"
-            class="upload-file"
-        >
-
-
-        <p id="uploadFileInfo">
-            Belum ada file dipilih.
-        </p>
-
+    <div class="answer-block" style="text-align:center;">
+        <a href="https://drive.google.com/drive/folders/1CG3ruJU8LE4ROaBVBVqvF7xwUKGXBKB_?usp=drive_link" target="_blank" rel="noopener noreferrer"
+           style="display:inline-block; padding:13px 22px; border-radius:11px; text-decoration:none; font-weight:700;">
+            📁 Kumpulkan LKPD di Google Drive
+        </a>
     </div>
-
-
-    <div
-        id="uploadProgress"
-        class="upload-progress"
-    >
-
-        <div class="progress-track">
-
-            <div
-                id="uploadProgressBar"
-                class="progress-bar"
-            ></div>
-
-        </div>
-
-
-        <p
-            id="uploadStatus"
-            class="upload-status"
-        >
-            Menyiapkan upload...
-        </p>
-
-    </div>
-
-
-    <button
-        class="btn"
-        id="uploadLKPDButton"
-        onclick="uploadLKPDPDF()"
-        style="width:100%;margin-top:15px"
-    >
-        Upload LKPD PDF
-    </button>
-
 </section>
 
-
 <footer class="footer">
-
-    <strong>
-        E-Lit Lab — Proyek Eco-Gazebo
-    </strong>
-
-    <br>
-
-    Energi Terbarukan Berbasis Dilemma-STEAM
-
+    <strong>E-Lit Lab — LKPD Digital</strong><br>
+    Merancang Solusi Energi Terbarukan untuk SMA Artemis
 </footer>
 
 </div>
 </main>
-
 
 <script>
 
@@ -2422,18 +1072,12 @@ td textarea{
 
 const ELIT_SHEETS_API =
     "https://script.google.com/macros/s/AKfycbw3BXEx9TugZNn_iFRMZJaBV7ddf6ECqS8b1dN_4EI-hABeWQaRDMpmmCngVHa42OM0/exec";
-
-
-const ELIT_LKPD_UPLOAD_API =
-    ELIT_SHEETS_API;
-
-
 /* =====================================================
    STORAGE
 ===================================================== */
 
 const LKPD_STORAGE_KEY =
-    "elitlab_lkpd_digital_final_v2";
+    "elitlab_lkpd_digital_final_v3";
 
 
 let lkpdSubmitted = false;
@@ -2534,6 +1178,10 @@ function applyFormData(data){
         return;
     }
 
+
+    if(data.tanggal !== undefined && document.getElementById("tanggal")){
+        document.getElementById("tanggal").value = data.tanggal;
+    }
 
     if(data.namaKelompok !== undefined){
 
@@ -3070,578 +1718,137 @@ function addWrapped(
 ===================================================== */
 
 function collectReportLines(){
-
-    const d =
-        getFormData();
-
-    const f =
-        d.fields;
-
+    const d = getFormData();
+    const f = d.fields;
     const lines = [];
 
-
-    lines.push(
-        "LAPORAN HASIL LKPD"
-    );
-
-    lines.push(
-        "Energi Terbarukan Berbasis Dilemma-STEAM"
-    );
-
+    lines.push("LAPORAN HASIL LKPD");
+    lines.push("Merancang Solusi Energi Terbarukan untuk SMA Artemis");
     lines.push("");
-
-
     lines.push("IDENTITAS");
-
-    lines.push(
-        "Nama Kelompok: " +
-        human(d.namaKelompok)
-    );
-
-    lines.push(
-        "Anggota: " +
-        human(d.anggota)
-            .replace(/\n/g,"; ")
-    );
-
-    lines.push(
-        "Kelas: " +
-        human(d.kelas)
-    );
-
+    lines.push("Nama Kelompok: " + human(d.namaKelompok));
+    lines.push("Anggota: " + human(d.anggota).replace(/\n/g,"; "));
+    lines.push("Kelas: " + human(d.kelas));
+    lines.push("Tanggal: " + human(d.tanggal));
     lines.push("");
 
-
-    /* KEGIATAN 1 */
-
-    lines.push(
-        "KEGIATAN 1 - EKSPLORASI DAN PEMILIHAN ZONA"
-    );
-
-
-    lines.push(
-        "Zona pilihan: " +
-        radioValue("zonaPilihan")
-    );
-
-
-    addWrapped(
-        lines,
-        "Alasan memilih zona: " +
-        human(f.alasanZona)
-    );
-
-
-    addWrapped(
-        lines,
-        "Potensi utama zona: " +
-        human(f.potensiZona)
-    );
-
-
-    addWrapped(
-        lines,
-        "Tantangan zona: " +
-        human(f.tantanganZona)
-    );
-
-
+    lines.push("1. MENENTUKAN PILIHAN AWAL");
+    lines.push("Sumber energi pilihan awal: " + radioValue("sumberAwal"));
+    addWrapped(lines, "Alasan memilih: " + human(f.alasanAwal));
     lines.push("");
 
+    lines.push("2. PENYELIDIKAN VIRTUAL LAB");
+    addWrapped(lines, "Variabel yang diubah: " + human(f.variabelDiubah));
+    addWrapped(lines, "Variabel yang diamati: " + human(f.variabelDiamati));
+    addWrapped(lines, "Variabel yang dikontrol: " + human(f.variabelDikontrol));
+    addWrapped(lines, "Interval pengamatan: " + human(f.intervalPengamatan));
+    lines.push("");
 
-    lines.push(
-        "HASIL PENGAMATAN VIRTUAL LAB"
-    );
-
-
-    for(let i=1;i<=3;i++){
-
-        addWrapped(
-            lines,
-            "Pengamatan " +
-            i +
-            ": " +
-            human(
-                f["vlab" + i + "variabel"]
-            ) +
-            " | Awal: " +
-            human(
-                f["vlab" + i + "awal"]
-            ) +
-            " | Setelah diubah: " +
-            human(
-                f["vlab" + i + "akhir"]
-            ) +
-            " | Perubahan daya/energi: " +
-            human(
-                f["vlab" + i + "perubahan"]
-            )
+    lines.push("DATA ENERGI MATAHARI");
+    for(let i=1;i<=4;i++){
+        addWrapped(lines,
+            "Percobaan " + i +
+            " | Intensitas: " + human(f["surya"+i+"I"]) +
+            " W/m2 | Luas panel: " + human(f["surya"+i+"A"]) +
+            " m2 | Daya: " + human(f["surya"+i+"P"]) +
+            " W | Energi output: " + human(f["surya"+i+"E"]) + " Wh"
         );
-
     }
 
-
-    addWrapped(
-        lines,
-        "Analisis 1: " +
-        human(f.analisis1)
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 2: " +
-        human(f.analisis2)
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 3: " +
-        human(f.analisis3)
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 4: " +
-        human(f.analisis4)
-    );
-
-
-    lines.push("");
-
-
-    /* KEGIATAN 2 */
-
-    lines.push(
-        "KEGIATAN 2 - STUDIO INOVASI ECO-GAZEBO"
-    );
-
-
-    addWrapped(
-        lines,
-        "Zona yang dipilih: " +
-        human(f.desainZona)
-    );
-
-
-    addWrapped(
-        lines,
-        "Masalah utama: " +
-        human(f.masalahUtama)
-    );
-
-
-    addWrapped(
-        lines,
-        "Ide solusi: " +
-        human(f.ideSolusi)
-    );
-
-
-    addWrapped(
-        lines,
-        "Inovasi: " +
-        human(f.inovasi)
-    );
-
-
-    lines.push("");
-
-
-    /* PERCOBAAN */
-
-    for(let p=1;p<=3;p++){
-
-        lines.push(
-            "AI ARTEMIS - PERCOBAAN " +
-            p
+    lines.push("DATA ENERGI ANGIN");
+    for(let i=1;i<=4;i++){
+        addWrapped(lines,
+            "Percobaan " + i +
+            " | Kecepatan: " + human(f["angin"+i+"v"]) +
+            " m/s | Luas turbin: " + human(f["angin"+i+"A"]) +
+            " m2 | Daya: " + human(f["angin"+i+"P"]) +
+            " W | Energi output: " + human(f["angin"+i+"E"]) + " Wh"
         );
-
-
-        addWrapped(
-            lines,
-            "Kode: " +
-            human(
-                f["kode" + p]
-            )
-        );
-
-
-        for(let i=1;i<=3;i++){
-
-            addWrapped(
-                lines,
-                "Komponen " +
-                i +
-                ": " +
-                human(
-                    f["p" + p + "c" + i]
-                ) +
-                " | Jumlah: " +
-                human(
-                    f["p" + p + "j" + i]
-                ) +
-                " | Fungsi: " +
-                human(
-                    f["p" + p + "fungsi" + i]
-                ) +
-                " | Harga: " +
-                human(
-                    f["p" + p + "h" + i]
-                )
-            );
-
-        }
-
-
-        addWrapped(
-            lines,
-            "Total Biaya: " +
-            human(
-                f["p" + p + "totalHarga"]
-            )
-        );
-
-
-        addWrapped(
-            lines,
-            "Daya: " +
-            human(
-                f["p" + p + "totalDaya"]
-            ) +
-            " Watt"
-        );
-
-
-        addWrapped(
-            lines,
-            "Efisiensi: " +
-            human(
-                f["p" + p + "efisiensi"]
-            ) +
-            " %"
-        );
-
-
-        addWrapped(
-            lines,
-            "Memenuhi ketentuan: " +
-            radioValue(
-                "p" + p + "memenuhi"
-            )
-        );
-
-
-        if(p === 1){
-
-            addWrapped(
-                lines,
-                "Hasil evaluasi kelompok: " +
-                human(f.p1evaluasi)
-            );
-
-        }
-
-
-        if(p === 2){
-
-            addWrapped(
-                lines,
-                "Perubahan dari percobaan sebelumnya: " +
-                human(f.p2perubahan)
-            );
-
-        }
-
-
-        if(p === 3){
-
-            addWrapped(
-                lines,
-                "Alasan memilih kombinasi/perubahan: " +
-                human(f.p3alasan)
-            );
-
-        }
-
-
-        lines.push("");
-
     }
 
-
-    /* MANUAL */
-
-    lines.push(
-        "PERHITUNGAN MANUAL"
-    );
-
-
-    addWrapped(
-        lines,
-        "Percobaan yang dipilih: " +
-        human(f.percobaanDipilih)
-    );
-
-
-    addWrapped(
-        lines,
-        "Kode: " +
-        human(f.kodeDipilih)
-    );
-
-
-    addWrapped(
-        lines,
-        "Daya: " +
-        human(f.dayaDipilih) +
-        " Watt"
-    );
-
-
-    addWrapped(
-        lines,
-        "Harga: Rp" +
-        human(f.hargaDipilih)
-    );
-
-
-    addWrapped(
-        lines,
-        "Efisiensi: " +
-        human(f.efisiensiDipilih) +
-        " %"
-    );
-
-
-    addWrapped(
-        lines,
-        "Perhitungan: " +
-        human(f.perhitunganManual)
-    );
-
-
-    addWrapped(
-        lines,
-        "Hasil perhitungan kelompok: " +
-        human(f.hasilPerhitungan)
-    );
-
+    lines.push("DATA ENERGI AIR");
+    for(let i=1;i<=4;i++){
+        addWrapped(lines,
+            "Percobaan " + i +
+            " | Debit: " + human(f["air"+i+"Q"]) +
+            " m3/s | Head: " + human(f["air"+i+"h"]) +
+            " m | Daya: " + human(f["air"+i+"P"]) +
+            " W | Energi output: " + human(f["air"+i+"E"]) + " Wh"
+        );
+    }
 
     lines.push("");
-
-
-    /* RANCANGAN AKHIR */
-
-    lines.push(
-        "RANCANGAN AKHIR"
-    );
-
-
-    addWrapped(
-        lines,
-        "Zona: " +
-        human(f.zonaAkhir)
-    );
-
-
-    addWrapped(
-        lines,
-        "Kode terpilih: " +
-        human(f.kodeTerpilih)
-    );
-
-
-    addWrapped(
-        lines,
-        "Total daya: " +
-        human(f.totalDayaAkhir) +
-        " Watt"
-    );
-
-
-    addWrapped(
-        lines,
-        "Total harga: Rp" +
-        human(f.totalHargaAkhir)
-    );
-
-
-    addWrapped(
-        lines,
-        "Efisiensi: " +
-        human(f.efisiensiAkhir) +
-        " %"
-    );
-
-
-    addWrapped(
-        lines,
-        "Alasan pemilihan: " +
-        human(f.alasanRancanganAkhir)
-    );
-
-
+    addWrapped(lines, "Sumbu X grafik: " + human(f.grafikX));
+    addWrapped(lines, "Sumbu Y grafik: " + human(f.grafikY));
+    addWrapped(lines, "Analisis grafik 1: " + human(f.analisisGrafik1));
+    addWrapped(lines, "Analisis grafik 2: " + human(f.analisisGrafik2));
     lines.push("");
 
+    lines.push("3. SOLUSI DILEMA SMA ARTEMIS");
+    addWrapped(lines, "Keputusan akhir: " + human(f.keputusanAkhir));
+    addWrapped(lines, "Data dan penjelasan: " + human(f.dataKeputusan));
+    addWrapped(lines, "Kelebihan dan keterbatasan: " + human(f.kelebihanKeterbatasan));
+    addWrapped(lines, "Proses perubahan energi: " + human(f.prosesKonversi));
+    lines.push("");
 
-    /* INFOGRAFIS */
+    lines.push("RANCANGAN");
+    addWrapped(lines, "Sumber energi: " + human(f.rancanganSumber));
+    addWrapped(lines, "Teknologi: " + human(f.rancanganTeknologi));
+    addWrapped(lines, "Kebutuhan listrik yang dibantu: " + human(f.rancanganKebutuhan));
+    addWrapped(lines, "Lokasi pemasangan: " + human(f.rancanganLokasi));
+    addWrapped(lines, "Kondisi sumber energi: " + human(f.parameterKondisi));
+    addWrapped(lines, "Pukul: " + human(f.parameterWaktu));
+    addWrapped(lines, "Efisiensi: " + human(f.parameterEfisiensi));
+    addWrapped(lines, "Parameter lain: " + human(f.parameterLain));
+    addWrapped(lines, "Perhitungan daya masukan: " + human(f.dayaMasukanManual));
+    addWrapped(lines, "Perhitungan daya keluaran: " + human(f.dayaKeluaranManual));
+    addWrapped(lines, "Hasil daya keluaran: " + human(f.dayaKeluaranHasil) + " W pada " + human(f.dayaKeluaranWaktu) + " WIB");
+    lines.push("");
 
-    lines.push(
-        "DESAIN INFOGRAFIS"
-    );
+    lines.push("PEMANFAATAN DAN DISTRIBUSI DAYA");
+    addWrapped(lines, "Lampu: " + human(f.lampuJumlah) + " unit, total " + human(f.lampuTotal) + " W");
+    addWrapped(lines, "Kipas: " + human(f.kipasJumlah) + " unit, total " + human(f.kipasTotal) + " W");
+    addWrapped(lines, "Komputer: " + human(f.komputerJumlah) + " unit, total " + human(f.komputerTotal) + " W");
+    addWrapped(lines, "Pompa: " + human(f.pompaJumlah) + " unit, total " + human(f.pompaTotal) + " W");
+    addWrapped(lines, "Total kebutuhan daya: " + human(f.totalKebutuhanDaya) + " W");
 
+    const times = ["08","09","10","11","12","13","14","15","16"];
+    times.forEach(function(t){
+        addWrapped(lines,
+            t + ".00 | Daya keluaran: " + human(f["w"+t+"out"]) +
+            " W | Kebutuhan: " + human(f["w"+t+"need"]) +
+            " W | " + human(f["w"+t+"cukup"]) +
+            " | " + human(f["w"+t+"ket"])
+        );
+    });
 
+    addWrapped(lines, "Energi: P = " + human(f.energiP) + " W; t = " + human(f.energiT) + " jam; E = " + human(f.energiHasil) + " Wh");
+    addWrapped(lines, "Energi yang dibutuhkan untuk " + human(f.energiDurasi) + " jam: " + human(f.energiTotal) + " Wh");
+    lines.push("");
+
+    lines.push("4. KESIMPULAN");
+    addWrapped(lines, human(f.kesimpulan));
+    lines.push("");
+
+    lines.push("5. PRODUK STUDIO INOVASI");
     const labels = {
-
-        infoGambar:
-            "Gambar/desain",
-
-        infoUkuran:
-            "Ukuran/skala",
-
-        infoZona:
-            "Zona",
-
-        infoKomponen:
-            "Komponen dan ukuran",
-
-        infoDaya:
-            "Total daya",
-
-        infoHarga:
-            "Total harga",
-
-        infoEfisiensi:
-            "Efisiensi",
-
-        infoInovasi:
-            "Keterangan inovasi"
-
+        produkSumber:"Sumber energi",
+        produkBukti:"Bukti/data pendukung",
+        produkRancangan:"Desain rancangan",
+        produkDaya:"Daya yang dihasilkan",
+        produkKebutuhan:"Kebutuhan listrik",
+        produkAlasan:"Alasan pemilihan solusi",
+        produkKeterbatasan:"Keterbatasan"
     };
-
-
-    Object
-        .entries(labels)
-        .forEach(function([key,label]){
-
-            lines.push(
-                label +
-                ": " +
-                (
-                    d.checks[key]
-                        ? "Sudah dicentang"
-                        : "Belum dicentang"
-                )
-            );
-
-        });
-
+    Object.entries(labels).forEach(function([key,label]){
+        lines.push(label + ": " + (d.checks[key] ? "Sudah dicentang" : "Belum dicentang"));
+    });
 
     lines.push("");
-
-
-    /* AI EVALUATOR */
-
-    lines.push(
-        "AI EVALUATOR"
-    );
-
-
-    addWrapped(
-        lines,
-        "Kode: " +
-        human(f.evalKode)
-    );
-
-
-    addWrapped(
-        lines,
-        "Daya: " +
-        human(f.evalDaya) +
-        " Watt"
-    );
-
-
-    addWrapped(
-        lines,
-        "Harga: Rp" +
-        human(f.evalHarga)
-    );
-
-
-    addWrapped(
-        lines,
-        "Efisiensi: " +
-        human(f.evalEfisiensi) +
-        " %"
-    );
-
-
-    addWrapped(
-        lines,
-        "Status: " +
-        radioValue("statusEvaluasi")
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 1: " +
-        human(f.kelompokAnalisis1)
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 2: " +
-        human(f.kelompokAnalisis2)
-    );
-
-
-    addWrapped(
-        lines,
-        "Analisis 3: " +
-        human(f.kelompokAnalisis3)
-    );
-
-
-    lines.push("");
-
-
-    /* KESIMPULAN */
-
-    lines.push(
-        "KESIMPULAN PROYEK"
-    );
-
-
-    addWrapped(
-        lines,
-        human(f.kesimpulan)
-    );
-
-
-    lines.push("");
-
-
-    lines.push(
-        "Laporan dibuat dari jawaban terakhir yang tersimpan pada perangkat."
-    );
-
-
-    lines.push(
-        "Waktu: " +
-        new Date().toLocaleString("id-ID")
-    );
-
-
+    lines.push("Laporan dibuat dari jawaban terakhir yang tersimpan.");
+    lines.push("Waktu: " + new Date().toLocaleString("id-ID"));
     return lines;
-
 }
-
 
 /* =====================================================
    PDF ESCAPE
@@ -3989,7 +2196,7 @@ function downloadReportPDF(){
 
 
     a.download =
-        "Laporan_LKPD_Eco-Gazebo_" +
+        "Laporan_LKPD_SMA-Artemis_" +
         name +
         ".pdf";
 
@@ -4603,6 +2810,7 @@ window.addEventListener(
 );
 
 </script>
+
 
 </body>
 </html>
